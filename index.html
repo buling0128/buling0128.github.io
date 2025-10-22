@@ -77,7 +77,7 @@
 
 /* 看板娘图片 */
 .kanban-img {
-  width: 180px; /* 图片宽度 */
+  width: 360px; /* 图片宽度 */
   height: auto;
   cursor: pointer;
   transition: transform 0.3s;
@@ -139,47 +139,7 @@
   <!-- 引入脚本支持导航栏折叠（手机端用） -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-// 预设的随机台词（可自行扩展）
-const kanbanTexts = [
-  "点击我可以查看更多内容哦～",
-  "设定集里有很多有趣的世界观设定呢！",
-  "故事集更新了新的章节，快去看看吧～",
-  "图片展览馆里有我拍的旅行照片～",
-  "有任何问题都可以问我哦！",
-  "这个网站是用GitHub Pages搭建的，厉害吧～",
-  "今天也是元气满满的一天！",
-  "记得常回来看看呀～"
-];
 
-// 获取元素
-const kanbanGirl = document.getElementById("kanbanGirl");
-const kanbanBubble = document.getElementById("kanbanBubble");
-const originalText = kanbanBubble.textContent; // 保存初始简介文字
-
-// 点击看板娘切换随机文字
-kanbanGirl.addEventListener("click", function() {
-  // 随机选择一句台词（不重复显示当前内容）
-  let randomText;
-  do {
-    randomText = kanbanTexts[Math.floor(Math.random() * kanbanTexts.length)];
-  } while (randomText === kanbanBubble.textContent);
-  
-  // 显示随机文字并添加轻微动画
-  kanbanBubble.style.opacity = "0.5";
-  setTimeout(() => {
-    kanbanBubble.textContent = randomText;
-    kanbanBubble.style.opacity = "1";
-  }, 200);
-});
-
-// 双击恢复初始简介文字
-kanbanGirl.addEventListener("dblclick", function() {
-  kanbanBubble.style.opacity = "0.5";
-  setTimeout(() => {
-    kanbanBubble.textContent = originalText;
-    kanbanBubble.style.opacity = "1";
-  }, 200);
-});
     
 </body>
 </html>
