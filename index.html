@@ -55,15 +55,131 @@
     </div>
   </div>
 </nav>
-  <!-- 首页内容 -->
-  <div class="container mt-5">
-    <h1>欢迎来到布灵的创作空间</h1>
-    <p>这里是首页，点击上方导航可查看其他内容。</p>
-    <!-- 插入图片（引用images文件夹中的图片） -->
-    <img src="images/me.jpg" class="img-fluid" alt="我的照片"> <!-- img-fluid确保图片在手机上自适应 -->
+  <!-- 看板娘区域 -->
+<div class="kanban-container">
+  <!-- 静态看板娘图片 -->
+  <img src="images/kanban-girl.png" alt="看板娘" class="kanban-img" id="kanbanGirl">
+  
+  <!-- 看板娘对话气泡（默认显示首页简介） -->
+  <div class="kanban-bubble" id="kanbanBubble">
+    你好！我是看板娘～ 欢迎来到布灵的创作空间～这里是首页，点击上方导航可查看其他内容。
   </div>
+</div>
+  <style>/* 看板娘容器 */
+.kanban-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #f8fafc;
+  position: relative;
+}
+
+/* 看板娘图片 */
+.kanban-img {
+  width: 180px; /* 图片宽度 */
+  height: auto;
+  cursor: pointer;
+  transition: transform 0.3s;
+  margin-right: 20px; /* 与气泡的间距 */
+}
+
+.kanban-img:hover {
+  transform: scale(1.05); /*  hover时轻微放大 */
+}
+
+/* 对话气泡样式 */
+.kanban-bubble {
+  max-width: 600px;
+  padding: 20px 25px;
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* 气泡指向箭头 */
+.kanban-bubble::before {
+  content: '';
+  position: absolute;
+  left: -15px; /* 指向图片方向 */
+  top: 50%;
+  transform: translateY(-50%);
+  border: 15px solid transparent;
+  border-right-color: white; /* 与气泡背景一致 */
+}
+
+/* 手机端适配 */
+@media (max-width: 768px) {
+  .kanban-container {
+    flex-direction: column; /* 手机端上下排列 */
+    text-align: center;
+  }
+  
+  .kanban-img {
+    margin-right: 0;
+    margin-bottom: 20px;
+    width: 150px;
+  }
+  
+  .kanban-bubble::before {
+    left: 50%;
+    top: -15px; /* 箭头向上 */
+    transform: translateX(-50%);
+    border-right-color: transparent;
+    border-bottom-color: white;
+  }
+}
+
+  
+    
 
   <!-- 引入脚本支持导航栏折叠（手机端用） -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+// 预设的随机台词（可自行扩展）
+const kanbanTexts = [
+  "点击我可以查看更多内容哦～",
+  "设定集里有很多有趣的世界观设定呢！",
+  "故事集更新了新的章节，快去看看吧～",
+  "图片展览馆里有我拍的旅行照片～",
+  "有任何问题都可以问我哦！",
+  "这个网站是用GitHub Pages搭建的，厉害吧～",
+  "今天也是元气满满的一天！",
+  "记得常回来看看呀～"
+];
+
+// 获取元素
+const kanbanGirl = document.getElementById("kanbanGirl");
+const kanbanBubble = document.getElementById("kanbanBubble");
+const originalText = kanbanBubble.textContent; // 保存初始简介文字
+
+// 点击看板娘切换随机文字
+kanbanGirl.addEventListener("click", function() {
+  // 随机选择一句台词（不重复显示当前内容）
+  let randomText;
+  do {
+    randomText = kanbanTexts[Math.floor(Math.random() * kanbanTexts.length)];
+  } while (randomText === kanbanBubble.textContent);
+  
+  // 显示随机文字并添加轻微动画
+  kanbanBubble.style.opacity = "0.5";
+  setTimeout(() => {
+    kanbanBubble.textContent = randomText;
+    kanbanBubble.style.opacity = "1";
+  }, 200);
+});
+
+// 双击恢复初始简介文字
+kanbanGirl.addEventListener("dblclick", function() {
+  kanbanBubble.style.opacity = "0.5";
+  setTimeout(() => {
+    kanbanBubble.textContent = originalText;
+    kanbanBubble.style.opacity = "1";
+  }, 200);
+});
+    
 </body>
 </html>
