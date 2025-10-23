@@ -1,6 +1,33 @@
 <!DOCTYPE html>
 <html>
   <style>
+    /* 新增：公告栏样式 */
+    .announcement-bar {
+      background-color: #eff6ff; /* 浅蓝色背景，醒目但不刺眼 */
+      border-bottom: 2px solid #2563eb; /* 底部蓝色边框，增强辨识度 */
+      padding: 10px 0;
+      position: sticky; /* 固定在顶部，滚动时不消失 */
+      top: 0; /* 紧贴浏览器顶部 */
+      z-index: 100; /* 层级高于其他内容，确保不被遮挡 */
+      text-align: center;
+      font-size: 1rem;
+    }
+
+    .announcement-content {
+      color: #1e40af; /* 深蓝色文字，与背景对比清晰 */
+      font-weight: 500;
+    }
+
+    .announcement-link {
+      color: #2563eb;
+      text-decoration: underline;
+      margin-left: 5px;
+    }
+
+    .announcement-link:hover {
+      color: #1d4ed8; /*  hover时加深颜色 */
+    }
+
     /* 看板娘容器 */
     .kanban-container {
       display: flex;
@@ -11,21 +38,21 @@
       position: relative;
     }
 
-    /* 看板娘图片（核心优化：固定尺寸和位置，避免移动） */
+    /* 看板娘图片 */
     .kanban-img {
-      width: 360px; /* 固定宽度 */
+      width: 360px;
       height: auto;
       cursor: pointer;
-      transition: transform 0.3s; /* 仅保留缩放动画，无位置变化 */
-      margin-right: 20px; /* 固定与气泡的间距 */
-      flex-shrink: 0; /* 防止图片被挤压变形 */
+      transition: transform 0.3s;
+      margin-right: 20px;
+      flex-shrink: 0;
     }
 
     .kanban-img:hover {
-      transform: scale(1.05); /* 悬停仅放大，不移动 */
+      transform: scale(1.05);
     }
 
-    /* 对话气泡样式（优化动画平滑度） */
+    /* 对话气泡样式 */
     .kanban-bubble {
       max-width: 600px;
       padding: 20px 25px;
@@ -35,10 +62,9 @@
       position: relative;
       font-size: 1.1rem;
       line-height: 1.6;
-      transition: opacity 0.2s ease; /* 平滑淡入淡出 */
+      transition: opacity 0.2s ease;
     }
 
-    /* 气泡指向箭头（固定位置，不随内容变化） */
     .kanban-bubble::before {
       content: '';
       position: absolute;
@@ -47,10 +73,10 @@
       transform: translateY(-50%);
       border: 15px solid transparent;
       border-right-color: white;
-      pointer-events: none; /* 箭头不影响点击 */
+      pointer-events: none;
     }
 
-    /* 手机端适配（保持图片位置固定） */
+    /* 手机端适配 */
     @media (max-width: 768px) {
       .kanban-container {
         flex-direction: column;
@@ -67,6 +93,12 @@
         transform: translateX(-50%);
         border-right-color: transparent;
         border-bottom-color: white;
+      }
+
+      /* 手机端公告栏文字稍小 */
+      .announcement-bar {
+        font-size: 0.9rem;
+        padding: 8px 0;
       }
     }
   </style>
@@ -101,6 +133,14 @@
       </div>
     </nav>
 
+    <!-- 新增：固定位置公告栏 -->
+    <div class="announcement-bar">
+      <div class="container announcement-content">
+        <i class="fa fa-bullhorn" aria-hidden="true"></i> 
+        最新更新：因赛美那世界观新增人物设定
+      </div>
+    </div>
+
     <!-- 看板娘区域 -->
     <div class="kanban-container">
       <img src="images/kanban-girl.png" alt="看板娘" class="kanban-img" id="kanbanGirl">
@@ -112,7 +152,7 @@
     <!-- 引入Bootstrap脚本 -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- 看板娘交互脚本（优化动画，避免图片移动） -->
+    <!-- 看板娘交互脚本 -->
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         const randomTexts = [
@@ -127,13 +167,11 @@
         const kanbanBubble = document.getElementById('kanbanBubble');
         const defaultText = kanbanBubble.textContent;
 
-        // 点击事件：仅更新对话框，不影响图片位置
         kanbanGirl.addEventListener('click', function() {
           const randomIndex = Math.floor(Math.random() * randomTexts.length);
           const randomText = randomTexts[randomIndex];
           
           if (randomText !== kanbanBubble.textContent) {
-            // 仅对对话框应用动画，图片无任何位置相关操作
             kanbanBubble.style.opacity = '0.5';
             setTimeout(() => {
               kanbanBubble.textContent = randomText;
@@ -142,7 +180,6 @@
           }
         });
 
-        // 页面加载/返回时重置默认内容
         window.addEventListener('load', () => {
           kanbanBubble.textContent = defaultText;
         });
