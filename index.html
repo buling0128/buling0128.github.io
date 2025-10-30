@@ -1,232 +1,119 @@
 <!DOCTYPE html>
-<html>
-  <style>
-    /* 公告栏样式 */
-    .announcement-bar {
-      background-color: #eff6ff;
-      border-bottom: 2px solid #2563eb;
-      padding: 10px 0;
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      text-align: center;
-      font-size: 1rem;
-      transition: opacity 0.3s, transform 0.3s;
-    }
-
-    .announcement-bar.hidden {
-      opacity: 0;
-      transform: translateY(-100%);
-      pointer-events: none;
-    }
-
-    .announcement-content {
-      color: #1e40af;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-
-    .close-announcement {
-      color: #2563eb;
-      background: none;
-      border: none;
-      cursor: pointer;
-      font-size: 1.2rem;
-      padding: 0 5px;
-      transition: color 0.2s;
-    }
-
-    .close-announcement:hover {
-      color: #dc2626;
-    }
-
-    /* 看板娘容器（核心优化：固定最小高度，避免布局抖动） */
-    .kanban-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-      background-color: #f8fafc;
-      position: relative;
-      min-height: 450px; /* 固定最小高度，适应最长文本高度 */
-    }
-
-    /* 看板娘图片（优化：绝对定位脱离文档流，彻底避免移动） */
-    .kanban-img {
-      width: 360px;
-      height: auto;
-      cursor: pointer;
-      transition: transform 0.3s;
-      flex-shrink: 0;
-      position: relative; /* 相对定位确保层级 */
-      z-index: 10;
-    }
-
-    .kanban-img:hover {
-      transform: scale(1.05);
-    }
-
-    /* 对话气泡（核心优化：固定最小高度，添加左间距避免挤压图片） */
-    .kanban-bubble {
-      max-width: 600px;
-      padding: 20px 25px;
-      background-color: white;
-      border-radius: 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
-      position: relative;
-      font-size: 1.1rem;
-      line-height: 1.6;
-      transition: opacity 0.2s ease;
-      min-height: 120px; /* 固定最小高度，避免内容变化导致高度波动 */
-      margin-left: 20px; /* 用margin-left替代图片的margin-right，避免挤压 */
-    }
-
-    .kanban-bubble::before {
-      content: '';
-      position: absolute;
-      left: -15px;
-      top: 50%;
-      transform: translateY(-50%);
-      border: 15px solid transparent;
-      border-right-color: white;
-      pointer-events: none;
-    }
-
-    /* 手机端适配（保持布局稳定） */
-    @media (max-width: 768px) {
-      .kanban-container {
-        flex-direction: column;
-        text-align: center;
-        min-height: 350px; /* 手机端调整最小高度 */
-      }
-      .kanban-img {
-        margin-right: 0;
-        margin-bottom: 20px;
-        width: 150px;
-      }
-      .kanban-bubble {
-        min-height: 100px;
-        margin-left: 0; /* 手机端取消左间距 */
-      }
-      .kanban-bubble::before {
-        left: 50%;
-        top: -15px;
-        transform: translateX(-50%);
-        border-right-color: transparent;
-        border-bottom-color: white;
-      }
-      .announcement-bar {
-        font-size: 0.9rem;
-        padding: 8px 0;
-      }
-    }
-  </style>
-
-  <head>
+<html lang="zh-CN">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>布灵的创作空间</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
-  </head>
-
-  <body>
-    <!-- 导航栏 -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm">
-      <div class="container">
-        <a class="navbar-brand" href="index.html" style="font-weight: 700; color: #2563eb;">
-          <i class="fa fa-bookmark-o"></i> 布灵的创作空间
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarContent">
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link active" href="index.html"><i class="fa fa-home"></i> 首页</a></li>
-            <li class="nav-item"><a class="nav-link" href="settings.html"><i class="fa fa-list-alt"></i> 设定集</a></li>
-            <li class="nav-item"><a class="nav-link" href="stories.html"><i class="fa fa-book"></i> 故事集</a></li>
-            <li class="nav-item"><a class="nav-link" href="gallery.html"><i class="fa fa-picture-o"></i> 图片展览馆</a></li>
-            <li class="nav-item"><a class="nav-link" href="about.html"><i class="fa fa-info-circle"></i> 关于本站</a></li>
-          </ul>
+    <title>个人作品展示 - 首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="kanban娘-container">
+            <img src="https://p26-doubao-search-sign.byteimg.com/labis/ba7d49bce4cdc85d680a98bc3c27927b~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=6JlJX2vhHWlXVq2tteM8cyRH%2FW4%3D" alt="看板娘" class="kanban娘-image" id="kanban娘Image">
+            
+            <div class="dialog-container">
+                <div class="dialog-box">
+                    <p class="dialog-text" id="dialogText">
+                        你好！欢迎来到我的个人作品展示网站。点击我可以和我聊天哦！
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-
-    <!-- 公告栏 -->
-    <div class="announcement-bar" id="announcementBar">
-      <div class="container announcement-content">
-        <i class="fa fa-bullhorn" aria-hidden="true"></i>
-        <span>内容正在持续更新</span>
-        <button class="close-announcement" id="closeAnnouncement">
-          <i class="fa fa-times"></i> 关闭
-        </button>
-      </div>
-    </div>
-
-    <!-- 看板娘区域 -->
-    <div class="kanban-container">
-      <img src="images/kanban-girl.png" alt="看板娘" class="kanban-img" id="kanbanGirl">
-      <div class="kanban-bubble" id="kanbanBubble">
-        你好！我是看板娘墨文绘颜～ 欢迎来到布灵的创作空间～这里是首页，点击上方导航可查看其他内容，点我可以看到更多有趣的内容哦~
-      </div>
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- 交互脚本 -->
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        // 公告栏关闭功能
-        const announcementBar = document.getElementById('announcementBar');
-        const closeBtn = document.getElementById('closeAnnouncement');
         
-        closeBtn.addEventListener('click', function() {
-          announcementBar.classList.add('hidden');
-        });
+        <!-- 跳转板块 -->
+        <div class="works-container mt-10">
+            <h2 class="works-title">探索我的作品</h2>
+            
+            <div class="works-grid">
+                <!-- 故事集 -->
+                <div class="work-card">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-xv4ileqgde/4a0156c7c3a2489dabd49fd85e31282b~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355828&x-signature=3W%2B7dd7F1dT%2FLUxI522PM3BDDfQ%3D" alt="故事集封面" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">故事集</h3>
+                        <p class="work-card-description">探索我的原创故事，包含多个版本和世界观</p>
+                        <a href="works/stories/index.html" class="work-card-button">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 设定集 -->
+                <div class="work-card">
+                    <img src="https://p26-doubao-search-sign.byteimg.com/labis/fd5d15ab86122cafc0322561bbed7fc4~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355828&x-signature=FxXUm68s6cxyNtuPrVHxxkoURHE%3D" alt="设定集封面" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">设定集</h3>
+                        <p class="work-card-description">了解我的原创角色和世界观设定</p>
+                        <a href="works/settings/index.html" class="work-card-button">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 画集 -->
+                <div class="work-card">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/labis/ae099e11dfffd6a2c7569b38025da136~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355828&x-signature=qmdx3vtDmjhJw4Jv%2BTWKUu4ITyc%3D" alt="画集封面" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">画集</h3>
+                        <p class="work-card-description">欣赏赏我的我的插画作品，包含各种风格和主题</p>
+                        <a href="works/artworks/index.html" class="work-card-button">查看详情</a>
+                    </div>
+                </div>
+                
+                <!-- 关于本站 -->
+                <div class="work-card">
+                    <img src="https://p26-doubao-search-sign.byteimg.com/labis/image/fae7660cc99345a70241b6f164511445~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355828&x-signature=9qzayhRgxZC7Cbc8OgV%2FQaAUPJE%3D" alt="关于本站封面" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">关于本站</h3>
+                        <p class="work-card-description">了解网站的背景、目的和未来计划</p>
+                        <a href="works/about/index.html" class="work-card-button">查看详情</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
 
-        // 看板娘交互
-        const randomTexts = [
-          "你好，我叫墨文绘颜，你可以叫我小墨，也可以叫我小颜，也可以叫我墨颜，嗯……好像哪里不太对？",
-          "我的生日是10月22日，天秤座，属蛇，喜欢写作、绘画、打游戏，虽然写的不咋地，画的也不咋地，打游戏也不咋地……",
-          "虽然我现在是ai绘制的形象，但是老大说有空时会亲手给我绘制形象的，好期待啊……虽然他画的可能还不如现在呢，别跟他说啊，我会被开除的！",
-          "好想……成为人类啊！！！！！！",
-          "老大挖的坑太多了，根本填不完的吧！",
-          "老大总是搞些没什么用的小功能，比如这个点击对话功能，有心思搞这个不如去好好优化网站呢……",
-          "我的工资？这个嘛…………唉……TAT",
-          "什么时候我也能动起来呢……",
-          "总有一天，我会辞掉这份看板娘的工作，去看一看外面的世界！",
-          "偷偷告诉你，我穿的衣服其实跟老大的初恋有关哦，在【设定集】-【因赛美那】-【因赛美那原初版】-【人物设定】-【寂灵】里有关于她的详细故事哦~",
-          
 
+    <script src="js/navbar.js"></script>
+    <script>
+        // 看板娘对话数据
+        const dialogues = [
+            "你好！欢迎来到我的个人作品展示网站。点击我可以和我聊天哦！",
+            "这里展示了我的各种创作，包括设定集、故事集和画集。",
+            "喜欢我的作品吗？可以通过导航栏查看更多内容哦！",
+            "我是这个网站的看板娘，很高兴能和你交流。",
+            "你对哪个作品最感兴趣呢？可以告诉我哦！",
+            "这个网站是我用HTML、CSS和JavaScript制作的，希望你喜欢！",
+            "如果你有任何问题或建议，都可以告诉我哦！",
+            "谢谢你的来访，希望你能在这里找到喜欢的内容！",
+            "我会不定期更新作品，记得常来看看哦！",
+            "你知道吗？每个作品背后都有一个有趣的故事呢！"
         ];
 
-        const kanbanGirl = document.getElementById('kanbanGirl');
-        const kanbanBubble = document.getElementById('kanbanBubble');
-        const defaultText = kanbanBubble.textContent;
+        // 获取元素
+        const kanban娘Image = document.getElementById('kanban娘Image');
+        const dialogText = document.getElementById('dialogText');
 
-        kanbanGirl.addEventListener('click', function() {
-          const randomIndex = Math.floor(Math.random() * randomTexts.length);
-          const randomText = randomTexts[randomIndex];
-          
-          if (randomText !== kanbanBubble.textContent) {
-            kanbanBubble.style.opacity = '0.5';
+        // 初始对话索引
+        let currentDialogueIndex = 0;
+
+        // 点击看板娘切换对话
+        kanban娘Image.addEventListener('click', () => {
+            // 生成随机索引，但不与当前索引相同
+            let randomIndex;
+            do {
+                randomIndex = Math.floor(Math.random() * dialogues.length);
+            } while (randomIndex === currentDialogueIndex);
+            
+            // 更新当前索引
+            currentDialogueIndex = randomIndex;
+            
+            // 更新对话文本，添加淡入淡出效果
+            dialogText.style.opacity = '0';
+            dialogText.style.transition = 'opacity 0.3s ease';
+            
             setTimeout(() => {
-              kanbanBubble.textContent = randomText;
-              kanbanBubble.style.opacity = '1';
-            }, 200);
-          }
+                dialogText.textContent = dialogues[randomIndex];
+                dialogText.style.opacity = '1';
+            }, 300);
         });
-
-        window.addEventListener('load', () => {
-          kanbanBubble.textContent = defaultText;
-        });
-        window.addEventListener('pageshow', (e) => {
-          if (e.persisted) kanbanBubble.textContent = defaultText;
-        });
-      });
     </script>
-  </body>
+</body>
 </html>
