@@ -128,6 +128,78 @@ body {
     /* 脱离文档流，固定在右侧 */
     position: fixed;
     margin-left: calc(100% - 300px); /* 右侧预留300px位置 */
+
+    /* 原有样式保留，新增以下移动端适配样式 */
+@media (max-width: 768px) {
+    /* 1. 确保手机端目录容器不被挤压，占满屏幕宽度 */
+    .toc-container {
+        width: 100% !important; /* 覆盖可能的宽度限制 */
+        margin: 20px auto !important; /* 居中显示 */
+        padding: 12px 15px; /* 适配手机屏幕，减少内边距 */
+    }
+
+    /* 2. 显示移动端折叠按钮（默认隐藏导致目录无法触发） */
+    .toc-toggle {
+        display: block !important; /* 强制显示按钮，确保能点击展开 */
+        background-color: #1976d2; /* 按钮底色，与整体风格统一 */
+        color: white; /* 按钮文字白色 */
+        border: none; /* 去掉默认边框 */
+        padding: 10px 15px; /* 按钮内边距，增大点击区域 */
+        border-radius: 6px; /* 圆角优化，更符合手机端视觉 */
+        margin-bottom: 12px; /* 与下方目录标题间距 */
+        width: 100%; /* 按钮占满容器宽度，方便点击 */
+        text-align: left; /* 文字左对齐 */
+        font-size: 1rem; /* 字体大小适配手机 */
+        cursor: pointer; /* 显示手型，提示可点击 */
+        display: flex; /* 图标和文字横向排列 */
+        align-items: center; /* 垂直居中 */
+        justify-content: space-between; /* 文字左、图标右 */
+    }
+
+    /* 3. 目录列表默认隐藏，点击按钮后展开（修复默认不显示问题） */
+    .toc-list {
+        display: none; /* 默认隐藏，通过按钮控制显示 */
+        flex-direction: column !important; /* 垂直排列目录项，手机端更易点击 */
+        gap: 8px !important; /* 减小目录项间距，适配手机屏幕高度 */
+    }
+
+    /* 4. 点击按钮后，目录列表展开（添加active类触发） */
+    .toc-list.active {
+        display: flex !important; /* 展开目录 */
+    }
+
+    /* 5. 优化手机端版本板块，避免与目录重叠 */
+    .version-section {
+        margin: 25px 0 !important;
+        padding: 15px !important; /* 减少内边距，节省手机屏幕空间 */
+    }
+
+    /* 6. 手机端图片区域适配，避免挤压目录 */
+    .work-detail-content {
+        flex-direction: column !important; /* 图片和信息垂直排列（原可能是横向） */
+    }
+    .work-detail-image {
+        width: 100% !important; /* 图片占满屏幕宽度 */
+        margin-bottom: 20px !important; /* 与下方信息区间距 */
+    }
+}
+
+/* 补充：确保PC端和移动端样式不冲突（修复目录列表排列） */
+.toc-list {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+/* PC端（屏幕>768px）保持横向排列，手机端（<768px）垂直排列（通过media查询覆盖） */
+@media (min-width: 769px) {
+    .toc-list {
+        flex-direction: row !important;
+    }
+    .toc-toggle {
+        display: none !important; /* PC端隐藏折叠按钮 */
+    }
+}
 }
 
 /* 目录标题样式 */
