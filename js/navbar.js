@@ -3,35 +3,21 @@ function createNavbar() {
     const path = window.location.pathname;
     const page = path.split('/').pop() || 'index.html';
     
-    // 导航栏数据（存储相对于网站根目录的绝对路径）
+    // 关键修复：导航数据改为【基于网站根目录的绝对路径】，而非带../../的相对路径
     const navItems = [
-        { name: '首页', url: '../../index.html' },
-        { name: '设定集', url: '../../works/settings/index.html' },
-        { name: '故事集', url: '../../works/stories/index.html' },
-        { name: '画集', url: '../../works/artworks/index.html' },
-        { name: '关于本站', url: '../../works/about/index.html' }
+        { name: '首页', url: '/index.html' }, // 根目录下的首页
+        { name: '设定集', url: '/works/settings/index.html' }, // 根目录→works→settings
+        { name: '故事集', url: '/works/stories/index.html' }, // 根目录→works→stories
+        { name: '画集', url: '/works/artworks/index.html' }, // 根目录→works→artworks
+        { name: '关于本站', url: '/works/about/index.html' } // 根目录→works→about
     ];
 
-    // 获取网站根目录路径（假设HTML文件直接放在服务器根目录或项目根目录）
-    // 实际应用中可根据部署情况调整
-    const getBaseUrl = () => {
-        // 获取当前页面的完整URL
-        const url = window.location.href;
-        // 找到最后一个'/'的位置（在文件名之前）
-        const lastSlashIndex = url.lastIndexOf('/');
-        // 返回根目录路径
-        return url.substring(0, lastSlashIndex + 1);
-    };
-    
-    const baseUrl = getBaseUrl();
-
-    // 计算从当前页面到目标页面的相对路径
+    // 计算从当前页面到目标页面的相对路径（函数逻辑不变，因输入格式已修复）
     const getRelativePath = (targetUrl) => {
-        // 解析当前路径和目标路径
         const currentParts = path.split('/').filter(part => part);
         const targetParts = targetUrl.split('/').filter(part => part);
         
-        // 找到共同的路径部分
+        // 找到路径的共同前缀
         let commonLength = 0;
         while (commonLength < currentParts.length && 
                commonLength < targetParts.length && 
@@ -39,18 +25,15 @@ function createNavbar() {
             commonLength++;
         }
         
-        // 计算需要回退的层级
+        // 计算需要回退的层级 + 目标路径的剩余部分
         const backtrack = currentParts.length - commonLength;
         const backtrackParts = backtrack > 0 ? Array(backtrack).fill('..') : [];
-        
-        // 计算目标路径的剩余部分
         const targetRemaining = targetParts.slice(commonLength);
         
-        // 组合相对路径
         return [...backtrackParts, ...targetRemaining].join('/');
     };
 
-    // 创建导航栏HTML
+    // 创建导航栏HTML（逻辑不变，因导航数据格式已正确）
     const navbarHTML = `
         <nav class="navbar">
             <div class="navbar-container">
@@ -63,9 +46,9 @@ function createNavbar() {
                 <ul class="navbar-menu" id="navbarMenu">
                     ${navItems.map(item => {
                         const linkUrl = getRelativePath(item.url);
-                        // 匹配当前页面的active状态
-                        const isActive = path.endsWith(item.url) || 
-                                       (path === '/' && item.url === '/index.html');
+                        // 修复active状态判断：基于当前路径是否包含目标路径的绝对路径
+                        const isActive = path === item.url || 
+                                       (path.endsWith('/') && item.url === path + 'index.html');
                         return `
                             <li class="navbar-item">
                                 <a href="${linkUrl}" class="navbar-link ${isActive ? 'active' : ''}">
@@ -82,33 +65,28 @@ function createNavbar() {
     // 将导航栏添加到页面
     document.body.insertAdjacentHTML('afterbegin', navbarHTML);
 
-    // 添加响应式导航栏功能
+    // 响应式导航栏功能（不变）
     const navbarToggle = document.getElementById('navbarToggle');
     const navbarMenu = document.getElementById('navbarMenu');
-
     navbarToggle.addEventListener('click', () => {
         navbarMenu.classList.toggle('active');
     });
 
-    // 添加返回顶部按钮
+    // 返回顶部按钮（不变）
     const backToTopButton = document.createElement('div');
     backToTopButton.className = 'back-to-top';
     backToTopButton.innerHTML = '<i class="fa fa-arrow-up"></i>';
     document.body.appendChild(backToTopButton);
 
     window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 300) {
-            backToTopButton.classList.add('active');
-        } else {
-            backToTopButton.classList.remove('active');
-        }
+        backToTopButton.classList.toggle('active', window.pageYOffset > 300);
     });
 
     backToTopButton.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 添加页脚
+    // 添加页脚（导航链接路径同步修复）
     const footerHTML = `
         <footer class="footer">
             <div class="footer-container">
@@ -145,5 +123,5 @@ function createNavbar() {
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 }
 
-// 当页面加载完成时创建导航栏
+// 页面加载完成后创建导航栏
 document.addEventListener('DOMContentLoaded', createNavbar);
