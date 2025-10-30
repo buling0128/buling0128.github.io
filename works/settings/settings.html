@@ -169,7 +169,6 @@ function loadSetting(settingKey) {
     const workContent = document.getElementById('workContent');
     const error = document.getElementById('error');
     const tocContainer = document.getElementById('tocContainer');
-    const tocToggle = document.getElementById('tocToggle'); // 移动端折叠按钮
 
     // 显示加载动画
     workDetail.style.display = 'block';
@@ -177,14 +176,13 @@ function loadSetting(settingKey) {
     workContent.style.display = 'none';
     error.style.display = 'none';
 
-    // 异步加载JSON文件
     fetch(`data/${settingKey}/setting.json`)
         .then(response => {
             if (!response.ok) throw new Error(`文件未找到：data/${settingKey}/setting.json`);
             return response.json();
         })
         .then(settingData => {
-            // 1. 渲染基础信息（标题、图片等）- 保持不变
+            // 1. 渲染基础信息（不变）
             document.getElementById('detailTitle').textContent = settingData.title;
             document.getElementById('detailImage').src = settingData.image;
             document.getElementById('detailImage').alt = settingData.title;
@@ -192,9 +190,9 @@ function loadSetting(settingKey) {
             document.getElementById('detailType').textContent = settingData.type;
             document.getElementById('detailStatus').textContent = settingData.status;
 
-            // 2. 渲染目录（含固定定位和移动端适配）
+            // 2. 渲染目录（核心修复：确保移动端按钮和列表正常）
             if (settingData.toc && settingData.toc.length > 0) {
-                // 生成目录列表HTML
+                // 生成目录列表HTML（保留active类默认状态）
                 let tocListHtml = '<ul class="toc-list">';
                 settingData.toc.forEach(item => {
                     tocListHtml += `<li class="toc-item">
@@ -203,7 +201,7 @@ function loadSetting(settingKey) {
                 });
                 tocListHtml += '</ul>';
 
-                // 插入目录标题和列表（保留折叠按钮）
+                // 插入目录结构（折叠按钮+标题+列表）
                 tocContainer.innerHTML = `
                     <button class="toc-toggle" id="tocToggle">
                         <span>目录</span>
@@ -215,38 +213,44 @@ function loadSetting(settingKey) {
                     ${tocListHtml}
                 `;
 
-                // 重新获取DOM元素（因innerHTML重置）
+                // 重新获取DOM元素（innerHTML重置后需重新绑定）
                 const newTocToggle = document.getElementById('tocToggle');
                 const newTocList = tocContainer.querySelector('.toc-list');
                 const tocLinks = tocContainer.querySelectorAll('.toc-item a');
 
-                // 移动端折叠逻辑
+                // 修复1：确保手机端初始状态按钮可点击（避免事件绑定失效）
                 newTocToggle.addEventListener('click', () => {
                     newTocList.classList.toggle('active');
-                    // 切换按钮图标
                     const icon = newTocToggle.querySelector('i');
+                    // 切换图标（向下→向上，反之亦然）
                     if (newTocList.classList.contains('active')) {
-                        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                        icon.classList.remove('fa-chevron-down');
+                        icon.classList.add('fa-chevron-up');
                     } else {
-                        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                        icon.classList.remove('fa-chevron-up');
+                        icon.classList.add('fa-chevron-down');
                     }
                 });
 
-                // 监听滚动事件：当前可见的版本对应目录高亮
+                // 修复2：手机端默认展开目录（可选，提升用户体验）
+                if (window.innerWidth <= 768) {
+                    newTocList.classList.add('active'); // 默认展开
+                    const icon = newTocToggle.querySelector('i');
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up'); // 同步切换图标
+                }
+
+                // 3. 目录高亮逻辑（不变）
                 function highlightCurrentToc() {
                     const versionSections = document.querySelectorAll('.version-section');
                     let currentVersionId = '';
-
-                    // 检测当前滚动到的版本板块
                     versionSections.forEach(section => {
-                        const sectionTop = section.offsetTop - 100; // 预留偏移量
+                        const sectionTop = section.offsetTop - 80; // 手机端预留导航栏高度
                         const sectionHeight = section.offsetHeight;
                         if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
                             currentVersionId = section.id;
                         }
                     });
-
-                    // 高亮当前目录项，取消其他项高亮
                     tocLinks.forEach(link => {
                         link.classList.remove('active');
                         if (link.getAttribute('href') === `#${currentVersionId}`) {
@@ -254,13 +258,10 @@ function loadSetting(settingKey) {
                         }
                     });
                 }
-
-                // 初始执行一次，确保页面加载时高亮正确
                 highlightCurrentToc();
-                // 滚动时实时更新
                 window.addEventListener('scroll', highlightCurrentToc);
 
-                // 3. 渲染多版本内容（保持不变）
+                // 4. 渲染版本内容（不变）
                 const versionsContainer = document.getElementById('versionsContainer');
                 versionsContainer.innerHTML = '';
                 Object.keys(settingData.versions).forEach(versionId => {
@@ -274,7 +275,6 @@ function loadSetting(settingKey) {
                 });
 
             } else {
-                // 无目录时的默认显示
                 tocContainer.innerHTML = `
                     <div class="toc-title">
                         <i class="fa fa-list-ul"></i> 快速导航
@@ -283,7 +283,6 @@ function loadSetting(settingKey) {
                 `;
             }
 
-            // 显示内容，隐藏加载动画
             loading.style.display = 'none';
             workContent.style.display = 'block';
             workDetail.scrollIntoView({ behavior: 'smooth' });
@@ -294,7 +293,6 @@ function loadSetting(settingKey) {
             loading.style.display = 'none';
         });
 }
-
 /**
  * 目录点击跳转函数（优化平滑滚动和高亮）
  * @param {string} versionId - 版本ID（与JSON中toc的id对应）
