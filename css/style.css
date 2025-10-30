@@ -129,67 +129,105 @@ body {
     position: fixed;
     margin-left: calc(100% - 300px); /* 右侧预留300px位置 */
 
-    /* 原有样式保留，新增以下移动端适配样式 */
+    /* 原有样式保留，新增/修改以下关键样式 */
+/* 1. 适配手机端详情区域布局：确保目录和内容不重叠 */
+.work-detail-content {
+    display: flex;
+    flex-direction: column; /* 手机端：图片在上，信息在下（避免横向挤压） */
+    gap: 20px; /* 图片和信息区间距 */
+}
+
+/* 2. 手机端目录固定定位核心样式（滚动时固定在顶部） */
 @media (max-width: 768px) {
-    /* 1. 确保手机端目录容器不被挤压，占满屏幕宽度 */
+    /* 父容器：给目录父容器添加相对定位，确保固定目录不脱离文档流 */
+    .work-detail-info {
+        position: relative;
+        padding-top: 80px; /* 预留目录高度（避免内容被固定目录遮挡） */
+    }
+
+    /* 关键：目录固定在屏幕顶部，不随滚动消失 */
     .toc-container {
-        width: 100% !important; /* 覆盖可能的宽度限制 */
-        margin: 20px auto !important; /* 居中显示 */
-        padding: 12px 15px; /* 适配手机屏幕，减少内边距 */
+        position: fixed !important; /* 固定定位，优先级拉满 */
+        top: 60px; /* 距离顶部60px（避开导航栏，根据实际导航栏高度调整） */
+        left: 20px; /* 左右留20px边距，不贴边 */
+        right: 20px; /* 左右留20px边距，不贴边 */
+        width: calc(100% - 40px) !important; /* 目录宽度=屏幕宽度-左右边距 */
+        margin: 0 !important; /* 清除默认margin，避免偏移 */
+        z-index: 999 !important; /* 确保目录在所有内容上方，不被遮挡 */
+        box-shadow: 0 3px 8px rgba(144, 202, 249, 0.3); /* 增加阴影，区分目录和内容 */
     }
 
-    /* 2. 显示移动端折叠按钮（默认隐藏导致目录无法触发） */
+    /* 3. 修复折叠按钮显示：确保按钮可见且可点击 */
     .toc-toggle {
-        display: block !important; /* 强制显示按钮，确保能点击展开 */
-        background-color: #1976d2; /* 按钮底色，与整体风格统一 */
-        color: white; /* 按钮文字白色 */
-        border: none; /* 去掉默认边框 */
-        padding: 10px 15px; /* 按钮内边距，增大点击区域 */
-        border-radius: 6px; /* 圆角优化，更符合手机端视觉 */
-        margin-bottom: 12px; /* 与下方目录标题间距 */
-        width: 100%; /* 按钮占满容器宽度，方便点击 */
-        text-align: left; /* 文字左对齐 */
-        font-size: 1rem; /* 字体大小适配手机 */
-        cursor: pointer; /* 显示手型，提示可点击 */
-        display: flex; /* 图标和文字横向排列 */
-        align-items: center; /* 垂直居中 */
-        justify-content: space-between; /* 文字左、图标右 */
+        display: block !important; /* 强制显示按钮，避免默认隐藏 */
+        background-color: #1976d2;
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        width: 100%;
+        text-align: left;
+        font-size: 1rem;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
     }
 
-    /* 3. 目录列表默认隐藏，点击按钮后展开（修复默认不显示问题） */
+    /* 4. 目录列表：手机端垂直排列，优化点击体验 */
     .toc-list {
-        display: none; /* 默认隐藏，通过按钮控制显示 */
-        flex-direction: column !important; /* 垂直排列目录项，手机端更易点击 */
-        gap: 8px !important; /* 减小目录项间距，适配手机屏幕高度 */
+        display: none; /* 默认隐藏，点击按钮展开 */
+        flex-direction: column !important; /* 垂直排列，不换行 */
+        gap: 8px !important; /* 减小间距，适配手机屏幕 */
+        max-height: 200px; /* 限制列表高度，避免超出屏幕 */
+        overflow-y: auto; /* 内容过多时可滚动 */
     }
 
-    /* 4. 点击按钮后，目录列表展开（添加active类触发） */
+    /* 点击按钮后展开目录 */
     .toc-list.active {
-        display: flex !important; /* 展开目录 */
+        display: flex !important;
     }
 
-    /* 5. 优化手机端版本板块，避免与目录重叠 */
-    .version-section {
-        margin: 25px 0 !important;
-        padding: 15px !important; /* 减少内边距，节省手机屏幕空间 */
+    /* 5. 版本内容：避开固定目录，避免被遮挡 */
+    .versions-container {
+        margin-top: 15px; /* 与目录间距，避免重叠 */
     }
 
-    /* 6. 手机端图片区域适配，避免挤压目录 */
-    .work-detail-content {
-        flex-direction: column !important; /* 图片和信息垂直排列（原可能是横向） */
-    }
+    /* 6. 图片区域：手机端占满屏幕宽度，不挤压内容 */
     .work-detail-image {
-        width: 100% !important; /* 图片占满屏幕宽度 */
-        margin-bottom: 20px !important; /* 与下方信息区间距 */
+        width: 100% !important;
+    }
+    .work-detail-image img {
+        width: 100% !important;
+        height: auto !important; /* 保持图片比例，不拉伸 */
     }
 }
 
-/* 补充：确保PC端和移动端样式不冲突（修复目录列表排列） */
-.toc-list {
-    list-style: none;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
+/* 7. PC端样式：确保与移动端不冲突（目录不固定，正常滚动） */
+@media (min-width: 769px) {
+    .work-detail-content {
+        flex-direction: row; /* PC端：图片在左，信息在右 */
+    }
+    .work-detail-image {
+        flex: 1; /* PC端图片占1份宽度 */
+    }
+    .work-detail-info {
+        flex: 2; /* PC端信息占2份宽度 */
+        padding-left: 30px; /* PC端图片和信息间距 */
+        padding-top: 0; /* 清除PC端预留的目录高度 */
+    }
+    .toc-container {
+        position: static !important; /* PC端目录不固定，正常滚动 */
+        width: 100% !important;
+    }
+    .toc-toggle {
+        display: none !important; /* PC端隐藏折叠按钮 */
+    }
+    .toc-list {
+        flex-direction: row !important; /* PC端目录横向排列 */
+        display: flex !important; /* PC端目录默认展开 */
+    }
 }
 /* PC端（屏幕>768px）保持横向排列，手机端（<768px）垂直排列（通过media查询覆盖） */
 @media (min-width: 769px) {
