@@ -6,6 +6,54 @@
     <title>布灵的创作空间 - 设定集</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* 新增：目录和版本板块的样式，确保显示美观 */
+        .toc-container {
+            background-color: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 3px solid #90caf9;
+        }
+        .toc-title {
+            font-size: 1.2rem;
+            color: #1976d2;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        .toc-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .toc-item a {
+            color: #2196f3;
+            text-decoration: none;
+            padding: 5px 12px;
+            background-color: #e3f2fd;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        .toc-item a:hover {
+            background-color: #bbdefb;
+            color: #1565c0;
+        }
+        .version-section {
+            margin: 30px 0;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(144, 202, 249, 0.2);
+        }
+        .version-title {
+            font-size: 1.3rem;
+            color: #1976d2;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e3f2fd;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
@@ -13,12 +61,12 @@
             <h2 class="works-title">设定集</h2>
             
             <div class="works-grid">
-                <!-- 因赛美那（绑定IP文件夹名insaimena） -->
+                <!-- 因赛美那（绑定IP文件夹名yinsaimeina） -->
                 <div class="work-card">
                     <img src="../../images/card.jpg" alt="因赛美那" class="work-card-image">
                     <div class="work-card-content">
                         <h3 class="work-card-title">因赛美那</h3>
-                        <p class="work-card-description">因赛美那的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
+                        <p class="work-card-description">这是我的原创角色因赛美那的设定集，包含原初版、15版等6个版本的完整设定。</p>
                         <button class="work-card-button" onclick="loadSetting('yinsaimeina')">查看详情</button>
                     </div>
                 </div>
@@ -54,7 +102,7 @@
                 </div>
             </div>
             
-            <!-- 作品详情展示区域（结构不变） -->
+            <!-- 作品详情展示区域：新增目录容器和版本容器 -->
             <div id="workDetail" class="work-detail-container" style="display: none;">
                 <div class="loading" id="loading">
                     <div class="loading-spinner"></div>
@@ -69,24 +117,27 @@
                         </div>
                         
                         <div class="work-detail-info">
-                            <div class="work-detail-description" id="detailDescription"></div>
-                            
-                            <div class="work-detail-meta">
+                            <!-- 1. 渲染基础信息（创作时间、类型等） -->
+                            <div class="work-detail-meta" style="margin-bottom: 20px;">
                                 <div class="work-detail-meta-item">
                                     <span class="work-detail-meta-label">创作时间：</span>
                                     <span id="detailTime"></span>
                                 </div>
-                                
                                 <div class="work-detail-meta-item">
                                     <span class="work-detail-meta-label">类型：</span>
                                     <span id="detailType"></span>
                                 </div>
-                                
                                 <div class="work-detail-meta-item">
                                     <span class="work-detail-meta-label">状态：</span>
                                     <span id="detailStatus"></span>
                                 </div>
                             </div>
+                            
+                            <!-- 2. 渲染目录（新增） -->
+                            <div class="toc-container" id="tocContainer"></div>
+                            
+                            <!-- 3. 渲染多版本内容（新增） -->
+                            <div class="versions-container" id="versionsContainer"></div>
                         </div>
                     </div>
                 </div>
@@ -101,36 +152,75 @@
     <script src="../../js/navbar.js"></script>
     <script>
         /**
-         * 加载指定IP的设定内容
-         * @param {string} settingKey - IP文件夹名称（如insaimena、sakura）
+         * 加载指定IP的设定内容（适配新JSON结构）
+         * @param {string} settingKey - IP文件夹名称（如yinsaimeina）
          */
         function loadSetting(settingKey) {
-            // 显示加载动画
             const workDetail = document.getElementById('workDetail');
             const loading = document.getElementById('loading');
             const workContent = document.getElementById('workContent');
             const error = document.getElementById('error');
             
+            // 显示加载动画
             workDetail.style.display = 'block';
             loading.style.display = 'flex';
             workContent.style.display = 'none';
             error.style.display = 'none';
 
-            // 异步加载对应IP的设定文件（setting.json）
+            // 异步加载JSON文件
             fetch(`data/${settingKey}/setting.json`)
                 .then(response => {
-                    if (!response.ok) throw new Error('设定文件加载失败');
+                    if (!response.ok) throw new Error(`文件未找到：data/${settingKey}/setting.json`);
                     return response.json();
                 })
                 .then(settingData => {
-                    // 更新设定内容到页面
+                    // 1. 渲染基础信息（标题、图片、时间等）
                     document.getElementById('detailTitle').textContent = settingData.title;
                     document.getElementById('detailImage').src = settingData.image;
                     document.getElementById('detailImage').alt = settingData.title;
-                    document.getElementById('detailDescription').innerHTML = settingData.description;
                     document.getElementById('detailTime').textContent = settingData.time;
                     document.getElementById('detailType').textContent = settingData.type;
                     document.getElementById('detailStatus').textContent = settingData.status;
+
+                    // 2. 渲染目录（从toc字段读取）
+                    const tocContainer = document.getElementById('tocContainer');
+                    if (settingData.toc && settingData.toc.length > 0) {
+                        let tocHtml = `
+                            <div class="toc-title">
+                                <i class="fa fa-list-ul"></i> 版本目录
+                            </div>
+                            <ul class="toc-list">
+                        `;
+                        // 遍历toc生成目录项（带锚点链接）
+                        settingData.toc.forEach(item => {
+                            tocHtml += `<li class="toc-item">
+                                <a href="#${item.id}" onclick="scrollToVersion('${item.id}')">${item.name}</a>
+                            </li>`;
+                        });
+                        tocHtml += `</ul>`;
+                        tocContainer.innerHTML = tocHtml;
+                    } else {
+                        tocContainer.innerHTML = '<p>暂无目录</p>';
+                    }
+
+                    // 3. 渲染多版本内容（从versions字段读取）
+                    const versionsContainer = document.getElementById('versionsContainer');
+                    if (settingData.versions && Object.keys(settingData.versions).length > 0) {
+                        let versionsHtml = '';
+                        // 遍历versions生成每个版本的板块（带锚点ID）
+                        Object.keys(settingData.versions).forEach(versionId => {
+                            const version = settingData.versions[versionId];
+                            versionsHtml += `
+                                <div class="version-section" id="${versionId}">
+                                    <h3 class="version-title">${version.title}</h3>
+                                    <div class="version-content">${version.description}</div>
+                                </div>
+                            `;
+                        });
+                        versionsContainer.innerHTML = versionsHtml;
+                    } else {
+                        versionsContainer.innerHTML = '<p>暂无版本内容</p>';
+                    }
 
                     // 显示内容，隐藏加载动画
                     loading.style.display = 'none';
@@ -138,10 +228,28 @@
                     workDetail.scrollIntoView({ behavior: 'smooth' });
                 })
                 .catch(err => {
-                    console.error('加载失败:', err);
-                    loading.style.display = 'none';
+                    // 显示具体错误信息
+                    error.innerHTML = `<p>加载失败：${err.message}</p><p>请检查文件路径是否正确</p>`;
                     error.style.display = 'block';
+                    loading.style.display = 'none';
+                    console.error('错误详情：', err);
                 });
+        }
+
+        /**
+         * 目录点击跳转函数（平滑滚动到对应版本）
+         * @param {string} versionId - 版本ID（与JSON中toc的id对应）
+         */
+        function scrollToVersion(versionId) {
+            const versionElement = document.getElementById(versionId);
+            if (versionElement) {
+                versionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // 可选：给当前版本添加高亮样式
+                document.querySelectorAll('.version-section').forEach(section => {
+                    section.classList.remove('active');
+                });
+                versionElement.classList.add('active');
+            }
         }
     </script>
 </body>
