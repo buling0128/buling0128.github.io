@@ -179,7 +179,7 @@
         <div class="works-container">
             <h2 class="works-title">画集</h2>
             
-            <!-- IP分类筛选：修改按钮data-ip和显示文本 -->
+            <!-- IP分类筛选 -->
             <div class="ip-categories">
                 <button class="ip-category-button active" data-ip="all">全部IP</button>
                 <button class="ip-category-button" data-ip="yinsaimeina">因赛美那</button>
@@ -188,25 +188,25 @@
                 <button class="ip-category-button" data-ip="other">其他</button>
             </div>
             
-            <!-- 1. 因赛美那IP板块：修改data-ip和标题 -->
+            <!-- 1. 因赛美那IP板块 -->
             <h3 class="ip-section-title" data-ip="yinsaimeina">因赛美那</h3>
             <div class="artworks-grid" id="yinsaimeinaGrid">
                 <!-- 因赛美那IP图片将动态加载 -->
             </div>
             
-            <!-- 2. 樱之都·奈樱IP板块：修改data-ip、标题和网格ID -->
-            <h3 class="ip-section-title" data-ip="yingzhidu">樱之都·奈樱</h3>
-            <div class="artworks-grid" id="yingzhiduGrid">
-                <!-- 樱之都·奈樱IP图片将动态加载 -->
+            <!-- 2. 樱之都奈樱IP板块 -->
+            <h3 class="ip-section-title" data-ip="sakura">樱之都奈樱</h3>
+            <div class="artworks-grid" id="sakuraGrid">
+                <!-- 樱之都奈樱IP图片将动态加载 -->
             </div>
             
-            <!-- 3. 妖鬼街IP板块：保持不变 -->
+            <!-- 3. 妖鬼街IP板块 -->
             <h3 class="ip-section-title" data-ip="yaoguijie">妖鬼街</h3>
             <div class="artworks-grid" id="yaoguijieGrid">
                 <!-- 妖鬼街IP图片将动态加载 -->
             </div>
             
-            <!-- 4. 其他IP板块：保持不变 -->
+            <!-- 4. 其他IP板块 -->
             <h3 class="ip-section-title" data-ip="other">其他</h3>
             <div class="artworks-grid" id="otherGrid">
                 <!-- 其他IP图片将动态加载 -->
@@ -235,10 +235,10 @@
 
     <script src="../../js/navbar.js"></script>
     <script>
-        // 按IP分类的插画作品数据：修改IP键名（insaimena→yinsaimeina，sakura→yingzhidu）
+        // 按IP分类的插画作品数据（每个IP下2张图）
         const artworksData = {
-            // 1. 因赛美那IP：键名改为yinsaimeina
-            yinsaimeina: [
+            // 1. 因赛美那IP
+            insaimena: [
                 {
                     id: 1,
                     title: '因赛美那-时光之刃',
@@ -254,24 +254,24 @@
                     date: '2023-07-20'
                 }
             ],
-            // 2. 樱之都·奈樱IP：键名改为yingzhidu，标题统一为“樱之都·奈樱”
-            yingzhidu: [
+            // 2. 樱之都·奈樱IP
+            sakura: [
                 {
                     id: 3,
-                    title: '樱之都·奈樱-樱花魔法',
+                    title: '奈樱-樱花魔法',
                     description: '奈樱施展樱花魔法的角色插画，粉色樱花环绕周身，传统和服装扮搭配金色发饰，背景为千年樱树。',
                     image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-04-22'
                 },
                 {
                     id: 4,
-                    title: '樱之都·奈樱-街道全景',
+                    title: '樱之都-街道全景',
                     description: '樱之都核心街道的场景插画，樱花花瓣铺满街道，两侧为樱花树造型建筑，可见居民与樱花精灵互动。',
                     image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-05-08'
                 }
             ],
-            // 3. 妖鬼街IP：保持不变
+            // 3. 妖鬼街IP
             yaoguijie: [
                 {
                     id: 5,
@@ -288,7 +288,7 @@
                     date: '2023-09-05'
                 }
             ],
-            // 4. 其他IP：保持不变
+            // 4. 其他IP
             other: [
                 {
                     id: 7,
@@ -307,10 +307,10 @@
             ]
         };
 
-        // IP名称映射：同步修改键名和显示文本（统一为“樱之都·奈樱”）
+        // IP名称映射（用于显示）
         const ipNameMap = {
-            yinsaimeina: '因赛美那',
-            yingzhidu: '樱之都·奈樱',
+            insaimena: '因赛美那',
+            sakura: '樱之都·奈樱',
             yaoguijie: '妖鬼街',
             other: '其他'
         };
@@ -332,7 +332,7 @@
         // 当前查看的图片索引
         let currentImageIndex = 0;
 
-        // 初始化页面
+        // 初始化页面：核心修复逻辑
         function initPage() {
             // 1. 扁平化所有图片数据（用于查看器导航）
             for (const ip in artworksData) {
@@ -342,13 +342,13 @@
                 });
             }
 
-            // 2. 加载各IP板块的图片和文字内容：同步修改IP键名和网格ID
-            loadIpArtworks('yinsaimeina', document.getElementById('yinsaimeinaGrid'));
-            loadIpArtworks('yingzhidu', document.getElementById('yingzhiduGrid'));
+            // 2. 加载各IP板块的图片和文字内容（关键修复：补充完整渲染逻辑）
+            loadIpArtworks('insaimena', document.getElementById('insaimenaGrid'));
+            loadIpArtworks('sakura', document.getElementById('sakuraGrid'));
             loadIpArtworks('yaoguijie', document.getElementById('yaoguijieGrid'));
             loadIpArtworks('other', document.getElementById('otherGrid'));
 
-            // 3. IP分类筛选逻辑：保持逻辑不变（已同步修改data-ip）
+            // 3. IP分类筛选逻辑
             ipCategoryButtons.forEach(button => {
                 button.addEventListener('click', () => {
                     // 更新按钮激活状态
