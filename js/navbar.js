@@ -96,10 +96,6 @@ function createNavbar() {
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-content">
-                    <div class="footer-section">
-                        <h3 class="footer-section-title">关于我</h3>
-                        <p>个人作品展示网站，分享我的创作和故事。</p>
-                    </div>
                     
                     <div class="footer-section">
                         <h3 class="footer-section-title">快速链接</h3>
@@ -112,10 +108,7 @@ function createNavbar() {
                         </ul>
                     </div>
                     
-                    <div class="footer-section">
-                        <h3 class="footer-section-title">联系方式</h3>
-                        <p>GitHub: <a href="https://github.com/" target="_blank" class="text-white">github.com/username</a></p>
-                    </div>
+                    
                 </div>
                 
                 <div class="footer-bottom">
