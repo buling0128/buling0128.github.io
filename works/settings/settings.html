@@ -261,18 +261,20 @@ function loadSetting(settingKey) {
                 highlightCurrentToc();
                 window.addEventListener('scroll', highlightCurrentToc);
 
-                // 4. 渲染版本内容（不变）
-                const versionsContainer = document.getElementById('versionsContainer');
-                versionsContainer.innerHTML = '';
-                Object.keys(settingData.versions).forEach(versionId => {
-                    const version = settingData.versions[versionId];
-                    versionsContainer.innerHTML += `
-                        <div class="version-section" id="${versionId}">
-                            <h3 class="version-title">${version.title}</h3>
-                            <div class="version-content">${version.description}</div>
-                        </div>
-                    `;
-                });
+               // 4. 渲染版本内容（新增顶部内边距，适配手机端固定目录）
+    const versionsContainer = document.getElementById('versionsContainer');
+    versionsContainer.innerHTML = '';
+    // 给版本容器添加类名，方便样式控制
+    versionsContainer.className = 'versions-container';
+    Object.keys(settingData.versions).forEach(versionId => {
+        const version = settingData.versions[versionId];
+        versionsContainer.innerHTML += `
+            <div class="version-section" id="${versionId}">
+                <h3 class="version-title">${version.title}</h3>
+                <div class="version-content">${version.description}</div>
+            </div>
+        `;
+    });
 
             } else {
                 tocContainer.innerHTML = `
