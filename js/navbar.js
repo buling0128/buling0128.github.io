@@ -3,8 +3,13 @@ function createNavbar() {
     // 获取当前页面的URL路径
     const path = window.location.pathname;
     const page = path.split('/').pop() || 'index.html';
+    
+    // 判断是否在子目录中（根据路径中是否包含'works/'判断）
+    const isInSubDirectory = path.includes('works/');
+    // 基础路径：子目录中需要回退两级，根目录直接使用当前路径
+    const basePath = isInSubDirectory ? '../../' : '';
 
-    // 导航栏数据
+    // 导航栏数据（存储相对根目录的路径）
     const navItems = [
         { name: '首页', url: 'index.html' },
         { name: '设定集', url: 'works/settings/index.html' },
@@ -17,20 +22,27 @@ function createNavbar() {
     const navbarHTML = `
         <nav class="navbar">
             <div class="navbar-container">
-                <a href="../index.html" class="navbar-logo">个人作品展示</a>
+                <!-- 修复logo链接路径 -->
+                <a href="${basePath}index.html" class="navbar-logo">个人作品展示</a>
                 
                 <div class="navbar-toggle" id="navbarToggle">
                     <i class="fa fa-bars"></i>
                 </div>
                 
                 <ul class="navbar-menu" id="navbarMenu">
-                    ${navItems.map(item => `
-                        <li class="navbar-item">
-                            <a href="${item.url}" class="navbar-link ${page === item.url.split('/').pop() ? 'active' : ''}">
-                                ${item.name}
-                            </a>
-                        </li>
-                    `).join('')}
+                    ${navItems.map(item => {
+                        // 计算实际链接路径：基础路径 + 相对根目录路径
+                        const linkUrl = basePath + item.url;
+                        // 计算当前页面对应的基准路径，用于匹配active状态
+                        const itemBaseUrl = item.url.split('/').pop();
+                        return `
+                            <li class="navbar-item">
+                                <a href="${linkUrl}" class="navbar-link ${page === itemBaseUrl ? 'active' : ''}">
+                                    ${item.name}
+                                </a>
+                            </li>
+                        `;
+                    }).join('')}
                 </ul>
             </div>
         </nav>
@@ -65,7 +77,7 @@ function createNavbar() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 添加页脚
+    // 添加页脚（同样修复链接路径）
     const footerHTML = `
         <footer class="footer">
             <div class="footer-container">
@@ -80,7 +92,7 @@ function createNavbar() {
                         <ul class="footer-links">
                             ${navItems.map(item => `
                                 <li class="footer-link">
-                                    <a href="${item.url}">${item.name}</a>
+                                    <a href="${basePath}${item.url}">${item.name}</a>
                                 </li>
                             `).join('')}
                         </ul>
@@ -104,4 +116,3 @@ function createNavbar() {
 
 // 当页面加载完成时创建导航栏
 document.addEventListener('DOMContentLoaded', createNavbar);
-
