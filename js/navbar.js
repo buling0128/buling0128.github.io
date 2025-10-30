@@ -47,7 +47,7 @@ function createNavbar() {
     const navbarHTML = `
         <nav class="navbar">
             <div class="navbar-container">
-                <a href="${getRelativePath('/index.html')}" class="navbar-logo">个人作品展示</a>
+                <a href="${getRelativePath('/index.html')}" class="navbar-logo">布灵的创作空间</a>
                 
                 <div class="navbar-toggle" id="navbarToggle">
                     <i class="fa fa-bars"></i>
