@@ -52,6 +52,149 @@
             margin-bottom: 0;
             overflow: hidden;
         }
+
+        /* 看板娘容器 - 新增响应式布局 */
+        .kanban娘-container {
+            display: flex;
+            flex-direction: column; /* 手机端默认纵向排列 */
+            align-items: center;
+            margin-top: 20px;
+            min-height: 300px;
+        }
+
+        /* 看板娘图片 - 新增响应式尺寸 */
+        .kanban娘-image {
+            width: 200px; /* 基础宽度 */
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            margin-bottom: 20px; /* 纵向排列时增加间距 */
+        }
+
+        /* 对话框容器 - 新增响应式宽度 */
+        .dialog-container {
+            width: 100%;
+            max-width: 400px; /* 限制最大宽度 */
+        }
+
+        .dialog-box {
+            background-color: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .dialog-box::before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: -10px; /* 纵向排列时调整箭头位置 */
+            border-width: 0 10px 10px 10px;
+            border-color: transparent transparent white transparent;
+        }
+
+        .dialog-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        /* 作品展示页面样式 */
+        .works-container {
+            margin-top: 30px;
+        }
+
+        .works-title {
+            font-size: 2rem;
+            color: #4a90e2;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .works-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .work-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .work-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .work-card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .work-card-content {
+            padding: 20px;
+        }
+
+        .work-card-title {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .work-card-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .work-card-button {
+            display: inline-block;
+            background-color: #4a90e2;
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .work-card-button:hover {
+            background-color: #357abd;
+        }
+
+        /* 响应式调整：手机端（768px以下） */
+        @media (max-width: 768px) {
+            .kanban娘-container {
+                flex-direction: column; /* 强制纵向排列 */
+            }
+
+            .kanban娘-image {
+                width: 150px; /* 缩小看板娘尺寸 */
+                margin-bottom: 15px;
+            }
+
+            .dialog-container {
+                max-width: 100%; /* 占满屏幕宽度 */
+            }
+
+            .dialog-box {
+                padding: 15px; /* 缩小对话框内边距 */
+                min-height: 120px;
+            }
+
+            .dialog-text {
+                font-size: 0.9rem; /* 缩小文字大小 */
+            }
+
+            .works-grid {
+                grid-template-columns: 1fr; /* 手机端一行一个卡片 */
+            }
+        }
     </style>
 </head>
 <body>
@@ -158,7 +301,6 @@
             "老大总是搞些没什么用的小功能，比如这个点击对话功能，有心思搞这个不如去好好优化网站！",
             "什么时候我也能动起来呢？",
             "总有一天，我会辞掉这份看板娘的工作，去看一看外面的世界！"
-          
         ];
 
         // 获取元素
