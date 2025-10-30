@@ -6,9 +6,67 @@
     <title>个人作品展示 - 首页</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 公告栏基础样式，可根据style.css现有风格调整 */
+        .announcement-bar {
+            width: 100%;
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
+            transition: opacity 0.3s ease, height 0.3s ease;
+        }
+        .announcement-content {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #343a40;
+            font-size: 14px;
+        }
+        .announcement-icon {
+            color: #ff7a45; /* 橙色图标突出公告 */
+        }
+        .announcement-close {
+            background: transparent;
+            border: none;
+            color: #6c757d;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s ease;
+        }
+        .announcement-close:hover {
+            background-color: #e9ecef;
+            color: #212529;
+        }
+        .announcement-bar.hidden {
+            opacity: 0;
+            height: 0;
+            padding: 0 20px;
+            margin-bottom: 0;
+            overflow: hidden;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
+        <!-- 新增：公告栏（位于看板娘上方） -->
+        <div class="announcement-bar" id="announcementBar">
+            <div class="announcement-content">
+                <i class="fa fa-bullhorn announcement-icon" aria-hidden="true"></i>
+                <span>【更新公告】2024年5月新增「陀罗少女」角色设定，点击设定集即可查看详情～</span>
+            </div>
+            <button class="announcement-close" id="announcementClose">
+                <i class="fa fa-times" aria-hidden="true"></i>
+            </button>
+        </div>
+
         <div class="kanban娘-container">
             <img src="images/mwhy.png" alt="看板娘" class="kanban娘-image" id="kanban娘Image">
             
@@ -68,11 +126,27 @@
             </div>
         </div>
     </div>
-    
-
 
     <script src="js/navbar.js"></script>
     <script>
+        // 新增：公告栏关闭功能
+        const announcementBar = document.getElementById('announcementBar');
+        const announcementClose = document.getElementById('announcementClose');
+        
+        // 点击关闭按钮隐藏公告栏
+        announcementClose.addEventListener('click', () => {
+            announcementBar.classList.add('hidden');
+            // 可选：用localStorage记录关闭状态，刷新后不再显示
+            localStorage.setItem('announcementClosed', 'true');
+        });
+        
+        // 页面加载时检查：若之前关闭过公告，直接隐藏
+        window.addEventListener('DOMContentLoaded', () => {
+            if (localStorage.getItem('announcementClosed') === 'true') {
+                announcementBar.classList.add('hidden');
+            }
+        });
+
         // 看板娘对话数据
         const dialogues = [
             "你好！欢迎来到我的个人作品展示网站。点击我可以和我聊天哦！",
