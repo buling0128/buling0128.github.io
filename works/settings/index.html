@@ -1,1 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品展示 - 设定集</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="works-container">
+            <h2 class="works-title">设定集</h2>
+            
+            <div class="works-grid">
+                <div class="work-card">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/labis/02bbc8a0b44c453bac45c3b346d617fe~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=vLhZFcTPadwZufwSc%2FojHXx8zBk%3D" alt="因赛美那" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">因赛美那</h3>
+                        <p class="work-card-description">这是我的原创角色因赛美那的设定集，包含角色背景、能力介绍等内容。</p>
+                        <button class="work-card-button" onclick="loadWork('因赛美那')">查看详情</button>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <img src="https://p26-doubao-search-sign.byteimg.com/labis/acd11449c38bcd9e725f7f814f138c15~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=8tL5rSo8X0w9%2F%2FwoPMX0UZtkzD4%3D" alt="樱之都奈樱" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">樱之都奈樱</h3>
+                        <p class="work-card-description">樱之都奈樱的世界观设定和角色介绍，展现一个充满樱花和魔法的世界。</p>
+                        <button class="work-card-button" onclick="loadWork('樱之都奈樱')">查看详情</button>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1033201241207079009~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=uzLjHnFqWoyXluu91IjvetsOLlk%3D" alt="妖鬼街" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">妖鬼街</h3>
+                        <p class="work-card-description">妖鬼街的世界观设定和角色介绍，带你进入一个充满神秘和奇幻的世界。</p>
+                        <button class="work-card-button" onclick="loadWork('妖鬼街')">查看详情</button>
+                    </div>
+                </div>
+                
+                <div class="work-card">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/labis/37ab9d766d447346633f7a4af77b7b5a~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=vr50trmFN5vUYrTGu1Rr9uDuB%2Bc%3D" alt="陀罗少女" class="work-card-image">
+                    <div class="work-card-content">
+                        <h3 class="work-card-title">陀罗少女</h3>
+                        <p class="work-card-description">陀罗少女的角色设定和故事背景，探索一个充满神秘力量的少女的冒险。</p>
+                        <button class="work-card-button" onclick="loadWork('陀罗少女')">查看详情</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 作品详情展示区域 -->
+            <div id="workDetail" class="work-detail-container" style="display: none;">
+                <div class="loading" id="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+                
+                <div id="workContent" style="display: none;">
+                    <h2 class="work-detail-title" id="detailTitle"></h2>
+                    
+                    <div class="work-detail-content">
+                        <div class="work-detail-image">
+                            <img id="detailImage" src="" alt="作品图片">
+                        </div>
+                        
+                        <div class="work-detail-info">
+                            <div class="work-detail-description" id="detailDescription"></div>
+                            
+                            <div class="work-detail-meta">
+                                <div class="work-detail-meta-item">
+                                    <span class="work-detail-meta-label">创作时间：</span>
+                                    <span id="detailTime"></span>
+                                </div>
+                                
+                                <div class="work-detail-meta-item">
+                                    <span class="work-detail-meta-label">类型：</span>
+                                    <span id="detailType"></span>
+                                </div>
+                                
+                                <div class="work-detail-meta-item">
+                                    <span class="work-detail-meta-label">状态：</span>
+                                    <span id="detailStatus"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="error" id="error" style="display: none;">
+                    <p>加载作品详情失败，请稍后再试。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/navbar.js"></script>
+    <script>
+        // 作品数据
+        const worksData = {
+            '因赛美那': {
+                title: '因赛美那设定集',
+                image: 'https://p3-doubao-search-sign.byteimg.com/labis/02bbc8a0b44c453bac45c3b346d617fe~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=vLhZFcTPadwZufwSc%2FojHXx8zBk%3D',
+                description: `
+                    <p>因赛美那是一个来自未来世界的少女，拥有操控时间的能力。她的外表看起来只有16岁，但实际上已经活了超过100年。</p>
+                    <p>在她所处的未来世界，人类已经掌握了时间旅行技术，但这种技术被严格控制在少数人手中。因赛美那是"时间守护者"组织的成员，负责维护时间线的稳定，防止有人恶意改变历史。</p>
+                    <p>她的能力包括：</p>
+                    <ul>
+                        <li>时间暂停：可以将周围的时间暂停几秒钟到几分钟不等</li>
+                        <li>时间回溯：可以将小范围内的时间回溯到过去</li>
+                        <li>未来视：可以短暂看到未来的几种可能性</li>
+                    </ul>
+                    <p>因赛美那的武器是一把名为"时光之刃"的特殊匕首，可以切割时间流，创造短暂的时间裂隙。</p>
+                    <p>她的性格冷静、理智，但内心深处也有着对人类的关怀和对和平的渴望。在执行任务的过程中，她常常面临艰难的选择，需要在守护时间线和拯救无辜者之间做出权衡。</p>
+                `,
+                time: '2023年6月',
+                type: '角色设定',
+                status: '已完成'
+            },
+            '樱之都奈樱': {
+                title: '樱之都奈樱设定集',
+                image: 'https://p26-doubao-search-sign.byteimg.com/labis/acd11449c38bcd9e725f7f814f138c15~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=8tL5rSo8X0w9%2F%2FwoPMX0UZtkzD4%3D',
+                description: `
+                    <p>樱之都是一个充满魔法和樱花的奇幻世界，这里的人们可以与樱花精灵沟通，并借助它们的力量施展魔法。</p>
+                    <p>奈樱是樱之都的公主，也是一位强大的樱花魔法师。她拥有与樱花精灵沟通的特殊能力，可以操控樱花的生长和凋零。</p>
+                    <p>樱之都的世界观：</p>
+                    <ul>
+                        <li>季节永远停留在春天，樱花终年盛开</li>
+                        <li>城市由巨大的樱花树组成，树干是建筑，花瓣是街道</li>
+                        <li>人们的魔法力量来自于与樱花精灵的契约</li>
+                        <li>城市的能量核心是一棵名为"千年樱"的古老樱花树</li>
+                    </ul>
+                    <p>奈樱的魔法能力：</p>
+                    <ul>
+                        <li>樱花飞舞：操控樱花花瓣形成各种形状和攻击</li>
+                        <li>生命绽放：加速植物生长，治愈伤口</li>
+                        <li>樱花幻境：创造由樱花组成的幻境</li>
+                        <li>千年之力：借助千年樱的力量施展强大的魔法</li>
+                    </ul>
+                    <p>奈樱的性格温柔、善良，但在面对危机时也展现出坚强和勇敢的一面。她的梦想是让樱之都的和平与美丽永远延续下去。</p>
+                `,
+                time: '2022年3月',
+                type: '世界观设定',
+                status: '更新中'
+            },
+            '妖鬼街': {
+                title: '妖鬼街设定集',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1033201241207079009~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=uzLjHnFqWoyXluu91IjvetsOLlk%3D',
+                description: `
+                    <p>妖鬼街是一个连接人类世界和妖怪世界的神秘街道，只有拥有特殊血脉或被妖怪选中的人才能看到和进入。</p>
+                    <p>这条街道位于两个世界的夹缝中，外观看起来像是一条古老的日式街道，但实际上却包含了来自各个时代和世界的建筑和店铺。</p>
+                    <p>妖鬼街的规则：</p>
+                    <ul>
+                        <li>人类和妖怪在这里和平共处，但必须遵守妖鬼街的规则</li>
+                        <li>不能在妖鬼街内伤害其他居民，违者会被街道本身驱逐</li>
+                        <li>妖鬼街会根据居民的心境和需求改变自身的形态</li>
+                        <li>在妖鬼街内，时间的流逝与外界不同</li>
+                    </ul>
+                    <p>妖鬼街的主要居民：</p>
+                    <ul>
+                        <li>店主：一位神秘的狐狸妖怪，经营着一家可以满足任何愿望的杂货店</li>
+                        <li>老板娘：一位美丽的蜘蛛妖怪，经营着一家温泉旅馆</li>
+                        <li>守卫：一对双胞胎猫妖姐妹，负责维护妖鬼街的秩序</li>
+                        <li>医生：一位温和的白蛇妖怪，经营着一家可以治愈任何伤痛的诊所</li>
+                    </ul>
+                    <p>妖鬼街是一个充满神秘和奇幻的地方，每天都有新的故事在这里发生。</p>
+                `,
+                time: '2021年11月',
+                type: '世界观设定',
+                status: '已完成'
+            },
+            '陀罗少女': {
+                title: '陀罗少女设定集',
+                image: 'https://p3-doubao-search-sign.byteimg.com/labis/37ab9d766d447346633f7a4af77b7b5a~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777354968&x-signature=vr50trmFN5vUYrTGu1Rr9uDuB%2Bc%3D',
+                description: `
+                    <p>陀罗少女是一个拥有神秘力量的少女，她的身体里封印着一个古老的陀罗 demon。这种力量让她能够操控风和雷电，但也时刻面临着被 demon 吞噬的危险。</p>
+                    <p>陀罗少女的背景：</p>
+                    <ul>
+                        <li>出生在一个古老的法师家族，是家族中唯一能够封印陀罗 demon 的人</li>
+                        <li>从小就被家族严格训练，学习如何控制体内的力量</li>
+                        <li>在一次意外中，她的家族被敌人袭击，只有她一人幸存</li>
+                        <li>现在她正在寻找能够彻底消灭体内 demon 的方法</li>
+                    </ul>
+                    <p>陀罗少女的能力：</p>
+                    <ul>
+                        <li>风之操控：可以操控风的流动，形成风刃、龙卷风等</li>
+                        <li>雷电之力：可以召唤雷电，释放强大的电击</li>
+                        <li>陀罗形态：在危急时刻可以暂时解放体内的 demon，获得强大的力量，但也会失去理智</li>
+                    </ul>
+                    <p>陀罗少女的性格坚强、独立，但内心深处也有着对亲情和友情的渴望。她的目标是找到彻底消灭体内 demon 的方法，为家族报仇，并保护无辜的人不受伤害。</p>
+                `,
+                time: '2024年1月',
+                type: '角色设定',
+                status: '更新中'
+            }
+        };
+
+        // 加载作品详情
+        function loadWork(workName) {
+            // 显示加载动画
+            const workDetail = document.getElementById('workDetail');
+            const loading = document.getElementById('loading');
+            const workContent = document.getElementById('workContent');
+            const error = document.getElementById('error');
+            
+            workDetail.style.display = 'block';
+            loading.style.display = 'flex';
+            workContent.style.display = 'none';
+            error.style.display = 'none';
+            
+            // 模拟加载延迟
+            setTimeout(() => {
+                try {
+                    // 获取作品数据
+                    const work = worksData[workName];
+                    
+                    // 更新页面内容
+                    document.getElementById('detailTitle').textContent = work.title;
+                    document.getElementById('detailImage').src = work.image;
+                    document.getElementById('detailImage').alt = work.title;
+                    document.getElementById('detailDescription').innerHTML = work.description;
+                    document.getElementById('detailTime').textContent = work.time;
+                    document.getElementById('detailType').textContent = work.type;
+                    document.getElementById('detailStatus').textContent = work.status;
+                    
+                    // 隐藏加载动画，显示内容
+                    loading.style.display = 'none';
+                    workContent.style.display = 'block';
+                    
+                    // 滚动到详情区域
+                    workDetail.scrollIntoView({ behavior: 'smooth' });
+                } catch (err) {
+                    // 显示错误信息
+                    loading.style.display = 'none';
+                    error.style.display = 'block';
+                    console.error('加载作品详情失败:', err);
+                }
+            }, 500);
+        }
+    </script>
+</body>
+</html>
 
