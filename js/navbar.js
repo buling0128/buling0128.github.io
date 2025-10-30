@@ -6,10 +6,10 @@ function createNavbar() {
     // 定义所有页面的绝对路径（相对于网站根目录）
     const pagePaths = {
         '首页': '/index.html',
-        '设定集': '/works/settings/index.html',
-        '故事集': '/works/stories/index.html',
-        '画集': '/works/artworks/index.html',
-        '关于本站': '/works/about/index.html'
+        '设定集': '/works/settings/settings.html',
+        '故事集': '/works/stories/stories.html',
+        '画集': '/works/artworks/artworks.html',
+        '关于本站': '/works/about/about.html'
     };
 
     // 判断当前页面是否是某个导航页
