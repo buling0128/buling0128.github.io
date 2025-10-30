@@ -407,7 +407,7 @@
             });
         }
 
-        // 加载指定IP的图片和文字内容：补全闭合逻辑
+        // 加载指定IP的图片和文字内容（核心：动态创建卡片）
         function loadIpArtworks(ip, container) {
             const artworks = artworksData[ip];
             // 遍历当前IP下的所有作品
@@ -415,4 +415,37 @@
                 // 创建卡片元素
                 const card = document.createElement('div');
                 card.className = 'artwork-card';
-                // 填充卡片内容（图片、标题、
+                // 填充卡片内容（包含标题和描述文字）
+                card.innerHTML = `
+                    <img src="${artwork.image}" alt="${artwork.title}" class="artwork-card-image">
+                    <div class="artwork-card-content">
+                        <h3 class="artwork-card-title">${artwork.title}</h3>
+                        <p class="artwork-card-description">${artwork.description}</p>
+                    </div>
+                `;
+                // 点击卡片打开查看器
+                card.addEventListener('click', () => {
+                    currentImageIndex = allArtworks.findIndex(item => item.id === artwork.id);
+                    updateImageViewer();
+                    imageViewer.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                // 将卡片添加到对应IP的网格中
+                container.appendChild(card);
+            });
+        }
+
+        // 更新图片查看器内容
+        function updateImageViewer() {
+            const artwork = allArtworks[currentImageIndex];
+            viewerImage.src = artwork.image;
+            viewerTitle.textContent = artwork.title;
+            viewerDescription.textContent = artwork.description;
+            viewerIp.textContent = `所属IP：${ipNameMap[artwork.ip]}`;
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
