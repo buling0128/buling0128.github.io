@@ -1,1 +1,11 @@
 
+{
+  "title": "蓝·草",
+  "image": "../../../images/big.jpg",
+  "description": "<p>蓝·草漫画。</p>",
+  "time": "2021年",
+  "type": "儿童冒险",
+  "status": "已完成",
+  "versions": ["故事"]
+}
+
