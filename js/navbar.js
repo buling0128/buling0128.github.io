@@ -1,29 +1,60 @@
-// 创建导航栏组件
 function createNavbar() {
     // 获取当前页面的URL路径
     const path = window.location.pathname;
     const page = path.split('/').pop() || 'index.html';
     
-    // 判断是否在子目录中（根据路径中是否包含'works/'判断）
-    const isInSubDirectory = path.includes('works/');
-    // 基础路径：子目录中需要回退两级，根目录直接使用当前路径
-    const basePath = isInSubDirectory ? '../../' : '';
-
-    // 导航栏数据（存储相对根目录的路径）
+    // 导航栏数据（存储相对于网站根目录的绝对路径）
     const navItems = [
-        { name: '首页', url: 'index.html' },
-        { name: '设定集', url: 'works/settings/index.html' },
-        { name: '故事集', url: 'works/stories/index.html' },
-        { name: '画集', url: 'works/artworks/index.html' },
-        { name: '关于本站', url: 'works/about/index.html' }
+        { name: '首页', url: '/index.html' },
+        { name: '设定集', url: '/works/settings/index.html' },
+        { name: '故事集', url: '/works/stories/index.html' },
+        { name: '画集', url: '/works/artworks/index.html' },
+        { name: '关于本站', url: '/works/about/index.html' }
     ];
+
+    // 获取网站根目录路径（假设HTML文件直接放在服务器根目录或项目根目录）
+    // 实际应用中可根据部署情况调整
+    const getBaseUrl = () => {
+        // 获取当前页面的完整URL
+        const url = window.location.href;
+        // 找到最后一个'/'的位置（在文件名之前）
+        const lastSlashIndex = url.lastIndexOf('/');
+        // 返回根目录路径
+        return url.substring(0, lastSlashIndex + 1);
+    };
+    
+    const baseUrl = getBaseUrl();
+
+    // 计算从当前页面到目标页面的相对路径
+    const getRelativePath = (targetUrl) => {
+        // 解析当前路径和目标路径
+        const currentParts = path.split('/').filter(part => part);
+        const targetParts = targetUrl.split('/').filter(part => part);
+        
+        // 找到共同的路径部分
+        let commonLength = 0;
+        while (commonLength < currentParts.length && 
+               commonLength < targetParts.length && 
+               currentParts[commonLength] === targetParts[commonLength]) {
+            commonLength++;
+        }
+        
+        // 计算需要回退的层级
+        const backtrack = currentParts.length - commonLength;
+        const backtrackParts = backtrack > 0 ? Array(backtrack).fill('..') : [];
+        
+        // 计算目标路径的剩余部分
+        const targetRemaining = targetParts.slice(commonLength);
+        
+        // 组合相对路径
+        return [...backtrackParts, ...targetRemaining].join('/');
+    };
 
     // 创建导航栏HTML
     const navbarHTML = `
         <nav class="navbar">
             <div class="navbar-container">
-                <!-- 修复logo链接路径 -->
-                <a href="${basePath}index.html" class="navbar-logo">个人作品展示</a>
+                <a href="${getRelativePath('/index.html')}" class="navbar-logo">个人作品展示</a>
                 
                 <div class="navbar-toggle" id="navbarToggle">
                     <i class="fa fa-bars"></i>
@@ -31,13 +62,13 @@ function createNavbar() {
                 
                 <ul class="navbar-menu" id="navbarMenu">
                     ${navItems.map(item => {
-                        // 计算实际链接路径：基础路径 + 相对根目录路径
-                        const linkUrl = basePath + item.url;
-                        // 计算当前页面对应的基准路径，用于匹配active状态
-                        const itemBaseUrl = item.url.split('/').pop();
+                        const linkUrl = getRelativePath(item.url);
+                        // 匹配当前页面的active状态
+                        const isActive = path.endsWith(item.url) || 
+                                       (path === '/' && item.url === '/index.html');
                         return `
                             <li class="navbar-item">
-                                <a href="${linkUrl}" class="navbar-link ${page === itemBaseUrl ? 'active' : ''}">
+                                <a href="${linkUrl}" class="navbar-link ${isActive ? 'active' : ''}">
                                     ${item.name}
                                 </a>
                             </li>
@@ -77,7 +108,7 @@ function createNavbar() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 添加页脚（同样修复链接路径）
+    // 添加页脚
     const footerHTML = `
         <footer class="footer">
             <div class="footer-container">
@@ -92,7 +123,7 @@ function createNavbar() {
                         <ul class="footer-links">
                             ${navItems.map(item => `
                                 <li class="footer-link">
-                                    <a href="${basePath}${item.url}">${item.name}</a>
+                                    <a href="${getRelativePath(item.url)}">${item.name}</a>
                                 </li>
                             `).join('')}
                         </ul>
