@@ -39,6 +39,8 @@
             width: 100%;
             height: 200px;
             object-fit: cover;
+            /* 图片加载失败时显示灰色背景，避免空白 */
+            background-color: #f5f5f5;
         }
         
         .artwork-card-content {
@@ -241,14 +243,14 @@
                     id: 1,
                     title: '因赛美那-时光之刃',
                     description: '因赛美那手持专属武器“时光之刃”的角色插画，银色长发搭配未来感服饰，背景为时间裂隙特效。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-06-15'
                 },
                 {
                     id: 2,
                     title: '因赛美那-未来都市',
                     description: '因赛美那在未来都市屋顶的场景插画，展现角色在任务间隙的休憩时刻，远处可见悬浮建筑和时间塔。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-07-20'
                 }
             ],
@@ -258,14 +260,14 @@
                     id: 3,
                     title: '奈樱-樱花魔法',
                     description: '奈樱施展樱花魔法的角色插画，粉色樱花环绕周身，传统和服装扮搭配金色发饰，背景为千年樱树。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-04-22'
                 },
                 {
                     id: 4,
                     title: '樱之都-街道全景',
                     description: '樱之都核心街道的场景插画，樱花花瓣铺满街道，两侧为樱花树造型建筑，可见居民与樱花精灵互动。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-05-08'
                 }
             ],
@@ -275,14 +277,14 @@
                     id: 5,
                     title: '妖鬼街-狐狸杂货店',
                     description: '妖鬼街标志性建筑“狐狸杂货店”的场景插画，木质结构搭配红灯笼，门口可见狐狸店主的剪影。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-03-14'
                 },
                 {
                     id: 6,
                     title: '妖鬼街-猫妖姐妹',
                     description: '妖鬼街守卫“猫妖姐妹”的角色插画，双胞胎姐妹分别持武士刀和折扇，服饰为日式巫女风搭配猫耳。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-09-05'
                 }
             ],
@@ -292,14 +294,14 @@
                     id: 7,
                     title: '陀罗少女-风之形态',
                     description: '陀罗少女施展风之能力的角色插画，蓝色短发搭配黑色披风，周围环绕旋风特效，背景为废墟场景。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-11-22'
                 },
                 {
                     id: 8,
                     title: '星空少女-梦境',
                     description: '原创星空主题插画，少女躺在云朵上仰望星空，裙摆融入星河元素，周围漂浮发光星球和星尘。',
-                    image: '../../images/card.jpg',
+                    image: '../../images/card.jpg', // 确保路径正确
                     date: '2023-12-05'
                 }
             ]
@@ -330,7 +332,7 @@
         // 当前查看的图片索引
         let currentImageIndex = 0;
 
-        // 初始化页面
+        // 初始化页面：核心修复逻辑
         function initPage() {
             // 1. 扁平化所有图片数据（用于查看器导航）
             for (const ip in artworksData) {
@@ -340,4 +342,110 @@
                 });
             }
 
-            // 2.
+            // 2. 加载各IP板块的图片和文字内容（关键修复：补充完整渲染逻辑）
+            loadIpArtworks('insaimena', document.getElementById('insaimenaGrid'));
+            loadIpArtworks('sakura', document.getElementById('sakuraGrid'));
+            loadIpArtworks('yaoguijie', document.getElementById('yaoguijieGrid'));
+            loadIpArtworks('other', document.getElementById('otherGrid'));
+
+            // 3. IP分类筛选逻辑
+            ipCategoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 更新按钮激活状态
+                    ipCategoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // 筛选显示的IP板块
+                    const targetIp = button.getAttribute('data-ip');
+                    ipSectionTitles.forEach(title => {
+                        const sectionIp = title.getAttribute('data-ip');
+                        const gridElement = document.getElementById(`${sectionIp}Grid`);
+                        // 显示目标IP或全部IP，隐藏其他
+                        if (targetIp === 'all' || sectionIp === targetIp) {
+                            title.style.display = 'block';
+                            gridElement.style.display = 'grid';
+                        } else {
+                            title.style.display = 'none';
+                            gridElement.style.display = 'none';
+                        }
+                    });
+                });
+            });
+
+            // 4. 图片查看器关闭按钮
+            closeViewer.addEventListener('click', () => {
+                imageViewer.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // 5. 上一张图片
+            prevImage.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + allArtworks.length) % allArtworks.length;
+                updateImageViewer();
+            });
+
+            // 6. 下一张图片
+            nextImage.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % allArtworks.length;
+                updateImageViewer();
+            });
+
+            // 7. 键盘导航
+            document.addEventListener('keydown', (e) => {
+                if (imageViewer.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        imageViewer.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + allArtworks.length) % allArtworks.length;
+                        updateImageViewer();
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % allArtworks.length;
+                        updateImageViewer();
+                    }
+                }
+            });
+        }
+
+        // 加载指定IP的图片和文字内容（核心：动态创建卡片）
+        function loadIpArtworks(ip, container) {
+            const artworks = artworksData[ip];
+            // 遍历当前IP下的所有作品
+            artworks.forEach(artwork => {
+                // 创建卡片元素
+                const card = document.createElement('div');
+                card.className = 'artwork-card';
+                // 填充卡片内容（包含标题和描述文字）
+                card.innerHTML = `
+                    <img src="${artwork.image}" alt="${artwork.title}" class="artwork-card-image">
+                    <div class="artwork-card-content">
+                        <h3 class="artwork-card-title">${artwork.title}</h3>
+                        <p class="artwork-card-description">${artwork.description}</p>
+                    </div>
+                `;
+                // 点击卡片打开查看器
+                card.addEventListener('click', () => {
+                    currentImageIndex = allArtworks.findIndex(item => item.id === artwork.id);
+                    updateImageViewer();
+                    imageViewer.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                // 将卡片添加到对应IP的网格中
+                container.appendChild(card);
+            });
+        }
+
+        // 更新图片查看器内容
+        function updateImageViewer() {
+            const artwork = allArtworks[currentImageIndex];
+            viewerImage.src = artwork.image;
+            viewerTitle.textContent = artwork.title;
+            viewerDescription.textContent = artwork.description;
+            viewerIp.textContent = `所属IP：${ipNameMap[artwork.ip]}`;
+        }
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
