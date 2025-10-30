@@ -1,39 +1,49 @@
 function createNavbar() {
-    // 获取当前页面的URL路径
+    // 获取当前页面的完整URL
+    const currentUrl = window.location.href;
     const path = window.location.pathname;
-    const page = path.split('/').pop() || 'index.html';
     
-    // 关键修复：导航数据改为【基于网站根目录的绝对路径】，而非带../../的相对路径
-    const navItems = [
-        { name: '首页', url: '/index.html' }, // 根目录下的首页
-        { name: '设定集', url: '/works/settings/index.html' }, // 根目录→works→settings
-        { name: '故事集', url: '/works/stories/index.html' }, // 根目录→works→stories
-        { name: '画集', url: '/works/artworks/index.html' }, // 根目录→works→artworks
-        { name: '关于本站', url: '/works/about/index.html' } // 根目录→works→about
-    ];
-
-    // 计算从当前页面到目标页面的相对路径（函数逻辑不变，因输入格式已修复）
-    const getRelativePath = (targetUrl) => {
-        const currentParts = path.split('/').filter(part => part);
-        const targetParts = targetUrl.split('/').filter(part => part);
-        
-        // 找到路径的共同前缀
-        let commonLength = 0;
-        while (commonLength < currentParts.length && 
-               commonLength < targetParts.length && 
-               currentParts[commonLength] === targetParts[commonLength]) {
-            commonLength++;
-        }
-        
-        // 计算需要回退的层级 + 目标路径的剩余部分
-        const backtrack = currentParts.length - commonLength;
-        const backtrackParts = backtrack > 0 ? Array(backtrack).fill('..') : [];
-        const targetRemaining = targetParts.slice(commonLength);
-        
-        return [...backtrackParts, ...targetRemaining].join('/');
+    // 定义所有页面的绝对路径（相对于网站根目录）
+    const pagePaths = {
+        '首页': '/index.html',
+        '设定集': '/works/settings/index.html',
+        '故事集': '/works/stories/index.html',
+        '画集': '/works/artworks/index.html',
+        '关于本站': '/works/about/index.html'
     };
 
-    // 创建导航栏HTML（逻辑不变，因导航数据格式已正确）
+    // 判断当前页面是否是某个导航页
+    const getCurrentPageName = () => {
+        for (const [name, url] of Object.entries(pagePaths)) {
+            if (path.endsWith(url) || (path === '/' && url === '/index.html')) {
+                return name;
+            }
+        }
+        return null;
+    };
+    
+    const currentPageName = getCurrentPageName();
+
+    // 计算从当前页面到目标页面的相对路径
+    const getRelativePath = (targetPath) => {
+        // 如果是本地文件协议，使用绝对路径处理（避免file://协议下的路径问题）
+        if (window.location.protocol === 'file:') {
+            // 获取当前HTML文件所在的目录路径
+            const currentDir = currentUrl.substring(0, currentUrl.lastIndexOf('/') + 1);
+            // 解析网站根目录（假设所有HTML都在根目录或其下的works目录）
+            const rootDir = currentDir.includes('/works/') 
+                ? currentDir.substring(0, currentDir.indexOf('/works/') + 1)
+                : currentDir;
+            
+            // 拼接根目录和目标路径
+            return rootDir + targetPath.substring(1); // 去掉targetPath开头的/
+        }
+        
+        // 服务器环境下直接使用绝对路径
+        return targetPath;
+    };
+
+    // 创建导航栏HTML
     const navbarHTML = `
         <nav class="navbar">
             <div class="navbar-container">
@@ -44,19 +54,13 @@ function createNavbar() {
                 </div>
                 
                 <ul class="navbar-menu" id="navbarMenu">
-                    ${navItems.map(item => {
-                        const linkUrl = getRelativePath(item.url);
-                        // 修复active状态判断：基于当前路径是否包含目标路径的绝对路径
-                        const isActive = path === item.url || 
-                                       (path.endsWith('/') && item.url === path + 'index.html');
-                        return `
-                            <li class="navbar-item">
-                                <a href="${linkUrl}" class="navbar-link ${isActive ? 'active' : ''}">
-                                    ${item.name}
-                                </a>
-                            </li>
-                        `;
-                    }).join('')}
+                    ${Object.entries(pagePaths).map(([name, url]) => `
+                        <li class="navbar-item">
+                            <a href="${getRelativePath(url)}" class="navbar-link ${currentPageName === name ? 'active' : ''}">
+                                ${name}
+                            </a>
+                        </li>
+                    `).join('')}
                 </ul>
             </div>
         </nav>
@@ -65,14 +69,15 @@ function createNavbar() {
     // 将导航栏添加到页面
     document.body.insertAdjacentHTML('afterbegin', navbarHTML);
 
-    // 响应式导航栏功能（不变）
+    // 添加响应式导航栏功能
     const navbarToggle = document.getElementById('navbarToggle');
     const navbarMenu = document.getElementById('navbarMenu');
+
     navbarToggle.addEventListener('click', () => {
         navbarMenu.classList.toggle('active');
     });
 
-    // 返回顶部按钮（不变）
+    // 添加返回顶部按钮
     const backToTopButton = document.createElement('div');
     backToTopButton.className = 'back-to-top';
     backToTopButton.innerHTML = '<i class="fa fa-arrow-up"></i>';
@@ -86,7 +91,7 @@ function createNavbar() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    // 添加页脚（导航链接路径同步修复）
+    // 添加页脚
     const footerHTML = `
         <footer class="footer">
             <div class="footer-container">
@@ -99,9 +104,9 @@ function createNavbar() {
                     <div class="footer-section">
                         <h3 class="footer-section-title">快速链接</h3>
                         <ul class="footer-links">
-                            ${navItems.map(item => `
+                            ${Object.entries(pagePaths).map(([name, url]) => `
                                 <li class="footer-link">
-                                    <a href="${getRelativePath(item.url)}">${item.name}</a>
+                                    <a href="${getRelativePath(url)}">${name}</a>
                                 </li>
                             `).join('')}
                         </ul>
@@ -123,5 +128,5 @@ function createNavbar() {
     document.body.insertAdjacentHTML('beforeend', footerHTML);
 }
 
-// 页面加载完成后创建导航栏
+// 当页面加载完成时创建导航栏
 document.addEventListener('DOMContentLoaded', createNavbar);
