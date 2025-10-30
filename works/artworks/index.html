@@ -1,1 +1,424 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>个人作品展示 - 画集</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        .artworks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .artwork-card {
+            background-color: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .artwork-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .artwork-card-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .artwork-card-content {
+            padding: 15px;
+        }
+        
+        .artwork-card-title {
+            font-size: 1.1rem;
+            color: #333;
+            margin-bottom: 5px;
+        }
+        
+        .artwork-card-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* 图片查看器 */
+        .image-viewer {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .image-viewer.active {
+            display: flex;
+        }
+        
+        .image-viewer-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+        }
+        
+        .image-viewer-image {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 5px;
+        }
+        
+        .image-viewer-info {
+            position: absolute;
+            bottom: -60px;
+            left: 0;
+            right: 0;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 5px;
+        }
+        
+        .image-viewer-title {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+        
+        .image-viewer-description {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .image-viewer-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+        }
+        
+        .image-viewer-close:hover {
+            opacity: 0.8;
+        }
+        
+        .image-viewer-nav {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+        
+        .image-viewer-nav button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .image-viewer-nav button:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+        
+        /* 分类筛选 */
+        .categories {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            justify-content: center;
+        }
+        
+        .category-button {
+            background-color: #4a90e2;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .category-button:hover, .category-button.active {
+            background-color: #357abd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="works-container">
+            <h2 class="works-title">画集</h2>
+            
+            <!-- 分类筛选 -->
+            <div class="categories">
+                <button class="category-button active" data-category="all">全部</button>
+                <button class="category-button" data-category="character">角色设计</button>
+                <button class="category-button" data-category="illustration">插画</button>
+                <button class="category-button" data-category="background">背景</button>
+                <button class="category-button" data-category="concept">概念设计</button>
+            </div>
+            
+            <!-- 插画作品网格 -->
+            <div class="artworks-grid" id="artworksGrid">
+                <!-- 插画作品将通过JavaScript动态加载 -->
+            </div>
+        </div>
+    </div>
+    
+    <!-- 图片查看器 -->
+    <div class="image-viewer" id="imageViewer">
+        <div class="image-viewer-content">
+            <div class="image-viewer-nav">
+                <button id="prevImage"><i class="fa fa-chevron-left"></i></button>
+                <button id="nextImage"><i class="fa fa-chevron-right"></i></button>
+            </div>
+            <img src="" alt="大图" class="image-viewer-image" id="viewerImage">
+            <div class="image-viewer-info">
+                <h3 class="image-viewer-title" id="viewerTitle"></h3>
+                <p class="image-viewer-description" id="viewerDescription"></p>
+            </div>
+            <div class="image-viewer-close" id="closeViewer">
+                <i class="fa fa-times"></i>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/navbar.js"></script>
+    <script>
+        // 插画作品数据
+        const artworksData = [
+            {
+                id: 1,
+                title: '荷花仙子',
+                description: '清新华丽的古风荷花仙子插画，展现了东方美学的魅力。',
+                image: 'https://p3-doubao-search-sign.byteimg.com/labis/35154d0514a52bd4bce095525c50a4c5~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=0lTmxxsWrR79Fu3QuLgYKoiPev8%3D',
+                category: 'illustration',
+                date: '2023-06-15'
+            },
+            {
+                id: 2,
+                title: '绿裙少女',
+                description: '拿着书穿着校服裙的二次元美少女，展现了青春活力的形象。',
+                image: 'https://p26-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/742360246495346734~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=G322oaISprCXhrC9K46LOMFV%2Bkk%3D',
+                category: 'character',
+                date: '2023-04-22'
+            },
+            {
+                id: 3,
+                title: '粉色连衣裙',
+                description: '穿粉色连衣裙的二次元少女坐姿手绘插画，展现了少女的可爱与优雅。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-6w9my0ksvp/cdfa76922a504ebdaccf372174587c34~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=xKTDoFJGTXgOhm9J%2FvQkc1jZd6A%3D',
+                category: 'illustration',
+                date: '2023-05-08'
+            },
+            {
+                id: 4,
+                title: '银白发少女',
+                description: '银白发碧眼的二次元角色插画，展现了神秘与优雅的气质。',
+                image: 'https://p26-doubao-search-sign.byteimg.com/labis/0597085f41812b84dc17fe70c3e11e86~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=mGV%2BWHbn4vFJ5Li5GGBb3jYN8Qk%3D',
+                category: 'character',
+                date: '2023-03-14'
+            },
+            {
+                id: 5,
+                title: '花与剑',
+                description: '华丽的动漫插画，展现了手持剑的女性角色与花朵的完美结合。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-qvj2lq49k0/25f484df2e5b4471b12b8b0c8ecb0ef3~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=v8e6UHC0lvD1qJtmRyl5pWKUiZY%3D',
+                category: 'illustration',
+                date: '2023-07-01'
+            },
+            {
+                id: 6,
+                title: '古风美人',
+                description: '动漫古风美人插画壁纸，展现了东方古典美学的魅力。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-qvj2lq49k0/f2aca67530fe47bd92cc92022d80c218~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=vtjWri%2BfmntWtG1IGUi%2F7RTIVwY%3D',
+                category: 'illustration',
+                date: '2023-02-28'
+            },
+            {
+                id: 7,
+                title: '白发少女',
+                description: '白发少女动漫壁纸插画，展现了清新脱俗的气质。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/pgc-image/0881e049b16e4b2db69bbe141bd49b0c~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355318&x-signature=23Cjpv7rLVa2MxVzV%2BHzw%2B4OPyY%3D',
+                category: 'character',
+                date: '2023-01-15'
+            },
+            {
+                id: 8,
+                title: '魔法少女',
+                description: '动漫插画分享，展现了魔法少女的华丽与神秘。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/921011627369168926~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355319&x-signature=UkMPQHUyIgpN2PnGfQZZFkSH9Ro%3D',
+                category: 'concept',
+                date: '2023-08-10'
+            },
+            {
+                id: 9,
+                title: '小精灵',
+                description: '原创插画两个两个可爱的搞笑小精灵，展现了童话世界的美好。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/2004867884642861070~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355319&x-signature=zoz1c59cqBbqacO%2BRp9oFtiG8to%3D',
+                category: 'illustration',
+                date: '2023-09-05'
+            },
+            {
+                id: 10,
+                title: '阳台风景',
+                description: '一个女孩悠闲地坐在阳台上喝咖啡欣赏风景，前面是高楼建筑和天空，展现了都市生活的惬意。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1657433591882973196~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355319&x-signature=MuSkNYsbA89ssoZK0oJj%2FIMbjMg%3D',
+                category: 'background',
+                date: '2023-10-18'
+            },
+            {
+                id: 11,
+                title: '占卜师',
+                description: '原创占卜师人物插画，展现了神秘与智慧的形象。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1067477236308640121~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355319&x-signature=gku71sVSd7XwNIo8cbDADawaRZ4%3D',
+                category: 'character',
+                date: '2023-11-22'
+            },
+            {
+                id: 12,
+                title: '星空少女',
+                description: '原创平面插画，主体为女孩和花朵，背景是星空，展现了梦幻与浪漫的氛围。',
+                image: 'https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1033201241207079010~tplv-be4g95zd3a-image.jpeg?rk3s=542c0f93&x-expires=1777355319&x-signature=K5f0Zv4xZcHLV7jC%2F%2B5H%2BdU5uw%3D',
+                category: 'illustration',
+                date: '2023-12-05'
+            }
+        ];
+
+        // 获取元素
+        const artworksGrid = document.getElementById('artworksGrid');
+        const imageViewer = document.getElementById('imageViewer');
+        const viewerImage = document.getElementById('viewerImage');
+        const viewerTitle = document.getElementById('viewerTitle');
+        const viewerDescription = document.getElementById('viewerDescription');
+        const closeViewer = document.getElementById('closeViewer');
+        const prevImage = document.getElementById('prevImage');
+        const nextImage = document.getElementById('nextImage');
+        const categoryButtons = document.querySelectorAll('.category-button');
+        
+        // 当前查看的图片索引
+        let currentImageIndex = 0;
+        
+        // 初始化页面
+        function initPage() {
+            // 加载所有插画作品
+            loadArtworks(artworksData);
+            
+            // 添加分类筛选按钮添加点击事件
+            categoryButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // 更新按钮状态
+                    categoryButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // 筛选作品
+                    const category = button.getAttribute('data-category');
+                    let filteredArtworks = artworksData;
+                    
+                    if (category !== 'all') {
+                        filteredArtworks = artworksArtworks.filter(artwork => artwork.category === category);
+                    }
+                    
+                    // 重新加载作品
+                    renderArtworks(filteredArtworks);
+                });
+            });
+            
+            // 关闭图片查看器
+            closeViewer.addEventListener('click', () => {
+                imageViewerViewer.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // 上一张图片
+            prevImage.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex - 1 + artworksData.length) % artworksData.length;
+                updateImageViewer();
+            });
+            
+            // 下一张图片
+            nextImage.addEventListener('click', () => {
+                currentImageIndex = (currentImageIndex + 1) % artworksData.length;
+                updateImageViewer();
+            });
+            
+            // 键盘键盘事件
+            document.addEventListener('keydown', (e) => {
+                if (imageViewer.classList.contains('active')) {
+                    if (e.key === 'Escape') {
+                        imageViewer.classList.remove('active');
+                        document.body.style.overflow = 'auto';
+                    } else if (e.key === 'ArrowLeft') {
+                        currentImageIndex = (currentImageIndex - 1 + artworksData.length) % artworksData.length;
+                        updateImageViewer();
+                    } else if (e.key === 'ArrowRight') {
+                        currentImageIndex = (currentImageIndex + 1) % artworksData.length;
+                        updateImageViewer();
+                    }
+                }
+            });
+        }
+        
+        // 加载插画作品
+        function loadArtworks(artworks) {
+            // 清空网格
+            artworksGrid.innerHTML = '';
+            
+            // 添加作品卡片
+            artworks.forEach((artwork, index) => {
+                const artworkCard = document.createElement('div');
+                artworkCard.className = 'artwork-card';
+                artworkCard.innerHTML = `
+                    <img src="${artwork.image}" alt="${artwork.title}" class="artwork-card-image">
+                    <div class="artwork-card-content">
+                        <h3 class="artwork-card-title">${artwork.title}</h3>
+                        <p class="artwork-card-description">${artwork.description}</p>
+                    </div>
+                `;
+                
+                // 添加点击事件
+                artworkCard.addEventListener('click', () => {
+                    currentImageIndex = index;
+                    updateImageViewer();
+                    imageViewer.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                artworksGrid.appendChild(artworkCard);
+            });
+        }
+        
+        // 更新图片查看器
+        function updateImageViewer() {
+            const artwork = artworksData[currentImageIndex];
+            viewerImage.src = artwork.image;
+            viewerImage.alt = artwork.title;
+            viewerTitle.textContent = artwork.title;
+            viewerDescription.textContent = artwork.description;
+        }
+        
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', initPage);
+    </script>
+</body>
+</html>
 
