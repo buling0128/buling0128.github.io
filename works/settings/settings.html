@@ -133,8 +133,16 @@
                                 </div>
                             </div>
                             
-                            <!-- 2. 渲染目录（新增） -->
-                            <div class="toc-container" id="tocContainer"></div>
+                            <!-- 2. 渲染目录（新增折叠按钮） -->
+<div class="toc-container" id="tocContainer">
+    <!-- 移动端折叠按钮（默认显示在小屏幕） -->
+    <button class="toc-toggle" id="tocToggle">
+        <span>目录</span>
+        <i class="fa fa-chevron-down"></i>
+    </button>
+    <!-- 目录标题和列表将由JS动态生成 -->
+</div>
+                            
                             
                             <!-- 3. 渲染多版本内容（新增） -->
                             <div class="versions-container" id="versionsContainer"></div>
@@ -152,105 +160,165 @@
     <script src="../../js/navbar.js"></script>
     <script>
         /**
-         * 加载指定IP的设定内容（适配新JSON结构）
-         * @param {string} settingKey - IP文件夹名称（如yinsaimeina）
-         */
-        function loadSetting(settingKey) {
-            const workDetail = document.getElementById('workDetail');
-            const loading = document.getElementById('loading');
-            const workContent = document.getElementById('workContent');
-            const error = document.getElementById('error');
-            
-            // 显示加载动画
-            workDetail.style.display = 'block';
-            loading.style.display = 'flex';
-            workContent.style.display = 'none';
-            error.style.display = 'none';
+ * 加载指定IP的设定内容（含固定目录逻辑）
+ * @param {string} settingKey - IP文件夹名称（如yinsaimeina）
+ */
+function loadSetting(settingKey) {
+    const workDetail = document.getElementById('workDetail');
+    const loading = document.getElementById('loading');
+    const workContent = document.getElementById('workContent');
+    const error = document.getElementById('error');
+    const tocContainer = document.getElementById('tocContainer');
+    const tocToggle = document.getElementById('tocToggle'); // 移动端折叠按钮
 
-            // 异步加载JSON文件
-            fetch(`data/${settingKey}/setting.json`)
-                .then(response => {
-                    if (!response.ok) throw new Error(`文件未找到：data/${settingKey}/setting.json`);
-                    return response.json();
-                })
-                .then(settingData => {
-                    // 1. 渲染基础信息（标题、图片、时间等）
-                    document.getElementById('detailTitle').textContent = settingData.title;
-                    document.getElementById('detailImage').src = settingData.image;
-                    document.getElementById('detailImage').alt = settingData.title;
-                    document.getElementById('detailTime').textContent = settingData.time;
-                    document.getElementById('detailType').textContent = settingData.type;
-                    document.getElementById('detailStatus').textContent = settingData.status;
+    // 显示加载动画
+    workDetail.style.display = 'block';
+    loading.style.display = 'flex';
+    workContent.style.display = 'none';
+    error.style.display = 'none';
 
-                    // 2. 渲染目录（从toc字段读取）
-                    const tocContainer = document.getElementById('tocContainer');
-                    if (settingData.toc && settingData.toc.length > 0) {
-                        let tocHtml = `
-                            <div class="toc-title">
-                                <i class="fa fa-list-ul"></i> 版本目录
-                            </div>
-                            <ul class="toc-list">
-                        `;
-                        // 遍历toc生成目录项（带锚点链接）
-                        settingData.toc.forEach(item => {
-                            tocHtml += `<li class="toc-item">
-                                <a href="#${item.id}" onclick="scrollToVersion('${item.id}')">${item.name}</a>
-                            </li>`;
-                        });
-                        tocHtml += `</ul>`;
-                        tocContainer.innerHTML = tocHtml;
-                    } else {
-                        tocContainer.innerHTML = '<p>暂无目录</p>';
-                    }
+    // 异步加载JSON文件
+    fetch(`data/${settingKey}/setting.json`)
+        .then(response => {
+            if (!response.ok) throw new Error(`文件未找到：data/${settingKey}/setting.json`);
+            return response.json();
+        })
+        .then(settingData => {
+            // 1. 渲染基础信息（标题、图片等）- 保持不变
+            document.getElementById('detailTitle').textContent = settingData.title;
+            document.getElementById('detailImage').src = settingData.image;
+            document.getElementById('detailImage').alt = settingData.title;
+            document.getElementById('detailTime').textContent = settingData.time;
+            document.getElementById('detailType').textContent = settingData.type;
+            document.getElementById('detailStatus').textContent = settingData.status;
 
-                    // 3. 渲染多版本内容（从versions字段读取）
-                    const versionsContainer = document.getElementById('versionsContainer');
-                    if (settingData.versions && Object.keys(settingData.versions).length > 0) {
-                        let versionsHtml = '';
-                        // 遍历versions生成每个版本的板块（带锚点ID）
-                        Object.keys(settingData.versions).forEach(versionId => {
-                            const version = settingData.versions[versionId];
-                            versionsHtml += `
-                                <div class="version-section" id="${versionId}">
-                                    <h3 class="version-title">${version.title}</h3>
-                                    <div class="version-content">${version.description}</div>
-                                </div>
-                            `;
-                        });
-                        versionsContainer.innerHTML = versionsHtml;
-                    } else {
-                        versionsContainer.innerHTML = '<p>暂无版本内容</p>';
-                    }
-
-                    // 显示内容，隐藏加载动画
-                    loading.style.display = 'none';
-                    workContent.style.display = 'block';
-                    workDetail.scrollIntoView({ behavior: 'smooth' });
-                })
-                .catch(err => {
-                    // 显示具体错误信息
-                    error.innerHTML = `<p>加载失败：${err.message}</p><p>请检查文件路径是否正确</p>`;
-                    error.style.display = 'block';
-                    loading.style.display = 'none';
-                    console.error('错误详情：', err);
+            // 2. 渲染目录（含固定定位和移动端适配）
+            if (settingData.toc && settingData.toc.length > 0) {
+                // 生成目录列表HTML
+                let tocListHtml = '<ul class="toc-list">';
+                settingData.toc.forEach(item => {
+                    tocListHtml += `<li class="toc-item">
+                        <a href="#${item.id}" onclick="scrollToVersion('${item.id}')">${item.name}</a>
+                    </li>`;
                 });
-        }
+                tocListHtml += '</ul>';
 
-        /**
-         * 目录点击跳转函数（平滑滚动到对应版本）
-         * @param {string} versionId - 版本ID（与JSON中toc的id对应）
-         */
-        function scrollToVersion(versionId) {
-            const versionElement = document.getElementById(versionId);
-            if (versionElement) {
-                versionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // 可选：给当前版本添加高亮样式
-                document.querySelectorAll('.version-section').forEach(section => {
-                    section.classList.remove('active');
+                // 插入目录标题和列表（保留折叠按钮）
+                tocContainer.innerHTML = `
+                    <button class="toc-toggle" id="tocToggle">
+                        <span>目录</span>
+                        <i class="fa fa-chevron-down"></i>
+                    </button>
+                    <div class="toc-title">
+                        <i class="fa fa-list-ul"></i> 快速导航
+                    </div>
+                    ${tocListHtml}
+                `;
+
+                // 重新获取DOM元素（因innerHTML重置）
+                const newTocToggle = document.getElementById('tocToggle');
+                const newTocList = tocContainer.querySelector('.toc-list');
+                const tocLinks = tocContainer.querySelectorAll('.toc-item a');
+
+                // 移动端折叠逻辑
+                newTocToggle.addEventListener('click', () => {
+                    newTocList.classList.toggle('active');
+                    // 切换按钮图标
+                    const icon = newTocToggle.querySelector('i');
+                    if (newTocList.classList.contains('active')) {
+                        icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+                    } else {
+                        icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+                    }
                 });
-                versionElement.classList.add('active');
+
+                // 监听滚动事件：当前可见的版本对应目录高亮
+                function highlightCurrentToc() {
+                    const versionSections = document.querySelectorAll('.version-section');
+                    let currentVersionId = '';
+
+                    // 检测当前滚动到的版本板块
+                    versionSections.forEach(section => {
+                        const sectionTop = section.offsetTop - 100; // 预留偏移量
+                        const sectionHeight = section.offsetHeight;
+                        if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                            currentVersionId = section.id;
+                        }
+                    });
+
+                    // 高亮当前目录项，取消其他项高亮
+                    tocLinks.forEach(link => {
+                        link.classList.remove('active');
+                        if (link.getAttribute('href') === `#${currentVersionId}`) {
+                            link.classList.add('active');
+                        }
+                    });
+                }
+
+                // 初始执行一次，确保页面加载时高亮正确
+                highlightCurrentToc();
+                // 滚动时实时更新
+                window.addEventListener('scroll', highlightCurrentToc);
+
+                // 3. 渲染多版本内容（保持不变）
+                const versionsContainer = document.getElementById('versionsContainer');
+                versionsContainer.innerHTML = '';
+                Object.keys(settingData.versions).forEach(versionId => {
+                    const version = settingData.versions[versionId];
+                    versionsContainer.innerHTML += `
+                        <div class="version-section" id="${versionId}">
+                            <h3 class="version-title">${version.title}</h3>
+                            <div class="version-content">${version.description}</div>
+                        </div>
+                    `;
+                });
+
+            } else {
+                // 无目录时的默认显示
+                tocContainer.innerHTML = `
+                    <div class="toc-title">
+                        <i class="fa fa-list-ul"></i> 快速导航
+                    </div>
+                    <p>暂无目录数据</p>
+                `;
+            }
+
+            // 显示内容，隐藏加载动画
+            loading.style.display = 'none';
+            workContent.style.display = 'block';
+            workDetail.scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(err => {
+            error.innerHTML = `<p>加载失败：${err.message}</p><p>请检查文件路径是否正确</p>`;
+            error.style.display = 'block';
+            loading.style.display = 'none';
+        });
+}
+
+/**
+ * 目录点击跳转函数（优化平滑滚动和高亮）
+ * @param {string} versionId - 版本ID（与JSON中toc的id对应）
+ */
+function scrollToVersion(versionId) {
+    const versionElement = document.getElementById(versionId);
+    if (versionElement) {
+        // 平滑滚动到对应版本（顶部预留20px）
+        window.scrollTo({
+            top: versionElement.offsetTop - 20,
+            behavior: 'smooth'
+        });
+
+        // 移动端跳转后自动收起目录
+        if (window.innerWidth <= 768) {
+            const tocList = document.querySelector('.toc-list');
+            const tocToggleIcon = document.querySelector('.toc-toggle i');
+            if (tocList.classList.contains('active')) {
+                tocList.classList.remove('active');
+                tocToggleIcon.classList.replace('fa-chevron-up', 'fa-chevron-down');
             }
         }
+    }
+}
     </script>
 </body>
 </html>
