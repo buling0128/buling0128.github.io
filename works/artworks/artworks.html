@@ -407,11 +407,12 @@
             });
         }
 
-        // 加载指定IP的图片和文字内容：逻辑不变（依赖传入的IP和容器）
+        // 加载指定IP的图片和文字内容：补全闭合逻辑
         function loadIpArtworks(ip, container) {
             const artworks = artworksData[ip];
             // 遍历当前IP下的所有作品
             artworks.forEach(artwork => {
                 // 创建卡片元素
                 const card = document.createElement('div');
-                card.className = 'art
+                card.className = 'artwork-card';
+                // 填充卡片内容（图片、标题、
