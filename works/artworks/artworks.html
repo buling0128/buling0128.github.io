@@ -195,8 +195,8 @@
             </div>
             
             <!-- 2. 樱之都奈樱IP板块 -->
-            <h3 class="ip-section-title" data-ip="sakura">樱之都奈樱</h3>
-            <div class="artworks-grid" id="sakuraGrid">
+            <h3 class="ip-section-title" data-ip="yingzhidu">樱之都·奈樱</h3>
+            <div class="artworks-grid" id="yingzhiduGrid">
                 <!-- 樱之都奈樱IP图片将动态加载 -->
             </div>
             
@@ -238,7 +238,7 @@
         // 按IP分类的插画作品数据（每个IP下2张图）
         const artworksData = {
             // 1. 因赛美那IP
-            insaimena: [
+            iynsaimeina: [
                 {
                     id: 1,
                     title: '因赛美那-时光之刃',
@@ -255,7 +255,7 @@
                 }
             ],
             // 2. 樱之都·奈樱IP
-            sakura: [
+            yingzhidu: [
                 {
                     id: 3,
                     title: '奈樱-樱花魔法',
@@ -309,8 +309,8 @@
 
         // IP名称映射（用于显示）
         const ipNameMap = {
-            insaimena: '因赛美那',
-            sakura: '樱之都·奈樱',
+            yinsaimeina: '因赛美那',
+            yingzhidu: '樱之都·奈樱',
             yaoguijie: '妖鬼街',
             other: '其他'
         };
@@ -343,8 +343,8 @@
             }
 
             // 2. 加载各IP板块的图片和文字内容（关键修复：补充完整渲染逻辑）
-            loadIpArtworks('insaimena', document.getElementById('insaimenaGrid'));
-            loadIpArtworks('sakura', document.getElementById('sakuraGrid'));
+            loadIpArtworks('yinsaimeina', document.getElementById('insaimenaGrid'));
+            loadIpArtworks('yingzhidu', document.getElementById('sakuraGrid'));
             loadIpArtworks('yaoguijie', document.getElementById('yaoguijieGrid'));
             loadIpArtworks('other', document.getElementById('otherGrid'));
 
