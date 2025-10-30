@@ -5,11 +5,11 @@ function createNavbar() {
     
     // 导航栏数据（存储相对于网站根目录的绝对路径）
     const navItems = [
-        { name: '首页', url: '../index.html' },
-        { name: '设定集', url: '../works/settings/index.html' },
-        { name: '故事集', url: '../works/stories/index.html' },
-        { name: '画集', url: '../works/artworks/index.html' },
-        { name: '关于本站', url: '../works/about/index.html' }
+        { name: '首页', url: '../../index.html' },
+        { name: '设定集', url: '../../works/settings/index.html' },
+        { name: '故事集', url: '../../works/stories/index.html' },
+        { name: '画集', url: '../../works/artworks/index.html' },
+        { name: '关于本站', url: '../../works/about/index.html' }
     ];
 
     // 获取网站根目录路径（假设HTML文件直接放在服务器根目录或项目根目录）
