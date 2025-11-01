@@ -19,7 +19,7 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">因赛美那</h3>
                         <p class="work-card-description">包含原初版、15版、23版、24版、neo版、25版等多个版本的故事内容。</p>
-                        <button class="work-card-button" onclick="loadWork('yinsaimeina')">查看详情</button>
+                        <a href="yinsaimeina.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 樱之都奈樱 -->
@@ -28,7 +28,7 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">樱之都·奈樱</h3>
                         <p class="work-card-description">包含散装版、旧版、24版、25版等多个版本的故事内容。</p>
-                        <button class="work-card-button" onclick="loadWork('yingzhidu')">查看详情</button>
+                        <a href="yingzhidu.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 妖鬼街 -->
@@ -37,7 +37,7 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">妖鬼街</h3>
                         <p class="work-card-description">妖鬼街的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('yaoguijie')">查看详情</button>
+                        <a href="yaoguijie.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 提奈拉普 -->
@@ -46,16 +46,16 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">提奈拉普</h3>
                         <p class="work-card-description">提奈拉普的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('tinailapu')">查看详情</button>
+                        <a href="tinailapu.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
-                 <!-- 异能都市的寻猎者 -->
+                <!-- 异能都市的寻猎者 -->
                 <div class="work-card">
                     <img src="../../images/card.jpg" alt="异能都市的寻猎者" class="work-card-image">
                     <div class="work-card-content">
                         <h3 class="work-card-title">异能都市的寻猎者</h3>
                         <p class="work-card-description">异能都市的寻猎者的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('yinengdushi')">查看详情</button>
+                        <a href="yinengdushi.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 海兔岸上求生记 -->
@@ -64,7 +64,7 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">海兔岸上求生记</h3>
                         <p class="work-card-description">海兔岸上求生记的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('haitu')">查看详情</button>
+                        <a href="haitu.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 仙境 -->
@@ -73,7 +73,7 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">仙境</h3>
                         <p class="work-card-description">仙境的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('wonderland')">查看详情</button>
+                        <a href="wonderland.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 勇锤不朽的魔法少女 -->
@@ -82,16 +82,16 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">勇锤不朽的魔法少女</h3>
                         <p class="work-card-description">勇锤不朽的魔法少女的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('mofashaonv')">查看详情</button>
+                        <a href="mofashaonv.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
-                 <!-- 高速吟唱魔法使 -->
+                <!-- 高速吟唱魔法使 -->
                 <div class="work-card">
                     <img src="../../images/card.jpg" alt="高速吟唱魔法使" class="work-card-image">
                     <div class="work-card-content">
                         <h3 class="work-card-title">高速吟唱魔法使</h3>
                         <p class="work-card-description">高速吟唱魔法使的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('gaosuyinchang')">查看详情</button>
+                        <a href="gaosuyinchang.html" class="work-card-button">查看详情</a>
                     </div>
                 </div>
                 <!-- 蓝·草 -->
@@ -100,170 +100,13 @@
                     <div class="work-card-content">
                         <h3 class="work-card-title">蓝·草</h3>
                         <p class="work-card-description">蓝·草的故事。</p>
-                        <button class="work-card-button" onclick="loadWork('lancao')">查看详情</button>
+                        <a href="lancao.html" class="work-card-button">查看详情</a>
                     </div>
-                </div>
-
-
-
-
-                
-            </div>
-            
-            <!-- 作品详情展示区域（结构不变） -->
-            <div id="workDetail" class="work-detail-container" style="display: none;">
-                <div class="loading" id="loading">
-                    <div class="loading-spinner"></div>
-                </div>
-                <div id="workContent" style="display: none;">
-                    <h2 class="work-detail-title" id="detailTitle"></h2>
-                    <div class="work-detail-content">
-                        <div class="work-detail-image">
-                            <img id="detailImage" src="" alt="作品图片">
-                        </div>
-                        <div class="work-detail-info">
-                            <div class="work-detail-description" id="detailDescription"></div>
-                            <div class="work-detail-meta">
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">创作时间：</span>
-                                    <span id="detailTime"></span>
-                                </div>
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">类型：</span>
-                                    <span id="detailType"></span>
-                                </div>
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">状态：</span>
-                                    <span id="detailStatus"></span>
-                                </div>
-                            </div>
-                            <!-- 版本选择 -->
-                            <div id="versionSelect" class="mt-4">
-                                <h3 class="text-lg font-semibold mb-2">选择版本：</h3>
-                                <div class="flex flex-wrap gap-2" id="versionButtons"></div>
-                            </div>
-                            <!-- 版本内容 -->
-                            <div id="versionContent" class="mt-6 p-4 bg-gray-50 rounded-lg">
-                                <h4 class="text-md font-semibold mb-2" id="versionTitle"></h4>
-                                <div id="versionDescription"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="error" id="error" style="display: none;">
-                    <p>加载作品详情失败，请稍后再试。</p>
                 </div>
             </div>
         </div>
     </div>
 
     <script src="../../js/navbar.js"></script>
-    <script>
-        // 存储当前加载的IP基础信息（全局变量，供版本切换使用）
-        let currentWorkInfo = null;
-
-        /**
-         * 加载IP基础信息（第一步：先加载IP的标题、类型等基础内容）
-         * @param {string} workKey - IP文件夹名称（如insaimena、sakura）
-         */
-        function loadWork(workKey) {
-            // 显示加载动画
-            const workDetail = document.getElementById('workDetail');
-            const loading = document.getElementById('loading');
-            const workContent = document.getElementById('workContent');
-            const error = document.getElementById('error');
-            
-            workDetail.style.display = 'block';
-            loading.style.display = 'flex';
-            workContent.style.display = 'none';
-            error.style.display = 'none';
-
-            // 1. 加载该IP的基础信息（info.json）
-            fetch(`data/${workKey}/info.json`)
-                .then(response => {
-                    if (!response.ok) throw new Error('基础信息加载失败');
-                    return response.json();
-                })
-                .then(workInfo => {
-                    currentWorkInfo = workInfo; // 保存基础信息，供版本加载使用
-                    
-                    // 2. 更新IP基础信息到页面
-                    document.getElementById('detailTitle').textContent = workInfo.title;
-                    document.getElementById('detailImage').src = workInfo.image;
-                    document.getElementById('detailImage').alt = workInfo.title;
-                    document.getElementById('detailDescription').innerHTML = workInfo.description;
-                    document.getElementById('detailTime').textContent = workInfo.time;
-                    document.getElementById('detailType').textContent = workInfo.type;
-                    document.getElementById('detailStatus').textContent = workInfo.status;
-
-                    // 3. 生成版本选择按钮（并绑定加载版本的事件）
-                    const versionButtons = document.getElementById('versionButtons');
-                    versionButtons.innerHTML = ''; // 清空原有按钮
-                    
-                    workInfo.versions.forEach(versionName => {
-                        const button = document.createElement('button');
-                        button.className = 'px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600 transition';
-                        button.textContent = versionName;
-                        // 点击按钮加载对应版本的故事内容
-                        button.onclick = () => loadVersion(workKey, versionName);
-                        versionButtons.appendChild(button);
-                    });
-
-                    // 4. 默认加载第一个版本的内容
-                    if (workInfo.versions.length > 0) {
-                        loadVersion(workKey, workInfo.versions[0]);
-                    }
-
-                    // 5. 显示基础信息，隐藏加载动画
-                    loading.style.display = 'none';
-                    workContent.style.display = 'block';
-                    workDetail.scrollIntoView({ behavior: 'smooth' });
-                })
-                .catch(err => {
-                    console.error('加载失败:', err);
-                    loading.style.display = 'none';
-                    error.style.display = 'block';
-                });
-        }
-
-        /**
-         * 加载指定IP的指定版本故事内容（第二步：加载版本详情）
-         * @param {string} workKey - IP文件夹名称（如insaimena）
-         * @param {string} versionName - 版本名称（如“原初版”）
-         */
-        function loadVersion(workKey, versionName) {
-            const versionTitleEl = document.getElementById('versionTitle');
-            const versionDescEl = document.getElementById('versionDescription');
-            const versionButtons = document.querySelectorAll('#versionButtons button');
-
-            // 1. 加载该版本的故事文件（如“原初版.json”）
-            fetch(`data/${workKey}/${versionName}.json`)
-                .then(response => {
-                    if (!response.ok) throw new Error(`版本“${versionName}”加载失败`);
-                    return response.json();
-                })
-                .then(versionData => {
-                    // 2. 更新版本内容到页面
-                    versionTitleEl.textContent = versionData.title;
-                    versionDescEl.innerHTML = versionData.description;
-
-                    // 3. 更新版本按钮样式（高亮当前选中的版本）
-                    versionButtons.forEach(btn => {
-                        if (btn.textContent === versionName) {
-                            btn.classList.remove('bg-blue-500');
-                            btn.classList.add('bg-blue-700');
-                        } else {
-                            btn.classList.remove('bg-blue-700');
-                            btn.classList.add('bg-blue-500');
-                        }
-                    });
-                })
-                .catch(err => {
-                    console.error('版本加载失败:', err);
-                    versionTitleEl.textContent = '版本加载失败';
-                    versionDescEl.innerHTML = '<p class="text-red-500">该版本的故事内容暂时无法加载，请稍后再试。</p>';
-                });
-        }
-    </script>
 </body>
 </html>
