@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>布灵的创作空间 - 【因赛美那】</title>
+    <title>布灵的创作空间 - 因赛美那</title>
     <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../../css/style.css">
     <style>
-        /* 适配原有风格的详情页样式 */
+        /* 保持原有样式不变 */
         .work-detail-container {
             margin-top: 30px;
             background-color: #fff;
@@ -84,29 +84,11 @@
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
-        }
-        .version-btn.active {
-            background-color: #357abd;
+            text-decoration: none;
+            display: inline-block;
         }
         .version-btn:hover {
             background-color: #357abd;
-        }
-        .version-content {
-            background-color: #f8f9fa;
-            border-radius: 8px;
-            padding: 25px;
-            margin-top: 15px;
-        }
-        .version-content h4 {
-            font-size: 1.1rem;
-            color: #4a90e2;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #e9ecef;
-            padding-bottom: 8px;
-        }
-        .version-desc {
-            color: #333;
-            line-height: 1.7;
         }
         /* 响应式调整 */
         @media (max-width: 768px) {
@@ -126,108 +108,50 @@
 </head>
 <body>
     <div class="container">
-        <!-- 导航栏沿用原有 -->
         <script src="../../js/navbar.js"></script>
 
-        <!-- IP详情主体 -->
         <div class="work-detail-container">
-            <h2 class="work-detail-title">【IP名称】</h2>
+            <h2 class="work-detail-title">因赛美那</h2>
 
             <div class="work-detail-content">
-                <!-- IP封面图 -->
                 <div class="work-detail-image">
-                    <img src="../../images/【IP封面图】.jpg" alt="【IP名称】封面">
+                    <img src="../../images/card.jpg" alt="因赛美那封面">
                 </div>
 
-                <!-- IP基础信息与版本内容 -->
                 <div class="work-detail-info">
-                    <!-- IP简介 -->
                     <div class="work-detail-description">
-                        【这里填写IP的整体简介，比如世界观设定、核心剧情概括、创作背景等，支持换行和简单HTML标签（如<br>、<strong>）】
+                        因赛美那是围绕“平行世界”“命运抉择”核心设定展开的奇幻冒险IP。故事始于神秘大陆“艾特拉”，主角团为阻止世界崩塌，穿越不同时空寻找“星核碎片”，途中遭遇盟友背叛、时空悖论等多重危机，最终在牺牲与坚守中探寻“存在的意义”。IP自创作以来历经多次迭代，各版本在世界观复杂度、角色关系、剧情走向等方面各有侧重。
                     </div>
 
-                    <!-- 基础元信息 -->
                     <div class="work-detail-meta">
                         <div class="work-detail-meta-item">
                             <span class="work-detail-meta-label">创作时间：</span>
-                            <span>【填写创作时间，如“2023年-至今”“2024年6月”】</span>
+                            <span>2015年-至今</span>
                         </div>
                         <div class="work-detail-meta-item">
                             <span class="work-detail-meta-label">类型：</span>
-                            <span>【填写类型，如“奇幻/冒险”“都市/异能”“校园/治愈”】</span>
+                            <span>奇幻/冒险/时空穿越</span>
                         </div>
                         <div class="work-detail-meta-item">
                             <span class="work-detail-meta-label">状态：</span>
-                            <span>【填写状态，如“连载中”“已完结”“停更中”“构思中”】</span>
+                            <span>多版本并行（部分连载中/部分完结）</span>
                         </div>
                     </div>
 
-                    <!-- 版本选择 -->
                     <div class="version-select">
                         <h3>选择版本</h3>
                         <div class="version-buttons">
-                            <button class="version-btn active" data-version="version1">【版本1名称，如“原初版”】</button>
-                            <button class="version-btn" data-version="version2">【版本2名称，如“24版”】</button>
-                            <button class="version-btn" data-version="version3">【版本3名称，如“neo版”】</button>
-                            <!-- 可根据实际版本数量增减按钮 -->
-                        </div>
-                    </div>
-
-                    <!-- 版本内容展示（默认显示第一个版本） -->
-                    <div class="version-content" id="version1">
-                        <h4>【版本1完整标题，如“因赛美那·原初版”】</h4>
-                        <div class="version-desc">
-                            【版本1的详细内容，包括剧情梗概、角色设定、版本特色、更新进度等，支持多段文本和简单HTML标签，比如：<br><br>
-                            核心剧情：xxx<br>
-                            版本差异：与24版相比，原初版的世界观更简洁，角色设定更偏向xxx<br>
-                            目前进度：已完成第3章，后续将补充xxx情节】
-                        </div>
-                    </div>
-
-                    <div class="version-content" id="version2" style="display: none;">
-                        <h4>【版本2完整标题，如“因赛美那·24版”】</h4>
-                        <div class="version-desc">
-                            【版本2的详细内容，格式同上】
-                        </div>
-                    </div>
-
-                    <div class="version-content" id="version3" style="display: none;">
-                        <h4>【版本3完整标题，如“因赛美那·neo版”】</h4>
-                        <div class="version-desc">
-                            【版本3的详细内容，格式同上】
+                            <a href="yinsaimeina00.html" class="version-btn">原初版</a>
+                            <a href="yinsaimeina15.html" class="version-btn">15版</a>
+                            <a href="yinsaimeina-3.html" class="version-btn">23版</a>
+                            <a href="yinsaimeina24.html" class="version-btn">24版</a>
+                            <a href="yinsaimeinaneo.html" class="version-btn">neo版</a>
+                            <a href="yinsaimeina25.html" class="version-btn">25版</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <!-- 版本切换JS -->
-    <script>
-        // 获取所有版本按钮和版本内容
-        const versionBtns = document.querySelectorAll('.version-btn');
-        const versionContents = document.querySelectorAll('.version-content');
-
-        // 给每个按钮绑定点击事件
-        versionBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // 移除所有按钮的active状态
-                versionBtns.forEach(b => b.classList.remove('active'));
-                // 给当前点击按钮添加active状态
-                btn.classList.add('active');
-
-                // 获取当前版本ID
-                const targetVersion = btn.getAttribute('data-version');
-
-                // 隐藏所有版本内容
-                versionContents.forEach(content => {
-                    content.style.display = 'none';
-                });
-
-                // 显示当前选中的版本内容
-                document.getElementById(targetVersion).style.display = 'block';
-            });
-        });
-    </script>
 </body>
 </html>
