@@ -1,1 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>布灵的创作空间 - 因赛美那·原初版</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* 与主页面样式一致，保证风格统一 */
+        .work-detail-container {
+            margin-top: 30px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+        .work-detail-title {
+            font-size: 1.8rem;
+            color: #4a90e2;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f5ff;
+            padding-bottom: 10px;
+        }
+        .version-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 25px;
+        }
+        .version-image {
+            flex: 1;
+            min-width: 250px;
+        }
+        .version-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+        }
+        .version-meta {
+            flex: 2;
+            min-width: 250px;
+        }
+        .version-meta-item {
+            margin-bottom: 12px;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .version-meta-label {
+            font-weight: 600;
+            color: #4a90e2;
+        }
+        .version-content {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .version-content h4 {
+            font-size: 1.2rem;
+            color: #4a90e2;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 8px;
+        }
+        .version-desc {
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 8px 18px;
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 4px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        .back-btn:hover {
+            background-color: #5a6268;
+        }
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .work-detail-container {
+                padding: 20px;
+            }
+            .version-meta-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script src="../../js/navbar.js"></script>
 
+        <div class="work-detail-container">
+            <h2 class="work-detail-title">因赛美那·原初版</h2>
+
+            <!-- 版本基础信息 -->
+            <div class="version-header">
+                <div class="version-image">
+                    <img src="../../images/card.jpg" alt="因赛美那·原初版封面">
+                </div>
+                <div class="version-meta">
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">创作时间：</span>
+                        <span>2015年3月-2016年11月</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">状态：</span>
+                        <span>已完结</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">总章节：</span>
+                        <span>12章（含2个番外）</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">核心特色：</span>
+                        <span>世界观简洁、剧情紧凑、角色关系清晰</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 版本详情内容 -->
+            <div class="version-content">
+                <h4>核心剧情</h4>
+                <div class="version-desc">
+                    原初版是因赛美那IP的起点，讲述主角“莉娅”作为普通村民，意外获得“星核碎片”后，被卷入“暗族”与“守护族”的千年战争。为保护家园，莉娅与流浪战士“凯”、魔法师“艾拉”组成小队，穿越3个平行时空寻找剩余碎片，最终在“时空裂隙”中击败暗族首领，暂时阻止世界崩塌。结局留下“碎片能量不稳定”的伏笔，为后续版本铺垫。
+                </div>
+
+                <h4>角色设定</h4>
+                <div class="version-desc">
+                    - 莉娅：女主角，性格坚韧、善良，拥有“星核亲和力”，无先天异能，靠后天成长成为小队核心。<br>
+                    - 凯：男主角，守护族后裔，擅长剑术，背负家族血海深仇，外冷内热。<br>
+                    - 艾拉：女二号，没落魔法师家族成员，掌握基础元素魔法，负责小队后勤与解谜。<br>
+                    - 暗族首领：反派，追求星核碎片以获得时空掌控权，动机简单直接，无复杂背景铺垫。
+                </div>
+
+                <h4>版本差异</h4>
+                <div class="version-desc">
+                    与后续版本相比，原初版世界观仅包含“艾特拉大陆”及3个平行时空，无过多分支设定；角色数量较少（核心角色仅5人），无复杂的阵营划分；剧情聚焦“寻找碎片+对抗暗族”主线，无冗余支线，适合初次接触该IP的读者快速了解核心设定。
+                </div>
+            </div>
+
+            <!-- 返回按钮 -->
+            <a href="yinsaimeina.html" class="back-btn">返回因赛美那主页面</a>
+        </div>
+    </div>
+</body>
+</html>
