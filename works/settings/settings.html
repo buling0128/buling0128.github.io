@@ -53,104 +53,178 @@
             padding-bottom: 8px;
             border-bottom: 2px solid #e3f2fd;
         }
+        /* 新增：暂未开放提示样式 */
+        .closed-container {
+            width: 100%;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 40px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .closed-icon {
+            font-size: 4rem;
+            color: #90caf9;
+            margin-bottom: 20px;
+        }
+        .closed-title {
+            font-size: 1.8rem;
+            color: #333;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        .closed-desc {
+            font-size: 1rem;
+            color: #666;
+            max-width: 500px;
+        }
+        /* 版本高亮样式 */
+        .version-section.active {
+            border-left: 4px solid #2196f3;
+            background-color: #f5f9ff;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="works-container">
-            <h2 class="works-title">设定集</h2>
-            
-            <div class="works-grid">
-                <!-- 因赛美那（绑定IP文件夹名yinsaimeina） -->
-                <div class="work-card">
-                    <img src="../../images/card.jpg" alt="因赛美那" class="work-card-image">
-                    <div class="work-card-content">
-                        <h3 class="work-card-title">因赛美那</h3>
-                        <p class="work-card-description">这是我的原创角色因赛美那的设定集，包含原初版、15版等6个版本的完整设定。</p>
-                        <button class="work-card-button" onclick="loadSetting('yinsaimeina')">查看详情</button>
+        <!-- 新增：内容容器，用于控制显示切换 -->
+        <div id="contentWrapper">
+            <!-- 正常显示内容（默认隐藏，根据命令控制） -->
+            <div id="normalContent" style="display: none;">
+                <div class="works-container">
+                    <h2 class="works-title">设定集</h2>
+                    
+                    <div class="works-grid">
+                        <!-- 因赛美那（绑定IP文件夹名yinsaimeina） -->
+                        <div class="work-card">
+                            <img src="../../images/card.jpg" alt="因赛美那" class="work-card-image">
+                            <div class="work-card-content">
+                                <h3 class="work-card-title">因赛美那</h3>
+                                <p class="work-card-description">这是我的原创角色因赛美那的设定集，包含原初版、15版等6个版本的完整设定。</p>
+                                <button class="work-card-button" onclick="loadSetting('yinsaimeina')">查看详情</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 樱之都奈樱（绑定IP文件夹名sakura） -->
+                        <div class="work-card">
+                            <img src="../../images/card.jpg" alt="樱之都·奈樱" class="work-card-image">
+                            <div class="work-card-content">
+                                <h3 class="work-card-title">樱之都·奈樱</h3>
+                                <p class="work-card-description">樱之都·奈樱的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
+                                <button class="work-card-button" onclick="loadSetting('yingzhidu')">查看详情</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 妖鬼街（绑定IP文件夹名yaoguijie） -->
+                        <div class="work-card">
+                            <img src="../../images/card.jpg" alt="妖鬼街" class="work-card-image">
+                            <div class="work-card-content">
+                                <h3 class="work-card-title">妖鬼街</h3>
+                                <p class="work-card-description">妖鬼街的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
+                                <button class="work-card-button" onclick="loadSetting('yaoguijie')">查看详情</button>
+                            </div>
+                        </div>
+                        
+                        <!-- 陀罗少女（绑定IP文件夹名tuoluoshaonv） -->
+                        <div class="work-card">
+                            <img src="../../images/card.jpg" alt="陀罗少女" class="work-card-image">
+                            <div class="work-card-content">
+                                <h3 class="work-card-title">陀罗少女</h3>
+                                <p class="work-card-description">陀罗少女的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
+                                <button class="work-card-button" onclick="loadSetting('tuoluoshaonv')">查看详情</button>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                
-                <!-- 樱之都奈樱（绑定IP文件夹名sakura） -->
-                <div class="work-card">
-                    <img src="../../images/card.jpg" alt="樱之都·奈樱" class="work-card-image">
-                    <div class="work-card-content">
-                        <h3 class="work-card-title">樱之都·奈樱</h3>
-                        <p class="work-card-description">樱之都·奈樱的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
-                        <button class="work-card-button" onclick="loadSetting('yingzhidu')">查看详情</button>
-                    </div>
-                </div>
-                
-                <!-- 妖鬼街（绑定IP文件夹名yaoguijie） -->
-                <div class="work-card">
-                    <img src="../../images/card.jpg" alt="妖鬼街" class="work-card-image">
-                    <div class="work-card-content">
-                        <h3 class="work-card-title">妖鬼街</h3>
-                        <p class="work-card-description">妖鬼街的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
-                        <button class="work-card-button" onclick="loadSetting('yaoguijie')">查看详情</button>
-                    </div>
-                </div>
-                
-                <!-- 陀罗少女（绑定IP文件夹名tuoluoshaonv） -->
-                <div class="work-card">
-                    <img src="../../images/card.jpg" alt="陀罗少女" class="work-card-image">
-                    <div class="work-card-content">
-                        <h3 class="work-card-title">陀罗少女</h3>
-                        <p class="work-card-description">陀罗少女的设定集，包含所有版本的世界观背景、角色来历、角色人设等内容。</p>
-                        <button class="work-card-button" onclick="loadSetting('tuoluoshaonv')">查看详情</button>
+                    
+                    <!-- 作品详情展示区域：新增目录容器和版本容器 -->
+                    <div id="workDetail" class="work-detail-container" style="display: none;">
+                        <div class="loading" id="loading">
+                            <div class="loading-spinner"></div>
+                        </div>
+                        
+                        <div id="workContent" style="display: none;">
+                            <h2 class="work-detail-title" id="detailTitle"></h2>
+                            
+                            <div class="work-detail-content">
+                                <div class="work-detail-image">
+                                    <img id="detailImage" src="" alt="作品图片">
+                                </div>
+                                
+                                <div class="work-detail-info">
+                                    <!-- 1. 渲染基础信息（创作时间、类型等） -->
+                                    <div class="work-detail-meta" style="margin-bottom: 20px;">
+                                        <div class="work-detail-meta-item">
+                                            <span class="work-detail-meta-label">创作时间：</span>
+                                            <span id="detailTime"></span>
+                                        </div>
+                                        <div class="work-detail-meta-item">
+                                            <span class="work-detail-meta-label">类型：</span>
+                                            <span id="detailType"></span>
+                                        </div>
+                                        <div class="work-detail-meta-item">
+                                            <span class="work-detail-meta-label">状态：</span>
+                                            <span id="detailStatus"></span>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- 2. 渲染目录（新增） -->
+                                    <div class="toc-container" id="tocContainer"></div>
+                                    
+                                    <!-- 3. 渲染多版本内容（新增） -->
+                                    <div class="versions-container" id="versionsContainer"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="error" id="error" style="display: none;">
+                            <p>加载作品详情失败，请稍后再试。</p>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- 作品详情展示区域：新增目录容器和版本容器 -->
-            <div id="workDetail" class="work-detail-container" style="display: none;">
-                <div class="loading" id="loading">
-                    <div class="loading-spinner"></div>
+            <!-- 暂未开放提示（默认隐藏，根据命令控制） -->
+            <div id="closedContent" class="closed-container" style="display: none;">
+                <div class="closed-icon">
+                    <i class="fa fa-lock"></i>
                 </div>
-                
-                <div id="workContent" style="display: none;">
-                    <h2 class="work-detail-title" id="detailTitle"></h2>
-                    
-                    <div class="work-detail-content">
-                        <div class="work-detail-image">
-                            <img id="detailImage" src="" alt="作品图片">
-                        </div>
-                        
-                        <div class="work-detail-info">
-                            <!-- 1. 渲染基础信息（创作时间、类型等） -->
-                            <div class="work-detail-meta" style="margin-bottom: 20px;">
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">创作时间：</span>
-                                    <span id="detailTime"></span>
-                                </div>
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">类型：</span>
-                                    <span id="detailType"></span>
-                                </div>
-                                <div class="work-detail-meta-item">
-                                    <span class="work-detail-meta-label">状态：</span>
-                                    <span id="detailStatus"></span>
-                                </div>
-                            </div>
-                            
-                            <!-- 2. 渲染目录（新增） -->
-                            <div class="toc-container" id="tocContainer"></div>
-                            
-                            <!-- 3. 渲染多版本内容（新增） -->
-                            <div class="versions-container" id="versionsContainer"></div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="error" id="error" style="display: none;">
-                    <p>加载作品详情失败，请稍后再试。</p>
-                </div>
+                <h2 class="closed-title">此区域暂未开放</h2>
+                <p class="closed-desc">感谢您的关注，设定集区域正在精心筹备中，敬请期待后续更新~</p>
             </div>
         </div>
     </div>
 
     <script src="../../js/navbar.js"></script>
     <script>
+        // 核心控制命令：修改这里的value值来切换显示状态
+        // 可选值：'open'（显示正常内容）、'close'（显示暂未开放提示）
+        const controlCommand = {
+            value: 'open' // 这里修改命令
+        };
+
+        // 页面加载时根据命令控制显示内容
+        document.addEventListener('DOMContentLoaded', function() {
+            const normalContent = document.getElementById('normalContent');
+            const closedContent = document.getElementById('closedContent');
+            
+            if (controlCommand.value === 'open') {
+                normalContent.style.display = 'block';
+                closedContent.style.display = 'none';
+            } else if (controlCommand.value === 'close') {
+                normalContent.style.display = 'none';
+                closedContent.style.display = 'flex';
+            } else {
+                // 命令无效时默认显示暂未开放
+                normalContent.style.display = 'none';
+                closedContent.style.display = 'flex';
+            }
+        });
+
         /**
          * 加载指定IP的设定内容（适配新JSON结构）
          * @param {string} settingKey - IP文件夹名称（如yinsaimeina）
@@ -244,7 +318,7 @@
             const versionElement = document.getElementById(versionId);
             if (versionElement) {
                 versionElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                // 可选：给当前版本添加高亮样式
+                // 给当前版本添加高亮样式
                 document.querySelectorAll('.version-section').forEach(section => {
                     section.classList.remove('active');
                 });
