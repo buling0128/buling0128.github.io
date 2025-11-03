@@ -1,1 +1,479 @@
 
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>布灵的创作空间 - 因赛美那-25版</title>
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../../css/style.css">
+    <style>
+        /* 保持优化后的样式不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f5f7fa;
+            padding-bottom: 60px;
+        }
+        .container {
+            width: 100%;
+            padding: 0 15px;
+            margin: 0 auto;
+        }
+        .work-detail-container {
+            margin-top: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+            padding: 20px;
+            position: relative;
+        }
+        .work-detail-title {
+            font-size: 1.5rem;
+            color: #4a90e2;
+            margin-bottom: 15px;
+            border-bottom: 2px solid #f0f5ff;
+            padding-bottom: 8px;
+            text-align: center;
+        }
+        .version-header {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .version-image {
+            flex: 1;
+            min-width: 100%;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+        .version-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .version-meta {
+            flex: 2;
+            min-width: 100%;
+        }
+        .version-meta-item {
+            margin-bottom: 10px;
+            color: #666;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+        .version-meta-label {
+            font-weight: 600;
+            color: #4a90e2;
+            min-width: 70px;
+        }
+        .version-content {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 20px;
+        }
+        .version-content h4 {
+            font-size: 1.1rem;
+            color: #4a90e2;
+            margin-bottom: 12px;
+            border-bottom: 1px solid #e9ecef;
+            padding-bottom: 6px;
+        }
+        .version-desc {
+            color: #333;
+            line-height: 1.7;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+        .back-btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #6c757d;
+            color: #fff;
+            border-radius: 6px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            margin-right: 10px;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+        .back-btn:hover, .back-btn:active {
+            background-color: #5a6268;
+        }
+        .chapter-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .chapter-sidebar {
+            flex: 1;
+            min-width: 100%;
+            position: static;
+        }
+        .chapter-nav {
+            background-color: #f0f5ff;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            margin-bottom: 15px;
+        }
+        .chapter-nav h3 {
+            font-size: 1.1rem;
+            color: #4a90e2;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #dee2e6;
+            padding-bottom: 8px;
+        }
+        .chapter-nav h3 i {
+            font-size: 1rem;
+        }
+        .chapter-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .chapter-list li {
+            margin-bottom: 6px;
+            border-radius: 4px;
+            transition: all 0.2s ease;
+        }
+        .chapter-list li a {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 12px;
+            color: #333;
+            text-decoration: none;
+            font-size: 0.9rem;
+            border-radius: 4px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .chapter-list li:hover, .chapter-list li:active {
+            background-color: #e8f4f8;
+        }
+        .chapter-list li.active a {
+            background-color: #4a90e2;
+            color: #fff;
+            font-weight: 500;
+        }
+        .chapter-list .extra-label {
+            color: #868e96;
+            font-size: 0.8rem;
+            margin-left: 4px;
+        }
+        .top-btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            padding: 12px;
+            margin-top: 12px;
+            background-color: #e9ecef;
+            color: #495057;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .top-btn:hover, .top-btn:active {
+            background-color: #dee2e6;
+            color: #212529;
+        }
+        .chapter-main {
+            flex: 3;
+            min-width: 100%;
+        }
+        .chapter-section {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px 15px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            scroll-margin-top: 20px;
+        }
+        .chapter-section:last-child {
+            margin-bottom: 15px;
+        }
+        .chapter-title {
+            font-size: 1.2rem;
+            color: #2d7dd2;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #f0f5ff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-align: left;
+        }
+        .chapter-title i {
+            color: #4a90e2;
+            font-size: 1rem;
+        }
+        .chapter-paragraph {
+            color: #333;
+            line-height: 1.8;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            text-indent: 2em;
+            word-break: break-all;
+        }
+        .chapter-paragraph:last-child {
+            margin-bottom: 0;
+        }
+        .floating-top-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 48px;
+            height: 48px;
+            background-color: #4a90e2;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(74, 144, 226, 0.4);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 999;
+            touch-action: manipulation;
+        }
+        .floating-top-btn:hover, .floating-top-btn:active {
+            background-color: #357abd;
+            transform: scale(1.1);
+        }
+        .floating-top-btn.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        @media (max-width: 375px) {
+            .work-detail-container {
+                padding: 15px;
+            }
+            .chapter-title {
+                font-size: 1.1rem;
+            }
+            .chapter-paragraph {
+                font-size: 0.9rem;
+                line-height: 1.7;
+                text-indent: 1.5em;
+            }
+            .version-meta-item {
+                font-size: 0.9rem;
+            }
+            .back-btn {
+                padding: 8px 16px;
+                font-size: 0.9rem;
+                width: 100%;
+                margin-right: 0;
+                text-align: center;
+            }
+            .floating-top-btn {
+                width: 42px;
+                height: 42px;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <script src="../../js/navbar.js"></script>
+
+        <div class="work-detail-container" id="top">
+            <h2 class="work-detail-title">因赛美那·原初版</h2>
+
+            <!-- 版本基础信息 -->
+            <div class="version-header">
+                <div class="version-image">
+                    <img src="../../images/card.jpg" alt="因赛美那·原初版封面">
+                </div>
+                <div class="version-meta">
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">创作时间：</span>
+                        <span>2015年3月-2016年11月</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">状态：</span>
+                        <span>已完结</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">总章节：</span>
+                        <span>12章（含2个番外）</span>
+                    </div>
+                    <div class="version-meta-item">
+                        <span class="version-meta-label">核心特色：</span>
+                        <span>世界观简洁、剧情紧凑、角色关系清晰</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 版本核心信息 -->
+            <div class="version-content">
+                <h4>核心剧情</h4>
+                <div class="version-desc">
+                    原初版是因赛美那IP的起点，讲述主角“莉娅”作为普通村民，意外获得“星核碎片”后，被卷入“暗族”与“守护族”的千年战争。为保护家园，莉娅与流浪战士“凯”、魔法师“艾拉”组成小队，穿越3个平行时空寻找剩余碎片，最终在“时空裂隙”中击败暗族首领，暂时阻止世界崩塌。结局留下“碎片能量不稳定”的伏笔，为后续版本铺垫。
+                </div>
+
+                <h4>角色设定</h4>
+                <div class="version-desc">
+                    - 莉娅：女主角，性格坚韧、善良，拥有“星核亲和力”，无先天异能，靠后天成长成为小队核心。<br>
+                    - 凯：男主角，守护族后裔，擅长剑术，背负家族血海深仇，外冷内热。<br>
+                    - 艾拉：女二号，没落魔法师家族成员，掌握基础元素魔法，负责小队后勤与解谜。<br>
+                    - 暗族首领：反派，追求星核碎片以获得时空掌控权，动机简单直接，无复杂背景铺垫。
+                </div>
+
+                <h4>版本差异</h4>
+                <div class="version-desc">
+                    与后续版本相比，原初版世界观仅包含“艾特拉大陆”及3个平行时空，无过多分支设定；角色数量较少（核心角色仅5人），无复杂的阵营划分；剧情聚焦“寻找碎片+对抗暗族”主线，无冗余支线，适合初次接触该IP的读者快速了解核心设定。
+                </div>
+            </div>
+
+            <!-- 章节主体区域 -->
+            <div class="chapter-container">
+                <!-- 侧边章节目录 -->
+                <div class="chapter-sidebar">
+                    <div class="chapter-nav">
+                        <h3><i class="fa fa-list-ul" aria-hidden="true"></i> 章节目录</h3>
+                        <ul class="chapter-list">
+                            <li class="active"><a href="#chapter1"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第1章：星核降临</a></li>
+                            <li><a href="#chapter2"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第2章：暗族突袭</a></li>
+                            <li><a href="#chapter3"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第3章：守护族后裔</a></li>
+                            <li><a href="#chapter4"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第4章：魔法盟友</a></li>
+                            <li><a href="#chapter5"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第5章：时空之门</a></li>
+                            <li><a href="#chapter6"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第6章：第一块碎片</a></li>
+                            <li><a href="#chapter7"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第7章：暗族追踪</a></li>
+                            <li><a href="#chapter8"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第8章：平行时空的危机</a></li>
+                            <li><a href="#chapter9"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第9章：碎片的秘密</a></li>
+                            <li><a href="#chapter10"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第10章：决战前夕</a></li>
+                            <li><a href="#chapter11"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第11章：时空裂隙</a></li>
+                            <li><a href="#chapter12"><i class="fa fa-bookmark-o" aria-hidden="true"></i> 第12章：暂时的和平</a></li>
+                            <li><a href="#extra1"><i class="fa fa-star-o" aria-hidden="true"></i> 番外1：凯的回忆 <span class="extra-label">番外</span></a></li>
+                            <li><a href="#extra2"><i class="fa fa-star-o" aria-hidden="true"></i> 番外2：艾特拉的日常 <span class="extra-label">番外</span></a></li>
+                        </ul>
+                        <a href="#top" class="top-btn"><i class="fa fa-arrow-up" aria-hidden="true"></i> 回到顶部</a>
+                    </div>
+                </div>
+
+                <!-- 右侧章节内容 -->
+                <div class="chapter-main">
+                    <!-- 第1章 -->
+                    <div id="chapter1" class="chapter-section">
+                        <h3 class="chapter-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> 第1章：星核降临</h3>
+                        <p class="chapter-paragraph">艾特拉大陆的南部，有一个名为“青禾村”的小村庄。这里远离大陆中心的纷争，村民们世代以耕种和狩猎为生，过着平静祥和的日子。莉娅是村里最普通的一个少女，今年十六岁，父母早逝，独自住在村边的小屋里，靠帮村民们缝补衣物和采摘草药维持生计。</p>
+                        <p class="chapter-paragraph">这天傍晚，天空异常晴朗，夕阳将云朵染成了温暖的橘红色。莉娅像往常一样去后山采摘草药，准备明天拿到镇上售卖。后山的树林茂密，空气清新，是她最喜欢的地方。她熟练地辨认着草药的种类，将采摘好的草药放进背上的竹篮里。</p>
+                        <p class="chapter-paragraph">突然，天空中传来一阵刺耳的呼啸声，紧接着，一道耀眼的蓝光划破天际，直直地坠向后山深处。莉娅被这突如其来的景象吓了一跳，手中的草药掉落在地。她犹豫了片刻，好奇心最终战胜了恐惧，决定前去一探究竟。</p>
+                        <p class="chapter-paragraph">循着蓝光坠落的方向，莉娅穿过茂密的树林，来到一片开阔的空地。只见空地上有一个直径约两米的大坑，坑中央静静地躺着一块拳头大小的蓝色晶体，正散发着柔和的光芒。晶体周围的地面都被烧焦了，空气中弥漫着一股奇异的焦糊味。</p>
+                        <p class="chapter-paragraph">莉娅小心翼翼地靠近大坑，伸出手想要触摸那块晶体。就在她的指尖即将触碰到晶体的瞬间，晶体突然爆发出强烈的蓝光，将她整个人笼罩其中。莉娅感到一股温暖的能量涌入体内，随即失去了意识。</p>
+                    </div>
+
+                    <!-- 第2章 -->
+                    <div id="chapter2" class="chapter-section">
+                        <h3 class="chapter-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> 第2章：暗族突袭</h3>
+                        <p class="chapter-paragraph">不知过了多久，莉娅在一阵剧烈的头痛中醒来。她发现自己躺在原地，那块蓝色晶体已经消失不见，只在地面上留下一个淡淡的蓝色印记。夕阳已经西下，天色渐渐暗了下来。</p>
+                        <p class="chapter-paragraph">莉娅挣扎着站起身，感觉身体有些异样，但又说不上来具体是什么。她捡起掉落在地的草药，匆匆向村子走去。当她回到村口时，发现情况有些不对劲——往日这个时候应该炊烟袅袅的村庄，此刻却异常安静，连一丝灯光都没有。</p>
+                        <p class="chapter-paragraph">一种不祥的预感涌上心头，莉娅加快了脚步。刚走进村子，她就看到了令她终生难忘的一幕：村里的房屋大多被烧毁，地上散落着村民的尸体，鲜血染红了青石板路。几个长相怪异的黑衣人正在村子里搜寻着什么，他们的皮肤呈现出诡异的灰黑色，眼睛里闪烁着红光。</p>
+                        <p class="chapter-paragraph">"暗族！"莉娅想起了村里老人曾经讲过的传说，传说中生活在大陆边缘的邪恶种族，以吸食生灵的能量为生。她下意识地想要躲藏起来，却不小心踩断了脚下的树枝，发出了清脆的响声。</p>
+                        <p class="chapter-paragraph">那几个暗族立刻发现了莉娅，发出一阵刺耳的怪笑，朝着她的方向扑了过来。莉娅吓得转身就跑，心脏在胸腔里剧烈地跳动着。她不知道自己为什么能跑得这么快，只觉得一股莫名的力量在推动着她。</p>
+                        <p class="chapter-paragraph">就在暗族即将追上莉娅的时候，一道银光闪过，一个手持长剑的年轻男子突然出现在她面前。男子身手矫健，几下就将那几个暗族解决掉了。莉娅惊魂未定地看着眼前的男子，他穿着一身破旧的皮衣，脸上带着一道浅浅的疤痕，眼神冷峻而锐利。</p>
+                    </div>
+
+                    <!-- 第3章 -->
+                    <div id="chapter3" class="chapter-section">
+                        <h3 class="chapter-title"><i class="fa fa-file-text-o" aria-hidden="true"></i> 第3章：守护族后裔</h3>
+                        <p class="chapter-paragraph">"跟我来。"年轻男子说完，不等莉娅反应，就转身向村外跑去。莉娅虽然还有些害怕，但看着眼前这个刚刚救了自己的人，还是毫不犹豫地跟了上去。两人一路狂奔，直到远离村庄的后山山洞里才停了下来。</p>
+                        <p class="chapter-paragraph">"我叫凯。"男子简单地介绍了自己，然后上下打量着莉娅，"你是青禾村的人？"莉娅点了点头，问道："那些黑衣人真的是暗族吗？村子里的人都..."说到这里，她再也忍不住，眼泪夺眶而出。</p>
+                        <p class="chapter-paragraph">凯沉默了片刻，说道："很抱歉，我来晚了。暗族最近在四处搜寻星核碎片，你的村子可能只是碰巧被他们盯上了。"星核碎片？莉娅想起了傍晚时分坠落的那块蓝色晶体，连忙将事情的经过告诉了凯。</p>
+                        <p class="chapter-paragraph">听完莉娅的叙述，凯的眼睛突然亮了起来："你说的那块晶体很可能就是星核碎片！它现在在哪里？"莉娅摇了摇头，说自己醒来后就没再见过那块晶体。凯皱起了眉头，自言自语道："这就奇怪了，星核碎片不会凭空消失才对。"</p>
+                        <p class="chapter-paragraph">就在这时，莉娅突然感到手心一阵发烫，她抬起手，发现自己的手心不知何时出现了一个和那块晶体一模一样的蓝色印记。凯看到那个印记，惊讶地瞪大了眼睛："星核印记！你竟然和星核碎片产生了共鸣！"</p>
+                        <p class="chapter-paragraph">凯告诉莉娅，自己是守护族的后裔，守护族世代以保护星核碎片为己任。星核是维持艾特拉大陆平衡的重要力量，一旦落入暗族手中，后果不堪设想。暗族想要收集所有的星核碎片，以获得掌控时空的力量。</p>
+                        <p class="chapter-paragraph">"现在星核碎片与你产生了共鸣，暗族一定会找到你的。"凯严肃地说，"你不能再留在这里了，跟我一起离开吧，我会保护你的。"莉娅看着凯坚定的眼神，想起了被毁灭的村庄和死去的村民，点了点头。她知道，自己的人生从这一刻起，将彻底改变。</p>
+                    </div>
+
+                    <!-- 第4-12章及番外内容结构相同，此处省略示例 -->
+                    <!-- 可按照上述章节格式继续添加内容 -->
+                </div>
+            </div>
+
+            <!-- 返回按钮 -->
+            <a href="yinsaimeina.html" class="back-btn">返回因赛美那主页面</a>
+        </div>
+    </div>
+
+    <!-- 交互脚本 -->
+    <script>
+        // 章节导航激活状态切换
+        const chapterLinks = document.querySelectorAll('.chapter-list li a');
+        const chapterSections = document.querySelectorAll('.chapter-section');
+        const floatingTopBtn = document.querySelector('.floating-top-btn');
+
+        // 监听滚动事件，更新导航状态和悬浮按钮显示
+        window.addEventListener('scroll', () => {
+            // 显示/隐藏回到顶部按钮
+            if (window.scrollY > 300) {
+                floatingTopBtn.classList.add('show');
+            } else {
+                floatingTopBtn.classList.remove('show');
+            }
+
+            // 更新章节导航激活状态
+            let currentChapterId = '';
+            chapterSections.forEach(section => {
+                const sectionTop = section.offsetTop - 100;
+                const sectionHeight = section.offsetHeight;
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentChapterId = section.getAttribute('id');
+                }
+            });
+
+            chapterLinks.forEach(link => {
+                link.parentElement.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentChapterId}`) {
+                    link.parentElement.classList.add('active');
+                }
+            });
+        });
+
+        // 回到顶部功能
+        floatingTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // 平滑滚动到章节
+        chapterLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = link.getAttribute('href').substring(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    targetElement.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
