@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>布灵的创作小屋</title>
+<style>
+/* SECTION: base-tokens */
+:root{
+  --blue-50:#f4f9ff; --blue-100:#e3f1fd; --blue-200:#c9e3f8; --blue-300:#9fcaf0;
+  --blue-500:#4d9de0; --blue-600:#3b7fc0; --blue-700:#2d6296; --ink:#2b4257; --ink-soft:#5b7893;
+  --white:#ffffff; --shadow:0 6px 22px rgba(77,157,224,.14); --radius:14px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:linear-gradient(180deg,var(--blue-100),var(--blue-50) 340px,var(--white))}
+body{font-family:"PingFang SC","Microsoft YaHei","Segoe UI",sans-serif;color:var(--ink);min-height:100vh}
+/* SECTION: bg-waves —— 全站蓝色海浪波纹装饰层 */
+.bg-waves{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none}
+a{color:var(--blue-600);text-decoration:none}
+button{font-family:inherit;cursor:pointer}
+main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
+/* SECTION: topbar */
+.topbar{position:sticky;top:0;z-index:60;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--blue-200);padding:10px 16px;box-shadow:var(--shadow)}
+.nav-btn{width:40px;height:40px;border:1px solid var(--blue-200);border-radius:10px;background:var(--blue-50);color:var(--blue-700);font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center}
+.nav-btn:hover{background:var(--blue-100)}
+.brand{font-size:20px;font-weight:700;letter-spacing:2px;color:var(--blue-700)}
+.brand small{display:block;font-size:11px;font-weight:400;letter-spacing:1px;color:var(--ink-soft)}
+.topbar-tail{margin-left:auto;font-size:13px;color:var(--ink-soft)}
+/* SECTION: drawer */
+.mask{position:fixed;inset:0;background:rgba(43,66,87,.32);opacity:0;pointer-events:none;transition:opacity .25s;z-index:70}
+.mask.show{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;bottom:0;width:min(300px,84vw);background:var(--white);z-index:80;box-shadow:var(--shadow);transition:transform .28s ease;overflow-y:auto;padding:18px 16px 28px}
+.drawer-left{left:0;transform:translateX(-104%)}
+.drawer-right{right:0;transform:translateX(104%)}
+.drawer.show{transform:translateX(0)}
+.drawer-head{display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--blue-100);padding-bottom:10px;margin-bottom:10px}
+.drawer-head h2{font-size:16px;color:var(--blue-700);letter-spacing:1px}
+.drawer-close{border:none;background:var(--blue-50);color:var(--blue-700);width:32px;height:32px;border-radius:8px;font-size:16px}
+.drawer ul{list-style:none}
+.drawer li a,.drawer li button.item,.drawer .back-line a.item,.drawer .back-line button.item{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:10px;font-size:15px;color:var(--ink);border:none;background:none}
+.drawer li a:hover,.drawer li button.item:hover,.drawer .back-line a.item:hover,.drawer .back-line button.item:hover{background:var(--blue-50);color:var(--blue-700)}
+.drawer li a.active,.drawer li button.item.active{background:var(--blue-100);color:var(--blue-700);font-weight:600}
+.drawer li a,.drawer li button.item{display:block;width:100%;text-align:left;padding:11px 12px;border-radius:10px;font-size:15px;color:var(--ink);border:none;background:none}
+.drawer li a:hover,.drawer li button.item:hover{background:var(--blue-50);color:var(--blue-700)}
+.drawer li a.active{background:var(--blue-100);color:var(--blue-700);font-weight:600}
+.drawer .toc-sub{font-size:12px;color:var(--ink-soft);padding:8px 12px 2px;letter-spacing:1px}
+.drawer .back-line{margin-top:12px;border-top:1px dashed var(--blue-200);padding-top:10px}
+/* SECTION: home-notice */
+.notice{display:flex;gap:24px;align-items:flex-start;background:linear-gradient(90deg,var(--blue-100),var(--white));border:2px solid var(--blue-200);border-left:10px solid var(--blue-500);border-radius:26px;padding:28px 32px;margin-bottom:28px;box-shadow:var(--shadow)}
+.notice .tag{flex:none;background:var(--blue-500);color:#fff;font-size:24px;border-radius:999px;padding:6px 20px;margin-top:6px}
+.notice .txt{font-size:28px;line-height:1.8;flex:1}
+.notice .txt b{color:var(--blue-700)}
+.notice-close{flex:none;border:2px solid var(--blue-300);background:var(--white);color:var(--blue-600);border-radius:16px;padding:12px 24px;font-size:26px}
+.notice-close:hover{background:var(--blue-50)}
+/* SECTION: home-block —— 首页板块统一粗蓝描边外框 */
+.home-block{border:4px solid var(--blue-500);border-radius:20px;padding:6px 20px 18px;margin-bottom:26px;background:rgba(255,255,255,.55)}
+.home-block .section-title{margin-top:16px}
+/* SECTION: home-mascot */
+.mascot{display:flex;gap:26px;align-items:stretch;background:var(--white);border:4px solid var(--blue-500);border-radius:18px;padding:24px;margin-bottom:26px;box-shadow:var(--shadow)}
+.mascot-img{flex:none;width:min(360px,52%);cursor:pointer;border-radius:14px;overflow:hidden;position:relative;background:linear-gradient(135deg,var(--blue-100),var(--blue-200))}
+.mascot-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:3/4;display:block;transition:transform .2s}
+.mascot-img:hover img{transform:scale(1.03)}
+.mascot-box{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;min-width:0}
+.mascot-name{font-size:46px;color:var(--blue-700);font-weight:700;letter-spacing:2px}
+.speech-wrap{display:flex}
+.speech{position:relative;width:max-content;max-width:100%;background:var(--white);border:2px solid var(--blue-300);border-radius:18px;padding:18px 22px;font-size:18px;line-height:1.9;color:var(--ink);box-shadow:0 4px 14px rgba(77,157,224,.12)}
+.speech::before{content:"";position:absolute;left:-14px;top:34px;width:0;height:0;border:9px solid transparent;border-right-color:var(--blue-300)}
+.speech::after{content:"";position:absolute;left:-8px;top:37px;width:0;height:0;border:6px solid transparent;border-right-color:var(--white)}
+.speech.pop{animation:bubble-pop .4s ease;transform-origin:left center}
+@keyframes bubble-pop{0%{transform:scale(.82);opacity:0}70%{transform:scale(1.03)}100%{transform:scale(1);opacity:1}}
+/* SECTION: home-featured */
+.section-title{display:flex;align-items:baseline;gap:10px;margin:26px 4px 14px}
+.section-title h2{font-size:20px;color:var(--blue-700);letter-spacing:2px}
+.section-title span{font-size:13px;color:var(--ink-soft)}
+.section-title::before{content:"";width:6px;height:20px;border-radius:3px;background:linear-gradient(var(--blue-500),var(--blue-300))}
+.featured{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}
+.fcard{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.fcard .pic{aspect-ratio:16/10;overflow:hidden;position:relative}
+.fcard .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.fcard .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.fcard h3{font-size:17px;color:var(--ink)}
+.fcard .kind{font-size:12px;color:var(--blue-600);background:var(--blue-50);border-radius:999px;padding:2px 10px;width:max-content}
+.fcard p{font-size:13.5px;line-height:1.75;color:var(--ink-soft);flex:1}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:none;border-radius:10px;padding:10px 16px;font-size:14px;background:var(--blue-500);color:#fff;transition:background .15s;width:max-content}
+.btn:hover{background:var(--blue-600)}
+.btn.ghost{background:var(--blue-50);color:var(--blue-700);border:1px solid var(--blue-300)}
+.btn.ghost:hover{background:var(--blue-100)}
+/* SECTION: work-grid (stories/settings/gallery lists) */
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
+.wcard{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.wcard .cover{aspect-ratio:3/4;overflow:hidden}
+.wcard .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.wcard .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
+.wcard h3{font-size:17px}
+.wcard p{font-size:13px;line-height:1.7;color:var(--ink-soft);flex:1}
+/* SECTION: work-detail & version */
+.crumb{font-size:13px;color:var(--ink-soft);margin:6px 0 14px}
+.crumb a{margin-right:4px}
+.detail{display:flex;gap:24px;background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);flex-wrap:wrap}
+.detail .cover{flex:none;width:min(260px,45%);border-radius:12px;overflow:hidden;aspect-ratio:3/4}
+.detail .cover img{width:100%;height:100%;object-fit:cover;display:block}
+.detail .info{flex:1;min-width:260px}
+.detail h1{font-size:24px;color:var(--blue-700);letter-spacing:1px;margin-bottom:12px}
+.meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
+.meta-chip{font-size:12.5px;background:var(--blue-50);border:1px solid var(--blue-200);color:var(--blue-700);border-radius:999px;padding:4px 12px}
+.intro-block{font-size:14.5px;line-height:1.9;color:var(--ink);background:var(--blue-50);border-radius:10px;padding:14px 16px;margin-bottom:16px}
+.version-list{display:flex;flex-direction:column;gap:10px}
+.version-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--white);border:1.5px solid var(--blue-200);border-radius:12px;padding:13px 16px;text-align:left;font-size:15px;color:var(--ink)}
+.version-btn:hover{border-color:var(--blue-500);background:var(--blue-50)}
+.version-btn .vn{font-weight:600;color:var(--blue-700)}
+.version-btn .vnote{font-size:12px;color:var(--ink-soft);margin-top:3px}
+.version-btn .go{flex:none;font-size:13px;color:var(--blue-500)}
+/* SECTION: chapter-list */
+.chap-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px}
+.chap-list li a{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--blue-200);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--ink)}
+.chap-list li a:hover{border-color:var(--blue-500);background:var(--blue-50);color:var(--blue-700)}
+.chap-list .idx{font-size:12px;color:var(--ink-soft)}
+/* SECTION: settings content */
+.setting-block{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
+.setting-block h3{font-size:17px;color:var(--blue-700);margin-bottom:10px;padding-left:10px;border-left:4px solid var(--blue-500)}
+.setting-block p{font-size:14.5px;line-height:2;color:var(--ink);margin-bottom:8px}
+.setting-block p:last-child{margin-bottom:0}
+/* SECTION: reader */
+.reader-bar{position:sticky;top:61px;z-index:50;display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border:1px solid var(--blue-200);border-radius:12px;padding:9px 12px;margin-bottom:16px;box-shadow:var(--shadow)}
+.reader-bar .rtitle{flex:1;min-width:0;font-size:14px;color:var(--blue-700);font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.icon-btn{border:1px solid var(--blue-200);background:var(--blue-50);color:var(--blue-700);border-radius:9px;padding:7px 13px;font-size:13px;flex:none}
+.icon-btn:hover{background:var(--blue-100)}
+.article{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:30px clamp(18px,6vw,60px);box-shadow:var(--shadow)}
+.article h1{font-size:22px;color:var(--blue-700);margin-bottom:6px}
+.article .sub{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
+.article p{font-size:16px;line-height:2.1;color:var(--ink);margin-bottom:16px;text-indent:2em}
+.read-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
+/* SECTION: gallery */
+.g-item{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:22px;scroll-margin-top:120px}
+.g-item .pic{aspect-ratio:4/3;overflow:hidden;background:var(--blue-50)}
+.g-item .pic img{width:100%;height:100%;object-fit:cover;display:block}
+.g-item .cap{padding:14px 18px 16px}
+.g-item .cap h3{font-size:16px;color:var(--blue-700);margin-bottom:6px}
+.g-item .cap p{font-size:13.5px;line-height:1.8;color:var(--ink-soft)}
+.g-item .cap .no{font-size:12px;color:var(--blue-500);letter-spacing:1px}
+/* SECTION: about */
+.about-wrap{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:26px clamp(18px,5vw,44px);box-shadow:var(--shadow)}
+.about-wrap h2{font-size:20px;color:var(--blue-700);margin:20px 0 10px;padding-left:10px;border-left:4px solid var(--blue-500)}
+.about-wrap h2:first-child{margin-top:0}
+.about-wrap p{font-size:14.5px;line-height:2;color:var(--ink)}
+/* SECTION: image-fallback */
+.ph{width:100%;height:100%;min-height:120px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--blue-100),var(--blue-200));color:var(--blue-700);font-size:13px;letter-spacing:2px}
+/* SECTION: docx-styles —— Word 正文渲染样式 */
+.doc-error{background:var(--blue-50);border:1px dashed var(--blue-300);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.9;color:var(--ink);text-indent:0}
+.setting-block h1{font-size:17px;color:var(--blue-700);margin:16px 0 8px;padding-left:10px;border-left:4px solid var(--blue-500)}
+.about-wrap h1{font-size:20px;color:var(--blue-700);margin:20px 0 10px;padding-left:10px;border-left:4px solid var(--blue-500)}
+/* SECTION: footer & misc */
+footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12px 34px}
+.back-home{margin:18px 0}
+@media (max-width:640px){
+  .notice{padding:18px 20px;gap:14px;border-left-width:8px}
+  .notice .tag{font-size:18px;padding:4px 14px}
+  .notice .txt{font-size:19px}
+  .notice-close{font-size:17px;padding:8px 16px}
+  .mascot{flex-direction:column;align-items:stretch;padding:16px;gap:18px}
+  .mascot-img{width:100%}
+  .mascot-img img{aspect-ratio:4/5}
+  .speech-wrap{justify-content:center}
+  .speech{font-size:16.5px;padding:14px 18px;width:auto}
+  .speech::before{left:34px;top:-19px;border-color:transparent transparent var(--blue-300) transparent}
+  .speech::after{left:38px;top:-14px;border-color:transparent transparent var(--white) transparent}
+  .detail{flex-direction:column;align-items:stretch}
+  .detail .cover{width:100%}
+  .reader-bar{top:57px}
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION: bg-waves-svg —— 背景海浪装饰：统一为剪影层叠样式，全蓝色系由浅到深 -->
+<svg class="bg-waves" viewBox="0 0 1440 900" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0,600 Q120,578 240,600 T480,600 T720,600 T960,600 T1200,600 T1440,600 L1440,900 L0,900 Z" fill="#e3f1fd" opacity="0.60"/>
+  <path d="M0,668 Q120,648 240,668 T480,668 T720,668 T960,668 T1200,668 T1440,668 L1440,900 L0,900 Z" fill="#c9e3f8" opacity="0.65"/>
+  <path d="M0,732 Q120,712 240,732 T480,732 T720,732 T960,732 T1200,732 T1440,732 L1440,900 L0,900 Z" fill="#9fcaf0" opacity="0.45"/>
+  <path d="M0,792 Q120,774 240,792 T480,792 T720,792 T960,792 T1200,792 T1440,792 L1440,900 L0,900 Z" fill="#4d9de0" opacity="0.28"/>
+  <path d="M0,844 Q120,828 240,844 T480,844 T720,844 T960,844 T1200,844 T1440,844 L1440,900 L0,900 Z" fill="#3b7fc0" opacity="0.24"/>
+  <path d="M0,884 Q120,870 240,884 T480,884 T720,884 T960,884 T1200,884 T1440,884 L1440,900 L0,900 Z" fill="#2d6296" opacity="0.20"/>
+</svg>
+
+<!-- SECTION: topbar-header -->
+<header class="topbar">
+  <button class="nav-btn" id="navOpen" aria-label="拉开目录栏">☰</button>
+  <div class="brand" id="brandName">布灵的创作小屋<small id="brandSlogan"></small></div>
+  <div class="topbar-tail" id="topTail"></div>
+</header>
+
+<!-- SECTION: nav-drawer（顶部常驻按钮拉开的目录栏） -->
+<div class="mask" id="navMask"></div>
+<nav class="drawer drawer-left" id="navDrawer" aria-label="站内目录">
+  <div class="drawer-head"><h2>网站目录</h2><button class="drawer-close" data-close="nav">✕</button></div>
+  <ul>
+    <li><a href="#/" data-nav="home">🏠 首页</a></li>
+    <li><a href="#/stories" data-nav="stories">📖 故事集</a></li>
+    <li><a href="#/settings" data-nav="settings">🗂 设定集</a></li>
+    <li><a href="#/gallery" data-nav="gallery">🖼 画集</a></li>
+    <li><a href="#/about" data-nav="about">ℹ 关于本站</a></li>
+  </ul>
+</nav>
+
+<!-- SECTION: toc-drawer（阅读/画集页侧边目录栏） -->
+<div class="mask" id="tocMask"></div>
+<aside class="drawer drawer-right" id="tocDrawer" aria-label="侧边目录">
+  <div class="drawer-head"><h2 id="tocTitle">目录</h2><button class="drawer-close" data-close="toc">✕</button></div>
+  <div id="tocBody"></div>
+</aside>
+
+<main id="view"></main>
+
+<footer id="siteFooter"></footer>
+
+<script src="assets/data.js"></script>
+<script src="assets/vendor/mammoth.min.js"></script>
+<script>
+/* SECTION: app-core */
+"use strict";
+const D = window.SITE_DATA;
+/* SECTION: docx-loader —— 正文从 content/ 下的 Word 文档读取并渲染 */
+const docCache = {};
+const LOCAL_FILE_HINT = `<div class="doc-error">⚠ 找不到或读不了这份正文文档。<br>如果现在是「双击 HTML 本地打开」，浏览器安全规则会禁止网页读取本地 Word 文档——这不代表内容有问题。请任选其一：<br>① 在项目文件夹运行 <b>python -m http.server 8000</b>，再访问 http://localhost:8000；<br>② 上传 GitHub Pages 后在线访问（推荐）。<br>③ 若是刚新增的作品，请确认文档已放进 content/ 对应目录，并在 assets/data.js 登记了正确路径。</div>`;
+function loadDocx(file){
+  if(docCache[file] !== undefined) return Promise.resolve(docCache[file]);
+  return fetch(encodeURI(file))
+    .then(r => { if(!r.ok) throw new Error(r.status); return r.arrayBuffer(); })
+    .then(buf => mammoth.convertToHtml({ arrayBuffer: buf }))
+    .then(res => { docCache[file] = res.value; return res.value; })
+    .catch(() => { docCache[file] = null; return null; });
+}
+document.getElementById("brandName").firstChild.textContent = D.meta.name;
+document.getElementById("brandSlogan").textContent = D.meta.slogan;
+document.getElementById("siteFooter").textContent = "© " + D.meta.name + " · " + D.meta.slogan;
+document.title = D.meta.name;
+let noticeDismissed = false;   /* SECTION: notice-state 关闭仅在本次访问内生效，重新打开网站公告会再次显示 */
+const view = document.getElementById("view");
+const navDrawer = document.getElementById("navDrawer"), navMask = document.getElementById("navMask");
+const tocDrawer = document.getElementById("tocDrawer"), tocMask = document.getElementById("tocMask");
+
+document.getElementById("navOpen").addEventListener("click", () => openDrawer("nav"));
+document.querySelectorAll("[data-close]").forEach(b => b.addEventListener("click", () => closeDrawers()));
+navMask.addEventListener("click", closeDrawers);
+tocMask.addEventListener("click", closeDrawers);
+function openDrawer(k){ if(k==="nav"){navDrawer.classList.add("show");navMask.classList.add("show");} else {tocDrawer.classList.add("show");tocMask.classList.add("show");} }
+function closeDrawers(){ navDrawer.classList.remove("show"); navMask.classList.remove("show"); tocDrawer.classList.remove("show"); tocMask.classList.remove("show"); }
+
+/* 图片运行时赋值：data-image 键 → images 表地址；加载失败降级为渐变占位 */
+function bindImages(root){
+  root.querySelectorAll("[data-image]").forEach(el => {
+    const url = D.images[el.dataset.image];
+    if(!url){ el.remove(); return; }
+    const img = document.createElement("img");
+    img.alt = el.dataset.alt || "";
+    img.loading = "lazy";
+    img.onerror = () => { img.remove(); const ph=document.createElement("div"); ph.className="ph"; ph.textContent = el.dataset.alt || "图片"; el.appendChild(ph); };
+    img.src = url;
+    el.appendChild(img);
+  });
+}
+function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+
+/* SECTION: home-views */
+function noticeHTML(){
+  if(noticeDismissed) return "";
+  return `<section class="notice" id="notice">
+    <span class="tag">${esc(D.notice.title)}</span>
+    <div class="txt">${esc(D.notice.content)}</div>
+    <button class="notice-close" id="noticeClose">✕ 关闭公告</button>
+  </section>`;
+}
+function mascotHTML(){
+  return `<section class="mascot">
+    <div class="mascot-img" id="mascotImg" data-image="${D.mascot.imageKey}" data-alt="看板娘 ${esc(D.mascot.name)}" role="button" tabindex="0" aria-label="点击切换台词和动作"></div>
+    <div class="mascot-box">
+      <div class="mascot-name">${esc(D.mascot.name)}</div>
+      <div class="speech-wrap"><div class="speech" id="speech">${esc(D.mascot.welcome)}</div></div>
+    </div>
+  </section>`;
+}
+const KIND_LABEL = { stories:"故事集", settings:"设定集", gallery:"画集" };
+function findWork(type, id){ const list = type==="stories"?D.stories: type==="settings"?D.settings : D.galleries; return list.find(w=>w.id===id); }
+function featuredHTML(){
+  const cards = D.featured.map(f => {
+    const w = findWork(f.type, f.id); if(!w) return "";
+    return `<article class="fcard">
+      <div class="pic" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="body">
+        <span class="kind">${KIND_LABEL[f.type]} · ${esc(w.name)}</span>
+        <h3>${esc(w.name)}</h3>
+        <p>${esc(f.blurb)}</p>
+        <a class="btn" href="#/${f.type}/${w.id}">查看作品 →</a>
+      </div>
+    </article>`;
+  }).join("");
+  return `<section class="home-block"><div class="section-title"><h2>精选作品</h2></div><div class="featured">${cards}</div></section>`;
+}
+function quickLinksHTML(){
+  const items = [
+    {k:"stories", ic:"📖", t:"故事集", n:D.stories.length+" 部作品"},
+    {k:"settings", ic:"🗂", t:"设定集", n:D.settings.length+" 份设定"},
+    {k:"gallery", ic:"🖼", t:"画集", n:D.galleries.length+" 本画集"}
+  ].map(x=>`<a class="wcard" href="#/${x.k}" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><span style="font-size:34px">${x.ic}</span><h3>${x.t}</h3><p>${x.n}</p></div></a>`).join("");
+  const aboutCard = `<a class="wcard" href="#/about" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><span style="font-size:34px">ℹ</span><h3>关于本站</h3></div></a>`;
+  return `<section class="home-block"><div class="section-title"><h2>书架</h2></div><div class="grid">${items}</div></section>
+    <section class="home-block"><div class="section-title"><h2>关于本站</h2></div><div class="grid">${aboutCard}</div></section>`;
+}
+function renderHome(){
+  view.innerHTML = noticeHTML() + mascotHTML() + featuredHTML() + quickLinksHTML();
+  bindImages(view);
+  const nc = document.getElementById("noticeClose");
+  if(nc) nc.addEventListener("click", () => { noticeDismissed = true; document.getElementById("notice").remove(); });
+  const mi = document.getElementById("mascotImg"), sp = document.getElementById("speech");
+  let lastAct = null;
+  const setAct = (act) => {
+    if(act === lastAct) return;
+    lastAct = act;
+    /* 切换立绘为对应动作图；加载失败保留上一张，避免出现空槽 */
+    const url = D.images[act];
+    if(url){
+      const probe = new Image();
+      probe.onload = () => {
+        mi.querySelectorAll("img").forEach(o => o.remove());
+        probe.alt = D.mascot.name;
+        mi.appendChild(probe);
+      };
+      probe.src = url;
+    }
+  };
+  const say = () => {
+    const pool = D.mascot.lines;
+    const item = pool[Math.floor(Math.random()*pool.length)];
+    sp.textContent = item.text;
+    sp.classList.remove("pop"); void sp.offsetWidth; sp.classList.add("pop");
+    setAct(item.act);
+  };
+  mi.addEventListener("click", say);
+  mi.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); say(); } });
+}
+
+/* SECTION: list-views（故事集/设定集/画集列表页） */
+function renderList(type){
+  const conf = { stories:{list:D.stories, t:"故事集", s:"每一部作品都有版本历史，点开看看吧"}, settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配侧边目录，可随时跳转某张或返回作品页"} }[type];
+  const cards = conf.list.map(w => `<article class="wcard">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="body">
+        <h3>${esc(w.name)}</h3>
+        <p>${esc(w.intro)}</p>
+        <a class="btn" href="#/${type}/${w.id}">进入作品 →</a>
+      </div>
+    </article>`).join("");
+  view.innerHTML = `<div class="section-title"><h2>${conf.t}</h2><span>${conf.s}</span></div><div class="grid">${cards}</div>`;
+  bindImages(view);
+}
+
+/* SECTION: work-detail（作品名/封面/简介/版本选择） */
+function renderWork(type, id){
+  const w = findWork(type, id);
+  if(!w){ view.innerHTML = `<p>没有找到这部作品。<a href="#/${type}">返回${KIND_LABEL[type]}</a></p>`; return; }
+  const versions = w.versions.map(v => `<button class="version-btn" data-version="${v.id}">
+      <span><span class="vn">${esc(v.name)}</span><div class="vnote">${esc(v.note||"")}</div></span>
+      <span class="go">进入 →</span></button>`).join("");
+  const note = type==="settings" ? `<p style="font-size:13px;color:var(--ink-soft);margin-top:10px">※ 设定集内容存于整体页面，选择版本后可直接阅读，不区分章节。</p>` : "";
+  view.innerHTML = `
+    <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / ${esc(w.name)}</div>
+    <section class="detail">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="info">
+        <h1>${esc(w.name)}</h1>
+        <div class="meta-row">
+          <span class="meta-chip">🗓 创作时间：${esc(w.created)}</span>
+          <span class="meta-chip">🏷 作品类型：${esc(w.genre)}</span>
+          <span class="meta-chip">📌 状态：${esc(w.status)}</span>
+        </div>
+        <div class="intro-block">${esc(w.intro)}</div>
+        <div class="section-title" style="margin-top:4px"><h2 style="font-size:17px">版本选择</h2></div>
+        <div class="version-list">${versions}</div>
+        ${note}
+      </div>
+    </section>`;
+  bindImages(view);
+  view.querySelectorAll("[data-version]").forEach(b => b.addEventListener("click", () => { location.hash = `#/${type}/${id}/${b.dataset.version}`; }));
+}
+
+/* SECTION: story-version（版本页：作品信息+章节目录） */
+function chapterHref(type,id,vid,ch){ return `#/${type}/${id}/${vid}/${ch}`; }
+function renderStoryVersion(type, id, vid){
+  const w = findWork(type, id); const v = w && w.versions.find(x=>x.id===vid);
+  if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/${type}/${id}">返回作品页</a></p>`; return; }
+  const chaps = v.chapters.map((c,i)=>`<li><a href="${chapterHref(type,id,vid,c.id)}">${esc(c.title)}<span class="idx">第 ${i+1} 章</span></a></li>`).join("");
+  view.innerHTML = `
+    <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / <a href="#/${type}/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
+    <section class="detail">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="info">
+        <h1>${esc(w.name)}</h1>
+        <div class="meta-row">
+          <span class="meta-chip">🗓 ${esc(w.created)}</span>
+          <span class="meta-chip">🏷 ${esc(w.genre)}</span>
+          <span class="meta-chip">📌 ${esc(w.status)}</span>
+          <span class="meta-chip">📄 ${esc(v.name)}${v.note?" · "+esc(v.note):""}</span>
+        </div>
+        <div class="intro-block">${esc(w.intro)}</div>
+      </div>
+    </section>
+    <div class="section-title"><h2>作品目录</h2><span>点击章节标题开始阅读</span></div>
+    <ul class="chap-list">${chaps}</ul>
+    <div class="back-home"><a class="btn ghost" href="#/${type}/${id}">← 返回作品页（换版本）</a></div>`;
+  bindImages(view);
+}
+
+/* SECTION: reader（阅读页+侧边目录，正文来自 Word 文档） */
+function renderReader(type, id, vid, ch){
+  const w = findWork(type, id); const v = w && w.versions.find(x=>x.id===vid); const c = v && v.chapters.find(x=>x.id===ch);
+  if(!c){ view.innerHTML = `<p>章节不存在。<a href="#/${type}/${id}/${vid}">返回目录</a></p>`; return; }
+  const idx = v.chapters.indexOf(c);
+  const prev = v.chapters[idx-1], next = v.chapters[idx+1];
+  view.innerHTML = `
+    <div class="reader-bar">
+      <a class="icon-btn" href="#/${type}/${id}/${vid}">← 目录页</a>
+      <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
+      <button class="icon-btn" id="tocOpen">☰ 侧边目录</button>
+    </div>
+    <article class="article">
+      <h1>${esc(c.title)}</h1>
+      <div class="sub">${esc(w.name)} · ${esc(v.name)} · 全 ${v.chapters.length} 章，当前第 ${idx+1} 章</div>
+      <div id="docBody"><p style="color:var(--ink-soft);text-indent:0">正文加载中…</p></div>
+      <div class="read-nav">
+        ${prev?`<a class="btn ghost" href="${chapterHref(type,id,vid,prev.id)}">← ${esc(prev.title)}</a>`:`<span></span>`}
+        ${next?`<a class="btn" href="${chapterHref(type,id,vid,next.id)}" data-primary-action>${esc(next.title)} →</a>`:`<a class="btn" href="#/${type}/${id}/${vid}">已读完，回目录 →</a>`}
+      </div>
+    </article>
+    <div class="back-home"><a class="btn ghost" href="#/${type}/${id}">回到作品首页</a></div>`;
+  document.getElementById("tocOpen").addEventListener("click", () => buildToc(type,id,vid,"chapter", c.id));
+  const body = document.getElementById("docBody");
+  loadDocx(c.file).then(html => {
+    if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT;
+  });
+}
+
+/* SECTION: settings-version（整体设定页，正文来自一个 Word 文档，不分章节） */
+function renderSettingVersion(id, vid){
+  const w = findWork("settings", id); const v = w && w.versions.find(x=>x.id===vid);
+  if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/settings/${id}">返回作品页</a></p>`; return; }
+  view.innerHTML = `
+    <div class="crumb"><a href="#/">首页</a> / <a href="#/settings">设定集</a> / <a href="#/settings/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
+    <section class="detail">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="info">
+        <h1>${esc(w.name)}</h1>
+        <div class="meta-row">
+          <span class="meta-chip">🗓 ${esc(w.created)}</span>
+          <span class="meta-chip">🏷 ${esc(w.genre)}</span>
+          <span class="meta-chip">📌 ${esc(w.status)}</span>
+          <span class="meta-chip">📄 ${esc(v.name)}${v.note?" · "+esc(v.note):""}</span>
+        </div>
+        <div class="intro-block">${esc(w.intro)}</div>
+        <p style="font-size:13px;color:var(--ink-soft)">※ 设定集为整体页面，以下全部内容在本页连续呈现。</p>
+      </div>
+    </section>
+    <div class="setting-block" style="margin-top:18px" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
+    <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>`;
+  bindImages(view);
+  const body = document.getElementById("docBody");
+  loadDocx(v.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+}
+
+/* SECTION: gallery-version（图集+侧边目录） */
+function renderGalleryVersion(id, vid){
+  const w = findWork("gallery", id); const v = w && w.versions.find(x=>x.id===vid);
+  if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/gallery/${id}">返回作品页</a></p>`; return; }
+  const items = v.images.map((im,i)=>`<figure class="g-item" id="gi-${im.id}">
+      <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
+      <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3><p>${esc(im.note)}</p></figcaption>
+    </figure>`).join("");
+  view.innerHTML = `
+    <div class="reader-bar">
+      <a class="icon-btn" href="#/gallery/${id}">← 作品页</a>
+      <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
+      <button class="icon-btn" id="tocOpen">☰ 侧边目录</button>
+    </div>
+    <div class="crumb" style="margin-top:14px"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / <a href="#/gallery/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
+    ${items}
+    <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>`;
+  bindImages(view);
+  document.getElementById("tocOpen").addEventListener("click", () => buildToc("gallery",id,vid,"image",null));
+}
+
+/* SECTION: toc-builder（阅读页/画集侧边目录内容） */
+function buildToc(type,id,vid,mode,current){
+  const w = findWork(type,id); const v = w.versions.find(x=>x.id===vid);
+  let html = `<div class="toc-sub">${esc(w.name)} · ${esc(v.name)}</div><ul>`;
+  if(mode==="chapter"){
+    html += v.chapters.map((c,i)=>`<li><button class="item${c.id===current?" active":""}" data-goto="${c.id}">${i+1}. ${esc(c.title)}</button></li>`).join("");
+    html += `</ul><div class="back-line"><button class="item" data-back="version">↩ 回到该版本目录页</button><a class="item" href="#/${type}/${id}" data-navlink>🏠 回到作品首页（${esc(w.name)}）</a><a class="item" href="#/${type}" data-navlink>📚 回到${KIND_LABEL[type]}列表</a></div>`;
+  } else {
+    html += v.images.map((im,i)=>`<li><button class="item" data-scroll="${im.id}">${String(i+1).padStart(2,"0")} · ${esc(im.title)}</button></li>`).join("");
+    html += `</ul><div class="back-line"><a class="item" href="#/gallery/${id}" data-navlink>🏠 回到作品首页（${esc(w.name)}）</a><a class="item" href="#/gallery" data-navlink>🖼 回到画集列表</a></div>`;
+  }
+  document.getElementById("tocTitle").textContent = mode==="chapter" ? "章节目录" : "图集目录";
+  const body = document.getElementById("tocBody");
+  body.innerHTML = html;
+  body.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>{ location.hash = `#/${type}/${id}/${vid}/${b.dataset.goto}`; closeDrawers(); }));
+  body.querySelectorAll("[data-back]").forEach(b=>b.addEventListener("click",()=>{ location.hash = `#/${type}/${id}/${vid}`; closeDrawers(); }));
+  body.querySelectorAll("[data-scroll]").forEach(b=>b.addEventListener("click",()=>{ const t=document.getElementById("gi-"+b.dataset.scroll); if(t) t.scrollIntoView({behavior:"smooth",block:"start"}); closeDrawers(); }));
+  body.querySelectorAll("[data-navlink]").forEach(a=>a.addEventListener("click",closeDrawers));
+  openDrawer("toc");
+}
+
+/* SECTION: about-view（文案来自 content/about.docx） */
+function renderAbout(){
+  view.innerHTML = `
+    <div class="crumb"><a href="#/">首页</a> / 关于本站</div>
+    <div class="section-title"><h2>${esc(D.about.title)}</h2><span>${esc(D.meta.name)} 的自我介绍</span></div>
+    <section class="about-wrap" id="docBody"><p style="color:var(--ink-soft)">加载中…</p></section>
+    <div class="back-home"><a class="btn ghost" href="#/">← 回首页看看</a></div>`;
+  const body = document.getElementById("docBody");
+  loadDocx(D.about.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+}
+
+/* SECTION: router */
+const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", about:"about" };
+function route(){
+  const raw = location.hash.replace(/^#\/?/, "");
+  const seg = raw.split("/").filter(Boolean);
+  closeDrawers();
+  document.querySelectorAll("#navDrawer [data-nav]").forEach(a=>a.classList.remove("active"));
+  let tail = "";
+  const top = seg[0] || "home";
+  const navEl = document.querySelector(`#navDrawer [data-nav="${NAV_OF[top]?top:""}"]`);
+  if(navEl) navEl.classList.add("active");
+  if(!seg.length){ renderHome(); }
+  else if(seg.length===1 && seg[0]==="about"){ tail="关于本站"; renderAbout(); }
+  else if(seg.length===1 && ["stories","settings","gallery"].includes(seg[0])){ tail=KIND_LABEL[seg[0]]; renderList(seg[0]); }
+  else if(seg.length===2 && ["stories","settings","gallery"].includes(seg[0])){ tail="作品页"; renderWork(seg[0],seg[1]); }
+  else if(seg.length===3 && seg[0]==="stories"){ tail="目录"; renderStoryVersion("stories",seg[1],seg[2]); }
+  else if(seg.length===4 && seg[0]==="stories"){ tail="阅读"; renderReader("stories",seg[1],seg[2],seg[3]); }
+  else if(seg.length===3 && seg[0]==="settings"){ tail="设定"; renderSettingVersion(seg[1],seg[2]); }
+  else if(seg.length===3 && seg[0]==="gallery"){ tail="图集"; renderGalleryVersion(seg[1],seg[2]); }
+  else { renderHome(); }
+  document.getElementById("topTail").textContent = tail ? "· "+tail : "· 首页";
+  window.scrollTo(0,0);
+}
+window.addEventListener("hashchange", route);
+route();
+</script>
+</body>
+</html>
