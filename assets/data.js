@@ -72,13 +72,13 @@ window.SITE_DATA = {
     },
     {
       "type": "gallery",
-      "id": "summer",
-      "blurb": "十二张水彩海岛速写，把去年夏天的风、浪和橘色落日全部装进画里。"
+      "id": "gal_yinsaimena",
+      "blurb": "《因赛美那》的配套图集：缩略图网格一页看更多，点图即可查看大图（占位说明，可替换）。"
     },
     {
       "type": "settings",
-      "id": "yunhai",
-      "blurb": "云海纪元的世界总志：空岛地理、云历时间、信俗邮路，一本书看懂所有故事的舞台。"
+      "id": "set_yinsaimena",
+      "blurb": "《因赛美那》的配套设定集：故事舞台与版本沿革（占位说明，可替换）。"
     }
   ],
   "sections": {
@@ -105,36 +105,328 @@ window.SITE_DATA = {
         {
           "id": "v2606",
           "name": "2606版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2026复仇篇，共 48 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第一章 · 神秘的王子",
               "file": "content/stories/yinsaimena/v2606/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第二章 · 王子的考验",
               "file": "content/stories/yinsaimena/v2606/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "第三章 · 逐渐亲密的二人",
+              "file": "content/stories/yinsaimena/v2606/c3.docx"
+            },
+            {
+              "id": "c4",
+              "title": "第四章 · 王子的秘密",
+              "file": "content/stories/yinsaimena/v2606/c4.docx"
+            },
+            {
+              "id": "c5",
+              "title": "第五章 · 家人",
+              "file": "content/stories/yinsaimena/v2606/c5.docx"
+            },
+            {
+              "id": "c6",
+              "title": "第六章 · 捡到未婚妻",
+              "file": "content/stories/yinsaimena/v2606/c6.docx"
+            },
+            {
+              "id": "c7",
+              "title": "第七章 · 逐星者",
+              "file": "content/stories/yinsaimena/v2606/c7.docx"
+            },
+            {
+              "id": "c8",
+              "title": "第八章 · 美食城的阴霾",
+              "file": "content/stories/yinsaimena/v2606/c8.docx"
+            },
+            {
+              "id": "c9",
+              "title": "第九章 · 鬼面三人",
+              "file": "content/stories/yinsaimena/v2606/c9.docx"
+            },
+            {
+              "id": "c10",
+              "title": "第十章 · 雪屋",
+              "file": "content/stories/yinsaimena/v2606/c10.docx"
+            },
+            {
+              "id": "c11",
+              "title": "第十一章 · 实验体",
+              "file": "content/stories/yinsaimena/v2606/c11.docx"
+            },
+            {
+              "id": "c12",
+              "title": "第十二章 · 治愈法杖",
+              "file": "content/stories/yinsaimena/v2606/c12.docx"
+            },
+            {
+              "id": "c13",
+              "title": "第十三章 · 星兔露",
+              "file": "content/stories/yinsaimena/v2606/c13.docx"
+            },
+            {
+              "id": "c14",
+              "title": "第十四章 · 杀戮之影",
+              "file": "content/stories/yinsaimena/v2606/c14.docx"
+            },
+            {
+              "id": "c15",
+              "title": "第十五章 · 占卜未来？",
+              "file": "content/stories/yinsaimena/v2606/c15.docx"
+            },
+            {
+              "id": "c16",
+              "title": "第十六章 · 武庆-八强第一战",
+              "file": "content/stories/yinsaimena/v2606/c16.docx"
+            },
+            {
+              "id": "c17",
+              "title": "第十七章 · 武庆-八强第二、三战",
+              "file": "content/stories/yinsaimena/v2606/c17.docx"
+            },
+            {
+              "id": "c18",
+              "title": "第十八章 · 幽灵与凋灵",
+              "file": "content/stories/yinsaimena/v2606/c18.docx"
+            },
+            {
+              "id": "c19",
+              "title": "第十九章 · 幽兰现身",
+              "file": "content/stories/yinsaimena/v2606/c19.docx"
+            },
+            {
+              "id": "c20",
+              "title": "第二十章 · 无尽的花木人",
+              "file": "content/stories/yinsaimena/v2606/c20.docx"
+            },
+            {
+              "id": "c21",
+              "title": "第二十一章 · 合作",
+              "file": "content/stories/yinsaimena/v2606/c21.docx"
+            },
+            {
+              "id": "c22",
+              "title": "第二十二章 · 冰火瓶",
+              "file": "content/stories/yinsaimena/v2606/c22.docx"
+            },
+            {
+              "id": "c23",
+              "title": "第二十三章 · 光之矛",
+              "file": "content/stories/yinsaimena/v2606/c23.docx"
+            },
+            {
+              "id": "c24",
+              "title": "第二十四章 · 神秘的罪魁祸首",
+              "file": "content/stories/yinsaimena/v2606/c24.docx"
+            },
+            {
+              "id": "c25",
+              "title": "第二十五章 · 暗处的危机",
+              "file": "content/stories/yinsaimena/v2606/c25.docx"
+            },
+            {
+              "id": "c26",
+              "title": "第二十六章 · 小红帽",
+              "file": "content/stories/yinsaimena/v2606/c26.docx"
+            },
+            {
+              "id": "c27",
+              "title": "第二十七章 · 承神者",
+              "file": "content/stories/yinsaimena/v2606/c27.docx"
+            },
+            {
+              "id": "c28",
+              "title": "第二十八章 · 洛嘉琳的过去",
+              "file": "content/stories/yinsaimena/v2606/c28.docx"
+            },
+            {
+              "id": "c29",
+              "title": "第二十九章 · 潜入酒馆",
+              "file": "content/stories/yinsaimena/v2606/c29.docx"
+            },
+            {
+              "id": "c30",
+              "title": "第三十章 · 吸收元素力的水晶",
+              "file": "content/stories/yinsaimena/v2606/c30.docx"
+            },
+            {
+              "id": "c31",
+              "title": "第三十一章 · 砂岩上的城市",
+              "file": "content/stories/yinsaimena/v2606/c31.docx"
+            },
+            {
+              "id": "c32",
+              "title": "第三十二章 · 巡子的往事",
+              "file": "content/stories/yinsaimena/v2606/c32.docx"
+            },
+            {
+              "id": "c33",
+              "title": "第三十三章 · 驱虫水明石",
+              "file": "content/stories/yinsaimena/v2606/c33.docx"
+            },
+            {
+              "id": "c34",
+              "title": "第三十四章 · 千械城危机",
+              "file": "content/stories/yinsaimena/v2606/c34.docx"
+            },
+            {
+              "id": "c35",
+              "title": "第三十五章 · 琥珀",
+              "file": "content/stories/yinsaimena/v2606/c35.docx"
+            },
+            {
+              "id": "c36",
+              "title": "第三十六章 · 重逢",
+              "file": "content/stories/yinsaimena/v2606/c36.docx"
+            },
+            {
+              "id": "c37",
+              "title": "第三十七章 · 书信",
+              "file": "content/stories/yinsaimena/v2606/c37.docx"
+            },
+            {
+              "id": "c38",
+              "title": "第三十八章 · 进入灵狐山",
+              "file": "content/stories/yinsaimena/v2606/c38.docx"
+            },
+            {
+              "id": "c39",
+              "title": "第三十九章 · 赤姬与山鬼",
+              "file": "content/stories/yinsaimena/v2606/c39.docx"
+            },
+            {
+              "id": "c40",
+              "title": "第四十章 · 宴会",
+              "file": "content/stories/yinsaimena/v2606/c40.docx"
+            },
+            {
+              "id": "c41",
+              "title": "第四十一章 · 山鬼复苏",
+              "file": "content/stories/yinsaimena/v2606/c41.docx"
+            },
+            {
+              "id": "c42",
+              "title": "第四十二章 · 第二个秘密",
+              "file": "content/stories/yinsaimena/v2606/c42.docx"
+            },
+            {
+              "id": "c43",
+              "title": "第四十三章 · 蔚蓝鬼镇",
+              "file": "content/stories/yinsaimena/v2606/c43.docx"
+            },
+            {
+              "id": "c44",
+              "title": "第四十四章 · 凶杀案",
+              "file": "content/stories/yinsaimena/v2606/c44.docx"
+            },
+            {
+              "id": "c45",
+              "title": "第四十五章 · 隐藏的巨目鬼",
+              "file": "content/stories/yinsaimena/v2606/c45.docx"
+            },
+            {
+              "id": "c46",
+              "title": "第四十六章 · 丧钟为谁而鸣",
+              "file": "content/stories/yinsaimena/v2606/c46.docx"
+            },
+            {
+              "id": "c47",
+              "title": "第四十七章 · 复仇幽灵",
+              "file": "content/stories/yinsaimena/v2606/c47.docx"
+            },
+            {
+              "id": "c48",
+              "title": "第四十八章 · 准备返程",
+              "file": "content/stories/yinsaimena/v2606/c48.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_xingchen"
         },
         {
           "id": "v25",
           "name": "25版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2025版，共 14 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第1章 · 懒猫王子的秘密",
               "file": "content/stories/yinsaimena/v25/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第2章 · 海、领土和贝壳",
               "file": "content/stories/yinsaimena/v25/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "第3章 · 王族的晚宴",
+              "file": "content/stories/yinsaimena/v25/c3.docx"
+            },
+            {
+              "id": "c4",
+              "title": "第4章 · 小村庄的英雄少年",
+              "file": "content/stories/yinsaimena/v25/c4.docx"
+            },
+            {
+              "id": "c5",
+              "title": "第5章 · 捡到未婚妻",
+              "file": "content/stories/yinsaimena/v25/c5.docx"
+            },
+            {
+              "id": "c6",
+              "title": "第6章 · 美食城的情报官",
+              "file": "content/stories/yinsaimena/v25/c6.docx"
+            },
+            {
+              "id": "c7",
+              "title": "第7章 · 幽灵与鬼面三人",
+              "file": "content/stories/yinsaimena/v25/c7.docx"
+            },
+            {
+              "id": "c8",
+              "title": "第8章 · 星兔露村的幸存者",
+              "file": "content/stories/yinsaimena/v25/c8.docx"
+            },
+            {
+              "id": "c9",
+              "title": "第9章 · 掌握愈元素力的少女",
+              "file": "content/stories/yinsaimena/v25/c9.docx"
+            },
+            {
+              "id": "c10",
+              "title": "第10章 · 过往与家人",
+              "file": "content/stories/yinsaimena/v25/c10.docx"
+            },
+            {
+              "id": "c11",
+              "title": "第11章 · 意外的会面",
+              "file": "content/stories/yinsaimena/v25/c11.docx"
+            },
+            {
+              "id": "c12",
+              "title": "第12章 · 追杀厄神教之人",
+              "file": "content/stories/yinsaimena/v25/c12.docx"
+            },
+            {
+              "id": "c13",
+              "title": "第13章 · 无尽的花木人",
+              "file": "content/stories/yinsaimena/v25/c13.docx"
+            },
+            {
+              "id": "c14",
+              "title": "第14章 · 灵狐山的邀约",
+              "file": "content/stories/yinsaimena/v25/c14.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_yuting"
         },
         {
           "id": "neo",
@@ -151,7 +443,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yinsaimena/neo/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_zhiyuan"
         },
         {
           "id": "v24",
@@ -168,7 +461,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yinsaimena/v24/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_yaoguijie"
         },
         {
           "id": "v23",
@@ -185,7 +479,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yinsaimena/v23/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_xianjing"
         },
         {
           "id": "v15",
@@ -202,9 +497,11 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yinsaimena/v15/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_tinilapu"
         }
-      ]
+      ],
+      "kind": "novel"
     },
     {
       "id": "yingzhidu",
@@ -230,7 +527,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/loose/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_yuting"
         },
         {
           "id": "old",
@@ -247,7 +545,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/old/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_zhiyuan"
         },
         {
           "id": "v24",
@@ -264,7 +563,8 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/v24/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_yaoguijie"
         },
         {
           "id": "v25",
@@ -281,214 +581,925 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/v25/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_xianjing"
         }
-      ]
+      ],
+      "kind": "novel"
     },
     {
-      "id": "zhiyuan",
-      "name": "纸鸢夜灯",
-      "coverKey": "cover_zhiyuan",
-      "created": "2022年9月",
-      "genre": "古风 · 志怪",
-      "status": "已完结",
-      "intro": "上元节放灯，纸鸢上天要捎一句话。扎纸鸢的手艺传到阿萤这一代，已经只剩她还会给鸢眼点漆——老人说，点了漆的纸鸢能认路，能替人把话送到想见的人梦里。",
+      "created": "（待补充）",
+      "genre": "（待补充）",
+      "status": "（待补充）",
+      "id": "yaoguijie",
+      "name": "妖鬼街",
+      "coverKey": "cover_yaoguijie",
+      "intro": "妖鬼街的简介（占位，可替换）。",
       "versions": [
         {
-          "id": "final",
-          "name": "定稿版 v2.0",
-          "note": "2023年2月修订，共四章",
+          "id": "v10",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章 · 上元灯",
-              "file": "content/stories/zhiyuan/final/c1.docx"
+              "title": "第一章",
+              "file": "content/stories/yaoguijie/v10/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章 · 断线鸢",
-              "file": "content/stories/zhiyuan/final/c2.docx"
-            },
-            {
-              "id": "c3",
-              "title": "第三章 · 借火",
-              "file": "content/stories/zhiyuan/final/c3.docx"
-            },
-            {
-              "id": "c4",
-              "title": "第四章 · 归灯",
-              "file": "content/stories/zhiyuan/final/c4.docx"
+              "title": "第二章",
+              "file": "content/stories/yaoguijie/v10/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_yaoguijie"
+        }
+      ],
+      "kind": "comic"
+    },
+    {
+      "created": "（待补充）",
+      "genre": "（待补充）",
+      "status": "（待补充）",
+      "id": "xianjing",
+      "name": "仙境",
+      "coverKey": "cover_xianjing",
+      "intro": "仙境的简介（占位，可替换）。",
+      "versions": [
+        {
+          "id": "v10",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/xianjing/v10/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/xianjing/v10/c2.docx"
+            }
+          ],
+          "coverKey": "cover_xianjing"
+        }
+      ],
+      "kind": "novel"
+    },
+    {
+      "created": "（待补充）",
+      "genre": "（待补充）",
+      "status": "（待补充）",
+      "id": "tinilapu",
+      "name": "提奈拉普",
+      "coverKey": "cover_tinilapu",
+      "intro": "提奈拉普的简介（占位，可替换）。",
+      "versions": [
+        {
+          "id": "event",
+          "name": "活动版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/tinilapu/event/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/tinilapu/event/c2.docx"
+            }
+          ],
+          "coverKey": "cover_tinilapu"
         },
         {
-          "id": "draft",
-          "name": "初稿版 v1.0",
-          "note": "2022年11月留档，共两章",
+          "id": "solo",
+          "name": "独立版",
+          "note": "章节为占位示例，请替换真实文档",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章 · 点漆",
-              "file": "content/stories/zhiyuan/draft/c1.docx"
+              "title": "第一章",
+              "file": "content/stories/tinilapu/solo/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章 · 送信匠",
-              "file": "content/stories/zhiyuan/draft/c2.docx"
+              "title": "第二章",
+              "file": "content/stories/tinilapu/solo/c2.docx"
             }
-          ]
+          ],
+          "coverKey": "cover_lancoa"
         }
-      ]
+      ],
+      "kind": "novel"
+    },
+    {
+      "created": "（待补充）",
+      "genre": "（待补充）",
+      "status": "（待补充）",
+      "id": "lancao",
+      "name": "蓝·草",
+      "coverKey": "cover_lancoa",
+      "intro": "蓝·草的简介（占位，可替换）。",
+      "versions": [
+        {
+          "id": "old",
+          "name": "旧版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/lancao/old/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/lancao/old/c2.docx"
+            }
+          ],
+          "coverKey": "cover_lancoa"
+        },
+        {
+          "id": "new",
+          "name": "新版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/lancao/new/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/lancao/new/c2.docx"
+            }
+          ],
+          "coverKey": "cover_yunhai"
+        }
+      ],
+      "kind": "comic"
     }
   ],
   "settings": [
     {
-      "id": "yunhai",
-      "name": "云海纪元 · 世界志",
-      "coverKey": "cover_yunhai",
-      "created": "2022年10月",
-      "genre": "世界观设定",
-      "status": "持续补充",
-      "intro": "《星屑信差》《雨停在站台》等作品共享的世界观总志，随新作发布滚动更新。本页为整体设定内容，不区分章节。",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_yinsaimena",
+      "name": "因赛美那 · 设定",
+      "coverKey": "cover_xingchen",
+      "intro": "《因赛美那》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
       "versions": [
         {
-          "id": "v1",
-          "name": "现行版 v1.2",
-          "note": "2024年10月更新",
-          "file": "content/settings/yunhai/v1.docx"
+          "id": "v2606",
+          "name": "2606版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/v2606.docx",
+          "coverKey": "cover_xingchen"
         },
         {
-          "id": "v0",
-          "name": "早期版 v0.5",
-          "note": "2022年10月留档",
-          "file": "content/settings/yunhai/v0.docx"
+          "id": "v25",
+          "name": "25版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/v25.docx",
+          "coverKey": "cover_yuting"
+        },
+        {
+          "id": "neo",
+          "name": "neo版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/neo.docx",
+          "coverKey": "cover_zhiyuan"
+        },
+        {
+          "id": "v24",
+          "name": "24版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/v24.docx",
+          "coverKey": "cover_yaoguijie"
+        },
+        {
+          "id": "v23",
+          "name": "23版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/v23.docx",
+          "coverKey": "cover_xianjing"
+        },
+        {
+          "id": "v15",
+          "name": "15版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yinsaimena/v15.docx",
+          "coverKey": "cover_tinilapu"
         }
       ]
     },
     {
-      "id": "tideng",
-      "name": "提灯人守夜录",
-      "coverKey": "cover_tideng",
-      "created": "2024年3月",
-      "genre": "组织设定 · 档案",
-      "status": "已完结",
-      "intro": "一个不存在于任何户籍系统的民间组织\"提灯会\"的公开档案整理稿：他们是谁、守什么夜、灯语怎么打。本页为整体设定内容，不区分章节。",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_yingzhidu",
+      "name": "樱之都·奈樱 · 设定",
+      "coverKey": "cover_yuting",
+      "intro": "《樱之都·奈樱》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
       "versions": [
         {
-          "id": "v1",
-          "name": "定稿版 v1.0",
-          "note": "2024年9月",
-          "file": "content/settings/tideng/v1.docx"
+          "id": "loose",
+          "name": "散装版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yingzhidu/loose.docx",
+          "coverKey": "cover_yuting"
+        },
+        {
+          "id": "old",
+          "name": "旧版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yingzhidu/old.docx",
+          "coverKey": "cover_zhiyuan"
+        },
+        {
+          "id": "v24",
+          "name": "24版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yingzhidu/v24.docx",
+          "coverKey": "cover_yaoguijie"
+        },
+        {
+          "id": "v25",
+          "name": "25版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yingzhidu/v25.docx",
+          "coverKey": "cover_xianjing"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_yaoguijie",
+      "name": "妖鬼街 · 设定",
+      "coverKey": "cover_yaoguijie",
+      "intro": "《妖鬼街》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v10",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yaoguijie/v10.docx",
+          "coverKey": "cover_yaoguijie"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_xianjing",
+      "name": "仙境 · 设定",
+      "coverKey": "cover_xianjing",
+      "intro": "《仙境》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v10",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_xianjing/v10.docx",
+          "coverKey": "cover_xianjing"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_tinilapu",
+      "name": "提奈拉普 · 设定",
+      "coverKey": "cover_tinilapu",
+      "intro": "《提奈拉普》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "event",
+          "name": "活动版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_tinilapu/event.docx",
+          "coverKey": "cover_tinilapu"
+        },
+        {
+          "id": "solo",
+          "name": "独立版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_tinilapu/solo.docx",
+          "coverKey": "cover_lancoa"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "id": "set_lancao",
+      "name": "蓝·草 · 设定",
+      "coverKey": "cover_lancoa",
+      "intro": "《蓝·草》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "old",
+          "name": "旧版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_lancao/old.docx",
+          "coverKey": "cover_lancoa"
+        },
+        {
+          "id": "new",
+          "name": "新版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_lancao/new.docx",
+          "coverKey": "cover_yunhai"
         }
       ]
     }
   ],
   "galleries": [
     {
-      "id": "summer",
-      "name": "夏日海岛帖",
-      "coverKey": "cover_summer",
-      "created": "2024年6月",
-      "genre": "水彩 · 风景",
-      "status": "已完结",
-      "intro": "去年夏天在南边岛上住了二十天，每天画一张速写回来。这里挑了六张最满意的，按游览的顺序排——从清晨的码头画到悬崖上的黄昏。",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_yinsaimena",
+      "name": "因赛美那 · 画集",
+      "coverKey": "cover_xingchen",
+      "intro": "《因赛美那》的画集（占位简介，可替换）。缩略图点大图查看。",
       "versions": [
         {
-          "id": "v1",
-          "name": "完整版",
-          "note": "2024年8月整理，共六张",
+          "id": "v2606",
+          "name": "2606版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
           "images": [
             {
               "id": "i1",
-              "title": "晨光码头",
-              "imageKey": "summer1",
-              "note": "灯塔、早泳的人和刚刷洗过的栈桥。颜料里掺了一点橘，用来画还没睡醒的光。"
+              "title": "因赛美那 2606版 图1",
+              "imageKey": "cover_xingchen",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i2",
-              "title": "碧湾帆影",
-              "imageKey": "summer2",
-              "note": "山崖背后藏着一片浅湾，帆船停在浪停住的地方。这一张的水分最大，画的是\"湿的风\"。"
+              "title": "因赛美那 2606版 图2",
+              "imageKey": "cover_yuting",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i3",
-              "title": "椰林与沙",
-              "imageKey": "summer3",
-              "note": "正午不敢下海，就坐在椰林边上画影子。数了一下，画里一共有九只椰子的影子。"
+              "title": "因赛美那 2606版 图3",
+              "imageKey": "cover_zhiyuan",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i4",
-              "title": "礁石与浪",
-              "imageKey": "summer4",
-              "note": "退潮后的礁石缝里全是小生命。这张改了四遍，浪的白沫只能留白，涂上去就假了。"
-            },
-            {
-              "id": "i5",
-              "title": "落日橘海",
-              "imageKey": "summer5",
-              "note": "最后一天傍晚赶画的，笔还没干太阳就落了。所以海是最湿的橘，天空是最干的蓝。"
-            },
-            {
-              "id": "i6",
-              "title": "断崖观海",
-              "imageKey": "summer6",
-              "note": "回程前一晚爬上断崖看的夜海。白天它是背景，入夜之后，整座崖都在认真听浪。"
+              "title": "因赛美那 2606版 图4",
+              "imageKey": "summer1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             }
-          ]
+          ],
+          "coverKey": "cover_xingchen"
+        },
+        {
+          "id": "v25",
+          "name": "25版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "因赛美那 25版 图1",
+              "imageKey": "summer2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "因赛美那 25版 图2",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "因赛美那 25版 图3",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "因赛美那 25版 图4",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_yuting"
+        },
+        {
+          "id": "neo",
+          "name": "neo版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "因赛美那 neo版 图1",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "因赛美那 neo版 图2",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "因赛美那 neo版 图3",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "因赛美那 neo版 图4",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_zhiyuan"
+        },
+        {
+          "id": "v24",
+          "name": "24版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "因赛美那 24版 图1",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "因赛美那 24版 图2",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "因赛美那 24版 图3",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "因赛美那 24版 图4",
+              "imageKey": "cover_yunhai",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_yaoguijie"
+        },
+        {
+          "id": "v23",
+          "name": "23版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "因赛美那 23版 图1",
+              "imageKey": "cover_tideng",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "因赛美那 23版 图2",
+              "imageKey": "cover_summer",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "因赛美那 23版 图3",
+              "imageKey": "cover_starry",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "因赛美那 23版 图4",
+              "imageKey": "cover_yaoguijie",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_xianjing"
+        },
+        {
+          "id": "v15",
+          "name": "15版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "因赛美那 15版 图1",
+              "imageKey": "cover_xianjing",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "因赛美那 15版 图2",
+              "imageKey": "cover_tinilapu",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "因赛美那 15版 图3",
+              "imageKey": "cover_lancoa",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "因赛美那 15版 图4",
+              "imageKey": "cover_xingchen",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_tinilapu"
         }
       ]
     },
     {
-      "id": "starry",
-      "name": "星夜拾光",
-      "coverKey": "cover_starry",
-      "created": "2023年11月",
-      "genre": "插画 · 夜空",
-      "status": "已完结",
-      "intro": "收集了六张不同时刻的夜空：有倒进水里的银河，有挂在电线杆上的星云，也有雪地里无人落座的双人椅。每张配一小段当时写下的话。",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_yingzhidu",
+      "name": "樱之都·奈樱 · 画集",
+      "coverKey": "cover_yuting",
+      "intro": "《樱之都·奈樱》的画集（占位简介，可替换）。缩略图点大图查看。",
       "versions": [
         {
-          "id": "v1",
-          "name": "完整版",
-          "note": "2024年1月整理，共六张",
+          "id": "loose",
+          "name": "散装版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
           "images": [
             {
               "id": "i1",
-              "title": "银河入水",
-              "imageKey": "starry1",
-              "note": "水面平静到分不清哪边是天。远处的小人影是画上去的，全图唯一的虚构元素。"
+              "title": "樱之都·奈樱 散装版 图1",
+              "imageKey": "cover_yuting",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i2",
-              "title": "流星与山湖",
-              "imageKey": "starry2",
-              "note": "等了四十分钟的那颗流星，入画只占两个像素。但值得。"
+              "title": "樱之都·奈樱 散装版 图2",
+              "imageKey": "cover_zhiyuan",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i3",
-              "title": "星云电线杆",
-              "imageKey": "starry3",
-              "note": "城郊的老电线杆，麻雀停在横担上。星云再大，也得让鸟先住。"
+              "title": "樱之都·奈樱 散装版 图3",
+              "imageKey": "summer1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i4",
-              "title": "雪地长椅",
-              "imageKey": "starry4",
-              "note": "路灯亮着，长椅空着，雪替两个人各占了一个位置。这张没有故事，只有冷。"
-            },
-            {
-              "id": "i5",
-              "title": "山湖月影",
-              "imageKey": "starry5",
-              "note": "群山围着的湖，月亮落在涟漪正中。画的时候窗外在下雨。"
-            },
-            {
-              "id": "i6",
-              "title": "弯月星野",
-              "imageKey": "starry6",
-              "note": "压卷的一张。树的黑、山的蓝、月的白，三种安静叠在一起。"
+              "title": "樱之都·奈樱 散装版 图4",
+              "imageKey": "summer2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
             }
-          ]
+          ],
+          "coverKey": "cover_yuting"
+        },
+        {
+          "id": "old",
+          "name": "旧版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "樱之都·奈樱 旧版 图1",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "樱之都·奈樱 旧版 图2",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "樱之都·奈樱 旧版 图3",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "樱之都·奈樱 旧版 图4",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_zhiyuan"
+        },
+        {
+          "id": "v24",
+          "name": "24版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "樱之都·奈樱 24版 图1",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "樱之都·奈樱 24版 图2",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "樱之都·奈樱 24版 图3",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "樱之都·奈樱 24版 图4",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_yaoguijie"
+        },
+        {
+          "id": "v25",
+          "name": "25版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "樱之都·奈樱 25版 图1",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "樱之都·奈樱 25版 图2",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "樱之都·奈樱 25版 图3",
+              "imageKey": "cover_yunhai",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "樱之都·奈樱 25版 图4",
+              "imageKey": "cover_tideng",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_xianjing"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_yaoguijie",
+      "name": "妖鬼街 · 画集",
+      "coverKey": "cover_yaoguijie",
+      "intro": "《妖鬼街》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v10",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "妖鬼街 1.0版 图1",
+              "imageKey": "cover_summer",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "妖鬼街 1.0版 图2",
+              "imageKey": "cover_starry",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "妖鬼街 1.0版 图3",
+              "imageKey": "cover_yaoguijie",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "妖鬼街 1.0版 图4",
+              "imageKey": "cover_xianjing",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_yaoguijie"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_xianjing",
+      "name": "仙境 · 画集",
+      "coverKey": "cover_xianjing",
+      "intro": "《仙境》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v10",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "仙境 1.0版 图1",
+              "imageKey": "cover_tinilapu",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "仙境 1.0版 图2",
+              "imageKey": "cover_lancoa",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "仙境 1.0版 图3",
+              "imageKey": "cover_xingchen",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "仙境 1.0版 图4",
+              "imageKey": "cover_yuting",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_xianjing"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_tinilapu",
+      "name": "提奈拉普 · 画集",
+      "coverKey": "cover_tinilapu",
+      "intro": "《提奈拉普》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "event",
+          "name": "活动版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "提奈拉普 活动版 图1",
+              "imageKey": "cover_zhiyuan",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "提奈拉普 活动版 图2",
+              "imageKey": "summer1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "提奈拉普 活动版 图3",
+              "imageKey": "summer2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "提奈拉普 活动版 图4",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_tinilapu"
+        },
+        {
+          "id": "solo",
+          "name": "独立版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "提奈拉普 独立版 图1",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "提奈拉普 独立版 图2",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "提奈拉普 独立版 图3",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "提奈拉普 独立版 图4",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_lancoa"
+        }
+      ]
+    },
+    {
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "id": "gal_lancao",
+      "name": "蓝·草 · 画集",
+      "coverKey": "cover_lancoa",
+      "intro": "《蓝·草》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "old",
+          "name": "旧版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "蓝·草 旧版 图1",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "蓝·草 旧版 图2",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "蓝·草 旧版 图3",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "蓝·草 旧版 图4",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_lancoa"
+        },
+        {
+          "id": "new",
+          "name": "新版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "蓝·草 新版 图1",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "蓝·草 新版 图2",
+              "imageKey": "cover_yunhai",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "蓝·草 新版 图3",
+              "imageKey": "cover_tideng",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "蓝·草 新版 图4",
+              "imageKey": "cover_summer",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ],
+          "coverKey": "cover_yunhai"
         }
       ]
     }
@@ -523,6 +1534,26 @@ window.SITE_DATA = {
     "starry3": "images/starry3.jpg",
     "starry4": "images/starry4.jpg",
     "starry5": "images/starry5.jpg",
-    "starry6": "images/starry6.jpg"
-  }
+    "starry6": "images/starry6.jpg",
+    "cover_yaoguijie": "images/cover_yaoguijie.jpg",
+    "cover_xianjing": "images/cover_xianjing.jpg",
+    "cover_tinilapu": "images/cover_tinilapu.jpg",
+    "cover_lancoa": "images/cover_lancoa.jpg"
+  },
+  "insp": [
+    {
+      "id": "scene",
+      "title": "灵感示例 · 场景速记",
+      "created": "2026年10月27日",
+      "intro": "存放一闪而过的画面与气氛：时间、地点、一句话。本条为格式模板，可直接改写。",
+      "file": "content/insp/scene.docx"
+    },
+    {
+      "id": "fragment",
+      "title": "灵感示例 · 设定碎片",
+      "created": "2026年10月27日",
+      "intro": "还没接进世界观的设定：规则、代价、能勾出的故事。本条为格式模板，可直接改写。",
+      "file": "content/insp/fragment.docx"
+    }
+  ]
 };

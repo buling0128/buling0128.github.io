@@ -88,12 +88,27 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .btn.ghost:hover{background:var(--blue-100)}
 /* SECTION: work-grid (stories/settings/gallery lists) */
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:18px}
-.wcard{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.wcard{background:var(--white);border:3px solid var(--blue-500);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
 .wcard .cover{aspect-ratio:3/4;overflow:hidden}
 .wcard .cover img{width:100%;height:100%;object-fit:cover;display:block}
 .wcard .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .wcard h3{font-size:17px}
 .wcard p{font-size:13px;line-height:1.7;color:var(--ink-soft);flex:1}
+/* SECTION: story-kinds —— 小说/漫画统一中度蓝外框 */
+.wcard.book, .wcard.paper{border:3px solid var(--blue-500);border-radius:12px}
+.wcard.book:hover, .wcard.paper:hover{transform:translateY(-2px)}
+/* SECTION: version-thumb —— 版本按钮小封面与版本页样式 */
+.version-btn{display:flex;align-items:center;gap:14px}
+.version-btn .vthumb{flex:none;width:46px;height:61px;border-radius:6px;overflow:hidden;border:2px solid var(--blue-300);background:var(--blue-50);position:relative}
+.version-btn .vthumb img{width:100%;height:100%;object-fit:cover;display:block}
+.version-btn .vmid{flex:1;min-width:0}
+.kind-title{font-size:16px;color:var(--blue-600);letter-spacing:2px;margin:22px 4px 12px;font-weight:700;display:flex;align-items:center;gap:8px}
+.kind-title svg{stroke:var(--blue-700);flex:none}
+.kind-title em{font-style:normal;font-size:12.5px;color:var(--ink-soft);font-weight:400;margin-left:6px}
+/* SECTION: line-icons —— 深蓝线条型 SVG 图标 */
+.ic{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;flex:none}
+.drawer li a .ic, .back-line .ic{vertical-align:-4px;margin-right:8px}
+.qk-ic{width:46px;height:46px;margin:0 auto}
 /* SECTION: work-detail & version */
 .crumb{font-size:13px;color:var(--ink-soft);margin:6px 0 14px}
 .crumb a{margin-right:4px}
@@ -131,14 +146,27 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .article .sub{font-size:13px;color:var(--ink-soft);margin-bottom:22px}
 .article p{font-size:16px;line-height:2.1;color:var(--ink);margin-bottom:16px;text-indent:2em}
 .read-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
-/* SECTION: gallery */
-.g-item{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow);margin-bottom:22px;scroll-margin-top:120px}
-.g-item .pic{aspect-ratio:4/3;overflow:hidden;background:var(--blue-50)}
+/* SECTION: gallery —— 缩略图网格，点图看大图 */
+.g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
+.g-item{background:var(--white);border:1px solid var(--blue-200);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:120px;cursor:zoom-in}
+.g-item:hover{border-color:var(--blue-500)}
+.g-item .pic{aspect-ratio:4/3;overflow:hidden;background:var(--blue-50);position:relative}
 .g-item .pic img{width:100%;height:100%;object-fit:cover;display:block}
-.g-item .cap{padding:14px 18px 16px}
-.g-item .cap h3{font-size:16px;color:var(--blue-700);margin-bottom:6px}
-.g-item .cap p{font-size:13.5px;line-height:1.8;color:var(--ink-soft)}
-.g-item .cap .no{font-size:12px;color:var(--blue-500);letter-spacing:1px}
+.g-item .pic::after{content:"🔍 看大图";position:absolute;right:8px;bottom:8px;background:rgba(45,98,150,.75);color:#fff;font-size:11.5px;border-radius:999px;padding:3px 10px;opacity:0;transition:opacity .2s}
+.g-item:hover .pic::after{opacity:1}
+.g-item .cap{padding:9px 12px 11px}
+.g-item .cap h3{font-size:13.5px;color:var(--blue-700)}
+.g-item .cap .no{font-size:11px;color:var(--blue-500);letter-spacing:1px}
+.lightbox{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(28,48,66,.86);padding:20px}
+.lightbox.show{display:flex}
+.lb-inner{max-width:min(1000px,94vw);max-height:92vh;display:flex;flex-direction:column;gap:10px}
+.lb-inner img{max-width:100%;max-height:74vh;object-fit:contain;border-radius:12px;background:var(--white);margin:0 auto}
+.lb-cap{color:#fff;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.lb-cap h3{font-size:17px;letter-spacing:1px}
+.lb-cap p{font-size:13px;line-height:1.7;color:var(--blue-200);flex:1;min-width:220px}
+.lb-nav{display:flex;gap:10px;align-items:center}
+.lb-btn{border:1px solid var(--blue-300);background:rgba(255,255,255,.12);color:#fff;border-radius:10px;padding:7px 15px;font-size:14px}
+.lb-btn:hover{background:rgba(255,255,255,.25)}
 /* SECTION: about */
 .about-wrap{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:26px clamp(18px,5vw,44px);box-shadow:var(--shadow)}
 .about-wrap h2{font-size:20px;color:var(--blue-700);margin:20px 0 10px;padding-left:10px;border-left:4px solid var(--blue-500)}
@@ -149,7 +177,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 /* SECTION: docx-styles —— Word 正文渲染样式 */
 .doc-error{background:var(--blue-50);border:1px dashed var(--blue-300);border-radius:10px;padding:14px 16px;font-size:14px;line-height:1.9;color:var(--ink);text-indent:0}
 .setting-block h1{font-size:17px;color:var(--blue-700);margin:16px 0 8px;padding-left:10px;border-left:4px solid var(--blue-500)}
-.about-wrap h1{font-size:20px;color:var(--blue-700);margin:20px 0 10px;padding-left:10px;border-left:4px solid var(--blue-500)}
+.about-wrap h1{font-size:30px;color:var(--blue-700);margin:6px 0 22px;line-height:1.5;font-weight:700;letter-spacing:1px}
 /* SECTION: footer & misc */
 footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12px 34px}
 .back-home{margin:18px 0}
@@ -183,6 +211,20 @@ footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12p
   <path d="M0,884 Q120,870 240,884 T480,884 T720,884 T960,884 T1200,884 T1440,884 L1440,900 L0,900 Z" fill="#2d6296" opacity="0.20"/>
 </svg>
 
+<!-- SECTION: line-icon-defs —— 深蓝线条型图标库（隐藏，供 use 引用） -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 10v10h13V10"/><path d="M10 20v-6h4v6"/></symbol>
+    <symbol id="i-stories" viewBox="0 0 24 24"><path d="M12 5.5C10 4 7 3.8 4.5 4.5V19C7 18.3 10 18.5 12 20"/><path d="M12 5.5c2-1.5 5-1.7 7.5-1V19c-2.5-.7-5.5-.5-7.5 1"/><path d="M12 5.5V20"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><rect x="3.5" y="7.5" width="17" height="12.5" rx="1.5"/><path d="M3.5 7.5 5.5 4h13l2 3.5"/><path d="M2 7.5h20"/><path d="M10 12h4"/></symbol>
+    <symbol id="i-gallery" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="14" rx="1.5"/><circle cx="9" cy="10" r="1.6"/><path d="M5 17.5 10 12.5l3 3 3.5-3.5L19.5 17"/></symbol>
+    <symbol id="i-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5.5"/><path d="M12 7.5h.01"/></symbol>
+    <symbol id="i-novel" viewBox="0 0 24 24"><path d="M7 4h12v17H7z"/><path d="M11 4v4.5l1.5-1.2 1.5 1.2V4"/><path d="M10 12.5h6M10 16h6"/></symbol>
+    <symbol id="i-comic" viewBox="0 0 24 24"><path d="M4 4.5h16v12H12.5L8 20.5v-4H4z"/><path d="M12 8l-2.5 3.5h3L10 15"/></symbol>
+    <symbol id="i-insp" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a7 7 0 0 1 4 12.8c-.8.6-1 1.4-1 2.2h-6c0-.8-.2-1.6-1-2.2A7 7 0 0 1 12 3z"/><path d="M12 6.5v4M10 8.5h4"/></symbol>
+  </defs>
+</svg>
+
 <!-- SECTION: topbar-header -->
 <header class="topbar">
   <button class="nav-btn" id="navOpen" aria-label="拉开目录栏">☰</button>
@@ -195,11 +237,11 @@ footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12p
 <nav class="drawer drawer-left" id="navDrawer" aria-label="站内目录">
   <div class="drawer-head"><h2>网站目录</h2><button class="drawer-close" data-close="nav">✕</button></div>
   <ul>
-    <li><a href="#/" data-nav="home">🏠 首页</a></li>
-    <li><a href="#/stories" data-nav="stories">📖 故事集</a></li>
-    <li><a href="#/settings" data-nav="settings">🗂 设定集</a></li>
-    <li><a href="#/gallery" data-nav="gallery">🖼 画集</a></li>
-    <li><a href="#/about" data-nav="about">ℹ 关于本站</a></li>
+    <li><a href="#/" data-nav="home"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-home"/></svg>首页</a></li>
+    <li><a href="#/stories" data-nav="stories"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-stories"/></svg>故事集</a></li>
+    <li><a href="#/settings" data-nav="settings"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-settings"/></svg>设定集</a></li>
+    <li><a href="#/gallery" data-nav="gallery"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-gallery"/></svg>画集</a></li>
+    <li><a href="#/about" data-nav="about"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-info"/></svg>关于本站</a></li>
   </ul>
 </nav>
 
@@ -298,11 +340,12 @@ function featuredHTML(){
 }
 function quickLinksHTML(){
   const items = [
-    {k:"stories", ic:"📖", t:"故事集", n:D.stories.length+" 部作品"},
-    {k:"settings", ic:"🗂", t:"设定集", n:D.settings.length+" 份设定"},
-    {k:"gallery", ic:"🖼", t:"画集", n:D.galleries.length+" 本画集"}
-  ].map(x=>`<a class="wcard" href="#/${x.k}" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><span style="font-size:34px">${x.ic}</span><h3>${x.t}</h3><p>${x.n}</p></div></a>`).join("");
-  const aboutCard = `<a class="wcard" href="#/about" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><span style="font-size:34px">ℹ</span><h3>关于本站</h3></div></a>`;
+    {k:"stories", ic:"i-stories", t:"故事集", n:D.stories.length+" 部作品"},
+    {k:"settings", ic:"i-settings", t:"设定集", n:D.settings.length+" 份设定"},
+    {k:"gallery", ic:"i-gallery", t:"画集", n:D.galleries.length+" 本画集"},
+    {k:"insp", ic:"i-insp", t:"灵感咕", n:(D.insp?D.insp.length:0)+" 条灵感"}
+  ].map(x=>`<a class="wcard" href="#/${x.k}" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><svg class="ic qk-ic" width="46" height="46" aria-hidden="true"><use href="#${x.ic}"/></svg><h3>${x.t}</h3><p>${x.n}</p></div></a>`).join("");
+  const aboutCard = `<a class="wcard" href="#/about" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><svg class="ic qk-ic" width="46" height="46" aria-hidden="true"><use href="#i-info"/></svg><h3>关于本站</h3></div></a>`;
   return `<section class="home-block"><div class="section-title"><h2>书架</h2></div><div class="grid">${items}</div></section>
     <section class="home-block"><div class="section-title"><h2>关于本站</h2></div><div class="grid">${aboutCard}</div></section>`;
 }
@@ -341,7 +384,23 @@ function renderHome(){
 
 /* SECTION: list-views（故事集/设定集/画集列表页） */
 function renderList(type){
-  const conf = { stories:{list:D.stories, t:"故事集", s:"每一部作品都有版本历史，点开看看吧"}, settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配侧边目录，可随时跳转某张或返回作品页"} }[type];
+  if(type === "stories"){
+    const mkCards = list => list.map(w => `<article class="wcard ${w.kind==='comic'?'paper':'book'}">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="body">
+        <h3>${esc(w.name)}</h3>
+        <p>${esc(w.intro)}</p>
+        <a class="btn" href="#/${type}/${w.id}">进入作品 →</a>
+      </div>
+    </article>`).join("");
+    const novels = D.stories.filter(s => s.kind !== "comic"), comics = D.stories.filter(s => s.kind === "comic");
+    view.innerHTML = `<div class="section-title"><h2>故事集</h2><span>每一部作品都有版本历史，点开看看吧</span></div>
+      <div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-novel"/></svg>小说<em>共 ${novels.length} 部</em></div><div class="grid">${mkCards(novels)}</div>
+      <div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-comic"/></svg>漫画<em>共 ${comics.length} 部</em></div><div class="grid">${mkCards(comics)}</div>`;
+    bindImages(view);
+    return;
+  }
+  const conf = { settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配侧边目录，可随时跳转某张或返回作品页"} }[type];
   const cards = conf.list.map(w => `<article class="wcard">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
@@ -359,7 +418,8 @@ function renderWork(type, id){
   const w = findWork(type, id);
   if(!w){ view.innerHTML = `<p>没有找到这部作品。<a href="#/${type}">返回${KIND_LABEL[type]}</a></p>`; return; }
   const versions = w.versions.map(v => `<button class="version-btn" data-version="${v.id}">
-      <span><span class="vn">${esc(v.name)}</span><div class="vnote">${esc(v.note||"")}</div></span>
+      <span class="vthumb" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(v.name)}封面"></span>
+      <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${esc(v.note||"")}</div></span>
       <span class="go">进入 →</span></button>`).join("");
   const note = type==="settings" ? `<p style="font-size:13px;color:var(--ink-soft);margin-top:10px">※ 设定集内容存于整体页面，选择版本后可直接阅读，不区分章节。</p>` : "";
   view.innerHTML = `
@@ -392,7 +452,7 @@ function renderStoryVersion(type, id, vid){
   view.innerHTML = `
     <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / <a href="#/${type}/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
     <section class="detail">
-      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
         <div class="meta-row">
@@ -446,7 +506,7 @@ function renderSettingVersion(id, vid){
   view.innerHTML = `
     <div class="crumb"><a href="#/">首页</a> / <a href="#/settings">设定集</a> / <a href="#/settings/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
     <section class="detail">
-      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
         <div class="meta-row">
@@ -466,13 +526,13 @@ function renderSettingVersion(id, vid){
   loadDocx(v.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
 }
 
-/* SECTION: gallery-version（图集+侧边目录） */
+/* SECTION: gallery-version（缩略图网格+侧边目录+点图看大图） */
 function renderGalleryVersion(id, vid){
   const w = findWork("gallery", id); const v = w && w.versions.find(x=>x.id===vid);
   if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/gallery/${id}">返回作品页</a></p>`; return; }
-  const items = v.images.map((im,i)=>`<figure class="g-item" id="gi-${im.id}">
+  const items = v.images.map((im,i)=>`<figure class="g-item" id="gi-${im.id}" data-lb="${i}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
       <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
-      <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3><p>${esc(im.note)}</p></figcaption>
+      <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
     </figure>`).join("");
   view.innerHTML = `
     <div class="reader-bar">
@@ -480,11 +540,49 @@ function renderGalleryVersion(id, vid){
       <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
       <button class="icon-btn" id="tocOpen">☰ 侧边目录</button>
     </div>
-    <div class="crumb" style="margin-top:14px"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / <a href="#/gallery/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
-    ${items}
-    <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>`;
+    <div class="crumb" style="margin-top:14px"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / <a href="#/gallery/${id}">${esc(w.name)}</a> / ${esc(v.name)}　<span style="color:var(--blue-500)">点击小图可查看大图</span></div>
+    <div class="g-grid">${items}</div>
+    <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
+      <div class="lb-inner">
+        <img id="lbImg" alt="">
+        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p></div>
+          <div class="lb-nav"><button class="lb-btn" id="lbPrev">← 上一张</button><span id="lbNo" style="font-size:13px"></span><button class="lb-btn" id="lbNext">下一张 →</button><button class="lb-btn" id="lbClose">✕ 关闭</button></div>
+        </div>
+      </div>
+    </div>`;
   bindImages(view);
   document.getElementById("tocOpen").addEventListener("click", () => buildToc("gallery",id,vid,"image",null));
+  /* SECTION: lightbox —— 大图查看层 */
+  const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
+        lbTitle = document.getElementById("lbTitle"), lbNote = document.getElementById("lbNote"), lbNo = document.getElementById("lbNo");
+  let cur = 0;
+  const show = i => {
+    cur = (i + v.images.length) % v.images.length;
+    const im = v.images[cur];
+    lbImg.src = D.images[im.imageKey] || "";
+    lbImg.alt = im.title;
+    lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")} · ${im.title}`;
+    lbNote.textContent = im.note || "";
+    lbNo.textContent = "";
+    lb.classList.add("show");
+    document.body.style.overflow = "hidden";
+  };
+  const hide = () => { lb.classList.remove("show"); document.body.style.overflow = ""; };
+  view.querySelectorAll("[data-lb]").forEach(el => {
+    el.addEventListener("click", () => show(+el.dataset.lb));
+    el.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); show(+el.dataset.lb); } });
+  });
+  lb.addEventListener("click", e => { if(e.target === lb) hide(); });
+  document.getElementById("lbClose").addEventListener("click", hide);
+  document.getElementById("lbPrev").addEventListener("click", () => show(cur-1));
+  document.getElementById("lbNext").addEventListener("click", () => show(cur+1));
+  document.addEventListener("keydown", function lbKey(e){
+    if(!lb.classList.contains("show")) return;
+    if(e.key === "Escape") hide();
+    if(e.key === "ArrowLeft") show(cur-1);
+    if(e.key === "ArrowRight") show(cur+1);
+  });
 }
 
 /* SECTION: toc-builder（阅读页/画集侧边目录内容） */
@@ -508,6 +606,37 @@ function buildToc(type,id,vid,mode,current){
   openDrawer("toc");
 }
 
+/* SECTION: insp-view —— 灵感咕：列表 + 无版本层直达正文 */
+const INSP_LABEL = "灵感咕";
+function renderInspList(){
+  const cards = D.insp.map(p => `<article class="wcard">
+      <div class="body">
+        <h3>${esc(p.title)}</h3>
+        <p>${esc(p.intro)}</p>
+        <span class="meta-chip">🗓 ${esc(p.created||"")}</span>
+        <a class="btn" href="#/insp/${p.id}">看正文 →</a>
+      </div>
+    </article>`).join("");
+  view.innerHTML = `<div class="section-title"><h2>${INSP_LABEL}</h2><span>存放一闪而过的灵感，点进去直接看正文</span></div><div class="grid">${cards}</div>`;
+}
+function renderInsp(id){
+  const p = D.insp.find(x => x.id === id);
+  if(!p){ view.innerHTML = `<p>没有这条灵感。<a href="#/insp">返回灵感咕</a></p>`; return; }
+  view.innerHTML = `
+    <div class="reader-bar">
+      <a class="icon-btn" href="#/insp">← 灵感咕列表</a>
+      <div class="rtitle">${esc(p.title)}</div>
+    </div>
+    <article class="article">
+      <h1>${esc(p.title)}</h1>
+      <div class="sub">${esc(p.created||"")}</div>
+      <div id="docBody"><p style="color:var(--ink-soft);text-indent:0">正文加载中…</p></div>
+    </article>
+    <div class="back-home"><a class="btn ghost" href="#/insp">← 返回灵感咕</a></div>`;
+  const body = document.getElementById("docBody");
+  loadDocx(p.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+}
+
 /* SECTION: about-view（文案来自 content/about.docx） */
 function renderAbout(){
   view.innerHTML = `
@@ -525,6 +654,7 @@ function route(){
   const raw = location.hash.replace(/^#\/?/, "");
   const seg = raw.split("/").filter(Boolean);
   closeDrawers();
+  const lbOn = document.getElementById("lightbox"); if(lbOn && lbOn.classList.contains("show")){ lbOn.classList.remove("show"); document.body.style.overflow = ""; }
   document.querySelectorAll("#navDrawer [data-nav]").forEach(a=>a.classList.remove("active"));
   let tail = "";
   const top = seg[0] || "home";
@@ -532,6 +662,8 @@ function route(){
   if(navEl) navEl.classList.add("active");
   if(!seg.length){ renderHome(); }
   else if(seg.length===1 && seg[0]==="about"){ tail="关于本站"; renderAbout(); }
+  else if(seg.length===1 && seg[0]==="insp"){ tail=INSP_LABEL; renderInspList(); }
+  else if(seg.length===2 && seg[0]==="insp"){ tail="灵感正文"; renderInsp(seg[1]); }
   else if(seg.length===1 && ["stories","settings","gallery"].includes(seg[0])){ tail=KIND_LABEL[seg[0]]; renderList(seg[0]); }
   else if(seg.length===2 && ["stories","settings","gallery"].includes(seg[0])){ tail="作品页"; renderWork(seg[0],seg[1]); }
   else if(seg.length===3 && seg[0]==="stories"){ tail="目录"; renderStoryVersion("stories",seg[1],seg[2]); }
