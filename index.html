@@ -46,7 +46,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .drawer .toc-sub{font-size:12px;color:var(--ink-soft);padding:8px 12px 2px;letter-spacing:1px}
 .drawer .back-line{margin-top:12px;border-top:1px dashed var(--blue-200);padding-top:10px}
 /* SECTION: home-notice */
-.notice{display:block;background:linear-gradient(90deg,var(--blue-100),var(--white));border:2px solid var(--blue-200);border-left:10px solid var(--blue-500);border-radius:26px;padding:28px 32px;margin-bottom:28px;box-shadow:var(--shadow)}
+.notice{display:block;background:linear-gradient(90deg,var(--blue-100),var(--white));border:4px solid var(--blue-500);border-radius:26px;padding:28px 32px;margin-bottom:28px;box-shadow:var(--shadow)}
 .notice-head{display:flex;align-items:center;justify-content:space-between;gap:16px}
 .notice .tag{flex:none;background:var(--blue-500);color:#fff;font-size:24px;border-radius:999px;padding:6px 20px}
 .notice .txt{font-size:28px;line-height:1.8;margin-top:14px}
@@ -94,7 +94,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .wcard .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
 .wcard h3{font-size:17px}
 .wcard p{font-size:13px;line-height:1.7;color:var(--ink-soft);flex:1}
-/* SECTION: story-kinds —— 小说/漫画统一中度蓝外框 */
+/* SECTION: story-kinds —— 小说/漫画卡片沿用统一边框层级 */
 .wcard.book, .wcard.paper{border:3px solid var(--blue-500);border-radius:12px}
 .wcard.book:hover, .wcard.paper:hover{transform:translateY(-2px)}
 /* SECTION: version-thumb —— 版本按钮小封面与版本页样式 */
@@ -112,23 +112,23 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 /* SECTION: work-detail & version */
 .crumb{font-size:13px;color:var(--ink-soft);margin:6px 0 14px}
 .crumb a{margin-right:4px}
-.detail{display:flex;gap:24px;background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);flex-wrap:wrap}
+.detail{display:flex;gap:24px;background:var(--white);border:3px solid var(--blue-500);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);flex-wrap:wrap}
 .detail .cover{flex:none;width:min(260px,45%);border-radius:12px;overflow:hidden;aspect-ratio:3/4}
 .detail .cover img{width:100%;height:100%;object-fit:cover;display:block}
 .detail .info{flex:1;min-width:260px}
 .detail h1{font-size:24px;color:var(--blue-700);letter-spacing:1px;margin-bottom:12px}
 .meta-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px}
-.meta-chip{font-size:12.5px;background:var(--blue-50);border:1px solid var(--blue-200);color:var(--blue-700);border-radius:999px;padding:4px 12px}
+.meta-chip{font-size:12.5px;background:transparent;border:1.5px solid var(--blue-500);color:var(--blue-600);border-radius:999px;padding:3px 11px}
 .intro-block{font-size:14.5px;line-height:1.9;color:var(--ink);background:var(--blue-50);border-radius:10px;padding:14px 16px;margin-bottom:16px}
 .version-list{display:flex;flex-direction:column;gap:10px}
-.version-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--white);border:1.5px solid var(--blue-200);border-radius:12px;padding:13px 16px;text-align:left;font-size:15px;color:var(--ink)}
+.version-btn{display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--white);border:2px solid var(--blue-300);border-radius:12px;padding:13px 16px;text-align:left;font-size:15px;color:var(--ink)}
 .version-btn:hover{border-color:var(--blue-500);background:var(--blue-50)}
 .version-btn .vn{font-weight:600;color:var(--blue-700)}
 .version-btn .vnote{font-size:12px;color:var(--ink-soft);margin-top:3px}
 .version-btn .go{flex:none;font-size:13px;color:var(--blue-500)}
 /* SECTION: chapter-list */
 .chap-list{list-style:none;display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.chap-list li a{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:1px solid var(--blue-200);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--ink)}
+.chap-list li a{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:2px solid var(--blue-300);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--ink)}
 .chap-list li a:hover{border-color:var(--blue-500);background:var(--blue-50);color:var(--blue-700)}
 .chap-list .idx{font-size:12px;color:var(--ink-soft)}
 /* SECTION: settings content */
@@ -148,7 +148,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .read-nav{display:flex;justify-content:space-between;gap:10px;margin-top:22px;flex-wrap:wrap}
 /* SECTION: gallery —— 缩略图网格，点图看大图 */
 .g-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px}
-.g-item{background:var(--white);border:1px solid var(--blue-200);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:120px;cursor:zoom-in}
+.g-item{background:var(--white);border:2px solid var(--blue-300);border-radius:12px;overflow:hidden;box-shadow:var(--shadow);scroll-margin-top:120px;cursor:zoom-in}
 .g-item:hover{border-color:var(--blue-500)}
 .g-item .pic{aspect-ratio:4/3;overflow:hidden;background:var(--blue-50);position:relative}
 .g-item .pic img{width:100%;height:100%;object-fit:cover;display:block}
@@ -179,10 +179,15 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .setting-block h1{font-size:17px;color:var(--blue-700);margin:16px 0 8px;padding-left:10px;border-left:4px solid var(--blue-500)}
 .about-wrap h1{font-size:30px;color:var(--blue-700);margin:6px 0 22px;line-height:1.5;font-weight:700;letter-spacing:1px}
 /* SECTION: footer & misc */
-footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12px 34px}
+footer{display:none}   /* 页脚版权行已按要求移除 */
 .back-home{margin:18px 0}
+/* SECTION: nested-frames —— 板块内逐层嵌套蓝色边框，越外层越粗（4px→3px→2px） */
+.frame-L1{border:4px solid var(--blue-500);border-radius:18px;padding:14px;margin:14px 0;background:rgba(255,255,255,.5)}
+.frame-L2{border:3px solid var(--blue-500);border-radius:14px;padding:12px;margin-bottom:12px;background:rgba(255,255,255,.55)}
+.frame-L2:last-child{margin-bottom:0}
+.frame-L3{border:2px solid var(--blue-300);border-radius:10px;padding:10px}
 @media (max-width:640px){
-  .notice{padding:18px 20px;gap:14px;border-left-width:8px}
+  .notice{padding:18px 20px}
   .notice .tag{font-size:18px;padding:4px 14px}
   .notice .txt{font-size:19px}
   .notice-close{font-size:17px;padding:8px 16px}
@@ -241,13 +246,14 @@ footer{text-align:center;font-size:12.5px;color:var(--ink-soft);padding:26px 12p
     <li><a href="#/stories" data-nav="stories"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-stories"/></svg>故事集</a></li>
     <li><a href="#/settings" data-nav="settings"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-settings"/></svg>设定集</a></li>
     <li><a href="#/gallery" data-nav="gallery"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-gallery"/></svg>画集</a></li>
+    <li><a href="#/insp" data-nav="insp"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-insp"/></svg>灵感咕</a></li>
     <li><a href="#/about" data-nav="about"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-info"/></svg>关于本站</a></li>
   </ul>
 </nav>
 
 <!-- SECTION: toc-drawer（阅读/画集页侧边目录栏） -->
 <div class="mask" id="tocMask"></div>
-<aside class="drawer drawer-right" id="tocDrawer" aria-label="侧边目录">
+<aside class="drawer drawer-right" id="tocDrawer" aria-label="目录">
   <div class="drawer-head"><h2 id="tocTitle">目录</h2><button class="drawer-close" data-close="toc">✕</button></div>
   <div id="tocBody"></div>
 </aside>
@@ -275,7 +281,6 @@ function loadDocx(file){
 }
 document.getElementById("brandName").firstChild.textContent = D.meta.name;
 document.getElementById("brandSlogan").textContent = D.meta.slogan;
-document.getElementById("siteFooter").textContent = "© " + D.meta.name + " · " + D.meta.slogan;
 document.title = D.meta.name;
 let noticeDismissed = false;   /* SECTION: notice-state 关闭仅在本次访问内生效，重新打开网站公告会再次显示 */
 const view = document.getElementById("view");
@@ -308,7 +313,7 @@ function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt
 function noticeHTML(){
   if(noticeDismissed) return "";
   return `<section class="notice" id="notice">
-    <div class="notice-head"><span class="tag">${esc(D.notice.title)}</span><button class="notice-close" id="noticeClose">✕ 关闭公告</button></div>
+    <div class="notice-head"><span class="tag">${esc(D.notice.title)}</span><button class="notice-close" id="noticeClose">✕ 关闭</button></div>
     <div class="txt">${esc(D.notice.content)}</div>
   </section>`;
 }
@@ -395,12 +400,12 @@ function renderList(type){
     </article>`).join("");
     const novels = D.stories.filter(s => s.kind !== "comic"), comics = D.stories.filter(s => s.kind === "comic");
     view.innerHTML = `<div class="section-title"><h2>故事集</h2><span>每一部作品都有版本历史，点开看看吧</span></div>
-      <div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-novel"/></svg>小说<em>共 ${novels.length} 部</em></div><div class="grid">${mkCards(novels)}</div>
-      <div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-comic"/></svg>漫画<em>共 ${comics.length} 部</em></div><div class="grid">${mkCards(comics)}</div>`;
+      <div class="frame-L1"><div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-novel"/></svg>小说<em>共 ${novels.length} 部</em></div><div class="grid">${mkCards(novels)}</div></div>
+      <div class="frame-L1"><div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-comic"/></svg>漫画<em>共 ${comics.length} 部</em></div><div class="grid">${mkCards(comics)}</div></div>`;
     bindImages(view);
     return;
   }
-  const conf = { settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配侧边目录，可随时跳转某张或返回作品页"} }[type];
+  const conf = { settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配目录，可随时跳转某张或返回作品页"} }[type];
   const cards = conf.list.map(w => `<article class="wcard">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
@@ -409,22 +414,24 @@ function renderList(type){
         <a class="btn" href="#/${type}/${w.id}">进入作品 →</a>
       </div>
     </article>`).join("");
-  view.innerHTML = `<div class="section-title"><h2>${conf.t}</h2><span>${conf.s}</span></div><div class="grid">${cards}</div>`;
+  view.innerHTML = `<div class="section-title"><h2>${conf.t}</h2><span>${conf.s}</span></div><div class="frame-L1"><div class="grid">${cards}</div></div>`;
   bindImages(view);
 }
 
 /* SECTION: work-detail（作品名/封面/简介/版本选择） */
+const vCount = v => v.chapters ? "共 " + v.chapters.length + " 章" : v.images ? "共 " + v.images.length + " 张" : "";
 function renderWork(type, id){
   const w = findWork(type, id);
   if(!w){ view.innerHTML = `<p>没有找到这部作品。<a href="#/${type}">返回${KIND_LABEL[type]}</a></p>`; return; }
   const versions = w.versions.map(v => `<button class="version-btn" data-version="${v.id}">
       <span class="vthumb" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(v.name)}封面"></span>
-      <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${esc(v.note||"")}</div></span>
+      <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${type==="settings" ? "整本设定" : vCount(v)}</div></span>
       <span class="go">进入 →</span></button>`).join("");
   const note = type==="settings" ? `<p style="font-size:13px;color:var(--ink-soft);margin-top:10px">※ 设定集内容存于整体页面，选择版本后可直接阅读，不区分章节。</p>` : "";
   view.innerHTML = `
+    <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / ${esc(w.name)}</div>
-    <section class="detail">
+    <section class="detail frame-L2">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
@@ -435,10 +442,11 @@ function renderWork(type, id){
         </div>
         <div class="intro-block">${esc(w.intro)}</div>
         <div class="section-title" style="margin-top:4px"><h2 style="font-size:17px">版本选择</h2></div>
-        <div class="version-list">${versions}</div>
+        <div class="version-list frame-L3">${versions}</div>
         ${note}
       </div>
-    </section>`;
+    </section>
+    </div>`;
   bindImages(view);
   view.querySelectorAll("[data-version]").forEach(b => b.addEventListener("click", () => { location.hash = `#/${type}/${id}/${b.dataset.version}`; }));
 }
@@ -448,26 +456,46 @@ function chapterHref(type,id,vid,ch){ return `#/${type}/${id}/${vid}/${ch}`; }
 function renderStoryVersion(type, id, vid){
   const w = findWork(type, id); const v = w && w.versions.find(x=>x.id===vid);
   if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/${type}/${id}">返回作品页</a></p>`; return; }
-  const chaps = v.chapters.map((c,i)=>`<li><a href="${chapterHref(type,id,vid,c.id)}">${esc(c.title)}<span class="idx">第 ${i+1} 章</span></a></li>`).join("");
-  view.innerHTML = `
-    <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / <a href="#/${type}/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
-    <section class="detail">
-      <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
-      <div class="info">
-        <h1>${esc(w.name)}</h1>
-        <div class="meta-row">
+  const meta = `<div class="meta-row">
           <span class="meta-chip">🗓 ${esc(w.created)}</span>
           <span class="meta-chip">🏷 ${esc(w.genre)}</span>
           <span class="meta-chip">📌 ${esc(w.status)}</span>
-          <span class="meta-chip">📄 ${esc(v.name)}${v.note?" · "+esc(v.note):""}</span>
-        </div>
+          <span class="meta-chip">📄 ${esc(v.name)} · ${vCount(v)}</span>
+        </div>`;
+  let asc = true;
+  const chapList = () => {
+    const arr = v.chapters.map((c, i) => ({ c, i }));
+    if (!asc) arr.reverse();
+    return arr.map(({ c, i }) => `<li><a href="${chapterHref(type,id,vid,c.id)}">${esc(c.title)}<span class="idx">第 ${i+1} 章</span></a></li>`).join("");
+  };
+  view.innerHTML = `
+    <div class="frame-L1">
+    <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / <a href="#/${type}/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
+    <section class="detail frame-L2">
+      <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
+      <div class="info">
+        <h1>${esc(w.name)}</h1>
+        ${meta}
         <div class="intro-block">${esc(w.intro)}</div>
       </div>
     </section>
-    <div class="section-title"><h2>作品目录</h2><span>点击章节标题开始阅读</span></div>
-    <ul class="chap-list">${chaps}</ul>
-    <div class="back-home"><a class="btn ghost" href="#/${type}/${id}">← 返回作品页（换版本）</a></div>`;
+    <section class="frame-L2">
+      <div class="section-title" style="margin-top:0">
+        <h2 style="font-size:17px">作品目录</h2>
+        <span>共 ${v.chapters.length} 章</span>
+        <button class="icon-btn" id="chapSort" style="margin-left:auto">↓ 倒序排列</button>
+      </div>
+      <ul class="chap-list" id="chapList">${chapList()}</ul>
+    </section>
+    <div class="back-home"><a class="btn ghost" href="#/${type}/${id}">← 返回作品页（换版本）</a></div>
+    </div>`;
   bindImages(view);
+  const sortBtn = document.getElementById("chapSort");
+  sortBtn.addEventListener("click", () => {
+    asc = !asc;
+    document.getElementById("chapList").innerHTML = chapList();
+    sortBtn.textContent = asc ? "↓ 倒序排列" : "↑ 正序排列";
+  });
 }
 
 /* SECTION: reader（阅读页+侧边目录，正文来自 Word 文档） */
@@ -480,17 +508,17 @@ function renderReader(type, id, vid, ch){
     <div class="reader-bar">
       <a class="icon-btn" href="#/${type}/${id}/${vid}">← 目录页</a>
       <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
-      <button class="icon-btn" id="tocOpen">☰ 侧边目录</button>
+      <button class="icon-btn" id="tocOpen">☰ 目录</button>
     </div>
-    <article class="article">
+    <div class="frame-L1"><article class="article">
       <h1>${esc(c.title)}</h1>
-      <div class="sub">${esc(w.name)} · ${esc(v.name)} · 全 ${v.chapters.length} 章，当前第 ${idx+1} 章</div>
+      <div class="sub">共 ${v.chapters.length} 章 · 当前第 ${idx+1} 章</div>
       <div id="docBody"><p style="color:var(--ink-soft);text-indent:0">正文加载中…</p></div>
       <div class="read-nav">
         ${prev?`<a class="btn ghost" href="${chapterHref(type,id,vid,prev.id)}">← ${esc(prev.title)}</a>`:`<span></span>`}
         ${next?`<a class="btn" href="${chapterHref(type,id,vid,next.id)}" data-primary-action>${esc(next.title)} →</a>`:`<a class="btn" href="#/${type}/${id}/${vid}">已读完，回目录 →</a>`}
       </div>
-    </article>
+    </article></div>
     <div class="back-home"><a class="btn ghost" href="#/${type}/${id}">回到作品首页</a></div>`;
   document.getElementById("tocOpen").addEventListener("click", () => buildToc(type,id,vid,"chapter", c.id));
   const body = document.getElementById("docBody");
@@ -504,8 +532,9 @@ function renderSettingVersion(id, vid){
   const w = findWork("settings", id); const v = w && w.versions.find(x=>x.id===vid);
   if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/settings/${id}">返回作品页</a></p>`; return; }
   view.innerHTML = `
+    <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/settings">设定集</a> / <a href="#/settings/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
-    <section class="detail">
+    <section class="detail frame-L2">
       <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
@@ -513,14 +542,15 @@ function renderSettingVersion(id, vid){
           <span class="meta-chip">🗓 ${esc(w.created)}</span>
           <span class="meta-chip">🏷 ${esc(w.genre)}</span>
           <span class="meta-chip">📌 ${esc(w.status)}</span>
-          <span class="meta-chip">📄 ${esc(v.name)}${v.note?" · "+esc(v.note):""}</span>
+          <span class="meta-chip">📄 ${esc(v.name)} · 整本设定</span>
         </div>
         <div class="intro-block">${esc(w.intro)}</div>
         <p style="font-size:13px;color:var(--ink-soft)">※ 设定集为整体页面，以下全部内容在本页连续呈现。</p>
       </div>
     </section>
-    <div class="setting-block" style="margin-top:18px" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
-    <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>`;
+    <div class="setting-block frame-L2" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
+    <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>
+    </div>`;
   bindImages(view);
   const body = document.getElementById("docBody");
   loadDocx(v.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
@@ -538,10 +568,10 @@ function renderGalleryVersion(id, vid){
     <div class="reader-bar">
       <a class="icon-btn" href="#/gallery/${id}">← 作品页</a>
       <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
-      <button class="icon-btn" id="tocOpen">☰ 侧边目录</button>
+      <button class="icon-btn" id="tocOpen">☰ 目录</button>
     </div>
     <div class="crumb" style="margin-top:14px"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / <a href="#/gallery/${id}">${esc(w.name)}</a> / ${esc(v.name)}　<span style="color:var(--blue-500)">点击小图可查看大图</span></div>
-    <div class="g-grid">${items}</div>
+    <div class="frame-L1"><div class="g-grid">${items}</div></div>
     <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>
     <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
       <div class="lb-inner">
@@ -596,7 +626,7 @@ function buildToc(type,id,vid,mode,current){
     html += v.images.map((im,i)=>`<li><button class="item" data-scroll="${im.id}">${String(i+1).padStart(2,"0")} · ${esc(im.title)}</button></li>`).join("");
     html += `</ul><div class="back-line"><a class="item" href="#/gallery/${id}" data-navlink>🏠 回到作品首页（${esc(w.name)}）</a><a class="item" href="#/gallery" data-navlink>🖼 回到画集列表</a></div>`;
   }
-  document.getElementById("tocTitle").textContent = mode==="chapter" ? "章节目录" : "图集目录";
+  document.getElementById("tocTitle").textContent = "目录";
   const body = document.getElementById("tocBody");
   body.innerHTML = html;
   body.querySelectorAll("[data-goto]").forEach(b=>b.addEventListener("click",()=>{ location.hash = `#/${type}/${id}/${vid}/${b.dataset.goto}`; closeDrawers(); }));
@@ -617,7 +647,7 @@ function renderInspList(){
         <a class="btn" href="#/insp/${p.id}">看正文 →</a>
       </div>
     </article>`).join("");
-  view.innerHTML = `<div class="section-title"><h2>${INSP_LABEL}</h2><span>存放一闪而过的灵感，点进去直接看正文</span></div><div class="grid">${cards}</div>`;
+  view.innerHTML = `<div class="section-title"><h2>${INSP_LABEL}</h2><span>存放一闪而过的灵感，点进去直接看正文</span></div><div class="frame-L1"><div class="grid">${cards}</div></div>`;
 }
 function renderInsp(id){
   const p = D.insp.find(x => x.id === id);
@@ -627,11 +657,11 @@ function renderInsp(id){
       <a class="icon-btn" href="#/insp">← 灵感咕列表</a>
       <div class="rtitle">${esc(p.title)}</div>
     </div>
-    <article class="article">
+    <div class="frame-L1"><article class="article">
       <h1>${esc(p.title)}</h1>
       <div class="sub">${esc(p.created||"")}</div>
       <div id="docBody"><p style="color:var(--ink-soft);text-indent:0">正文加载中…</p></div>
-    </article>
+    </article></div>
     <div class="back-home"><a class="btn ghost" href="#/insp">← 返回灵感咕</a></div>`;
   const body = document.getElementById("docBody");
   loadDocx(p.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
@@ -642,14 +672,14 @@ function renderAbout(){
   view.innerHTML = `
     <div class="crumb"><a href="#/">首页</a> / 关于本站</div>
     <div class="section-title"><h2>${esc(D.about.title)}</h2><span>${esc(D.meta.name)} 的自我介绍</span></div>
-    <section class="about-wrap" id="docBody"><p style="color:var(--ink-soft)">加载中…</p></section>
+    <div class="frame-L1"><section class="about-wrap" id="docBody"><p style="color:var(--ink-soft)">加载中…</p></section></div>
     <div class="back-home"><a class="btn ghost" href="#/">← 回首页看看</a></div>`;
   const body = document.getElementById("docBody");
   loadDocx(D.about.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
 }
 
 /* SECTION: router */
-const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", about:"about" };
+const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", insp:"insp", about:"about" };
 function route(){
   const raw = location.hash.replace(/^#\/?/, "");
   const seg = raw.split("/").filter(Boolean);
