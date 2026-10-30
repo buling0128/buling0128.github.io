@@ -393,18 +393,26 @@ function renderHome(){
   mi.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); say(); } });
 }
 
-/* SECTION: list-views（故事集/设定集/画集/灵感/草稿箱列表页）—— 三档排序：按名称(拼音首字母)/按数量/按最后更新时间 */
-const sumChildren = w => w.versions ? w.versions.reduce((n, v) => n + (v.chapters ? v.chapters.length : v.images ? v.images.length : 1), 0) : 1;
+/* SECTION: list-views（故事集/设定集/画集/灵感/草稿箱列表页）—— 三档排序，默认按作品数量；数量按当前板块自身内容统计 */
+const countByBoard = {
+  stories: w => w.versions.reduce((n, v) => n + (v.chapters ? v.chapters.length : 0), 0),   /* 本板块内各版本章节总数 */
+  settings: w => w.versions.length,                                                          /* 本板块内的设定文档数 */
+  gallery: w => w.versions.reduce((n, v) => n + (v.images ? v.images.length : 0), 0),        /* 本板块内的图片总数 */
+  insp: () => 1,                                                                              /* 灵感逐条计，平序按标题 */
+  drafts: () => 1                                                                             /* 草稿每作品一份，平序按标题 */
+};
+const sumChildren = countByBoard.stories;
 const SORTS = [
   { k: "name", t: "按首字母排序" },
   { k: "count", t: "按作品数量排序" },
   { k: "time", t: "按最后更新时间排序" }
 ];
-function applySort(list, mode, nameField){
+function applySort(list, mode, nameField, countFn){
   const nf = nameField || "name";
+  const cf = countFn || countByBoard.stories;
   const arr = list.slice();
   if (mode === "name") arr.sort((a, b) => String(a[nf]).localeCompare(String(b[nf]), "zh-Hans-CN"));
-  else if (mode === "count") arr.sort((a, b) => sumChildren(b) - sumChildren(a) || String(a[nf]).localeCompare(String(b[nf]), "zh"));
+  else if (mode === "count") arr.sort((a, b) => cf(b) - cf(a) || String(a[nf]).localeCompare(String(b[nf]), "zh"));
   else if (mode === "time") arr.sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")) || String(a[nf]).localeCompare(String(b[nf]), "zh"));
   return arr;
 }
@@ -418,10 +426,10 @@ function bindSortBar(rerender){
     rerender();
   }));
 }
-const listSort = { stories: "name", settings: "name", gallery: "name", insp: "name", drafts: "name" };
+const listSort = { stories: "count", settings: "count", gallery: "count", insp: "count", drafts: "count" };
 function renderList(type){
   if(type === "stories"){
-    const mkCards = list => applySort(list, listSort.stories).map(w => `<article class="wcard ${w.kind==='comic'?'paper':'book'}">
+    const mkCards = list => applySort(list, listSort.stories, "name", countByBoard.stories).map(w => `<article class="wcard ${w.kind==='comic'?'paper':'book'}">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
         <h3>${esc(w.name)}</h3>
@@ -439,7 +447,7 @@ function renderList(type){
     return;
   }
   const conf = { settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配目录，可随时跳转某张或返回作品页"} }[type];
-  const cards = applySort(conf.list, listSort[type]).map(w => `<article class="wcard">
+  const cards = applySort(conf.list, listSort[type], "name", countByBoard[type]).map(w => `<article class="wcard">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
         <h3>${esc(w.name)}</h3>
@@ -676,7 +684,7 @@ function buildToc(type,id,vid,mode,current){
 /* SECTION: insp-view —— 灵感咕：列表 + 无版本层直达正文 */
 const INSP_LABEL = "灵感咕";
 function renderInspList(){
-  const cards = applySort(D.insp, listSort.insp, "title").map(p => `<article class="wcard">
+  const cards = applySort(D.insp, listSort.insp, "title", countByBoard.insp).map(p => `<article class="wcard">
       <div class="body">
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.intro)}</p>
@@ -711,7 +719,7 @@ function renderInsp(id){
 const DRAFT_LABEL = "草稿箱";
 function draftFile(storyId){ return "content/drafts/" + storyId + ".docx"; }
 function renderDraftsList(){
-  const cards = applySort(D.stories, listSort.drafts).map(w => `<article class="wcard">
+  const cards = applySort(D.stories, listSort.drafts, "name", countByBoard.drafts).map(w => `<article class="wcard">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
         <h3>${esc(w.name)}</h3>
