@@ -112,7 +112,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 /* SECTION: work-detail & version */
 .crumb{font-size:13px;color:var(--ink-soft);margin:6px 0 14px}
 .crumb a{margin-right:4px}
-.detail{display:flex;gap:24px;background:var(--white);border:3px solid var(--blue-500);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);flex-wrap:wrap}
+.detail{display:flex;gap:24px;background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);flex-wrap:wrap}
 .detail .cover{flex:none;width:min(260px,45%);border-radius:12px;overflow:hidden;aspect-ratio:3/4}
 .detail .cover img{width:100%;height:100%;object-fit:cover;display:block}
 .detail .info{flex:1;min-width:260px}
@@ -181,11 +181,14 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 /* SECTION: footer & misc */
 footer{display:none}   /* 页脚版权行已按要求移除 */
 .back-home{margin:18px 0}
-/* SECTION: nested-frames —— 板块内逐层嵌套蓝色边框，越外层越粗（4px→3px→2px） */
+/* SECTION: nested-frames —— 板块仅保留最外层粗蓝边框，内层不再套框 */
 .frame-L1{border:4px solid var(--blue-500);border-radius:18px;padding:14px;margin:14px 0;background:rgba(255,255,255,.5)}
-.frame-L2{border:3px solid var(--blue-500);border-radius:14px;padding:12px;margin-bottom:12px;background:rgba(255,255,255,.55)}
-.frame-L2:last-child{margin-bottom:0}
-.frame-L3{border:2px solid var(--blue-300);border-radius:10px;padding:10px}
+/* SECTION: work-sort —— 列表排序按钮条 */
+.sort-bar{display:flex;gap:8px;flex-wrap:wrap;margin:4px 4px 12px}
+.sort-btn{border:1.5px solid var(--blue-300);background:var(--white);color:var(--blue-600);border-radius:999px;padding:6px 14px;font-size:13px}
+.sort-btn:hover{background:var(--blue-50)}
+.sort-btn.active{background:var(--blue-500);border-color:var(--blue-500);color:#fff;font-weight:600}
+.sort-btn[disabled]{opacity:.45;cursor:not-allowed}
 @media (max-width:640px){
   .notice{padding:18px 20px}
   .notice .tag{font-size:18px;padding:4px 14px}
@@ -227,6 +230,7 @@ footer{display:none}   /* 页脚版权行已按要求移除 */
     <symbol id="i-novel" viewBox="0 0 24 24"><path d="M7 4h12v17H7z"/><path d="M11 4v4.5l1.5-1.2 1.5 1.2V4"/><path d="M10 12.5h6M10 16h6"/></symbol>
     <symbol id="i-comic" viewBox="0 0 24 24"><path d="M4 4.5h16v12H12.5L8 20.5v-4H4z"/><path d="M12 8l-2.5 3.5h3L10 15"/></symbol>
     <symbol id="i-insp" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a7 7 0 0 1 4 12.8c-.8.6-1 1.4-1 2.2h-6c0-.8-.2-1.6-1-2.2A7 7 0 0 1 12 3z"/><path d="M12 6.5v4M10 8.5h4"/></symbol>
+    <symbol id="i-draft" viewBox="0 0 24 24"><path d="M4.5 10h15l-1.4 10.3a1.6 1.6 0 0 1-1.6 1.4H7.5a1.6 1.6 0 0 1-1.6-1.4z"/><path d="M9 10V4.5h6V10"/><path d="M9 14.5h6M9 17.5h4"/></symbol>
   </defs>
 </svg>
 
@@ -247,6 +251,7 @@ footer{display:none}   /* 页脚版权行已按要求移除 */
     <li><a href="#/settings" data-nav="settings"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-settings"/></svg>设定集</a></li>
     <li><a href="#/gallery" data-nav="gallery"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-gallery"/></svg>画集</a></li>
     <li><a href="#/insp" data-nav="insp"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-insp"/></svg>灵感咕</a></li>
+    <li><a href="#/drafts" data-nav="drafts"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-draft"/></svg>草稿箱</a></li>
     <li><a href="#/about" data-nav="about"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-info"/></svg>关于本站</a></li>
   </ul>
 </nav>
@@ -348,7 +353,8 @@ function quickLinksHTML(){
     {k:"stories", ic:"i-stories", t:"故事集", n:D.stories.length+" 部作品"},
     {k:"settings", ic:"i-settings", t:"设定集", n:D.settings.length+" 份设定"},
     {k:"gallery", ic:"i-gallery", t:"画集", n:D.galleries.length+" 本画集"},
-    {k:"insp", ic:"i-insp", t:"灵感咕", n:(D.insp?D.insp.length:0)+" 条灵感"}
+    {k:"insp", ic:"i-insp", t:"灵感咕", n:(D.insp?D.insp.length:0)+" 条灵感"},
+    {k:"drafts", ic:"i-draft", t:"草稿箱", n:"对应 "+D.stories.length+" 部作品"}
   ].map(x=>`<a class="wcard" href="#/${x.k}" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><svg class="ic qk-ic" width="46" height="46" aria-hidden="true"><use href="#${x.ic}"/></svg><h3>${x.t}</h3><p>${x.n}</p></div></a>`).join("");
   const aboutCard = `<a class="wcard" href="#/about" style="text-align:center;gap:6px"><div class="body" style="align-items:center"><svg class="ic qk-ic" width="46" height="46" aria-hidden="true"><use href="#i-info"/></svg><h3>关于本站</h3></div></a>`;
   return `<section class="home-block"><div class="section-title"><h2>书架</h2></div><div class="grid">${items}</div></section>
@@ -387,10 +393,35 @@ function renderHome(){
   mi.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); say(); } });
 }
 
-/* SECTION: list-views（故事集/设定集/画集列表页） */
+/* SECTION: list-views（故事集/设定集/画集/灵感/草稿箱列表页）—— 三档排序：按名称(拼音首字母)/按数量/按最后更新时间 */
+const sumChildren = w => w.versions ? w.versions.reduce((n, v) => n + (v.chapters ? v.chapters.length : v.images ? v.images.length : 1), 0) : 1;
+const SORTS = [
+  { k: "name", t: "按首字母排序" },
+  { k: "count", t: "按作品数量排序" },
+  { k: "time", t: "按最后更新时间排序" }
+];
+function applySort(list, mode, nameField){
+  const nf = nameField || "name";
+  const arr = list.slice();
+  if (mode === "name") arr.sort((a, b) => String(a[nf]).localeCompare(String(b[nf]), "zh-Hans-CN"));
+  else if (mode === "count") arr.sort((a, b) => sumChildren(b) - sumChildren(a) || String(a[nf]).localeCompare(String(b[nf]), "zh"));
+  else if (mode === "time") arr.sort((a, b) => String(b.updated || "").localeCompare(String(a.updated || "")) || String(a[nf]).localeCompare(String(b[nf]), "zh"));
+  return arr;
+}
+function sortBarHTML(key, mode){
+  return `<div class="sort-bar" data-sortbar="${key}">` + SORTS.map(s => `<button class="sort-btn${s.k === mode ? " active" : ""}" data-sort="${key}:${s.k}">${s.t}</button>`).join("") + `</div>`;
+}
+function bindSortBar(rerender){
+  view.querySelectorAll(".sort-btn[data-sort]").forEach(b => b.addEventListener("click", () => {
+    const [key, mode] = b.dataset.sort.split(":");
+    listSort[key] = mode;
+    rerender();
+  }));
+}
+const listSort = { stories: "name", settings: "name", gallery: "name", insp: "name", drafts: "name" };
 function renderList(type){
   if(type === "stories"){
-    const mkCards = list => list.map(w => `<article class="wcard ${w.kind==='comic'?'paper':'book'}">
+    const mkCards = list => applySort(list, listSort.stories).map(w => `<article class="wcard ${w.kind==='comic'?'paper':'book'}">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
         <h3>${esc(w.name)}</h3>
@@ -400,13 +431,15 @@ function renderList(type){
     </article>`).join("");
     const novels = D.stories.filter(s => s.kind !== "comic"), comics = D.stories.filter(s => s.kind === "comic");
     view.innerHTML = `<div class="section-title"><h2>故事集</h2><span>每一部作品都有版本历史，点开看看吧</span></div>
+      ${sortBarHTML("stories", listSort.stories)}
       <div class="frame-L1"><div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-novel"/></svg>小说<em>共 ${novels.length} 部</em></div><div class="grid">${mkCards(novels)}</div></div>
       <div class="frame-L1"><div class="kind-title"><svg class="ic" width="20" height="20" aria-hidden="true"><use href="#i-comic"/></svg>漫画<em>共 ${comics.length} 部</em></div><div class="grid">${mkCards(comics)}</div></div>`;
     bindImages(view);
+    bindSortBar(() => renderList("stories"));
     return;
   }
   const conf = { settings:{list:D.settings, t:"设定集", s:"作品背后的世界，不分章节，整页读完即可"}, gallery:{list:D.galleries, t:"画集", s:"图集配目录，可随时跳转某张或返回作品页"} }[type];
-  const cards = conf.list.map(w => `<article class="wcard">
+  const cards = applySort(conf.list, listSort[type]).map(w => `<article class="wcard">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="body">
         <h3>${esc(w.name)}</h3>
@@ -414,8 +447,9 @@ function renderList(type){
         <a class="btn" href="#/${type}/${w.id}">进入作品 →</a>
       </div>
     </article>`).join("");
-  view.innerHTML = `<div class="section-title"><h2>${conf.t}</h2><span>${conf.s}</span></div><div class="frame-L1"><div class="grid">${cards}</div></div>`;
+  view.innerHTML = `<div class="section-title"><h2>${conf.t}</h2><span>${conf.s}</span></div>${sortBarHTML(type, listSort[type])}<div class="frame-L1"><div class="grid">${cards}</div></div>`;
   bindImages(view);
+  bindSortBar(() => renderList(type));
 }
 
 /* SECTION: work-detail（作品名/封面/简介/版本选择） */
@@ -431,18 +465,19 @@ function renderWork(type, id){
   view.innerHTML = `
     <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / ${esc(w.name)}</div>
-    <section class="detail frame-L2">
+    <section class="detail">
       <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
         <div class="meta-row">
-          <span class="meta-chip">🗓 创作时间：${esc(w.created)}</span>
-          <span class="meta-chip">🏷 作品类型：${esc(w.genre)}</span>
-          <span class="meta-chip">📌 状态：${esc(w.status)}</span>
+          <span class="meta-chip">创作时间：${esc(w.created)}</span>
+          <span class="meta-chip">作品类型：${esc(w.genre)}</span>
+          <span class="meta-chip">状态：${esc(w.status)}</span>
+          <span class="meta-chip">最后更新：${esc(w.updated||"")}</span>
         </div>
         <div class="intro-block">${esc(w.intro)}</div>
         <div class="section-title" style="margin-top:4px"><h2 style="font-size:17px">版本选择</h2></div>
-        <div class="version-list frame-L3">${versions}</div>
+        <div class="version-list">${versions}</div>
         ${note}
       </div>
     </section>
@@ -457,10 +492,11 @@ function renderStoryVersion(type, id, vid){
   const w = findWork(type, id); const v = w && w.versions.find(x=>x.id===vid);
   if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/${type}/${id}">返回作品页</a></p>`; return; }
   const meta = `<div class="meta-row">
-          <span class="meta-chip">🗓 ${esc(w.created)}</span>
-          <span class="meta-chip">🏷 ${esc(w.genre)}</span>
-          <span class="meta-chip">📌 ${esc(w.status)}</span>
-          <span class="meta-chip">📄 ${esc(v.name)} · ${vCount(v)}</span>
+          <span class="meta-chip">创作时间：${esc(w.created)}</span>
+          <span class="meta-chip">作品类型：${esc(w.genre)}</span>
+          <span class="meta-chip">状态：${esc(w.status)}</span>
+          <span class="meta-chip">最后更新：${esc(w.updated||"")}</span>
+          <span class="meta-chip">${vCount(v)}</span>
         </div>`;
   let asc = true;
   const chapList = () => {
@@ -471,7 +507,7 @@ function renderStoryVersion(type, id, vid){
   view.innerHTML = `
     <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/${type}">${KIND_LABEL[type]}</a> / <a href="#/${type}/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
-    <section class="detail frame-L2">
+    <section class="detail">
       <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
@@ -479,7 +515,7 @@ function renderStoryVersion(type, id, vid){
         <div class="intro-block">${esc(w.intro)}</div>
       </div>
     </section>
-    <section class="frame-L2">
+    <section>
       <div class="section-title" style="margin-top:0">
         <h2 style="font-size:17px">作品目录</h2>
         <span>共 ${v.chapters.length} 章</span>
@@ -534,21 +570,22 @@ function renderSettingVersion(id, vid){
   view.innerHTML = `
     <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/settings">设定集</a> / <a href="#/settings/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
-    <section class="detail frame-L2">
+    <section class="detail">
       <div class="cover" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(w.name)} ${esc(v.name)}封面"></div>
       <div class="info">
         <h1>${esc(w.name)}</h1>
         <div class="meta-row">
-          <span class="meta-chip">🗓 ${esc(w.created)}</span>
-          <span class="meta-chip">🏷 ${esc(w.genre)}</span>
-          <span class="meta-chip">📌 ${esc(w.status)}</span>
-          <span class="meta-chip">📄 ${esc(v.name)} · 整本设定</span>
+          <span class="meta-chip">创作时间：${esc(w.created)}</span>
+          <span class="meta-chip">作品类型：${esc(w.genre)}</span>
+          <span class="meta-chip">状态：${esc(w.status)}</span>
+          <span class="meta-chip">最后更新：${esc(w.updated||"")}</span>
+          <span class="meta-chip">整本设定</span>
         </div>
         <div class="intro-block">${esc(w.intro)}</div>
         <p style="font-size:13px;color:var(--ink-soft)">※ 设定集为整体页面，以下全部内容在本页连续呈现。</p>
       </div>
     </section>
-    <div class="setting-block frame-L2" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
+    <div class="setting-block" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
     <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>
     </div>`;
   bindImages(view);
@@ -639,15 +676,17 @@ function buildToc(type,id,vid,mode,current){
 /* SECTION: insp-view —— 灵感咕：列表 + 无版本层直达正文 */
 const INSP_LABEL = "灵感咕";
 function renderInspList(){
-  const cards = D.insp.map(p => `<article class="wcard">
+  const cards = applySort(D.insp, listSort.insp, "title").map(p => `<article class="wcard">
       <div class="body">
         <h3>${esc(p.title)}</h3>
         <p>${esc(p.intro)}</p>
-        <span class="meta-chip">🗓 ${esc(p.created||"")}</span>
+        <span class="meta-chip">创作时间：${esc(p.created||"")}</span>
+        <span class="meta-chip">最后更新：${esc(p.updated||"")}</span>
         <a class="btn" href="#/insp/${p.id}">看正文 →</a>
       </div>
     </article>`).join("");
-  view.innerHTML = `<div class="section-title"><h2>${INSP_LABEL}</h2><span>存放一闪而过的灵感，点进去直接看正文</span></div><div class="frame-L1"><div class="grid">${cards}</div></div>`;
+  view.innerHTML = `<div class="section-title"><h2>${INSP_LABEL}</h2><span>存放一闪而过的灵感，点进去直接看正文</span></div>${sortBarHTML("insp", listSort.insp)}<div class="frame-L1"><div class="grid">${cards}</div></div>`;
+  bindSortBar(() => renderInspList());
 }
 function renderInsp(id){
   const p = D.insp.find(x => x.id === id);
@@ -667,6 +706,41 @@ function renderInsp(id){
   loadDocx(p.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
 }
 
+/* SECTION: drafts-view —— 草稿箱：列表自动与故事集作品一一对应（源自 D.stories），点进去直达草稿正文；
+   正文按约定路径 content/drafts/<作品id>.docx 读取，新增/删除故事集作品后本板块自动同步 */
+const DRAFT_LABEL = "草稿箱";
+function draftFile(storyId){ return "content/drafts/" + storyId + ".docx"; }
+function renderDraftsList(){
+  const cards = applySort(D.stories, listSort.drafts).map(w => `<article class="wcard">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="body">
+        <h3>${esc(w.name)}</h3>
+        <p>收录《${esc(w.name)}》最初的模样：人物草稿、废案桥段、分镜构思与随手划拉的灵感碎片。</p>
+        <a class="btn" href="#/drafts/${w.id}">进草稿箱 →</a>
+      </div>
+    </article>`).join("");
+  view.innerHTML = `<div class="section-title"><h2>${DRAFT_LABEL}</h2><span>与故事集${D.stories.length}部作品一一对应，老大随手划拉的东西很可能就在这里</span></div>${sortBarHTML("drafts", listSort.drafts)}<div class="frame-L1"><div class="grid">${cards}</div></div>`;
+  bindImages(view);
+  bindSortBar(() => renderDraftsList());
+}
+function renderDraft(id){
+  const w = findWork("stories", id);
+  if(!w){ view.innerHTML = `<p>没有这部作品。<a href="#/drafts">返回草稿箱</a></p>`; return; }
+  view.innerHTML = `
+    <div class="reader-bar">
+      <a class="icon-btn" href="#/drafts">← 草稿箱</a>
+      <div class="rtitle">${esc(w.name)} · 草稿箱</div>
+    </div>
+    <div class="frame-L1"><article class="article">
+      <h1>${esc(w.name)} · 草稿箱</h1>
+      <div class="sub">与作品《${esc(w.name)}》对应的草稿正文</div>
+      <div id="docBody"><p style="color:var(--ink-soft);text-indent:0">草稿加载中…</p></div>
+    </article></div>
+    <div class="back-home"><a class="btn ghost" href="#/drafts">← 返回草稿箱</a></div>`;
+  const body = document.getElementById("docBody");
+  loadDocx(draftFile(id)).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+}
+
 /* SECTION: about-view（文案来自 content/about.docx） */
 function renderAbout(){
   view.innerHTML = `
@@ -679,7 +753,7 @@ function renderAbout(){
 }
 
 /* SECTION: router */
-const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", insp:"insp", about:"about" };
+const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", insp:"insp", drafts:"drafts", about:"about" };
 function route(){
   const raw = location.hash.replace(/^#\/?/, "");
   const seg = raw.split("/").filter(Boolean);
@@ -694,6 +768,8 @@ function route(){
   else if(seg.length===1 && seg[0]==="about"){ tail="关于本站"; renderAbout(); }
   else if(seg.length===1 && seg[0]==="insp"){ tail=INSP_LABEL; renderInspList(); }
   else if(seg.length===2 && seg[0]==="insp"){ tail="灵感正文"; renderInsp(seg[1]); }
+  else if(seg.length===1 && seg[0]==="drafts"){ tail=DRAFT_LABEL; renderDraftsList(); }
+  else if(seg.length===2 && seg[0]==="drafts"){ tail="草稿正文"; renderDraft(seg[1]); }
   else if(seg.length===1 && ["stories","settings","gallery"].includes(seg[0])){ tail=KIND_LABEL[seg[0]]; renderList(seg[0]); }
   else if(seg.length===2 && ["stories","settings","gallery"].includes(seg[0])){ tail="作品页"; renderWork(seg[0],seg[1]); }
   else if(seg.length===3 && seg[0]==="stories"){ tail="目录"; renderStoryVersion("stories",seg[1],seg[2]); }

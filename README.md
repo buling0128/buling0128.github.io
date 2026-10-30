@@ -56,3 +56,9 @@ images/                所有图片（封面、看板娘、画集作品图）
 2. 把 `云笺小筑.html` 改名为 `index.html`
 3. 仓库 Settings → Pages → Source 选 `Deploy from a branch`，分支 `main` + `/ (root)`，保存
 4. 访问 `https://你的用户名.github.io/仓库名/` 即上线
+
+## 草稿箱维护
+
+- 草稿箱与故事集作品一一对应：列表页实时读取故事集数据，增删作品后自动同步，无需单独维护列表。
+- 每部作品的草稿正文存于 content/drafts/<作品id>.docx（如 yinsaimena.docx）。新增作品后需为该作品补一个同名 docx（可从其他草稿复制改写），否则点进草稿箱会提示找不到文档。
+- 删除作品后，对应草稿文件不再被引用，可自行删除或留档。

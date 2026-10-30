@@ -1,4 +1,4 @@
-/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记 */
+/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；替换正文或增删章节后请同步更新该字段（可让助手代改），网站的按更新时间排序即以此为准 */
 window.SITE_DATA = {
   "meta": {
     "name": "布灵的创作小屋",
@@ -60,6 +60,22 @@ window.SITE_DATA = {
       },
       {
         "text": "当看板娘很累的，总有一天，我要辞掉这份工作，去看看外面的世界！",
+        "act": "act_letter"
+      },
+      {
+        "text": "你说，老大会不会再招一个看板娘来陪陪我呢，一个人还是挺孤单的",
+        "act": "act_sleep"
+      },
+      {
+        "text": "灵感咕力咕力咕力哇恰灵感咕灵感咕～灵感咕里有老大的很多灵感哦",
+        "act": "act_idle"
+      },
+      {
+        "text": "老大随手划拉的东西很可能就成为一个新的角色，可以在草稿箱中看到他们最初的模样",
+        "act": "act_write"
+      },
+      {
+        "text": "你说，我的声音会是什么样子呢？",
         "act": "act_letter"
       }
     ]
@@ -501,7 +517,8 @@ window.SITE_DATA = {
           "coverKey": "cover_tinilapu"
         }
       ],
-      "kind": "novel"
+      "kind": "novel",
+      "updated": "2026-10-27"
     },
     {
       "id": "yingzhidu",
@@ -585,7 +602,8 @@ window.SITE_DATA = {
           "coverKey": "cover_xianjing"
         }
       ],
-      "kind": "novel"
+      "kind": "novel",
+      "updated": "2026-10-26"
     },
     {
       "created": "（待补充）",
@@ -615,7 +633,8 @@ window.SITE_DATA = {
           "coverKey": "cover_yaoguijie"
         }
       ],
-      "kind": "comic"
+      "kind": "comic",
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -645,7 +664,8 @@ window.SITE_DATA = {
           "coverKey": "cover_xianjing"
         }
       ],
-      "kind": "novel"
+      "kind": "novel",
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -693,7 +713,8 @@ window.SITE_DATA = {
           "coverKey": "cover_lancoa"
         }
       ],
-      "kind": "novel"
+      "kind": "novel",
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -741,7 +762,338 @@ window.SITE_DATA = {
           "coverKey": "cover_yunhai"
         }
       ],
-      "kind": "comic"
+      "kind": "comic",
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "guaiwumaoxianzhe",
+      "name": "怪物冒险者",
+      "kind": "novel",
+      "coverKey": "cover_starry",
+      "created": "（待补充）",
+      "genre": "小说（待补充）",
+      "status": "（待补充）",
+      "intro": "《怪物冒险者》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/guaiwumaoxianzhe/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/guaiwumaoxianzhe/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gaosuyinchang",
+      "name": "高速吟唱魔法使",
+      "kind": "novel",
+      "coverKey": "summer1",
+      "created": "（待补充）",
+      "genre": "小说（待补充）",
+      "status": "（待补充）",
+      "intro": "《高速吟唱魔法使》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/gaosuyinchang/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/gaosuyinchang/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "ailinditu",
+      "name": "艾琳·麦克伦的地图",
+      "kind": "novel",
+      "coverKey": "summer2",
+      "created": "（待补充）",
+      "genre": "小说（待补充）",
+      "status": "（待补充）",
+      "intro": "《艾琳·麦克伦的地图》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/ailinditu/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/ailinditu/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "yongchibuxiu",
+      "name": "勇捶不朽的魔法少女",
+      "kind": "novel",
+      "coverKey": "summer3",
+      "created": "（待补充）",
+      "genre": "小说（待补充）",
+      "status": "（待补充）",
+      "intro": "《勇捶不朽的魔法少女》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/yongchibuxiu/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/yongchibuxiu/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "bulingduanpian",
+      "name": "布灵的短篇故事集",
+      "kind": "novel",
+      "coverKey": "summer4",
+      "created": "（待补充）",
+      "genre": "小说（待补充）",
+      "status": "（待补充）",
+      "intro": "《布灵的短篇故事集》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/bulingduanpian/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/bulingduanpian/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "haitu",
+      "name": "海兔岸上求生记",
+      "kind": "comic",
+      "coverKey": "summer5",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《海兔岸上求生记》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/haitu/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/haitu/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "duocai",
+      "name": "多彩世界的旅行",
+      "kind": "comic",
+      "coverKey": "summer6",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《多彩世界的旅行》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/duocai/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/duocai/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "yulinling",
+      "name": "雨·林灵",
+      "kind": "comic",
+      "coverKey": "starry1",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《雨·林灵》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/yulinling/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/yulinling/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "tuoluo",
+      "name": "陀罗少女",
+      "kind": "comic",
+      "coverKey": "starry2",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《陀罗少女》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/tuoluo/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/tuoluo/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "wanwu",
+      "name": "万物娘化",
+      "kind": "comic",
+      "coverKey": "starry3",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《万物娘化》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/wanwu/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/wanwu/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "canger",
+      "name": "苍耳饲养指南",
+      "kind": "comic",
+      "coverKey": "starry4",
+      "created": "（待补充）",
+      "genre": "漫画（待补充）",
+      "status": "（待补充）",
+      "intro": "《苍耳饲养指南》的简介（占位，请在登记表替换）。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "章节为占位示例，请替换真实文档",
+          "chapters": [
+            {
+              "id": "c1",
+              "title": "第一章",
+              "file": "content/stories/canger/v1/c1.docx"
+            },
+            {
+              "id": "c2",
+              "title": "第二章",
+              "file": "content/stories/canger/v1/c2.docx"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
     }
   ],
   "settings": [
@@ -796,7 +1148,8 @@ window.SITE_DATA = {
           "file": "content/settings/set_yinsaimena/v15.docx",
           "coverKey": "cover_tinilapu"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -835,7 +1188,8 @@ window.SITE_DATA = {
           "file": "content/settings/set_yingzhidu/v25.docx",
           "coverKey": "cover_xianjing"
         }
-      ]
+      ],
+      "updated": "2026-10-26"
     },
     {
       "created": "（待补充）",
@@ -853,7 +1207,8 @@ window.SITE_DATA = {
           "file": "content/settings/set_yaoguijie/v10.docx",
           "coverKey": "cover_yaoguijie"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -871,7 +1226,8 @@ window.SITE_DATA = {
           "file": "content/settings/set_xianjing/v10.docx",
           "coverKey": "cover_xianjing"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -896,7 +1252,8 @@ window.SITE_DATA = {
           "file": "content/settings/set_tinilapu/solo.docx",
           "coverKey": "cover_lancoa"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -921,7 +1278,206 @@ window.SITE_DATA = {
           "file": "content/settings/set_lancao/new.docx",
           "coverKey": "cover_yunhai"
         }
-      ]
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_guaiwumaoxianzhe",
+      "name": "怪物冒险者 · 设定",
+      "coverKey": "cover_starry",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《怪物冒险者》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_guaiwumaoxianzhe/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_gaosuyinchang",
+      "name": "高速吟唱魔法使 · 设定",
+      "coverKey": "summer1",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《高速吟唱魔法使》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_gaosuyinchang/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_ailinditu",
+      "name": "艾琳·麦克伦的地图 · 设定",
+      "coverKey": "summer2",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《艾琳·麦克伦的地图》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_ailinditu/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_yongchibuxiu",
+      "name": "勇捶不朽的魔法少女 · 设定",
+      "coverKey": "summer3",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《勇捶不朽的魔法少女》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yongchibuxiu/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_bulingduanpian",
+      "name": "布灵的短篇故事集 · 设定",
+      "coverKey": "summer4",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《布灵的短篇故事集》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_bulingduanpian/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_haitu",
+      "name": "海兔岸上求生记 · 设定",
+      "coverKey": "summer5",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《海兔岸上求生记》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_haitu/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_duocai",
+      "name": "多彩世界的旅行 · 设定",
+      "coverKey": "summer6",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《多彩世界的旅行》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_duocai/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_yulinling",
+      "name": "雨·林灵 · 设定",
+      "coverKey": "starry1",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《雨·林灵》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_yulinling/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_tuoluo",
+      "name": "陀罗少女 · 设定",
+      "coverKey": "starry2",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《陀罗少女》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_tuoluo/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_wanwu",
+      "name": "万物娘化 · 设定",
+      "coverKey": "starry3",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《万物娘化》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_wanwu/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "set_canger",
+      "name": "苍耳饲养指南 · 设定",
+      "coverKey": "starry4",
+      "created": "（待补充）",
+      "genre": "作品设定",
+      "status": "（待补充）",
+      "intro": "《苍耳饲养指南》的设定集（占位简介）。整体页面，不分章节。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位设定文档，请替换",
+          "file": "content/settings/set_canger/v1.docx"
+        }
+      ],
+      "updated": "2026-10-30"
     }
   ],
   "galleries": [
@@ -1126,7 +1682,8 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_tinilapu"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -1265,7 +1822,8 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_xianjing"
         }
-      ]
+      ],
+      "updated": "2026-10-26"
     },
     {
       "created": "（待补充）",
@@ -1308,7 +1866,8 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_yaoguijie"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -1351,7 +1910,8 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_xianjing"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -1426,7 +1986,8 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_lancoa"
         }
-      ]
+      ],
+      "updated": "2026-10-27"
     },
     {
       "created": "（待补充）",
@@ -1501,7 +2062,481 @@ window.SITE_DATA = {
           ],
           "coverKey": "cover_yunhai"
         }
-      ]
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_guaiwumaoxianzhe",
+      "name": "怪物冒险者 · 画集",
+      "coverKey": "cover_starry",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《怪物冒险者》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "怪物冒险者 1.0版 图1",
+              "imageKey": "summer1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "怪物冒险者 1.0版 图2",
+              "imageKey": "summer2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "怪物冒险者 1.0版 图3",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "怪物冒险者 1.0版 图4",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_gaosuyinchang",
+      "name": "高速吟唱魔法使 · 画集",
+      "coverKey": "summer1",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《高速吟唱魔法使》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "高速吟唱魔法使 1.0版 图1",
+              "imageKey": "summer2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "高速吟唱魔法使 1.0版 图2",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "高速吟唱魔法使 1.0版 图3",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "高速吟唱魔法使 1.0版 图4",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_ailinditu",
+      "name": "艾琳·麦克伦的地图 · 画集",
+      "coverKey": "summer2",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《艾琳·麦克伦的地图》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "艾琳·麦克伦的地图 1.0版 图1",
+              "imageKey": "summer3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "艾琳·麦克伦的地图 1.0版 图2",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "艾琳·麦克伦的地图 1.0版 图3",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "艾琳·麦克伦的地图 1.0版 图4",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_yongchibuxiu",
+      "name": "勇捶不朽的魔法少女 · 画集",
+      "coverKey": "summer3",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《勇捶不朽的魔法少女》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "勇捶不朽的魔法少女 1.0版 图1",
+              "imageKey": "summer4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "勇捶不朽的魔法少女 1.0版 图2",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "勇捶不朽的魔法少女 1.0版 图3",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "勇捶不朽的魔法少女 1.0版 图4",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_bulingduanpian",
+      "name": "布灵的短篇故事集 · 画集",
+      "coverKey": "summer4",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《布灵的短篇故事集》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "布灵的短篇故事集 1.0版 图1",
+              "imageKey": "summer5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "布灵的短篇故事集 1.0版 图2",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "布灵的短篇故事集 1.0版 图3",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "布灵的短篇故事集 1.0版 图4",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_haitu",
+      "name": "海兔岸上求生记 · 画集",
+      "coverKey": "summer5",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《海兔岸上求生记》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "海兔岸上求生记 1.0版 图1",
+              "imageKey": "summer6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "海兔岸上求生记 1.0版 图2",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "海兔岸上求生记 1.0版 图3",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "海兔岸上求生记 1.0版 图4",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_duocai",
+      "name": "多彩世界的旅行 · 画集",
+      "coverKey": "summer6",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《多彩世界的旅行》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "多彩世界的旅行 1.0版 图1",
+              "imageKey": "starry1",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "多彩世界的旅行 1.0版 图2",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "多彩世界的旅行 1.0版 图3",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "多彩世界的旅行 1.0版 图4",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_yulinling",
+      "name": "雨·林灵 · 画集",
+      "coverKey": "starry1",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《雨·林灵》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "雨·林灵 1.0版 图1",
+              "imageKey": "starry2",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "雨·林灵 1.0版 图2",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "雨·林灵 1.0版 图3",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "雨·林灵 1.0版 图4",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_tuoluo",
+      "name": "陀罗少女 · 画集",
+      "coverKey": "starry2",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《陀罗少女》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "陀罗少女 1.0版 图1",
+              "imageKey": "starry3",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "陀罗少女 1.0版 图2",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "陀罗少女 1.0版 图3",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "陀罗少女 1.0版 图4",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_wanwu",
+      "name": "万物娘化 · 画集",
+      "coverKey": "starry3",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《万物娘化》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "万物娘化 1.0版 图1",
+              "imageKey": "starry4",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "万物娘化 1.0版 图2",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "万物娘化 1.0版 图3",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "万物娘化 1.0版 图4",
+              "imageKey": "cover_yaoguijie",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
+    },
+    {
+      "id": "gal_canger",
+      "name": "苍耳饲养指南 · 画集",
+      "coverKey": "starry4",
+      "created": "（待补充）",
+      "genre": "作品图集",
+      "status": "（待补充）",
+      "intro": "《苍耳饲养指南》的画集（占位简介，可替换）。缩略图点大图查看。",
+      "versions": [
+        {
+          "id": "v1",
+          "name": "1.0版",
+          "note": "占位示例图，请替换 images 或改 imageKey",
+          "images": [
+            {
+              "id": "i1",
+              "title": "苍耳饲养指南 1.0版 图1",
+              "imageKey": "starry5",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i2",
+              "title": "苍耳饲养指南 1.0版 图2",
+              "imageKey": "starry6",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i3",
+              "title": "苍耳饲养指南 1.0版 图3",
+              "imageKey": "cover_yaoguijie",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            },
+            {
+              "id": "i4",
+              "title": "苍耳饲养指南 1.0版 图4",
+              "imageKey": "cover_xianjing",
+              "note": "占位示例配图。点击缩略图可查看大图。"
+            }
+          ]
+        }
+      ],
+      "updated": "2026-10-30"
     }
   ],
   "about": {
@@ -1546,14 +2581,16 @@ window.SITE_DATA = {
       "title": "灵感示例 · 场景速记",
       "created": "2026年10月27日",
       "intro": "存放一闪而过的画面与气氛：时间、地点、一句话。本条为格式模板，可直接改写。",
-      "file": "content/insp/scene.docx"
+      "file": "content/insp/scene.docx",
+      "updated": "2026-10-27"
     },
     {
       "id": "fragment",
       "title": "灵感示例 · 设定碎片",
       "created": "2026年10月27日",
       "intro": "还没接进世界观的设定：规则、代价、能勾出的故事。本条为格式模板，可直接改写。",
-      "file": "content/insp/fragment.docx"
+      "file": "content/insp/fragment.docx",
+      "updated": "2026-10-27"
     }
   ]
 };
