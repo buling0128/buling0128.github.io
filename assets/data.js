@@ -465,17 +465,22 @@ window.SITE_DATA = {
         {
           "id": "v24",
           "name": "24版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2024版，共 3 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第1章 · 归客与旅客",
               "file": "content/stories/yinsaimena/v24/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第2章 · 少女与天真的幻想",
               "file": "content/stories/yinsaimena/v24/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "第3章 · 武庆的邀请函",
+              "file": "content/stories/yinsaimena/v24/c3.docx"
             }
           ],
           "coverKey": "cover_yaoguijie"
@@ -483,17 +488,242 @@ window.SITE_DATA = {
         {
           "id": "v23",
           "name": "23版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2023版，共 47 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第1章 · 相遇",
               "file": "content/stories/yinsaimena/v23/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第2章 · 未来",
               "file": "content/stories/yinsaimena/v23/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "第3章 · 山路",
+              "file": "content/stories/yinsaimena/v23/c3.docx"
+            },
+            {
+              "id": "c4",
+              "title": "第4章 · 决定",
+              "file": "content/stories/yinsaimena/v23/c4.docx"
+            },
+            {
+              "id": "c5",
+              "title": "第5章 · 公主",
+              "file": "content/stories/yinsaimena/v23/c5.docx"
+            },
+            {
+              "id": "c6",
+              "title": "第6章 · 情报",
+              "file": "content/stories/yinsaimena/v23/c6.docx"
+            },
+            {
+              "id": "c7",
+              "title": "第7章 · D-4",
+              "file": "content/stories/yinsaimena/v23/c7.docx"
+            },
+            {
+              "id": "c8",
+              "title": "第8章 · 风雪",
+              "file": "content/stories/yinsaimena/v23/c8.docx"
+            },
+            {
+              "id": "c9",
+              "title": "第9章 · 星兔",
+              "file": "content/stories/yinsaimena/v23/c9.docx"
+            },
+            {
+              "id": "c10",
+              "title": "第10章 · 封锁",
+              "file": "content/stories/yinsaimena/v23/c10.docx"
+            },
+            {
+              "id": "c11",
+              "title": "第11章 · 调查",
+              "file": "content/stories/yinsaimena/v23/c11.docx"
+            },
+            {
+              "id": "c12",
+              "title": "第12章 · 真相",
+              "file": "content/stories/yinsaimena/v23/c12.docx"
+            },
+            {
+              "id": "c13",
+              "title": "第13章 · 断弓",
+              "file": "content/stories/yinsaimena/v23/c13.docx"
+            },
+            {
+              "id": "c14",
+              "title": "第14章 · 武庆",
+              "file": "content/stories/yinsaimena/v23/c14.docx"
+            },
+            {
+              "id": "c15",
+              "title": "第15章 · 拜师",
+              "file": "content/stories/yinsaimena/v23/c15.docx"
+            },
+            {
+              "id": "c16",
+              "title": "第16章 · 狼群",
+              "file": "content/stories/yinsaimena/v23/c16.docx"
+            },
+            {
+              "id": "c17",
+              "title": "第17章 · 紫魔",
+              "file": "content/stories/yinsaimena/v23/c17.docx"
+            },
+            {
+              "id": "c18",
+              "title": "第18章 · 珠宝",
+              "file": "content/stories/yinsaimena/v23/c18.docx"
+            },
+            {
+              "id": "c19",
+              "title": "第19章 · 怪盗",
+              "file": "content/stories/yinsaimena/v23/c19.docx"
+            },
+            {
+              "id": "c20",
+              "title": "第20章 · 琳娜",
+              "file": "content/stories/yinsaimena/v23/c20.docx"
+            },
+            {
+              "id": "c21",
+              "title": "第21章 · 迷宫",
+              "file": "content/stories/yinsaimena/v23/c21.docx"
+            },
+            {
+              "id": "c22",
+              "title": "第22章 · 城堡",
+              "file": "content/stories/yinsaimena/v23/c22.docx"
+            },
+            {
+              "id": "c23",
+              "title": "第23章 · 灵狐",
+              "file": "content/stories/yinsaimena/v23/c23.docx"
+            },
+            {
+              "id": "c24",
+              "title": "第24章 · 双刀",
+              "file": "content/stories/yinsaimena/v23/c24.docx"
+            },
+            {
+              "id": "c25",
+              "title": "第25章 · 汇合",
+              "file": "content/stories/yinsaimena/v23/c25.docx"
+            },
+            {
+              "id": "c26",
+              "title": "第26章 · 格川",
+              "file": "content/stories/yinsaimena/v23/c26.docx"
+            },
+            {
+              "id": "c27",
+              "title": "第27章 · 地鱼",
+              "file": "content/stories/yinsaimena/v23/c27.docx"
+            },
+            {
+              "id": "c28",
+              "title": "第28章 · 殒光",
+              "file": "content/stories/yinsaimena/v23/c28.docx"
+            },
+            {
+              "id": "c29",
+              "title": "第29章 · 邀约",
+              "file": "content/stories/yinsaimena/v23/c29.docx"
+            },
+            {
+              "id": "c30",
+              "title": "第30章 · 风龙",
+              "file": "content/stories/yinsaimena/v23/c30.docx"
+            },
+            {
+              "id": "c31",
+              "title": "第31章 · 愈雨",
+              "file": "content/stories/yinsaimena/v23/c31.docx"
+            },
+            {
+              "id": "c32",
+              "title": "第32章 · 重逢",
+              "file": "content/stories/yinsaimena/v23/c32.docx"
+            },
+            {
+              "id": "c33",
+              "title": "第33章 · 角斗",
+              "file": "content/stories/yinsaimena/v23/c33.docx"
+            },
+            {
+              "id": "c34",
+              "title": "第34章 · 现实",
+              "file": "content/stories/yinsaimena/v23/c34.docx"
+            },
+            {
+              "id": "c35",
+              "title": "第35章 · 泠羽",
+              "file": "content/stories/yinsaimena/v23/c35.docx"
+            },
+            {
+              "id": "c36",
+              "title": "第36章 · 英雄",
+              "file": "content/stories/yinsaimena/v23/c36.docx"
+            },
+            {
+              "id": "c37",
+              "title": "第37章 · 集结",
+              "file": "content/stories/yinsaimena/v23/c37.docx"
+            },
+            {
+              "id": "c38",
+              "title": "第38章 · 魔灭",
+              "file": "content/stories/yinsaimena/v23/c38.docx"
+            },
+            {
+              "id": "c39",
+              "title": "第39章 · 启航",
+              "file": "content/stories/yinsaimena/v23/c39.docx"
+            },
+            {
+              "id": "c40",
+              "title": "第40章 · 迷海",
+              "file": "content/stories/yinsaimena/v23/c40.docx"
+            },
+            {
+              "id": "c41",
+              "title": "第41章 · 屠杀",
+              "file": "content/stories/yinsaimena/v23/c41.docx"
+            },
+            {
+              "id": "c42",
+              "title": "第42章 · 现状",
+              "file": "content/stories/yinsaimena/v23/c42.docx"
+            },
+            {
+              "id": "c43",
+              "title": "第43章 · 混战",
+              "file": "content/stories/yinsaimena/v23/c43.docx"
+            },
+            {
+              "id": "c44",
+              "title": "第44章 · 怨灵",
+              "file": "content/stories/yinsaimena/v23/c44.docx"
+            },
+            {
+              "id": "c45",
+              "title": "第45章 · 死神",
+              "file": "content/stories/yinsaimena/v23/c45.docx"
+            },
+            {
+              "id": "c46",
+              "title": "第46章 · 突破",
+              "file": "content/stories/yinsaimena/v23/c46.docx"
+            },
+            {
+              "id": "c47",
+              "title": "第47章 · 兰绫",
+              "file": "content/stories/yinsaimena/v23/c47.docx"
             }
           ],
           "coverKey": "cover_xianjing"
@@ -518,7 +748,7 @@ window.SITE_DATA = {
         }
       ],
       "kind": "novel",
-      "updated": "2026-10-27"
+      "updated": "2026-11-01"
     },
     {
       "id": "yingzhidu",
@@ -677,44 +907,44 @@ window.SITE_DATA = {
       "intro": "提奈拉普的简介（占位，可替换）。",
       "versions": [
         {
+          "id": "solo",
+          "name": "独立版",
+          "note": "整篇完结，1 个文档",
+          "coverKey": "cover_lancoa",
+          "chapters": [
+            {
+              "id": "full",
+              "title": "全文",
+              "file": "content/stories/tinilapu/solo/full.docx"
+            }
+          ]
+        },
+        {
           "id": "event",
           "name": "活动版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2.0版，共 3 章",
+          "coverKey": "cover_tinilapu",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第1章",
               "file": "content/stories/tinilapu/event/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第2章",
               "file": "content/stories/tinilapu/event/c2.docx"
-            }
-          ],
-          "coverKey": "cover_tinilapu"
-        },
-        {
-          "id": "solo",
-          "name": "独立版",
-          "note": "章节为占位示例，请替换真实文档",
-          "chapters": [
-            {
-              "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/tinilapu/solo/c1.docx"
             },
             {
-              "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/tinilapu/solo/c2.docx"
+              "id": "c3",
+              "title": "第3章",
+              "file": "content/stories/tinilapu/event/c3.docx"
             }
-          ],
-          "coverKey": "cover_lancoa"
+          ]
         }
       ],
       "kind": "novel",
-      "updated": "2026-10-27"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -808,22 +1038,32 @@ window.SITE_DATA = {
         {
           "id": "v1",
           "name": "1.0版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "共 4 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "第1章 · 神明降临人间，誓要将大爱传播世界",
               "file": "content/stories/gaosuyinchang/v1/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "第2章 · 阴暗女来袭，没有 朋友的精灵姐妹",
               "file": "content/stories/gaosuyinchang/v1/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "第3章 · 课程与自我介绍，破门而入的奇怪社团",
+              "file": "content/stories/gaosuyinchang/v1/c3.docx"
+            },
+            {
+              "id": "c4",
+              "title": "第4章 · 实践课展示自我，同学们个个身怀绝技",
+              "file": "content/stories/gaosuyinchang/v1/c4.docx"
             }
           ]
         }
       ],
-      "updated": "2026-10-30"
+      "updated": "2026-11-01"
     },
     {
       "id": "ailinditu",
