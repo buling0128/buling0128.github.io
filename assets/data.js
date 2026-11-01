@@ -1,4 +1,4 @@
-/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；替换正文或增删章节后请同步更新该字段（可让助手代改），网站的按更新时间排序即以此为准 */
+/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；章节的 part 字段用于目录按篇章分组。 */
 window.SITE_DATA = {
   "meta": {
     "name": "布灵的创作小屋",
@@ -488,7 +488,7 @@ window.SITE_DATA = {
         {
           "id": "v23",
           "name": "23版",
-          "note": "2023版，共 47 章",
+          "note": "2023版，共 48 章",
           "chapters": [
             {
               "id": "c1",
@@ -724,6 +724,11 @@ window.SITE_DATA = {
               "id": "c47",
               "title": "第47章 · 兰绫",
               "file": "content/stories/yinsaimena/v23/c47.docx"
+            },
+            {
+              "id": "c48",
+              "title": "第48章 · 冲击",
+              "file": "content/stories/yinsaimena/v23/c48.docx"
             }
           ],
           "coverKey": "cover_xianjing"
@@ -762,7 +767,8 @@ window.SITE_DATA = {
         {
           "id": "loose",
           "name": "散装版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "零散章节，未分篇章",
+          "coverKey": "cover_yuting",
           "chapters": [
             {
               "id": "c1",
@@ -774,31 +780,111 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/loose/c2.docx"
             }
-          ],
-          "coverKey": "cover_yuting"
+          ]
         },
         {
-          "id": "old",
-          "name": "旧版",
-          "note": "章节为占位示例，请替换真实文档",
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版，共 15 章 / 8 篇章",
+          "coverKey": "cover_xingchen",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/yingzhidu/old/c1.docx"
+              "title": "烟火栀子",
+              "part": "烟火栀子",
+              "file": "content/stories/yingzhidu/v23/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/yingzhidu/old/c2.docx"
+              "title": "花城骑士与混兽",
+              "part": "花城骑士",
+              "file": "content/stories/yingzhidu/v23/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "记忆之店",
+              "part": "记忆之店",
+              "file": "content/stories/yingzhidu/v23/c3.docx"
+            },
+            {
+              "id": "c4",
+              "title": "风剑缘1",
+              "part": "风剑缘",
+              "file": "content/stories/yingzhidu/v23/c4.docx"
+            },
+            {
+              "id": "c5",
+              "title": "风剑缘2",
+              "part": "风剑缘",
+              "file": "content/stories/yingzhidu/v23/c5.docx"
+            },
+            {
+              "id": "c6",
+              "title": "风剑缘3",
+              "part": "风剑缘",
+              "file": "content/stories/yingzhidu/v23/c6.docx"
+            },
+            {
+              "id": "c7",
+              "title": "昼夜赤火歌1",
+              "part": "昼夜赤火歌",
+              "file": "content/stories/yingzhidu/v23/c7.docx"
+            },
+            {
+              "id": "c8",
+              "title": "昼夜赤火歌2",
+              "part": "昼夜赤火歌",
+              "file": "content/stories/yingzhidu/v23/c8.docx"
+            },
+            {
+              "id": "c9",
+              "title": "昼夜赤火歌3",
+              "part": "昼夜赤火歌",
+              "file": "content/stories/yingzhidu/v23/c9.docx"
+            },
+            {
+              "id": "c10",
+              "title": "昼夜赤火歌4",
+              "part": "昼夜赤火歌",
+              "file": "content/stories/yingzhidu/v23/c10.docx"
+            },
+            {
+              "id": "c11",
+              "title": "伪吸血鬼1",
+              "part": "伪吸血鬼",
+              "file": "content/stories/yingzhidu/v23/c11.docx"
+            },
+            {
+              "id": "c12",
+              "title": "伪吸血鬼2",
+              "part": "伪吸血鬼",
+              "file": "content/stories/yingzhidu/v23/c12.docx"
+            },
+            {
+              "id": "c13",
+              "title": "伪吸血鬼3",
+              "part": "伪吸血鬼",
+              "file": "content/stories/yingzhidu/v23/c13.docx"
+            },
+            {
+              "id": "c14",
+              "title": "逆转，孤儿变少爷，与23个 女仆的凤凰人生",
+              "part": "逆转，孤儿变少爷，与23个 女仆的凤凰人生",
+              "file": "content/stories/yingzhidu/v23/c14.docx"
+            },
+            {
+              "id": "c15",
+              "title": "夏日雪",
+              "part": "夏日雪",
+              "file": "content/stories/yingzhidu/v23/c15.docx"
             }
-          ],
-          "coverKey": "cover_zhiyuan"
+          ]
         },
         {
           "id": "v24",
           "name": "24版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "2024版",
+          "coverKey": "cover_yaoguijie",
           "chapters": [
             {
               "id": "c1",
@@ -810,30 +896,11 @@ window.SITE_DATA = {
               "title": "第二章",
               "file": "content/stories/yingzhidu/v24/c2.docx"
             }
-          ],
-          "coverKey": "cover_yaoguijie"
-        },
-        {
-          "id": "v25",
-          "name": "25版",
-          "note": "章节为占位示例，请替换真实文档",
-          "chapters": [
-            {
-              "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/yingzhidu/v25/c1.docx"
-            },
-            {
-              "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/yingzhidu/v25/c2.docx"
-            }
-          ],
-          "coverKey": "cover_xianjing"
+          ]
         }
       ],
       "kind": "novel",
-      "updated": "2026-10-26"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -876,26 +943,26 @@ window.SITE_DATA = {
       "intro": "仙境的简介（占位，可替换）。",
       "versions": [
         {
-          "id": "v10",
-          "name": "1.0版",
-          "note": "章节为占位示例，请替换真实文档",
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版，共 2 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/xianjing/v10/c1.docx"
+              "title": "仙境1",
+              "file": "content/stories/xianjing/v23/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/xianjing/v10/c2.docx"
+              "title": "仙境2",
+              "file": "content/stories/xianjing/v23/c2.docx"
             }
           ],
           "coverKey": "cover_xianjing"
         }
       ],
       "kind": "novel",
-      "updated": "2026-10-27"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -1008,22 +1075,22 @@ window.SITE_DATA = {
         {
           "id": "v1",
           "name": "1.0版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "共 2 章",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "高塔与冒险者",
               "file": "content/stories/guaiwumaoxianzhe/v1/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "可怕的魅魔",
               "file": "content/stories/guaiwumaoxianzhe/v1/c2.docx"
             }
           ]
         }
       ],
-      "updated": "2026-10-30"
+      "updated": "2026-11-01"
     },
     {
       "id": "gaosuyinchang",
@@ -1403,33 +1470,26 @@ window.SITE_DATA = {
         {
           "id": "loose",
           "name": "散装版",
-          "note": "占位设定文档，请替换",
-          "file": "content/settings/set_yingzhidu/loose.docx",
-          "coverKey": "cover_yuting"
+          "note": "零散设定",
+          "coverKey": "cover_yuting",
+          "file": "content/settings/set_yingzhidu/loose.docx"
         },
         {
-          "id": "old",
-          "name": "旧版",
-          "note": "占位设定文档，请替换",
-          "file": "content/settings/set_yingzhidu/old.docx",
-          "coverKey": "cover_zhiyuan"
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版设定",
+          "coverKey": "cover_xingchen",
+          "file": "content/settings/set_yingzhidu/v23.docx"
         },
         {
           "id": "v24",
           "name": "24版",
-          "note": "占位设定文档，请替换",
-          "file": "content/settings/set_yingzhidu/v24.docx",
-          "coverKey": "cover_yaoguijie"
-        },
-        {
-          "id": "v25",
-          "name": "25版",
-          "note": "占位设定文档，请替换",
-          "file": "content/settings/set_yingzhidu/v25.docx",
-          "coverKey": "cover_xianjing"
+          "note": "2024版设定",
+          "coverKey": "cover_yaoguijie",
+          "file": "content/settings/set_yingzhidu/v24.docx"
         }
       ],
-      "updated": "2026-10-26"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -1460,14 +1520,14 @@ window.SITE_DATA = {
       "intro": "《仙境》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
       "versions": [
         {
-          "id": "v10",
-          "name": "1.0版",
-          "note": "占位设定文档，请替换",
-          "file": "content/settings/set_xianjing/v10.docx",
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版设定",
+          "file": "content/settings/set_xianjing/v23.docx",
           "coverKey": "cover_xianjing"
         }
       ],
-      "updated": "2026-10-27"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -1937,7 +1997,8 @@ window.SITE_DATA = {
         {
           "id": "loose",
           "name": "散装版",
-          "note": "占位示例图，请替换 images 或改 imageKey",
+          "note": "零散插图",
+          "coverKey": "cover_yuting",
           "images": [
             {
               "id": "i1",
@@ -1963,45 +2024,45 @@ window.SITE_DATA = {
               "imageKey": "summer2",
               "note": "占位示例配图。点击缩略图可查看大图。"
             }
-          ],
-          "coverKey": "cover_yuting"
+          ]
         },
         {
-          "id": "old",
-          "name": "旧版",
-          "note": "占位示例图，请替换 images 或改 imageKey",
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版插图",
+          "coverKey": "cover_xingchen",
           "images": [
             {
               "id": "i1",
-              "title": "樱之都·奈樱 旧版 图1",
-              "imageKey": "summer3",
+              "title": "yingzhidu 23版 图1",
+              "imageKey": "cover_yunhai",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i2",
-              "title": "樱之都·奈樱 旧版 图2",
-              "imageKey": "summer4",
+              "title": "yingzhidu 23版 图2",
+              "imageKey": "cover_tideng",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i3",
-              "title": "樱之都·奈樱 旧版 图3",
-              "imageKey": "summer5",
+              "title": "yingzhidu 23版 图3",
+              "imageKey": "cover_summer",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i4",
-              "title": "樱之都·奈樱 旧版 图4",
-              "imageKey": "summer6",
+              "title": "yingzhidu 23版 图4",
+              "imageKey": "cover_starry",
               "note": "占位示例配图。点击缩略图可查看大图。"
             }
-          ],
-          "coverKey": "cover_zhiyuan"
+          ]
         },
         {
           "id": "v24",
           "name": "24版",
-          "note": "占位示例图，请替换 images 或改 imageKey",
+          "note": "2024版插图",
+          "coverKey": "cover_yaoguijie",
           "images": [
             {
               "id": "i1",
@@ -2027,43 +2088,10 @@ window.SITE_DATA = {
               "imageKey": "starry4",
               "note": "占位示例配图。点击缩略图可查看大图。"
             }
-          ],
-          "coverKey": "cover_yaoguijie"
-        },
-        {
-          "id": "v25",
-          "name": "25版",
-          "note": "占位示例图，请替换 images 或改 imageKey",
-          "images": [
-            {
-              "id": "i1",
-              "title": "樱之都·奈樱 25版 图1",
-              "imageKey": "starry5",
-              "note": "占位示例配图。点击缩略图可查看大图。"
-            },
-            {
-              "id": "i2",
-              "title": "樱之都·奈樱 25版 图2",
-              "imageKey": "starry6",
-              "note": "占位示例配图。点击缩略图可查看大图。"
-            },
-            {
-              "id": "i3",
-              "title": "樱之都·奈樱 25版 图3",
-              "imageKey": "cover_yunhai",
-              "note": "占位示例配图。点击缩略图可查看大图。"
-            },
-            {
-              "id": "i4",
-              "title": "樱之都·奈樱 25版 图4",
-              "imageKey": "cover_tideng",
-              "note": "占位示例配图。点击缩略图可查看大图。"
-            }
-          ],
-          "coverKey": "cover_xianjing"
+          ]
         }
       ],
-      "updated": "2026-10-26"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",
@@ -2119,9 +2147,9 @@ window.SITE_DATA = {
       "intro": "《仙境》的画集（占位简介，可替换）。缩略图点大图查看。",
       "versions": [
         {
-          "id": "v10",
-          "name": "1.0版",
-          "note": "占位示例图，请替换 images 或改 imageKey",
+          "id": "v23",
+          "name": "23版",
+          "note": "2023版插图",
           "images": [
             {
               "id": "i1",
@@ -2151,7 +2179,7 @@ window.SITE_DATA = {
           "coverKey": "cover_xianjing"
         }
       ],
-      "updated": "2026-10-27"
+      "updated": "2026-11-01"
     },
     {
       "created": "（待补充）",

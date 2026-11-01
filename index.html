@@ -131,6 +131,8 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .chap-list li a{display:flex;justify-content:space-between;align-items:center;background:var(--white);border:2px solid var(--blue-300);border-radius:10px;padding:12px 16px;font-size:15px;color:var(--ink)}
 .chap-list li a:hover{border-color:var(--blue-500);background:var(--blue-50);color:var(--blue-700)}
 .chap-list .idx{font-size:12px;color:var(--ink-soft)}
+.chap-list li.part-h{padding:8px 4px 2px;font-size:14px;font-weight:700;color:var(--blue-600);letter-spacing:1px}
+.chap-list li.part-h::before{content:"▸ ";color:var(--blue-500)}
 /* SECTION: settings content */
 .setting-block{background:var(--white);border:1px solid var(--blue-200);border-radius:var(--radius);padding:20px 22px;margin-bottom:14px;box-shadow:var(--shadow)}
 .setting-block h3{font-size:17px;color:var(--blue-700);margin-bottom:10px;padding-left:10px;border-left:4px solid var(--blue-500)}
@@ -507,10 +509,22 @@ function renderStoryVersion(type, id, vid){
           <span class="meta-chip">${vCount(v)}</span>
         </div>`;
   let asc = true;
+  /* 篇章分组：任一章含 part 字段即按篇章分组渲染（23版起启用；后续上传时在 data.js 给章节加 part 即可自动归组） */
+  const hasPart = v.chapters.some(c => c.part);
   const chapList = () => {
     const arr = v.chapters.map((c, i) => ({ c, i }));
     if (!asc) arr.reverse();
-    return arr.map(({ c, i }) => `<li><a href="${chapterHref(type,id,vid,c.id)}">${esc(c.title)}<span class="idx">第 ${i+1} 章</span></a></li>`).join("");
+    const row = ({ c, i }) => `<li><a href="${chapterHref(type,id,vid,c.id)}">${esc(c.title)}<span class="idx">第 ${i+1} 章</span></a></li>`;
+    if (!hasPart) return arr.map(row).join("");
+    /* 按篇章聚类：保持篇章首次出现顺序；倒序时篇章与其内部章节同时翻转 */
+    const groups = [];
+    const seen = new Map();
+    for (const it of arr) {
+      const key = it.c.part || "（未分篇章）";
+      if (!seen.has(key)) { seen.set(key, groups.length); groups.push({ key, items: [] }); }
+      groups[seen.get(key)].items.push(it);
+    }
+    return groups.map(g => `<li class="part-h" aria-hidden="true">${esc(g.key)}</li>` + g.items.map(row).join("")).join("");
   };
   view.innerHTML = `
     <div class="frame-L1">
@@ -665,7 +679,19 @@ function buildToc(type,id,vid,mode,current){
   const w = findWork(type,id); const v = w.versions.find(x=>x.id===vid);
   let html = `<div class="toc-sub">${esc(w.name)} · ${esc(v.name)}</div><ul>`;
   if(mode==="chapter"){
-    html += v.chapters.map((c,i)=>`<li><button class="item${c.id===current?" active":""}" data-goto="${c.id}">${i+1}. ${esc(c.title)}</button></li>`).join("");
+    const hasPart = v.chapters.some(c => c.part);
+    const row = (c, i) => `<li><button class="item${c.id===current?" active":""}" data-goto="${c.id}">${i+1}. ${esc(c.title)}</button></li>`;
+    if (hasPart) {
+      const groups = [], seen = new Map();
+      v.chapters.forEach((c, i) => {
+        const key = c.part || "（未分篇章）";
+        if (!seen.has(key)) { seen.set(key, groups.length); groups.push({ key, items: [] }); }
+        groups[seen.get(key)].items.push({ c, i });
+      });
+      html += groups.map(g => `<div class="toc-sub">${esc(g.key)}</div>` + g.items.map(({ c, i }) => row(c, i)).join("")).join("");
+    } else {
+      html += v.chapters.map((c, i) => row(c, i)).join("");
+    }
     html += `</ul><div class="back-line"><button class="item" data-back="version">↩ 回到该版本目录页</button><a class="item" href="#/${type}/${id}" data-navlink>🏠 回到作品首页（${esc(w.name)}）</a><a class="item" href="#/${type}" data-navlink>📚 回到${KIND_LABEL[type]}列表</a></div>`;
   } else {
     html += v.images.map((im,i)=>`<li><button class="item" data-scroll="${im.id}">${String(i+1).padStart(2,"0")} · ${esc(im.title)}</button></li>`).join("");
