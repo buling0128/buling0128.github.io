@@ -1,4 +1,4 @@
-/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；章节的 part 字段用于目录按篇章分组。 */
+/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；章节的 part 字段用于目录按篇章分组；版本排列规范=时间越晚越靠上。 */
 window.SITE_DATA = {
   "meta": {
     "name": "布灵的创作小屋",
@@ -6,7 +6,7 @@ window.SITE_DATA = {
   },
   "notice": {
     "title": "公告",
-    "content": "《星屑信差》定稿版第五章已更新；《夏日海岛帖》新增 3 张开箱图。感谢到访，站内作品均为虚构示例，欢迎常来看看。"
+    "content": "网站正在逐步完善，部分图片与文字仅为占位，仅供参考"
   },
   "mascot": {
     "name": "墨文绘颜",
@@ -447,17 +447,12 @@ window.SITE_DATA = {
         {
           "id": "neo",
           "name": "neo版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "共 1 章",
           "chapters": [
             {
-              "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/yinsaimena/neo/c1.docx"
-            },
-            {
-              "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/yinsaimena/neo/c2.docx"
+              "id": "outline1",
+              "title": "大纲速通 · 第一版",
+              "file": "content/stories/yinsaimena/neo/outline1.docx"
             }
           ],
           "coverKey": "cover_zhiyuan"
@@ -753,7 +748,7 @@ window.SITE_DATA = {
         }
       ],
       "kind": "novel",
-      "updated": "2026-11-01"
+      "updated": "2026-11-02"
     },
     {
       "id": "yingzhidu",
@@ -765,27 +760,35 @@ window.SITE_DATA = {
       "intro": "《樱之都·奈樱》的简介（待替换为你自己的介绍文字）。",
       "versions": [
         {
-          "id": "loose",
-          "name": "散装版",
-          "note": "零散章节，未分篇章",
-          "coverKey": "cover_yuting",
+          "id": "v24",
+          "name": "24版",
+          "note": "2024版，共 3 章 / 3 篇章",
+          "coverKey": "cover_yaoguijie",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
-              "file": "content/stories/yingzhidu/loose/c1.docx"
+              "title": "秋风引，雨林灵1",
+              "part": "秋风引，雨林灵",
+              "file": "content/stories/yingzhidu/v24/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
-              "file": "content/stories/yingzhidu/loose/c2.docx"
+              "title": "记忆之店",
+              "part": "序章",
+              "file": "content/stories/yingzhidu/v24/c2.docx"
+            },
+            {
+              "id": "c3",
+              "title": "风剑缘",
+              "part": "风剑缘",
+              "file": "content/stories/yingzhidu/v24/c3.docx"
             }
           ]
         },
         {
           "id": "v23",
           "name": "23版",
-          "note": "2023版，共 15 章 / 8 篇章",
+          "note": "2023版，共 18 章 / 9 篇章",
           "coverKey": "cover_xingchen",
           "chapters": [
             {
@@ -799,6 +802,12 @@ window.SITE_DATA = {
               "title": "花城骑士与混兽",
               "part": "花城骑士",
               "file": "content/stories/yingzhidu/v23/c2.docx"
+            },
+            {
+              "id": "c16",
+              "title": "序章 · 记忆之店",
+              "part": "记忆之店",
+              "file": "content/stories/yingzhidu/v23/c16.docx"
             },
             {
               "id": "c3",
@@ -823,6 +832,12 @@ window.SITE_DATA = {
               "title": "风剑缘3",
               "part": "风剑缘",
               "file": "content/stories/yingzhidu/v23/c6.docx"
+            },
+            {
+              "id": "c17",
+              "title": "风剑缘",
+              "part": "风剑缘",
+              "file": "content/stories/yingzhidu/v23/c17.docx"
             },
             {
               "id": "c7",
@@ -877,30 +892,36 @@ window.SITE_DATA = {
               "title": "夏日雪",
               "part": "夏日雪",
               "file": "content/stories/yingzhidu/v23/c15.docx"
+            },
+            {
+              "id": "c18",
+              "title": "秋风引，雨林灵 1",
+              "part": "秋风引，雨林灵",
+              "file": "content/stories/yingzhidu/v23/c18.docx"
             }
           ]
         },
         {
-          "id": "v24",
-          "name": "24版",
-          "note": "2024版",
-          "coverKey": "cover_yaoguijie",
+          "id": "loose",
+          "name": "散装版",
+          "note": "零散章节，未分篇章",
+          "coverKey": "cover_yuting",
           "chapters": [
             {
               "id": "c1",
               "title": "第一章",
-              "file": "content/stories/yingzhidu/v24/c1.docx"
+              "file": "content/stories/yingzhidu/loose/c1.docx"
             },
             {
               "id": "c2",
               "title": "第二章",
-              "file": "content/stories/yingzhidu/v24/c2.docx"
+              "file": "content/stories/yingzhidu/loose/c2.docx"
             }
           ]
         }
       ],
       "kind": "novel",
-      "updated": "2026-11-01"
+      "updated": "2026-11-02"
     },
     {
       "created": "（待补充）",
@@ -1205,22 +1226,22 @@ window.SITE_DATA = {
         {
           "id": "v1",
           "name": "1.0版",
-          "note": "章节为占位示例，请替换真实文档",
+          "note": "共 2 篇",
           "chapters": [
             {
               "id": "c1",
-              "title": "第一章",
+              "title": "Guluyoi",
               "file": "content/stories/bulingduanpian/v1/c1.docx"
             },
             {
               "id": "c2",
-              "title": "第二章",
+              "title": "ZONKUM",
               "file": "content/stories/bulingduanpian/v1/c2.docx"
             }
           ]
         }
       ],
-      "updated": "2026-10-30"
+      "updated": "2026-11-02"
     },
     {
       "id": "haitu",
@@ -1468,11 +1489,11 @@ window.SITE_DATA = {
       "intro": "《樱之都·奈樱》的设定集（占位简介，请在 content/settings 中替换正文并修改此处）。整体页面，不分章节。",
       "versions": [
         {
-          "id": "loose",
-          "name": "散装版",
-          "note": "零散设定",
-          "coverKey": "cover_yuting",
-          "file": "content/settings/set_yingzhidu/loose.docx"
+          "id": "v24",
+          "name": "24版",
+          "note": "2024版设定",
+          "coverKey": "cover_yaoguijie",
+          "file": "content/settings/set_yingzhidu/v24.docx"
         },
         {
           "id": "v23",
@@ -1482,14 +1503,14 @@ window.SITE_DATA = {
           "file": "content/settings/set_yingzhidu/v23.docx"
         },
         {
-          "id": "v24",
-          "name": "24版",
-          "note": "2024版设定",
-          "coverKey": "cover_yaoguijie",
-          "file": "content/settings/set_yingzhidu/v24.docx"
+          "id": "loose",
+          "name": "散装版",
+          "note": "零散设定",
+          "coverKey": "cover_yuting",
+          "file": "content/settings/set_yingzhidu/loose.docx"
         }
       ],
-      "updated": "2026-11-01"
+      "updated": "2026-11-02"
     },
     {
       "created": "（待补充）",
@@ -1995,33 +2016,33 @@ window.SITE_DATA = {
       "intro": "《樱之都·奈樱》的画集（占位简介，可替换）。缩略图点大图查看。",
       "versions": [
         {
-          "id": "loose",
-          "name": "散装版",
-          "note": "零散插图",
-          "coverKey": "cover_yuting",
+          "id": "v24",
+          "name": "24版",
+          "note": "2024版插图",
+          "coverKey": "cover_yaoguijie",
           "images": [
             {
               "id": "i1",
-              "title": "樱之都·奈樱 散装版 图1",
-              "imageKey": "cover_yuting",
+              "title": "樱之都·奈樱 24版 图1",
+              "imageKey": "starry1",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i2",
-              "title": "樱之都·奈樱 散装版 图2",
-              "imageKey": "cover_zhiyuan",
+              "title": "樱之都·奈樱 24版 图2",
+              "imageKey": "starry2",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i3",
-              "title": "樱之都·奈樱 散装版 图3",
-              "imageKey": "summer1",
+              "title": "樱之都·奈樱 24版 图3",
+              "imageKey": "starry3",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i4",
-              "title": "樱之都·奈樱 散装版 图4",
-              "imageKey": "summer2",
+              "title": "樱之都·奈樱 24版 图4",
+              "imageKey": "starry4",
               "note": "占位示例配图。点击缩略图可查看大图。"
             }
           ]
@@ -2059,39 +2080,39 @@ window.SITE_DATA = {
           ]
         },
         {
-          "id": "v24",
-          "name": "24版",
-          "note": "2024版插图",
-          "coverKey": "cover_yaoguijie",
+          "id": "loose",
+          "name": "散装版",
+          "note": "零散插图",
+          "coverKey": "cover_yuting",
           "images": [
             {
               "id": "i1",
-              "title": "樱之都·奈樱 24版 图1",
-              "imageKey": "starry1",
+              "title": "樱之都·奈樱 散装版 图1",
+              "imageKey": "cover_yuting",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i2",
-              "title": "樱之都·奈樱 24版 图2",
-              "imageKey": "starry2",
+              "title": "樱之都·奈樱 散装版 图2",
+              "imageKey": "cover_zhiyuan",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i3",
-              "title": "樱之都·奈樱 24版 图3",
-              "imageKey": "starry3",
+              "title": "樱之都·奈樱 散装版 图3",
+              "imageKey": "summer1",
               "note": "占位示例配图。点击缩略图可查看大图。"
             },
             {
               "id": "i4",
-              "title": "樱之都·奈樱 24版 图4",
-              "imageKey": "starry4",
+              "title": "樱之都·奈樱 散装版 图4",
+              "imageKey": "summer2",
               "note": "占位示例配图。点击缩略图可查看大图。"
             }
           ]
         }
       ],
-      "updated": "2026-11-01"
+      "updated": "2026-11-02"
     },
     {
       "created": "（待补充）",
