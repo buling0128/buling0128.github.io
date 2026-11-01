@@ -469,7 +469,7 @@ function renderWork(type, id){
   if(!w){ view.innerHTML = `<p>没有找到这部作品。<a href="#/${type}">返回${KIND_LABEL[type]}</a></p>`; return; }
   const versions = w.versions.map(v => `<button class="version-btn" data-version="${v.id}">
       <span class="vthumb" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(v.name)}封面"></span>
-      <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${type==="settings" ? "整本设定" : vCount(v)}</div></span>
+      <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${type==="settings" ? (v.sections ? v.sections.length + " 个分区" : "整本设定") : vCount(v)}</div></span>
       <span class="go">进入 →</span></button>`).join("");
   const note = type==="settings" ? `<p style="font-size:13px;color:var(--ink-soft);margin-top:10px">※ 设定集内容存于整体页面，选择版本后可直接阅读，不区分章节。</p>` : "";
   view.innerHTML = `
@@ -585,10 +585,23 @@ function renderReader(type, id, vid, ch){
   });
 }
 
-/* SECTION: settings-version（整体设定页，正文来自一个 Word 文档，不分章节） */
+/* SECTION: settings-version（设定页：支持 sections 分区——图片分区网格+大图查看，文字分区加载 docx；无 sections 时整本 docx 单页，向后兼容） */
 function renderSettingVersion(id, vid){
   const w = findWork("settings", id); const v = w && w.versions.find(x=>x.id===vid);
   if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/settings/${id}">返回作品页</a></p>`; return; }
+  const sections = v.sections;
+  const metaTail = sections ? `<span class="meta-chip">分区：${sections.map(s => esc(s.title)).join(" / ")}</span>` : `<span class="meta-chip">整本设定</span>`;
+  const hint = sections ? `<p style="font-size:13px;color:var(--ink-soft)">※ 本设定分为 ${sections.length} 个分区，按下列顺序连续呈现；图片分区可点击小图查看大图。</p>` : `<p style="font-size:13px;color:var(--ink-soft)">※ 设定集为整体页面，以下全部内容在本页连续呈现。</p>`;
+  const secHTML = sections ? sections.map((s, si) => {
+    if (s.type === "images") {
+      const items = (s.images || []).map((im, ii) => `<figure class="g-item" data-slb="${si}:${ii}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
+          <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
+          <figcaption class="cap"><span class="no">${String(ii+1).padStart(2,"0")} / ${String((s.images||[]).length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
+        </figure>`).join("");
+      return `<section class="frame-L1"><div class="section-title" style="margin-top:0"><h2 style="font-size:17px">${esc(s.title)}</h2><span>共 ${(s.images||[]).length} 张</span></div><div class="g-grid">${items}</div></section>`;
+    }
+    return `<section class="frame-L1"><div class="section-title" style="margin-top:0"><h2 style="font-size:17px">${esc(s.title)}</h2></div><div class="setting-block" id="docBody-${si}"><p style="color:var(--ink-soft)">正文加载中…</p></div></section>`;
+  }).join("") : `<div class="setting-block" id="docBody-0"><p style="color:var(--ink-soft)">正文加载中…</p></div>`;
   view.innerHTML = `
     <div class="frame-L1">
     <div class="crumb"><a href="#/">首页</a> / <a href="#/settings">设定集</a> / <a href="#/settings/${id}">${esc(w.name)}</a> / ${esc(v.name)}</div>
@@ -601,18 +614,72 @@ function renderSettingVersion(id, vid){
           <span class="meta-chip">作品类型：${esc(w.genre)}</span>
           <span class="meta-chip">状态：${esc(w.status)}</span>
           <span class="meta-chip">最后更新：${esc(w.updated||"")}</span>
-          <span class="meta-chip">整本设定</span>
+          ${metaTail}
         </div>
         <div class="intro-block">${esc(w.intro)}</div>
-        <p style="font-size:13px;color:var(--ink-soft)">※ 设定集为整体页面，以下全部内容在本页连续呈现。</p>
+        ${hint}
       </div>
     </section>
-    <div class="setting-block" id="docBody"><p style="color:var(--ink-soft)">正文加载中…</p></div>
+    </div>
+    ${secHTML}
     <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>
+    <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
+      <div class="lb-inner">
+        <img id="lbImg" alt="">
+        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p></div>
+          <div class="lb-nav"><button class="lb-btn" id="lbPrev">← 上一张</button><button class="lb-btn" id="lbNext">下一张 →</button><button class="lb-btn" id="lbClose">✕ 关闭</button></div>
+        </div>
+      </div>
     </div>`;
   bindImages(view);
-  const body = document.getElementById("docBody");
-  loadDocx(v.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+  /* 文字分区：加载各自 docx（无 sections 时即整本 v.file） */
+  (sections || [{ id: "main", type: "text", file: v.file }]).forEach((s, si) => {
+    if (s.type === "text") {
+      const body = document.getElementById("docBody-" + si);
+      loadDocx(s.file).then(html => { if(body && body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
+    }
+  });
+  /* 图片分区的大图查看：同一分区内前后翻，跨分区不串 */
+  const imgSections = (sections || []).filter(s => s.type === "images");
+  if (imgSections.length) {
+    const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
+          lbTitle = document.getElementById("lbTitle"), lbNote = document.getElementById("lbNote");
+    let cur = null;   /* {secIdx, imgIdx, images} */
+    const flat = [];
+    (sections || []).forEach((s, si) => { if (s.type === "images") (s.images || []).forEach((im, ii) => flat.push({ s, si, im, ii })); });
+    const show = f => {
+      cur = f;
+      lbImg.src = D.images[f.im.imageKey] || "";
+      lbImg.alt = f.im.title;
+      lbTitle.textContent = `${f.s.title} · ${String(f.ii + 1).padStart(2, "0")} / ${String(f.s.images.length).padStart(2, "0")} · ${f.im.title}`;
+      lbNote.textContent = f.im.note || "";
+      lb.classList.add("show");
+      document.body.style.overflow = "hidden";
+    };
+    const hide = () => { lb.classList.remove("show"); document.body.style.overflow = ""; };
+    const nav = d => {
+      if (!cur) return;
+      const list = flat.filter(x => x.si === cur.si);
+      const pos = list.findIndex(x => x.im === cur.im);
+      show(list[(pos + d + list.length) % list.length]);
+    };
+    view.querySelectorAll("[data-slb]").forEach(el => {
+      const [si, ii] = el.dataset.slb.split(":").map(Number);
+      const s = sections[si];
+      el.addEventListener("click", () => show({ s, si, im: s.images[ii], ii }));
+      el.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " "){ e.preventDefault(); show({ s, si, im: s.images[ii], ii }); } });
+    });
+    lb.addEventListener("click", e => { if(e.target === lb) hide(); });
+    document.getElementById("lbClose").addEventListener("click", hide);
+    document.getElementById("lbPrev").addEventListener("click", () => nav(-1));
+    document.getElementById("lbNext").addEventListener("click", () => nav(1));
+    document.addEventListener("keydown", function k(e){
+      if(!lb.classList.contains("show")) return;
+      if(e.key === "Escape") hide();
+      if(e.key === "ArrowLeft") nav(-1);
+      if(e.key === "ArrowRight") nav(1);
+    });
+  }
 }
 
 /* SECTION: gallery-version（缩略图网格+侧边目录+点图看大图） */

@@ -1,4 +1,4 @@
-/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。新增内容只需上传文件并在这里登记。updated=该条目最后更新时间；章节的 part 字段用于目录按篇章分组；版本排列规范=时间越晚越靠上。 */
+/* SECTION: site-data —— 内容登记表：正文在 content/ 下的 Word 文档里，图片在 images/ 目录。设定集版本可用 sections 数组分区（type=images 图片分区 / type=text 文字分区，文字分区引用 docx）；无 sections 时整本 docx 单页显示。updated=最后更新时间；章节 part=篇章分组；版本排列=越晚越靠上。 */
 window.SITE_DATA = {
   "meta": {
     "name": "布灵的创作小屋",
@@ -766,12 +766,6 @@ window.SITE_DATA = {
           "coverKey": "cover_yaoguijie",
           "chapters": [
             {
-              "id": "c1",
-              "title": "秋风引，雨林灵1",
-              "part": "秋风引，雨林灵",
-              "file": "content/stories/yingzhidu/v24/c1.docx"
-            },
-            {
               "id": "c2",
               "title": "记忆之店",
               "part": "序章",
@@ -782,13 +776,19 @@ window.SITE_DATA = {
               "title": "风剑缘",
               "part": "风剑缘",
               "file": "content/stories/yingzhidu/v24/c3.docx"
+            },
+            {
+              "id": "c1",
+              "title": "秋风引，雨林灵1",
+              "part": "秋风引，雨林灵",
+              "file": "content/stories/yingzhidu/v24/c1.docx"
             }
           ]
         },
         {
           "id": "v23",
           "name": "23版",
-          "note": "2023版，共 18 章 / 9 篇章",
+          "note": "2023版，共 15 章 / 8 篇章",
           "coverKey": "cover_xingchen",
           "chapters": [
             {
@@ -802,12 +802,6 @@ window.SITE_DATA = {
               "title": "花城骑士与混兽",
               "part": "花城骑士",
               "file": "content/stories/yingzhidu/v23/c2.docx"
-            },
-            {
-              "id": "c16",
-              "title": "序章 · 记忆之店",
-              "part": "记忆之店",
-              "file": "content/stories/yingzhidu/v23/c16.docx"
             },
             {
               "id": "c3",
@@ -832,12 +826,6 @@ window.SITE_DATA = {
               "title": "风剑缘3",
               "part": "风剑缘",
               "file": "content/stories/yingzhidu/v23/c6.docx"
-            },
-            {
-              "id": "c17",
-              "title": "风剑缘",
-              "part": "风剑缘",
-              "file": "content/stories/yingzhidu/v23/c17.docx"
             },
             {
               "id": "c7",
@@ -892,12 +880,6 @@ window.SITE_DATA = {
               "title": "夏日雪",
               "part": "夏日雪",
               "file": "content/stories/yingzhidu/v23/c15.docx"
-            },
-            {
-              "id": "c18",
-              "title": "秋风引，雨林灵 1",
-              "part": "秋风引，雨林灵",
-              "file": "content/stories/yingzhidu/v23/c18.docx"
             }
           ]
         },
@@ -1437,9 +1419,36 @@ window.SITE_DATA = {
         {
           "id": "v2606",
           "name": "2606版",
-          "note": "占位设定文档，请替换",
+          "note": "含 2 个分区：人物头像 / 设定正文",
           "file": "content/settings/set_yinsaimena/v2606.docx",
-          "coverKey": "cover_xingchen"
+          "coverKey": "cover_xingchen",
+          "sections": [
+            {
+              "id": "avatars",
+              "title": "人物头像",
+              "type": "images",
+              "images": [
+                {
+                  "imageKey": "ysmn2606_av1",
+                  "title": "人物头像 001"
+                },
+                {
+                  "imageKey": "ysmn2606_av2",
+                  "title": "人物头像 002"
+                },
+                {
+                  "imageKey": "ysmn2606_god",
+                  "title": "神明头像"
+                }
+              ]
+            },
+            {
+              "id": "main",
+              "title": "设定正文",
+              "type": "text",
+              "file": "content/settings/set_yinsaimena/v2606.docx"
+            }
+          ]
         },
         {
           "id": "v25",
@@ -1477,7 +1486,7 @@ window.SITE_DATA = {
           "coverKey": "cover_tinilapu"
         }
       ],
-      "updated": "2026-10-27"
+      "updated": "2026-11-02"
     },
     {
       "created": "（待补充）",
@@ -2862,7 +2871,10 @@ window.SITE_DATA = {
     "cover_yaoguijie": "images/cover_yaoguijie.jpg",
     "cover_xianjing": "images/cover_xianjing.jpg",
     "cover_tinilapu": "images/cover_tinilapu.jpg",
-    "cover_lancoa": "images/cover_lancoa.jpg"
+    "cover_lancoa": "images/cover_lancoa.jpg",
+    "ysmn2606_av1": "images/ysmn2606_av1.png",
+    "ysmn2606_av2": "images/ysmn2606_av2.png",
+    "ysmn2606_god": "images/ysmn2606_god.png"
   },
   "insp": [
     {
