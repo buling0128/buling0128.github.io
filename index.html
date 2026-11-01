@@ -159,9 +159,7 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .g-item .cap{padding:9px 12px 11px}
 .g-item .cap h3{font-size:13.5px;color:var(--blue-700)}
 .g-item .cap .no{font-size:11px;color:var(--blue-500);letter-spacing:1px}
-.g-note{margin:2px 12px 11px;padding:6px 9px;font-size:12.5px;line-height:1.6;color:var(--ink-soft);background:var(--blue-50,#f4f8fb);border:1px dashed var(--blue-300);border-radius:8px;min-height:20px;outline:none;cursor:text}
-.g-note:empty::before{content:"✎ 点击此处为这张图写备注…";color:var(--blue-300)}
-.g-note:focus{border-style:solid;border-color:var(--blue-500);background:var(--white)}
+.g-note{margin:2px 12px 11px;padding:6px 10px;font-size:12.5px;line-height:1.7;color:var(--ink-soft);background:var(--blue-50,#f4f8fb);border:1px solid var(--blue-200);border-radius:8px}
 .lightbox{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(28,48,66,.86);padding:20px}
 .lightbox.show{display:flex}
 .lb-inner{max-width:min(1000px,94vw);max-height:92vh;display:flex;flex-direction:column;gap:10px}
@@ -324,24 +322,13 @@ function bindImages(root){
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 
-/* 图片可编辑备注：文字存浏览器 localStorage（按 imageKey 记），画集与设定图片分区共用；看板娘与封面不加 */
-const NOTE_KEY = k => "buling-note:" + k;
-function getNote(im){
-  const saved = localStorage.getItem(NOTE_KEY(im.imageKey));
-  return saved !== null ? saved : (im.note || "");
-}
+/* 图片文字备注：唯一来源是仓库 assets/data.js 中图片条目的 note 字段，网站只展示、不可改。
+   修改方法：在仓库里编辑 data.js，给对应 imageKey 的图片条目增加/修改 "note": "文字"，推送后生效；
+   note 为空或不存在时不显示备注区。看板娘与封面不显示备注。 */
 function noteHTML(im){
-  return `<div class="g-note" contenteditable="true" data-note="${esc(im.imageKey)}" role="textbox" aria-label="图片备注，可直接编辑">${esc(getNote(im))}</div>`;
-}
-function bindNotes(root){
-  root.querySelectorAll("[data-note]").forEach(el => {
-    el.addEventListener("input", () => { localStorage.setItem(NOTE_KEY(el.dataset.note), el.textContent); });
-    el.addEventListener("click", e => e.stopPropagation());
-    el.addEventListener("keydown", e => {
-      e.stopPropagation();
-      if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); el.blur(); }
-    });
-  });
+  const n = im && im.note ? String(im.note) : "";
+  if(!n.trim()) return "";
+  return `<div class="g-note">${esc(n)}</div>`;
 }
 
 /* SECTION: home-views */
@@ -661,7 +648,6 @@ function renderSettingVersion(id, vid){
       </div>
     </div>`;
   bindImages(view);
-  bindNotes(view);
   /* 文字分区：加载各自 docx（无 sections 时即整本 v.file） */
   (sections || [{ id: "main", type: "text", file: v.file }]).forEach((s, si) => {
     if (s.type === "text") {
@@ -682,7 +668,7 @@ function renderSettingVersion(id, vid){
       lbImg.src = D.images[f.im.imageKey] || "";
       lbImg.alt = f.im.title;
       lbTitle.textContent = `${f.s.title} · ${String(f.ii + 1).padStart(2, "0")} / ${String(f.s.images.length).padStart(2, "0")} · ${f.im.title}`;
-      lbNote.textContent = getNote(f.im);
+      lbNote.textContent = f.im.note || "";
       if (window.lbZoomReset) window.lbZoomReset();
       lb.classList.add("show");
       document.body.style.overflow = "hidden";
@@ -740,7 +726,6 @@ function renderGalleryVersion(id, vid){
       </div>
     </div>`;
   bindImages(view);
-  bindNotes(view);
   document.getElementById("tocOpen").addEventListener("click", () => buildToc("gallery",id,vid,"image",null));
   /* SECTION: lightbox —— 大图查看层 */
   const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
@@ -752,7 +737,7 @@ function renderGalleryVersion(id, vid){
     lbImg.src = D.images[im.imageKey] || "";
     lbImg.alt = im.title;
     lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")} · ${im.title}`;
-    lbNote.textContent = getNote(im);
+    lbNote.textContent = im.note || "";
     lbNo.textContent = "";
     if (window.lbZoomReset) window.lbZoomReset();
     lb.classList.add("show");
