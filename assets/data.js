@@ -1419,7 +1419,7 @@ window.SITE_DATA = {
         {
           "id": "v2606",
           "name": "2606版",
-          "note": "含 2 个分区：人物头像 / 设定正文",
+          "note": "含 4 个分区：人物头像 / 人设图 / 国家 / 设定正文",
           "file": "content/settings/set_yinsaimena/v2606.docx",
           "coverKey": "cover_xingchen",
           "sections": [
@@ -1439,6 +1439,52 @@ window.SITE_DATA = {
                 {
                   "imageKey": "ysmn2606_god",
                   "title": "神明头像"
+                }
+              ]
+            },
+            {
+              "id": "designs",
+              "title": "人设图",
+              "type": "images",
+              "images": [
+                {
+                  "imageKey": "ysmn2606_pd_jiling",
+                  "title": "寂灵 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_guangxinche",
+                  "title": "光昕澈 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_jiayinzi",
+                  "title": "佳因子 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_chiji",
+                  "title": "赤姬 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_hupo",
+                  "title": "琥珀 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_buling",
+                  "title": "布灵 · 人设 其一"
+                },
+                {
+                  "imageKey": "ysmn2606_pd_bucheng",
+                  "title": "布澄 · 人设 其一"
+                }
+              ]
+            },
+            {
+              "id": "nations",
+              "title": "国家",
+              "type": "images",
+              "images": [
+                {
+                  "imageKey": "ysmn2606_nations",
+                  "title": "国家标志总览"
                 }
               ]
             },
@@ -2842,13 +2888,13 @@ window.SITE_DATA = {
     "file": "content/about.docx"
   },
   "images": {
-    "mascot": "images/mascot.jpg",
-    "act_idle": "images/act_idle.jpg",
-    "act_write": "images/act_write.jpg",
-    "act_paint": "images/act_paint.jpg",
-    "act_drink": "images/act_drink.jpg",
-    "act_letter": "images/act_letter.jpg",
-    "act_sleep": "images/act_sleep.jpg",
+    "mascot": "images/mascot_act_idle.png",
+    "act_idle": "images/mascot_act_idle.png",
+    "act_write": "images/mascot_act_write.png",
+    "act_paint": "images/mascot_act_paint.png",
+    "act_drink": "images/mascot_act_drink.png",
+    "act_letter": "images/mascot_act_letter.png",
+    "act_sleep": "images/mascot_act_sleep.png",
     "cover_xingchen": "images/cover_xingchen.jpg",
     "cover_yuting": "images/cover_yuting.jpg",
     "cover_zhiyuan": "images/cover_zhiyuan.jpg",
@@ -2874,7 +2920,15 @@ window.SITE_DATA = {
     "cover_lancoa": "images/cover_lancoa.jpg",
     "ysmn2606_av1": "images/ysmn2606_av1.png",
     "ysmn2606_av2": "images/ysmn2606_av2.png",
-    "ysmn2606_god": "images/ysmn2606_god.png"
+    "ysmn2606_god": "images/ysmn2606_god.png",
+    "ysmn2606_pd_jiling": "images/ysmn2606_pd_jiling.png",
+    "ysmn2606_pd_guangxinche": "images/ysmn2606_pd_guangxinche.png",
+    "ysmn2606_pd_jiayinzi": "images/ysmn2606_pd_jiayinzi.png",
+    "ysmn2606_pd_chiji": "images/ysmn2606_pd_chiji.png",
+    "ysmn2606_pd_hupo": "images/ysmn2606_pd_hupo.png",
+    "ysmn2606_pd_buling": "images/ysmn2606_pd_buling.png",
+    "ysmn2606_pd_bucheng": "images/ysmn2606_pd_bucheng.png",
+    "ysmn2606_nations": "images/ysmn2606_nations.png"
   },
   "insp": [
     {

@@ -159,6 +159,9 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .g-item .cap{padding:9px 12px 11px}
 .g-item .cap h3{font-size:13.5px;color:var(--blue-700)}
 .g-item .cap .no{font-size:11px;color:var(--blue-500);letter-spacing:1px}
+.g-note{margin:2px 12px 11px;padding:6px 9px;font-size:12.5px;line-height:1.6;color:var(--ink-soft);background:var(--blue-50,#f4f8fb);border:1px dashed var(--blue-300);border-radius:8px;min-height:20px;outline:none;cursor:text}
+.g-note:empty::before{content:"✎ 点击此处为这张图写备注…";color:var(--blue-300)}
+.g-note:focus{border-style:solid;border-color:var(--blue-500);background:var(--white)}
 .lightbox{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(28,48,66,.86);padding:20px}
 .lightbox.show{display:flex}
 .lb-inner{max-width:min(1000px,94vw);max-height:92vh;display:flex;flex-direction:column;gap:10px}
@@ -166,6 +169,11 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .lb-cap{color:#fff;display:flex;align-items:baseline;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .lb-cap h3{font-size:17px;letter-spacing:1px}
 .lb-cap p{font-size:13px;line-height:1.7;color:var(--blue-200);flex:1;min-width:220px}
+.lb-stage{width:min(1000px,94vw);height:74vh;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:12px}
+.lb-stage img{display:block;flex:none;max-width:none;max-height:none;object-fit:contain;border-radius:12px;background:var(--white);cursor:zoom-in;user-select:none;-webkit-user-drag:none;transition:transform .12s ease-out}
+.lb-stage.on img{cursor:grab}
+.lb-stage.on.drag img{cursor:grabbing}
+.lb-hint{font-size:12px;color:var(--blue-200);opacity:.75;margin-top:2px}
 .lb-nav{display:flex;gap:10px;align-items:center}
 .lb-btn{border:1px solid var(--blue-300);background:rgba(255,255,255,.12);color:#fff;border-radius:10px;padding:7px 15px;font-size:14px}
 .lb-btn:hover{background:rgba(255,255,255,.25)}
@@ -315,6 +323,26 @@ function bindImages(root){
   });
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
+
+/* 图片可编辑备注：文字存浏览器 localStorage（按 imageKey 记），画集与设定图片分区共用；看板娘与封面不加 */
+const NOTE_KEY = k => "buling-note:" + k;
+function getNote(im){
+  const saved = localStorage.getItem(NOTE_KEY(im.imageKey));
+  return saved !== null ? saved : (im.note || "");
+}
+function noteHTML(im){
+  return `<div class="g-note" contenteditable="true" data-note="${esc(im.imageKey)}" role="textbox" aria-label="图片备注，可直接编辑">${esc(getNote(im))}</div>`;
+}
+function bindNotes(root){
+  root.querySelectorAll("[data-note]").forEach(el => {
+    el.addEventListener("input", () => { localStorage.setItem(NOTE_KEY(el.dataset.note), el.textContent); });
+    el.addEventListener("click", e => e.stopPropagation());
+    el.addEventListener("keydown", e => {
+      e.stopPropagation();
+      if(e.key === "Enter" && !e.shiftKey){ e.preventDefault(); el.blur(); }
+    });
+  });
+}
 
 /* SECTION: home-views */
 function noticeHTML(){
@@ -597,6 +625,7 @@ function renderSettingVersion(id, vid){
       const items = (s.images || []).map((im, ii) => `<figure class="g-item" data-slb="${si}:${ii}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
           <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
           <figcaption class="cap"><span class="no">${String(ii+1).padStart(2,"0")} / ${String((s.images||[]).length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
+          ${noteHTML(im)}
         </figure>`).join("");
       return `<section class="frame-L1"><div class="section-title" style="margin-top:0"><h2 style="font-size:17px">${esc(s.title)}</h2><span>共 ${(s.images||[]).length} 张</span></div><div class="g-grid">${items}</div></section>`;
     }
@@ -625,13 +654,14 @@ function renderSettingVersion(id, vid){
     <div class="back-home"><a class="btn ghost" href="#/settings/${id}">← 返回作品页（换版本）</a></div>
     <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
       <div class="lb-inner">
-        <img id="lbImg" alt="">
-        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p></div>
+        <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div>
+        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p><p class="lb-hint">滚轮可放大查看细节 · 放大后拖动平移 · 双击或按 0 复位</p></div>
           <div class="lb-nav"><button class="lb-btn" id="lbPrev">← 上一张</button><button class="lb-btn" id="lbNext">下一张 →</button><button class="lb-btn" id="lbClose">✕ 关闭</button></div>
         </div>
       </div>
     </div>`;
   bindImages(view);
+  bindNotes(view);
   /* 文字分区：加载各自 docx（无 sections 时即整本 v.file） */
   (sections || [{ id: "main", type: "text", file: v.file }]).forEach((s, si) => {
     if (s.type === "text") {
@@ -652,7 +682,8 @@ function renderSettingVersion(id, vid){
       lbImg.src = D.images[f.im.imageKey] || "";
       lbImg.alt = f.im.title;
       lbTitle.textContent = `${f.s.title} · ${String(f.ii + 1).padStart(2, "0")} / ${String(f.s.images.length).padStart(2, "0")} · ${f.im.title}`;
-      lbNote.textContent = f.im.note || "";
+      lbNote.textContent = getNote(f.im);
+      if (window.lbZoomReset) window.lbZoomReset();
       lb.classList.add("show");
       document.body.style.overflow = "hidden";
     };
@@ -689,6 +720,7 @@ function renderGalleryVersion(id, vid){
   const items = v.images.map((im,i)=>`<figure class="g-item" id="gi-${im.id}" data-lb="${i}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
       <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
       <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
+      ${noteHTML(im)}
     </figure>`).join("");
   view.innerHTML = `
     <div class="reader-bar">
@@ -701,13 +733,14 @@ function renderGalleryVersion(id, vid){
     <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>
     <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
       <div class="lb-inner">
-        <img id="lbImg" alt="">
-        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p></div>
+        <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div>
+        <div class="lb-cap"><div><h3 id="lbTitle"></h3><p id="lbNote"></p><p class="lb-hint">滚轮可放大查看细节 · 放大后拖动平移 · 双击或按 0 复位</p></div>
           <div class="lb-nav"><button class="lb-btn" id="lbPrev">← 上一张</button><span id="lbNo" style="font-size:13px"></span><button class="lb-btn" id="lbNext">下一张 →</button><button class="lb-btn" id="lbClose">✕ 关闭</button></div>
         </div>
       </div>
     </div>`;
   bindImages(view);
+  bindNotes(view);
   document.getElementById("tocOpen").addEventListener("click", () => buildToc("gallery",id,vid,"image",null));
   /* SECTION: lightbox —— 大图查看层 */
   const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
@@ -719,8 +752,9 @@ function renderGalleryVersion(id, vid){
     lbImg.src = D.images[im.imageKey] || "";
     lbImg.alt = im.title;
     lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")} · ${im.title}`;
-    lbNote.textContent = im.note || "";
+    lbNote.textContent = getNote(im);
     lbNo.textContent = "";
+    if (window.lbZoomReset) window.lbZoomReset();
     lb.classList.add("show");
     document.body.style.overflow = "hidden";
   };
@@ -853,6 +887,119 @@ function renderAbout(){
   loadDocx(D.about.file).then(html => { if(body.isConnected) body.innerHTML = html || LOCAL_FILE_HINT; });
 }
 
+/* SECTION: lb-zoom —— 大图滚轮缩放（画集与设定图片分区共用，事件委托，切图/关闭自动复位） */
+(function(){
+  const MIN = 1;
+  let scale = 1, tx = 0, ty = 0, dragging = false, sx = 0, sy = 0, stx = 0, sty = 0;
+  let dw = 0, dh = 0;                 /* 当前图片在 1 倍（适配）状态下的显示尺寸 */
+  let obs = null, watched = null;
+  const get = () => {
+    const stage = document.getElementById("lbStage"), img = document.getElementById("lbImg"), lb = document.getElementById("lightbox");
+    return (stage && img && lb) ? { stage, img, lb } : null;
+  };
+  const open = () => { const c = get(); return c && c.lb.classList.contains("show"); };
+  /* 以原图像素为放大上限（超宽图至少给到 3 倍，保证细节可读到） */
+  const maxScale = c => {
+    if (!dw || !c.img.naturalWidth) return 6;
+    return Math.max(3, c.img.naturalWidth / dw);
+  };
+  const clamp = c => {
+    const limx = Math.max(0, (dw * scale - c.stage.clientWidth) / 2) + 40;
+    const limy = Math.max(0, (dh * scale - c.stage.clientHeight) / 2) + 40;
+    tx = Math.max(-limx, Math.min(limx, tx));
+    ty = Math.max(-limy, Math.min(limy, ty));
+  };
+  function draw(instant){
+    const c = get(); if(!c || !dw) return;
+    /* 真正改变图片的渲染尺寸，让浏览器按原图重新采样，放大后依旧是真实清晰度 */
+    c.img.style.width = (dw * scale) + "px";
+    c.img.style.height = (dh * scale) + "px";
+    clamp(c);
+    if (instant) { c.img.style.transition = "none"; }
+    c.img.style.transform = `translate(${tx}px, ${ty}px)`;
+    if (instant) requestAnimationFrame(() => { c.img.style.transition = ""; });
+    c.stage.classList.toggle("on", scale > MIN);
+  }
+  function measure(c){
+    const sw = c.stage.clientWidth, sh = c.stage.clientHeight;
+    const nw = c.img.naturalWidth || sw, nh = c.img.naturalHeight || sh;
+    const k = Math.min(sw / nw, sh / nh);
+    dw = Math.round(nw * k); dh = Math.round(nh * k);
+  }
+  function reset(){
+    scale = 1; tx = 0; ty = 0;
+    const c = get(); if(!c) return;
+    if (!c.img.complete || !c.img.naturalWidth) {
+      dw = 0; dh = 0;
+      c.img.style.width = ""; c.img.style.height = ""; c.img.style.transform = "";
+      c.stage.classList.remove("on");
+      return;
+    }
+    measure(c); draw(false);
+  }
+  /* 每次打开大图层都从 1 倍开始 */
+  function watch(){
+    const lb = document.getElementById("lightbox");
+    if (watched === lb) return;
+    watched = lb;
+    if (obs) obs.disconnect();
+    if (!lb) return;
+    obs = new MutationObserver(() => { if (lb.classList.contains("show")) reset(); });
+    obs.observe(lb, { attributes: true, attributeFilter: ["class"] });
+  }
+  document.addEventListener("wheel", e => {
+    if (!open()) return;
+    const c = get();
+    e.preventDefault();
+    if (!dw) measure(c);
+    const mx = maxScale(c);
+    const dy = e.deltaMode === 1 ? e.deltaY * 33 : e.deltaY * 3;
+    const next = Math.min(mx, Math.max(MIN, scale * Math.exp(-dy * 0.0009)));
+    if (next === scale) return;
+    const r = c.stage.getBoundingClientRect(), cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+    const k = next / scale;
+    tx = (e.clientX - cx) * (1 - k) + tx * k;
+    ty = (e.clientY - cy) * (1 - k) + ty * k;
+    scale = next;
+    if (scale <= MIN + 1e-6) { scale = MIN; tx = 0; ty = 0; }
+    draw(true);
+  }, { passive: false });
+  document.addEventListener("pointerdown", e => {
+    if (!open() || scale <= MIN) return;
+    const c = get(); if(!c || e.target !== c.img) return;
+    dragging = true; sx = e.clientX; sy = e.clientY; stx = tx; sty = ty;
+    c.stage.classList.add("drag");
+    if (c.img.setPointerCapture) { try { c.img.setPointerCapture(e.pointerId); } catch(_){} }
+  });
+  document.addEventListener("pointermove", e => {
+    if (!dragging) return;
+    tx = stx + (e.clientX - sx); ty = sty + (e.clientY - sy);
+    draw(true);
+  });
+  const stop = () => { const c = get(); if(c) c.stage.classList.remove("drag"); dragging = false; };
+  document.addEventListener("pointerup", stop);
+  document.addEventListener("pointercancel", stop);
+  /* 未放大时点图片周围空白，等同点背景关闭 */
+  document.addEventListener("click", e => {
+    if (!open() || scale > MIN) return;
+    const c = get(); if(!c || e.target !== c.stage) return;
+    c.lb.classList.remove("show");
+    document.body.style.overflow = "";
+  });
+  document.addEventListener("dblclick", e => {
+    if (!open()) return;
+    const c = get(); if(!c) return;
+    if (e.target === c.img || e.target === c.stage) { e.preventDefault(); reset(); }
+  });
+  document.addEventListener("keydown", e => { if (open() && e.key === "0") reset(); }, true);
+  /* 换图（src 变化）加载完成后重新计算适配尺寸并回到 1 倍 */
+  document.addEventListener("load", e => { if (e.target && e.target.id === "lbImg") reset(); }, true);
+  window.addEventListener("resize", () => { if (open()) reset(); });
+  window.lbZoomWatch = watch;
+  window.lbZoomReset = reset;
+  watch();
+})();
+
 /* SECTION: router */
 const NAV_OF = { home:"home", stories:"stories", settings:"settings", gallery:"gallery", insp:"insp", drafts:"drafts", about:"about" };
 function route(){
@@ -860,6 +1007,7 @@ function route(){
   const seg = raw.split("/").filter(Boolean);
   closeDrawers();
   const lbOn = document.getElementById("lightbox"); if(lbOn && lbOn.classList.contains("show")){ lbOn.classList.remove("show"); document.body.style.overflow = ""; }
+  if (window.lbZoomWatch) window.lbZoomWatch();
   document.querySelectorAll("#navDrawer [data-nav]").forEach(a=>a.classList.remove("active"));
   let tail = "";
   const top = seg[0] || "home";
