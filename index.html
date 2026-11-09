@@ -307,18 +307,43 @@ tocMask.addEventListener("click", closeDrawers);
 function openDrawer(k){ if(k==="nav"){navDrawer.classList.add("show");navMask.classList.add("show");} else {tocDrawer.classList.add("show");tocMask.classList.add("show");} }
 function closeDrawers(){ navDrawer.classList.remove("show"); navMask.classList.remove("show"); tocDrawer.classList.remove("show"); tocMask.classList.remove("show"); }
 
-/* 图片运行时赋值：data-image 键 → images 表地址；加载失败降级为渐变占位 */
+/* 图片运行时赋值：data-image 键 → images 表地址；网格优先用缩略图 */
+/* 缩略图地址：与 images 表同路径同名，放 thumbs 目录下、webp 格式 */
+function thumbURL(key){
+  const u = D.images[key];
+  if(!u) return "";
+  return u.replace(/^images\//, "images/thumbs/").replace(/\.(png|jpe?g)$/i, ".webp");
+}
 function bindImages(root){
   root.querySelectorAll("[data-image]").forEach(el => {
-    const url = D.images[el.dataset.image];
-    if(!url){ el.remove(); return; }
+    const key = el.dataset.image;
+    const full = D.images[key];
+    if(!full){ el.remove(); return; }
     const img = document.createElement("img");
     img.alt = el.dataset.alt || "";
     img.loading = "lazy";
-    img.onerror = () => { img.remove(); const ph=document.createElement("div"); ph.className="ph"; ph.textContent = el.dataset.alt || "图片"; el.appendChild(ph); };
-    img.src = url;
+    img.decoding = "async";
+    let onThumb = false;
+    img.onerror = () => {
+      if(onThumb){ onThumb = false; img.src = full; return; }
+      img.remove(); const ph=document.createElement("div"); ph.className="ph"; ph.textContent = el.dataset.alt || "图片"; el.appendChild(ph);
+    };
+    const th = thumbURL(key);
+    if(th){ onThumb = true; img.src = th; } else { img.src = full; }
     el.appendChild(img);
   });
+}
+/* 大图渐进加载：先显示缩略图秒开，后台下载完成后无感换成原尺寸图；翻页令牌防止串图 */
+let lbSeq = 0;
+function lbLoadFull(img, key){
+  const full = D.images[key] || "";
+  const th = thumbURL(key);
+  const seq = ++lbSeq;
+  img.src = th || full;
+  if(!full || !th || th === full) return;
+  const pre = new Image();
+  pre.onload = () => { if(seq === lbSeq) img.src = full; };
+  pre.src = full;
 }
 function esc(s){ return String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c])); }
 
@@ -387,16 +412,23 @@ function renderHome(){
   const setAct = (act) => {
     if(act === lastAct) return;
     lastAct = act;
-    /* 切换立绘为对应动作图；加载失败保留上一张，避免出现空槽 */
+    /* 切换立绘为对应动作图：先用缩略图秒换，再后台换成原图；加载失败保留上一张 */
     const url = D.images[act];
     if(url){
+      const th = thumbURL(act) || url;
       const probe = new Image();
       probe.onload = () => {
         mi.querySelectorAll("img").forEach(o => o.remove());
         probe.alt = D.mascot.name;
         mi.appendChild(probe);
+        if(th !== url){
+          const full = new Image();
+          const keep = probe;
+          full.onload = () => { if(keep.parentNode === mi) keep.src = url; };
+          full.src = url;
+        }
       };
-      probe.src = url;
+      probe.src = th;
     }
   };
   const say = () => {
@@ -665,7 +697,7 @@ function renderSettingVersion(id, vid){
     (sections || []).forEach((s, si) => { if (s.type === "images") (s.images || []).forEach((im, ii) => flat.push({ s, si, im, ii })); });
     const show = f => {
       cur = f;
-      lbImg.src = D.images[f.im.imageKey] || "";
+      lbLoadFull(lbImg, f.im.imageKey);
       lbImg.alt = f.im.title;
       lbTitle.textContent = `${f.s.title} · ${String(f.ii + 1).padStart(2, "0")} / ${String(f.s.images.length).padStart(2, "0")} · ${f.im.title}`;
       lbNote.textContent = f.im.note || "";
@@ -734,7 +766,7 @@ function renderGalleryVersion(id, vid){
   const show = i => {
     cur = (i + v.images.length) % v.images.length;
     const im = v.images[cur];
-    lbImg.src = D.images[im.imageKey] || "";
+    lbLoadFull(lbImg, im.imageKey);
     lbImg.alt = im.title;
     lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")} · ${im.title}`;
     lbNote.textContent = im.note || "";
