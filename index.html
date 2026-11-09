@@ -792,7 +792,7 @@ function renderGalleryPage(id){
     lbLoadFull(lbImg, im.imageKey);
     lbImg.alt = im.title;
     lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")} · ${im.title}`;
-    const desc = []; if(im.drawn) desc.push("绘制于 " + im.drawn); if(im.note) desc.push(im.note);
+    const desc = []; if(im.drawn) desc.push("绘制于 " + String(im.drawn).slice(0, 10)); if(im.note) desc.push(im.note);
     lbNote.textContent = desc.join(" · ");
     lbNo.textContent = (im.tags || []).length ? "标签：" + im.tags.join(" / ") : "";
     if (window.lbZoomReset) window.lbZoomReset();
@@ -807,7 +807,7 @@ function renderGalleryPage(id){
     grid.innerHTML = list.length ? list.map((im, i) => `<figure class="g-item" data-lb="${i}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
         <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
         <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
-        ${(im.drawn || (im.tags || []).length) ? `<div class="g-meta">${im.drawn ? `<span class="g-drawn">✎ 绘制于 ${esc(im.drawn)}</span>` : ""}${(im.tags || []).map(t => `<span class="g-tag">${esc(t)}</span>`).join("")}</div>` : ""}
+        ${(im.drawn || (im.tags || []).length) ? `<div class="g-meta">${im.drawn ? `<span class="g-drawn">✎ 绘制于 ${esc(String(im.drawn).slice(0, 10))}</span>` : ""}${(im.tags || []).map(t => `<span class="g-tag">${esc(t)}</span>`).join("")}</div>` : ""}
         ${noteHTML(im)}
       </figure>`).join("") : (kw ? `<div class="g-empty">没有匹配「${esc(kw)}」的图片，换个关键词试试。</div>` : `<div class="g-empty">这本画集还没有图片。把画好的作品交给助手上传，就会出现在这里。</div>`);
     bindImages(grid);
