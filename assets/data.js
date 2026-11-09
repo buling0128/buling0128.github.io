@@ -1867,166 +1867,6 @@ window.SITE_DATA = {
       "status": "（待补充）",
       "images": [
         {
-          "id": "neo-i1",
-          "title": "因赛美那 neo版 图1",
-          "imageKey": "summer6",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "neo-i2",
-          "title": "因赛美那 neo版 图2",
-          "imageKey": "starry1",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "neo-i3",
-          "title": "因赛美那 neo版 图3",
-          "imageKey": "starry2",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "neo-i4",
-          "title": "因赛美那 neo版 图4",
-          "imageKey": "starry3",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v2606-i1",
-          "title": "因赛美那 2606版 图1",
-          "imageKey": "cover_xingchen",
-          "drawn": "2026-06",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v2606-i2",
-          "title": "因赛美那 2606版 图2",
-          "imageKey": "cover_yuting",
-          "drawn": "2026-06",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v2606-i3",
-          "title": "因赛美那 2606版 图3",
-          "imageKey": "cover_zhiyuan",
-          "drawn": "2026-06",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v2606-i4",
-          "title": "因赛美那 2606版 图4",
-          "imageKey": "summer1",
-          "drawn": "2026-06",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v25-i1",
-          "title": "因赛美那 25版 图1",
-          "imageKey": "summer2",
-          "drawn": "2025",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v25-i2",
-          "title": "因赛美那 25版 图2",
-          "imageKey": "summer3",
-          "drawn": "2025",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v25-i3",
-          "title": "因赛美那 25版 图3",
-          "imageKey": "summer4",
-          "drawn": "2025",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v25-i4",
-          "title": "因赛美那 25版 图4",
-          "imageKey": "summer5",
-          "drawn": "2025",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i1",
-          "title": "因赛美那 24版 图1",
-          "imageKey": "starry4",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i2",
-          "title": "因赛美那 24版 图2",
-          "imageKey": "starry5",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i3",
-          "title": "因赛美那 24版 图3",
-          "imageKey": "starry6",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i4",
-          "title": "因赛美那 24版 图4",
-          "imageKey": "cover_yunhai",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i1",
-          "title": "因赛美那 23版 图1",
-          "imageKey": "cover_tideng",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i2",
-          "title": "因赛美那 23版 图2",
-          "imageKey": "cover_summer",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i3",
-          "title": "因赛美那 23版 图3",
-          "imageKey": "cover_starry",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i4",
-          "title": "因赛美那 23版 图4",
-          "imageKey": "cover_yaoguijie",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
           "id": "ysmn2022_02",
           "title": "早期手绘 · 2022-09-23",
           "imageKey": "ysmn2022_02",
@@ -2157,38 +1997,6 @@ window.SITE_DATA = {
             "2022"
           ],
           "note": "2022 年早期手绘，绘制于 2022-02-07。"
-        },
-        {
-          "id": "v15-i1",
-          "title": "因赛美那 15版 图1",
-          "imageKey": "cover_xianjing",
-          "drawn": "2015",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v15-i2",
-          "title": "因赛美那 15版 图2",
-          "imageKey": "cover_tinilapu",
-          "drawn": "2015",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v15-i3",
-          "title": "因赛美那 15版 图3",
-          "imageKey": "cover_lancoa",
-          "drawn": "2015",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v15-i4",
-          "title": "因赛美那 15版 图4",
-          "imageKey": "cover_xingchen",
-          "drawn": "2015",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
         }
       ],
       "updated": "2026-10-27"
@@ -2201,104 +2009,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "loose-i1",
-          "title": "樱之都·奈樱 散装版 图1",
-          "imageKey": "cover_yuting",
-          "drawn": "2026-11-02",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "loose-i2",
-          "title": "樱之都·奈樱 散装版 图2",
-          "imageKey": "cover_zhiyuan",
-          "drawn": "2026-11-02",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "loose-i3",
-          "title": "樱之都·奈樱 散装版 图3",
-          "imageKey": "summer1",
-          "drawn": "2026-11-02",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "loose-i4",
-          "title": "樱之都·奈樱 散装版 图4",
-          "imageKey": "summer2",
-          "drawn": "2026-11-02",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i1",
-          "title": "樱之都·奈樱 24版 图1",
-          "imageKey": "starry1",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i2",
-          "title": "樱之都·奈樱 24版 图2",
-          "imageKey": "starry2",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i3",
-          "title": "樱之都·奈樱 24版 图3",
-          "imageKey": "starry3",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v24-i4",
-          "title": "樱之都·奈樱 24版 图4",
-          "imageKey": "starry4",
-          "drawn": "2024",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i1",
-          "title": "yingzhidu 23版 图1",
-          "imageKey": "cover_yunhai",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i2",
-          "title": "yingzhidu 23版 图2",
-          "imageKey": "cover_tideng",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i3",
-          "title": "yingzhidu 23版 图3",
-          "imageKey": "cover_summer",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i4",
-          "title": "yingzhidu 23版 图4",
-          "imageKey": "cover_starry",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-11-02"
     },
     {
@@ -2309,40 +2020,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v10-i1",
-          "title": "妖鬼街 1.0版 图1",
-          "imageKey": "cover_summer",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v10-i2",
-          "title": "妖鬼街 1.0版 图2",
-          "imageKey": "cover_starry",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v10-i3",
-          "title": "妖鬼街 1.0版 图3",
-          "imageKey": "cover_yaoguijie",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v10-i4",
-          "title": "妖鬼街 1.0版 图4",
-          "imageKey": "cover_xianjing",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-27"
     },
     {
@@ -2353,40 +2031,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v23-i1",
-          "title": "仙境 1.0版 图1",
-          "imageKey": "cover_tinilapu",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i2",
-          "title": "仙境 1.0版 图2",
-          "imageKey": "cover_lancoa",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i3",
-          "title": "仙境 1.0版 图3",
-          "imageKey": "cover_xingchen",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v23-i4",
-          "title": "仙境 1.0版 图4",
-          "imageKey": "cover_yuting",
-          "drawn": "2023",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-11-01"
     },
     {
@@ -2397,72 +2042,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "event-i1",
-          "title": "提奈拉普 活动版 图1",
-          "imageKey": "cover_zhiyuan",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "event-i2",
-          "title": "提奈拉普 活动版 图2",
-          "imageKey": "summer1",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "event-i3",
-          "title": "提奈拉普 活动版 图3",
-          "imageKey": "summer2",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "event-i4",
-          "title": "提奈拉普 活动版 图4",
-          "imageKey": "summer3",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "solo-i1",
-          "title": "提奈拉普 独立版 图1",
-          "imageKey": "summer4",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "solo-i2",
-          "title": "提奈拉普 独立版 图2",
-          "imageKey": "summer5",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "solo-i3",
-          "title": "提奈拉普 独立版 图3",
-          "imageKey": "summer6",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "solo-i4",
-          "title": "提奈拉普 独立版 图4",
-          "imageKey": "starry1",
-          "drawn": "2026-10-27",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-27"
     },
     {
@@ -2473,72 +2053,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "old-i1",
-          "title": "蓝·草 旧版 图1",
-          "imageKey": "starry2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "old-i2",
-          "title": "蓝·草 旧版 图2",
-          "imageKey": "starry3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "old-i3",
-          "title": "蓝·草 旧版 图3",
-          "imageKey": "starry4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "old-i4",
-          "title": "蓝·草 旧版 图4",
-          "imageKey": "starry5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "new-i1",
-          "title": "蓝·草 新版 图1",
-          "imageKey": "starry6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "new-i2",
-          "title": "蓝·草 新版 图2",
-          "imageKey": "cover_yunhai",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "new-i3",
-          "title": "蓝·草 新版 图3",
-          "imageKey": "cover_tideng",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "new-i4",
-          "title": "蓝·草 新版 图4",
-          "imageKey": "cover_summer",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2549,40 +2064,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "怪物冒险者 1.0版 图1",
-          "imageKey": "summer1",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "怪物冒险者 1.0版 图2",
-          "imageKey": "summer2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "怪物冒险者 1.0版 图3",
-          "imageKey": "summer3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "怪物冒险者 1.0版 图4",
-          "imageKey": "summer4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2593,40 +2075,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "高速吟唱魔法使 1.0版 图1",
-          "imageKey": "summer2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "高速吟唱魔法使 1.0版 图2",
-          "imageKey": "summer3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "高速吟唱魔法使 1.0版 图3",
-          "imageKey": "summer4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "高速吟唱魔法使 1.0版 图4",
-          "imageKey": "summer5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2637,40 +2086,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "艾琳·麦克伦的地图 1.0版 图1",
-          "imageKey": "summer3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "艾琳·麦克伦的地图 1.0版 图2",
-          "imageKey": "summer4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "艾琳·麦克伦的地图 1.0版 图3",
-          "imageKey": "summer5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "艾琳·麦克伦的地图 1.0版 图4",
-          "imageKey": "summer6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2681,40 +2097,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "勇捶不朽的魔法少女 1.0版 图1",
-          "imageKey": "summer4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "勇捶不朽的魔法少女 1.0版 图2",
-          "imageKey": "summer5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "勇捶不朽的魔法少女 1.0版 图3",
-          "imageKey": "summer6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "勇捶不朽的魔法少女 1.0版 图4",
-          "imageKey": "starry1",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2725,40 +2108,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "布灵的短篇故事集 1.0版 图1",
-          "imageKey": "summer5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "布灵的短篇故事集 1.0版 图2",
-          "imageKey": "summer6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "布灵的短篇故事集 1.0版 图3",
-          "imageKey": "starry1",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "布灵的短篇故事集 1.0版 图4",
-          "imageKey": "starry2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2769,40 +2119,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "海兔岸上求生记 1.0版 图1",
-          "imageKey": "summer6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "海兔岸上求生记 1.0版 图2",
-          "imageKey": "starry1",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "海兔岸上求生记 1.0版 图3",
-          "imageKey": "starry2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "海兔岸上求生记 1.0版 图4",
-          "imageKey": "starry3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2813,40 +2130,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "多彩世界的旅行 1.0版 图1",
-          "imageKey": "starry1",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "多彩世界的旅行 1.0版 图2",
-          "imageKey": "starry2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "多彩世界的旅行 1.0版 图3",
-          "imageKey": "starry3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "多彩世界的旅行 1.0版 图4",
-          "imageKey": "starry4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2857,40 +2141,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "雨·林灵 1.0版 图1",
-          "imageKey": "starry2",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "雨·林灵 1.0版 图2",
-          "imageKey": "starry3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "雨·林灵 1.0版 图3",
-          "imageKey": "starry4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "雨·林灵 1.0版 图4",
-          "imageKey": "starry5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2901,40 +2152,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "陀罗少女 1.0版 图1",
-          "imageKey": "starry3",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "陀罗少女 1.0版 图2",
-          "imageKey": "starry4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "陀罗少女 1.0版 图3",
-          "imageKey": "starry5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "陀罗少女 1.0版 图4",
-          "imageKey": "starry6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2945,40 +2163,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "万物娘化 1.0版 图1",
-          "imageKey": "starry4",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "万物娘化 1.0版 图2",
-          "imageKey": "starry5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "万物娘化 1.0版 图3",
-          "imageKey": "starry6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "万物娘化 1.0版 图4",
-          "imageKey": "cover_yaoguijie",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     },
     {
@@ -2989,40 +2174,7 @@ window.SITE_DATA = {
       "created": "（待补充）",
       "genre": "作品图集",
       "status": "（待补充）",
-      "images": [
-        {
-          "id": "v1-i1",
-          "title": "苍耳饲养指南 1.0版 图1",
-          "imageKey": "starry5",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i2",
-          "title": "苍耳饲养指南 1.0版 图2",
-          "imageKey": "starry6",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i3",
-          "title": "苍耳饲养指南 1.0版 图3",
-          "imageKey": "cover_yaoguijie",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        },
-        {
-          "id": "v1-i4",
-          "title": "苍耳饲养指南 1.0版 图4",
-          "imageKey": "cover_xianjing",
-          "drawn": "2026-10-30",
-          "tags": [],
-          "note": "占位示例配图。点击缩略图可查看大图。"
-        }
-      ],
+      "images": [],
       "updated": "2026-10-30"
     }
   ],
