@@ -159,6 +159,14 @@ main{max-width:1080px;margin:0 auto;padding:16px 16px 64px}
 .g-item .cap{padding:9px 12px 11px}
 .g-item .cap h3{font-size:13.5px;color:var(--blue-700)}
 .g-item .cap .no{font-size:11px;color:var(--blue-500);letter-spacing:1px}
+.g-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px;padding:0 12px 6px;font-size:11.5px;color:var(--blue-500)}
+.g-drawn{letter-spacing:.5px}
+.g-tag{background:var(--blue-50,#f4f8fb);border:1px solid var(--blue-200);border-radius:999px;padding:1px 9px;color:var(--blue-600)}
+.g-search{display:flex;align-items:center;gap:12px;margin:14px 4px}
+.g-search input{flex:1;max-width:430px;border:1.5px solid var(--blue-300);border-radius:999px;padding:8px 16px;font-size:14px;background:var(--white);color:var(--ink);outline:none}
+.g-search input:focus{border-color:var(--blue-500)}
+.g-search .g-count{font-size:12.5px;color:var(--ink-soft)}
+.g-empty{grid-column:1/-1;padding:34px;text-align:center;color:var(--ink-soft)}
 .g-note{margin:2px 12px 11px;padding:6px 10px;font-size:12.5px;line-height:1.7;color:var(--ink-soft);background:var(--blue-50,#f4f8fb);border:1px solid var(--blue-200);border-radius:8px}
 .lightbox{position:fixed;inset:0;z-index:90;display:none;align-items:center;justify-content:center;background:rgba(28,48,66,.86);padding:20px}
 .lightbox.show{display:flex}
@@ -446,7 +454,7 @@ function renderHome(){
 const countByBoard = {
   stories: w => w.versions.reduce((n, v) => n + (v.chapters ? v.chapters.length : 0), 0),   /* 本板块内各版本章节总数 */
   settings: w => w.versions.length,                                                          /* 本板块内的设定文档数 */
-  gallery: w => w.versions.reduce((n, v) => n + (v.images ? v.images.length : 0), 0),        /* 本板块内的图片总数 */
+  gallery: w => (w.images || []).length,                                                      /* 本板块内的图片总数（已去版本化） */
   insp: () => 1,                                                                              /* 灵感逐条计，平序按标题 */
   drafts: () => 1                                                                             /* 草稿每作品一份，平序按标题 */
 };
@@ -514,6 +522,7 @@ const vCount = v => v.chapters ? "共 " + v.chapters.length + " 章" : v.images 
 function renderWork(type, id){
   const w = findWork(type, id);
   if(!w){ view.innerHTML = `<p>没有找到这部作品。<a href="#/${type}">返回${KIND_LABEL[type]}</a></p>`; return; }
+  if(type === "gallery"){ renderGalleryPage(id); return; }   /* 画集已去版本化，直接进入图集页 */
   const versions = w.versions.map(v => `<button class="version-btn" data-version="${v.id}">
       <span class="vthumb" data-image="${v.coverKey||w.coverKey}" data-alt="${esc(v.name)}封面"></span>
       <span class="vmid"><span class="vn">${esc(v.name)}</span><div class="vnote">${type==="settings" ? (v.sections ? v.sections.length + " 个分区" : "整本设定") : vCount(v)}</div></span>
@@ -732,23 +741,37 @@ function renderSettingVersion(id, vid){
 }
 
 /* SECTION: gallery-version（缩略图网格+侧边目录+点图看大图） */
-function renderGalleryVersion(id, vid){
-  const w = findWork("gallery", id); const v = w && w.versions.find(x=>x.id===vid);
-  if(!v){ view.innerHTML = `<p>版本不存在。<a href="#/gallery/${id}">返回作品页</a></p>`; return; }
-  const items = v.images.map((im,i)=>`<figure class="g-item" id="gi-${im.id}" data-lb="${i}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
-      <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
-      <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
-      ${noteHTML(im)}
-    </figure>`).join("");
+/* SECTION: gallery-page —— 画集页：去版本化，按绘制时间从新到旧排列；关键词筛选命中 标题/简介/标签 */
+function gMatch(im, kw){
+  if(!kw) return true;
+  const hay = [im.title, im.note || "", (im.tags || []).join(" ")].join(" ").toLowerCase();
+  return kw.toLowerCase().split(/\s+/).filter(Boolean).every(w => hay.includes(w));
+}
+function renderGalleryPage(id){
+  const w = findWork("gallery", id);
+  if(!w){ view.innerHTML = `<p>没有找到这部画集。<a href="#/gallery">返回画集列表</a></p>`; return; }
+  const all = (w.images || []).slice().sort((a, b) => String(b.drawn || "").localeCompare(String(a.drawn || "")));
   view.innerHTML = `
-    <div class="reader-bar">
-      <a class="icon-btn" href="#/gallery/${id}">← 作品页</a>
-      <div class="rtitle">${esc(w.name)} · ${esc(v.name)}</div>
-      <button class="icon-btn" id="tocOpen">☰ 目录</button>
+    <div class="crumb"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / ${esc(w.name)}</div>
+    <div class="frame-L1"><section class="detail">
+      <div class="cover" data-image="${w.coverKey}" data-alt="${esc(w.name)}封面"></div>
+      <div class="info">
+        <h1>${esc(w.name)}</h1>
+        <div class="meta-row">
+          <span class="meta-chip">创作时间：${esc(w.created)}</span>
+          <span class="meta-chip">最后更新：${esc(w.updated||"")}</span>
+          <span class="meta-chip">共 ${all.length} 张</span>
+        </div>
+        <div class="intro-block">${esc(w.intro)}</div>
+        <p style="font-size:12.5px;color:var(--ink-soft);margin-top:8px">※ 画集不再按版本分组，全部图片按绘制时间从新到旧排列。绘制时间与标签维护在仓库 assets/data.js 的对应图片条目（drawn / tags 字段）。</p>
+      </div>
+    </section></div>
+    <div class="g-search">
+      <input id="gSearch" type="search" placeholder="关键词筛选：匹配图片标题、简介、标签（空格分词，如「夏天 人物」）" aria-label="关键词筛选图片">
+      <span class="g-count" id="gCount"></span>
     </div>
-    <div class="crumb" style="margin-top:14px"><a href="#/">首页</a> / <a href="#/gallery">画集</a> / <a href="#/gallery/${id}">${esc(w.name)}</a> / ${esc(v.name)}　<span style="color:var(--blue-500)">点击小图可查看大图</span></div>
-    <div class="frame-L1"><div class="g-grid">${items}</div></div>
-    <div class="back-home"><a class="btn ghost" href="#/gallery/${id}">回到作品首页</a></div>
+    <div class="frame-L1"><div class="g-grid" id="gGrid"></div></div>
+    <div class="back-home"><a class="btn ghost" href="#/gallery">← 返回画集列表</a></div>
     <div class="lightbox" id="lightbox" role="dialog" aria-label="图片大图查看">
       <div class="lb-inner">
         <div class="lb-stage" id="lbStage"><img id="lbImg" alt=""></div>
@@ -758,28 +781,43 @@ function renderGalleryVersion(id, vid){
       </div>
     </div>`;
   bindImages(view);
-  document.getElementById("tocOpen").addEventListener("click", () => buildToc("gallery",id,vid,"image",null));
-  /* SECTION: lightbox —— 大图查看层 */
+  const grid = document.getElementById("gGrid"), cnt = document.getElementById("gCount"), inp = document.getElementById("gSearch");
   const lb = document.getElementById("lightbox"), lbImg = document.getElementById("lbImg"),
         lbTitle = document.getElementById("lbTitle"), lbNote = document.getElementById("lbNote"), lbNo = document.getElementById("lbNo");
-  let cur = 0;
+  let list = all, cur = 0;
   const show = i => {
-    cur = (i + v.images.length) % v.images.length;
-    const im = v.images[cur];
+    if(!list.length) return;
+    cur = (i + list.length) % list.length;
+    const im = list[cur];
     lbLoadFull(lbImg, im.imageKey);
     lbImg.alt = im.title;
-    lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(v.images.length).padStart(2,"0")} · ${im.title}`;
-    lbNote.textContent = im.note || "";
-    lbNo.textContent = "";
+    lbTitle.textContent = `${String(cur+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")} · ${im.title}`;
+    const desc = []; if(im.drawn) desc.push("绘制于 " + im.drawn); if(im.note) desc.push(im.note);
+    lbNote.textContent = desc.join(" · ");
+    lbNo.textContent = (im.tags || []).length ? "标签：" + im.tags.join(" / ") : "";
     if (window.lbZoomReset) window.lbZoomReset();
     lb.classList.add("show");
     document.body.style.overflow = "hidden";
   };
   const hide = () => { lb.classList.remove("show"); document.body.style.overflow = ""; };
-  view.querySelectorAll("[data-lb]").forEach(el => {
-    el.addEventListener("click", () => show(+el.dataset.lb));
-    el.addEventListener("keydown", e => { if(e.key==="Enter"||e.key===" "){ e.preventDefault(); show(+el.dataset.lb); } });
-  });
+  function draw(){
+    const kw = inp.value.trim();
+    list = kw ? all.filter(im => gMatch(im, kw)) : all;
+    cnt.textContent = kw ? `匹配 ${list.length} / 共 ${all.length} 张` : `共 ${all.length} 张 · 按绘制时间从新到旧`;
+    grid.innerHTML = list.length ? list.map((im, i) => `<figure class="g-item" data-lb="${i}" role="button" tabindex="0" aria-label="查看大图：${esc(im.title)}">
+        <div class="pic" data-image="${im.imageKey}" data-alt="${esc(im.title)}"></div>
+        <figcaption class="cap"><span class="no">${String(i+1).padStart(2,"0")} / ${String(list.length).padStart(2,"0")}</span><h3>${esc(im.title)}</h3></figcaption>
+        ${(im.drawn || (im.tags || []).length) ? `<div class="g-meta">${im.drawn ? `<span class="g-drawn">✎ 绘制于 ${esc(im.drawn)}</span>` : ""}${(im.tags || []).map(t => `<span class="g-tag">${esc(t)}</span>`).join("")}</div>` : ""}
+        ${noteHTML(im)}
+      </figure>`).join("") : `<div class="g-empty">没有匹配「${esc(kw)}」的图片，换个关键词试试。</div>`;
+    bindImages(grid);
+    grid.querySelectorAll("[data-lb]").forEach(el => {
+      el.addEventListener("click", () => show(+el.dataset.lb));
+      el.addEventListener("keydown", e => { if(e.key === "Enter" || e.key === " "){ e.preventDefault(); show(+el.dataset.lb); } });
+    });
+  }
+  inp.addEventListener("input", draw);
+  draw();
   lb.addEventListener("click", e => { if(e.target === lb) hide(); });
   document.getElementById("lbClose").addEventListener("click", hide);
   document.getElementById("lbPrev").addEventListener("click", () => show(cur-1));
@@ -1037,11 +1075,12 @@ function route(){
   else if(seg.length===1 && seg[0]==="drafts"){ tail=DRAFT_LABEL; renderDraftsList(); }
   else if(seg.length===2 && seg[0]==="drafts"){ tail="草稿正文"; renderDraft(seg[1]); }
   else if(seg.length===1 && ["stories","settings","gallery"].includes(seg[0])){ tail=KIND_LABEL[seg[0]]; renderList(seg[0]); }
-  else if(seg.length===2 && ["stories","settings","gallery"].includes(seg[0])){ tail="作品页"; renderWork(seg[0],seg[1]); }
+  else if(seg.length===2 && seg[0]==="gallery"){ tail="图集"; renderGalleryPage(seg[1]); }
+  else if(seg.length===3 && seg[0]==="gallery"){ location.hash = `#/gallery/${seg[1]}`; return; }   /* 旧版本链接重定向 */
+  else if(seg.length===2 && ["stories","settings"].includes(seg[0])){ tail="作品页"; renderWork(seg[0],seg[1]); }
   else if(seg.length===3 && seg[0]==="stories"){ tail="目录"; renderStoryVersion("stories",seg[1],seg[2]); }
   else if(seg.length===4 && seg[0]==="stories"){ tail="阅读"; renderReader("stories",seg[1],seg[2],seg[3]); }
   else if(seg.length===3 && seg[0]==="settings"){ tail="设定"; renderSettingVersion(seg[1],seg[2]); }
-  else if(seg.length===3 && seg[0]==="gallery"){ tail="图集"; renderGalleryVersion(seg[1],seg[2]); }
   else { renderHome(); }
   document.getElementById("topTail").textContent = tail ? "· "+tail : "· 首页";
   window.scrollTo(0,0);
