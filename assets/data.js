@@ -2027,6 +2027,138 @@ window.SITE_DATA = {
           "note": "占位示例配图。点击缩略图可查看大图。"
         },
         {
+          "id": "ysmn2022_02",
+          "title": "早期手绘 · 2022-09-23",
+          "imageKey": "ysmn2022_02",
+          "drawn": "2022-09-23",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-09-23。"
+        },
+        {
+          "id": "ysmn2022_06",
+          "title": "早期手绘 · 2022-08-26",
+          "imageKey": "ysmn2022_06",
+          "drawn": "2022-08-26",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-08-26。"
+        },
+        {
+          "id": "ysmn2022_07",
+          "title": "早期手绘 · 2022-08-26",
+          "imageKey": "ysmn2022_07",
+          "drawn": "2022-08-26",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-08-26。"
+        },
+        {
+          "id": "ysmn2022_08",
+          "title": "早期手绘 · 2022-08-26",
+          "imageKey": "ysmn2022_08",
+          "drawn": "2022-08-26",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-08-26。"
+        },
+        {
+          "id": "ysmn2022_05",
+          "title": "早期手绘 · 2022-08-25",
+          "imageKey": "ysmn2022_05",
+          "drawn": "2022-08-25",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-08-25。"
+        },
+        {
+          "id": "ysmn2022_04",
+          "title": "早期手绘 · 2022-03-24",
+          "imageKey": "ysmn2022_04",
+          "drawn": "2022-03-24",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-03-24。"
+        },
+        {
+          "id": "ysmn2022_03",
+          "title": "早期手绘 · 2022-03-16",
+          "imageKey": "ysmn2022_03",
+          "drawn": "2022-03-16",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-03-16。"
+        },
+        {
+          "id": "ysmn2022_12",
+          "title": "早期手绘 · 2022-03-05",
+          "imageKey": "ysmn2022_12",
+          "drawn": "2022-03-05",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-03-05。"
+        },
+        {
+          "id": "ysmn2022_01",
+          "title": "早期手绘 · 2022-02-15",
+          "imageKey": "ysmn2022_01",
+          "drawn": "2022-02-15",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-02-15。"
+        },
+        {
+          "id": "ysmn2022_11",
+          "title": "早期手绘 · 2022-02-14",
+          "imageKey": "ysmn2022_11",
+          "drawn": "2022-02-14",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-02-14。"
+        },
+        {
+          "id": "ysmn2022_10",
+          "title": "早期手绘 · 2022-02-13",
+          "imageKey": "ysmn2022_10",
+          "drawn": "2022-02-13",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-02-13。"
+        },
+        {
+          "id": "ysmn2022_09",
+          "title": "早期手绘 · 2022-02-07",
+          "imageKey": "ysmn2022_09",
+          "drawn": "2022-02-07",
+          "tags": [
+            "早期手绘",
+            "2022"
+          ],
+          "note": "2022 年早期手绘，绘制于 2022-02-07。"
+        },
+        {
           "id": "v15-i1",
           "title": "因赛美那 15版 图1",
           "imageKey": "cover_xianjing",
@@ -2939,7 +3071,19 @@ window.SITE_DATA = {
     "ysmn2606_pd_hupo": "images/ysmn2606_pd_hupo.png",
     "ysmn2606_pd_buling": "images/ysmn2606_pd_buling.png",
     "ysmn2606_pd_bucheng": "images/ysmn2606_pd_bucheng.png",
-    "ysmn2606_nations": "images/ysmn2606_nations.png"
+    "ysmn2606_nations": "images/ysmn2606_nations.png",
+    "ysmn2022_01": "images/ysmn2022_01.png",
+    "ysmn2022_02": "images/ysmn2022_02.png",
+    "ysmn2022_03": "images/ysmn2022_03.png",
+    "ysmn2022_04": "images/ysmn2022_04.png",
+    "ysmn2022_05": "images/ysmn2022_05.png",
+    "ysmn2022_06": "images/ysmn2022_06.jpg",
+    "ysmn2022_07": "images/ysmn2022_07.jpg",
+    "ysmn2022_08": "images/ysmn2022_08.jpg",
+    "ysmn2022_09": "images/ysmn2022_09.png",
+    "ysmn2022_10": "images/ysmn2022_10.png",
+    "ysmn2022_11": "images/ysmn2022_11.png",
+    "ysmn2022_12": "images/ysmn2022_12.png"
   },
   "insp": [
     {
