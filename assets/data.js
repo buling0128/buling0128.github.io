@@ -1867,6 +1867,93 @@ window.SITE_DATA = {
       "status": "（待补充）",
       "images": [
         {
+          "id": "ysmn2022_19",
+          "title": "INSERMANER 十周年 · 全员群像",
+          "imageKey": "ysmn2022_19",
+          "drawn": "2023-03-05",
+          "tags": [
+            "插画",
+            "十周年",
+            "群像",
+            "2023"
+          ],
+          "note": "绘制于 2023-03-05。"
+        },
+        {
+          "id": "ysmn2022_18",
+          "title": "寂灵十岁生日快乐",
+          "imageKey": "ysmn2022_18",
+          "drawn": "2023-01-26 00:00:18",
+          "tags": [
+            "插画",
+            "寂灵",
+            "十周年",
+            "2023"
+          ],
+          "note": "绘制于 2023-01-26。"
+        },
+        {
+          "id": "ysmn2022_17",
+          "title": "INSERMANER 十周年 · 机甲头像",
+          "imageKey": "ysmn2022_17",
+          "drawn": "2023-01-26 00:00:17",
+          "tags": [
+            "插画",
+            "十周年",
+            "机甲",
+            "2023"
+          ],
+          "note": "绘制于 2023-01-26。"
+        },
+        {
+          "id": "ysmn2022_20",
+          "title": "插画 · 2023-01-09",
+          "imageKey": "ysmn2022_20",
+          "drawn": "2023-01-09",
+          "tags": [
+            "插画",
+            "2023"
+          ],
+          "note": "绘制于 2023-01-09。"
+        },
+        {
+          "id": "ysmn2022_15",
+          "title": "插画 · 2023-01-01",
+          "imageKey": "ysmn2022_15",
+          "drawn": "2023-01-01",
+          "tags": [
+            "插画",
+            "寂灵",
+            "线稿",
+            "2023"
+          ],
+          "note": "绘制于 2023-01-01。"
+        },
+        {
+          "id": "ysmn2022_14",
+          "title": "插画 · 2022-12-30",
+          "imageKey": "ysmn2022_14",
+          "drawn": "2022-12-30 00:00:14",
+          "tags": [
+            "插画",
+            "寂灵",
+            "2022"
+          ],
+          "note": "绘制于 2022-12-30。"
+        },
+        {
+          "id": "ysmn2022_13",
+          "title": "插画 · 2022-12-30",
+          "imageKey": "ysmn2022_13",
+          "drawn": "2022-12-30 00:00:13",
+          "tags": [
+            "插画",
+            "寂灵",
+            "2022"
+          ],
+          "note": "绘制于 2022-12-30。"
+        },
+        {
           "id": "ysmn2022q_18",
           "title": "Q版人物立绘 · 2022-12-18",
           "imageKey": "ysmn2022q_18",
@@ -1876,6 +1963,19 @@ window.SITE_DATA = {
             "2022"
           ],
           "note": "2022 年 Q 版人物立绘系列。"
+        },
+        {
+          "id": "ysmn2022_16",
+          "title": "雪夜归客 · 佳因子圣诞限定",
+          "imageKey": "ysmn2022_16",
+          "drawn": "2022-12-18",
+          "tags": [
+            "插画",
+            "佳因子",
+            "节日",
+            "2022"
+          ],
+          "note": "绘制于 2022-12-18。"
         },
         {
           "id": "ysmn2022q_17",
@@ -2451,7 +2551,15 @@ window.SITE_DATA = {
     "ysmn2022q_15": "images/ysmn2022q_15.jpg",
     "ysmn2022q_16": "images/ysmn2022q_16.jpg",
     "ysmn2022q_17": "images/ysmn2022q_17.jpg",
-    "ysmn2022q_18": "images/ysmn2022q_18.jpg"
+    "ysmn2022q_18": "images/ysmn2022q_18.jpg",
+    "ysmn2022_13": "images/ysmn2022_13.png",
+    "ysmn2022_14": "images/ysmn2022_14.png",
+    "ysmn2022_15": "images/ysmn2022_15.png",
+    "ysmn2022_16": "images/ysmn2022_16.png",
+    "ysmn2022_17": "images/ysmn2022_17.png",
+    "ysmn2022_18": "images/ysmn2022_18.png",
+    "ysmn2022_19": "images/ysmn2022_19.png",
+    "ysmn2022_20": "images/ysmn2022_20.png"
   },
   "insp": [
     {
