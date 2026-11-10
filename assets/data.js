@@ -1867,6 +1867,207 @@ window.SITE_DATA = {
       "status": "（待补充）",
       "images": [
         {
+          "id": "ysmn2023_18",
+          "title": "寂灵 · 白背心立绘",
+          "imageKey": "ysmn2023_18",
+          "note": "绘制于 2023-08-21。",
+          "drawn": "2023-08-21",
+          "tags": [
+            "寂灵",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_17",
+          "title": "迷匿泽赫 · 路丝达 LUSSDA",
+          "imageKey": "ysmn2023_17",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:17",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_16",
+          "title": "幻化希堕 · 乌吞 UTAN",
+          "imageKey": "ysmn2023_16",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:16",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_15",
+          "title": "千变莫洛 · 千洛兹 CHANLOZ",
+          "imageKey": "ysmn2023_15",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:15",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_14",
+          "title": "魅影姑荻 · 瑟坎迪 CERKANDY",
+          "imageKey": "ysmn2023_14",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:14",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_13",
+          "title": "冰火萧末 · 珀尔西 BERCY",
+          "imageKey": "ysmn2023_13",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:13",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_12",
+          "title": "机魂妮莫 · 维 WAY",
+          "imageKey": "ysmn2023_12",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:12",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_11",
+          "title": "耀日恩忒 · 八宁 BARNING",
+          "imageKey": "ysmn2023_11",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:11",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_10",
+          "title": "暗月欲色 · 宗库姆 ZONKUM",
+          "imageKey": "ysmn2023_10",
+          "note": "绘制于 2023-08-14。",
+          "drawn": "2023-08-14 00:00:10",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_09",
+          "title": "咕噜瑶 · 波点裙彩稿",
+          "imageKey": "ysmn2023_09",
+          "note": "绘制于 2023-08-12。",
+          "drawn": "2023-08-12",
+          "tags": [
+            "咕噜瑶",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_08",
+          "title": "等换艾乐 · 以旦 ITAN",
+          "imageKey": "ysmn2023_08",
+          "note": "绘制于 2023-08-07。",
+          "drawn": "2023-08-07 00:00:08",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_07",
+          "title": "空创泰克 · 塔吉斯 TARGIS",
+          "imageKey": "ysmn2023_07",
+          "note": "绘制于 2023-08-07。",
+          "drawn": "2023-08-07 00:00:07",
+          "tags": [
+            "角色立绘",
+            "泰克",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_05",
+          "title": "黑衣持剑少年",
+          "imageKey": "ysmn2023_05",
+          "note": "绘制于 2023-07-14。",
+          "drawn": "2023-07-14",
+          "tags": [
+            "人物",
+            "立绘",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_04",
+          "title": "白发蓝眼少年头像",
+          "imageKey": "ysmn2023_04",
+          "note": "绘制于 2023-06-30。",
+          "drawn": "2023-06-30",
+          "tags": [
+            "人物",
+            "头像",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_06",
+          "title": "霓虹 M 标 · Joicy",
+          "imageKey": "ysmn2023_06",
+          "note": "绘制于 2023-05-27。",
+          "drawn": "2023-05-27",
+          "tags": [
+            "寂灵",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_02",
+          "title": "彩星糖果 · 520限定寂灵",
+          "imageKey": "ysmn2023_02",
+          "note": "绘制于 2023-05-19。",
+          "drawn": "2023-05-19",
+          "tags": [
+            "寂灵",
+            "节日",
+            "2023"
+          ]
+        },
+        {
+          "id": "ysmn2023_03",
+          "title": "咕噜瑶 · 铅笔线稿",
+          "imageKey": "ysmn2023_03",
+          "note": "绘制于 2023-03-21。",
+          "drawn": "2023-03-21",
+          "tags": [
+            "咕噜瑶",
+            "线稿",
+            "2023"
+          ]
+        },
+        {
           "id": "ysmn2022_18",
           "title": "寂灵十岁生日快乐",
           "imageKey": "ysmn2022_18",
@@ -1952,6 +2153,17 @@ window.SITE_DATA = {
             "2022"
           ],
           "note": "绘制于 2022-12-30。"
+        },
+        {
+          "id": "ysmn2023_01",
+          "title": "蓝角少女 · Ender Joicy",
+          "imageKey": "ysmn2023_01",
+          "note": "绘制于 2022-12-25。",
+          "drawn": "2022-12-25",
+          "tags": [
+            "寂灵",
+            "2022"
+          ]
         },
         {
           "id": "ysmn2022q_18",
@@ -2559,7 +2771,25 @@ window.SITE_DATA = {
     "ysmn2022_17": "images/ysmn2022_17.png",
     "ysmn2022_18": "images/ysmn2022_18.png",
     "ysmn2022_19": "images/ysmn2022_19.png",
-    "ysmn2022_20": "images/ysmn2022_20.png"
+    "ysmn2022_20": "images/ysmn2022_20.png",
+    "ysmn2023_01": "images/ysmn2023_01.png",
+    "ysmn2023_02": "images/ysmn2023_02.png",
+    "ysmn2023_03": "images/ysmn2023_03.png",
+    "ysmn2023_04": "images/ysmn2023_04.png",
+    "ysmn2023_05": "images/ysmn2023_05.png",
+    "ysmn2023_06": "images/ysmn2023_06.png",
+    "ysmn2023_07": "images/ysmn2023_07.png",
+    "ysmn2023_08": "images/ysmn2023_08.png",
+    "ysmn2023_09": "images/ysmn2023_09.png",
+    "ysmn2023_10": "images/ysmn2023_10.png",
+    "ysmn2023_11": "images/ysmn2023_11.png",
+    "ysmn2023_12": "images/ysmn2023_12.png",
+    "ysmn2023_13": "images/ysmn2023_13.png",
+    "ysmn2023_14": "images/ysmn2023_14.png",
+    "ysmn2023_15": "images/ysmn2023_15.png",
+    "ysmn2023_16": "images/ysmn2023_16.png",
+    "ysmn2023_17": "images/ysmn2023_17.png",
+    "ysmn2023_18": "images/ysmn2023_18.png"
   },
   "insp": [
     {
