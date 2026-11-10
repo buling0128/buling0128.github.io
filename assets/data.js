@@ -1867,6 +1867,162 @@ window.SITE_DATA = {
       "status": "（待补充）",
       "images": [
         {
+          "id": "ysmn2025_15",
+          "title": "光昕澈-立绘",
+          "imageKey": "ysmn2025_15",
+          "drawn": "2025-04-28",
+          "tags": [
+            "立绘",
+            "光昕澈"
+          ],
+          "note": "绘制于 2025-04-28。"
+        },
+        {
+          "id": "ysmn2025_14",
+          "title": "布灵-立绘",
+          "imageKey": "ysmn2025_14",
+          "drawn": "2025-03-15 00:00:04",
+          "tags": [
+            "立绘",
+            "布灵",
+            "正装"
+          ],
+          "note": "绘制于 2025-03-15。"
+        },
+        {
+          "id": "ysmn2025_13",
+          "title": "安息涸-立绘",
+          "imageKey": "ysmn2025_13",
+          "drawn": "2025-03-15 00:00:03",
+          "tags": [
+            "立绘",
+            "安息涸"
+          ],
+          "note": "绘制于 2025-03-15。"
+        },
+        {
+          "id": "ysmn2025_12",
+          "title": "法里同-立绘",
+          "imageKey": "ysmn2025_12",
+          "drawn": "2025-03-15 00:00:02",
+          "tags": [
+            "立绘",
+            "法里同",
+            "神明"
+          ],
+          "note": "绘制于 2025-03-15。"
+        },
+        {
+          "id": "ysmn2025_02",
+          "title": "布灵-插画",
+          "imageKey": "ysmn2025_02",
+          "drawn": "2025-03-15 00:00:01",
+          "tags": [
+            "插画",
+            "布灵"
+          ],
+          "note": "绘制于 2025-03-15。"
+        },
+        {
+          "id": "ysmn2025_03",
+          "title": "扎卡布-立绘",
+          "imageKey": "ysmn2025_03",
+          "drawn": "2025-03-09 00:00:02",
+          "tags": [
+            "立绘",
+            "扎卡布"
+          ],
+          "note": "绘制于 2025-03-09。"
+        },
+        {
+          "id": "ysmn2025_01",
+          "title": "琦·虚言-立绘",
+          "imageKey": "ysmn2025_01",
+          "drawn": "2025-03-09 00:00:01",
+          "tags": [
+            "立绘",
+            "琦·虚言"
+          ],
+          "note": "绘制于 2025-03-09。"
+        },
+        {
+          "id": "ysmn2025_06",
+          "title": "寂灵-插画",
+          "imageKey": "ysmn2025_06",
+          "drawn": "2025-03-05",
+          "tags": [
+            "插画",
+            "寂灵"
+          ],
+          "note": "绘制于 2025-03-05。"
+        },
+        {
+          "id": "ysmn2025_05",
+          "title": "佳因子-插画",
+          "imageKey": "ysmn2025_05",
+          "drawn": "2024-12-22 00:00:02",
+          "tags": [
+            "插画",
+            "佳因子"
+          ],
+          "note": "绘制于 2024-12-22。"
+        },
+        {
+          "id": "ysmn2025_04",
+          "title": "佳因子-插画",
+          "imageKey": "ysmn2025_04",
+          "drawn": "2024-12-22 00:00:01",
+          "tags": [
+            "插画",
+            "佳因子"
+          ],
+          "note": "绘制于 2024-12-22。"
+        },
+        {
+          "id": "ysmn2025_07",
+          "title": "寂灵-立绘",
+          "imageKey": "ysmn2025_07",
+          "drawn": "2024-11-22",
+          "tags": [
+            "立绘",
+            "寂灵"
+          ],
+          "note": "绘制于 2024-11-22。"
+        },
+        {
+          "id": "ysmn2025_08",
+          "title": "布枫苓-立绘",
+          "imageKey": "ysmn2025_08",
+          "drawn": "2024-11-15",
+          "tags": [
+            "立绘",
+            "布枫苓"
+          ],
+          "note": "绘制于 2024-11-15。"
+        },
+        {
+          "id": "ysmn2025_09",
+          "title": "赤姬-立绘",
+          "imageKey": "ysmn2025_09",
+          "drawn": "2024-11-12",
+          "tags": [
+            "立绘",
+            "赤姬"
+          ],
+          "note": "绘制于 2024-11-12。"
+        },
+        {
+          "id": "ysmn2025_11",
+          "title": "布灵-立绘",
+          "imageKey": "ysmn2025_11",
+          "drawn": "2024-11-11",
+          "tags": [
+            "立绘",
+            "布灵"
+          ],
+          "note": "绘制于 2024-11-11。"
+        },
+        {
           "id": "ysmn24c_05",
           "title": "布澄-头像",
           "imageKey": "ysmn24c_05",
@@ -1874,6 +2030,17 @@ window.SITE_DATA = {
           "tags": [
             "头像",
             "布澄"
+          ],
+          "note": "绘制于 2024-11-10。"
+        },
+        {
+          "id": "ysmn2025_10",
+          "title": "布璃娅-立绘",
+          "imageKey": "ysmn2025_10",
+          "drawn": "2024-11-10",
+          "tags": [
+            "立绘",
+            "布璃娅"
           ],
           "note": "绘制于 2024-11-10。"
         },
@@ -3194,7 +3361,22 @@ window.SITE_DATA = {
     "ysmn24c_10": "images/ysmn24c_10.png",
     "ysmn24c_11": "images/ysmn24c_11.png",
     "ysmn24c_12": "images/ysmn24c_12.png",
-    "ysmn24c_13": "images/ysmn24c_13.png"
+    "ysmn24c_13": "images/ysmn24c_13.png",
+    "ysmn2025_01": "images/ysmn2025_01.png",
+    "ysmn2025_02": "images/ysmn2025_02.png",
+    "ysmn2025_03": "images/ysmn2025_03.png",
+    "ysmn2025_04": "images/ysmn2025_04.png",
+    "ysmn2025_05": "images/ysmn2025_05.png",
+    "ysmn2025_06": "images/ysmn2025_06.png",
+    "ysmn2025_07": "images/ysmn2025_07.png",
+    "ysmn2025_08": "images/ysmn2025_08.png",
+    "ysmn2025_09": "images/ysmn2025_09.png",
+    "ysmn2025_10": "images/ysmn2025_10.png",
+    "ysmn2025_11": "images/ysmn2025_11.png",
+    "ysmn2025_12": "images/ysmn2025_12.png",
+    "ysmn2025_13": "images/ysmn2025_13.png",
+    "ysmn2025_14": "images/ysmn2025_14.png",
+    "ysmn2025_15": "images/ysmn2025_15.png"
   },
   "insp": [
     {
